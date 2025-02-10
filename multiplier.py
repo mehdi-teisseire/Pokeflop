@@ -191,7 +191,7 @@ type_multiplier = {
     ('normal', 'dark'): 1,
     ('normal', 'flying'): 1,
 
-('grass', 'steel'): 1,
+    ('grass', 'steel'): 1,
     ('grass', 'fighting'): 1,
     ('grass', 'dragon'): 1,
     ('grass', 'water'): 1,
