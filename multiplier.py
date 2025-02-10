@@ -1,0 +1,1 @@
+# Pokemon multiplier type dictionnary
