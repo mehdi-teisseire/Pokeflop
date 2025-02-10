@@ -190,5 +190,25 @@ type_multiplier = {
     ('normal', 'ghost'): 0.5,
     ('normal', 'dark'): 1,
     ('normal', 'flying'): 1,
+
+('grass', 'steel'): 1,
+    ('grass', 'fighting'): 1,
+    ('grass', 'dragon'): 1,
+    ('grass', 'water'): 1,
+    ('grass', 'electric'): 1,
+    ('grass', 'fairy'): 1,
+    ('grass', 'fire'): 0.5,
+    ('grass', 'ice'): 1,
+    ('grass', 'bug'): 1,
+    ('grass', 'normal'): 1,
+    ('grass', 'grass'): 1,
+    ('grass', 'poison'): 0.5,
+    ('grass', 'psychic'): 1,
+    ('grass', 'rock'): 1,
+    ('grass', 'ground'): 2,
+    ('grass', 'ghost'): 1,
+    ('grass', 'dark'): 1,
+    ('grass', 'flying'): 1,
+
     
 }
