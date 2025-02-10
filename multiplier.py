@@ -248,5 +248,24 @@ type_multiplier = {
     ('psychic', 'dark'): 0.5,
     ('psychic', 'flying'): 1,
 
+    ('rock', 'steel'): 1,
+    ('rock', 'fighting'): 1,
+    ('rock', 'dragon'): 1,
+    ('rock', 'water'): 1,
+    ('rock', 'electric'): 1,
+    ('rock', 'fairy'): 1,
+    ('rock', 'fire'): 1,
+    ('rock', 'ice'): 1,
+    ('rock', 'bug'): 1,
+    ('rock', 'normal'): 1,
+    ('rock', 'grass'): 1,
+    ('rock', 'poison'): 1,
+    ('rock', 'psychic'): 1,
+    ('rock', 'rock'): 1,
+    ('rock', 'ground'): 1,
+    ('rock', 'ghost'): 1,
+    ('rock', 'dark'): 1,
+    ('rock', 'flying'): 1,
+
 
 }
