@@ -153,5 +153,23 @@ type_multiplier = {
     ('ice', 'dark'): 1,
     ('ice', 'flying'): 1,
 
-
+    ('bug', 'steel'): 1,
+    ('bug', 'fighting'): 1,
+    ('bug', 'dragon'): 1,
+    ('bug', 'water'): 1,
+    ('bug', 'electric'): 1,
+    ('bug', 'fairy'): 1,
+    ('bug', 'fire'): 0.5,
+    ('bug', 'ice'): 1,
+    ('bug', 'bug'): 1,
+    ('bug', 'normal'): 1,
+    ('bug', 'grass'): 2,
+    ('bug', 'poison'): 0.5,
+    ('bug', 'psychic'): 1,
+    ('bug', 'rock'): 1,
+    ('bug', 'ground'): 1,
+    ('bug', 'ghost'): 1,
+    ('bug', 'dark'): 1,
+    ('bug', 'flying'): 1,
+    
 }
