@@ -41,10 +41,10 @@ class Pokemon (Moove):
         return f"{self.moov1} has an accuracy of {self.accuracy_mouv1} and {self.moov2} has an accuracy of {self.accuracy_mouv2}"
 
 pokemon_template = [
-    {'name':'Squirtle','type':'eau','attack':50,'defence':50,'sprite':'sprite.png','moov1':'Charge','moov2':'Watter gun'},
-    {'name':'Pikachu','type':'electric','attack':50,'defence':50,'sprite':'sprite.png','moov1':'Charge','moov2':'Thunder'},
-    {'name':'Bulbasaur','type':'plante','attack':50,'defence':50,'sprite':'sprite.png','moov1':'Charge','moov2':'Leaf'},
-    {'name':'Charmander','type':'fire','attack':50,'defence':50,'sprite':'sprite.png','moov1':'Charge','moov2':'Flamethrower'},
+    {'name':'Squirtle','type':'water','attack':50,'defence':50,'sprite':'media/pokemon_assets/Squirtle_back.png','moov1':'Charge','moov2':'Watter gun'},
+    {'name':'Pikachu','type':'electric','attack':60,'defence':45,'sprite':'sprite.png','moov1':'Charge','moov2':'Thunder'},
+    {'name':'Bulbasaur','type':'grass','attack':40,'defence':50,'sprite':'sprite.png','moov1':'Charge','moov2':'Leaf'},
+    {'name':'Charmander','type':'fire','attack':70,'defence':30,'sprite':'sprite.png','moov1':'Charge','moov2':'Flamethrower'},
     {'name':'Pidgey','type':'normal','attack':45,'defence':45,'sprite':'sprite.png','moov1':'Tackle','moov2':'Gust'},
     {'name':'Rattata','type':'normal','attack':48,'defence':43,'sprite':'sprite.png','moov1':'Tackle','moov2':'Quick Attack'}
 ]
