@@ -1,46 +1,40 @@
 from JsonClass import Json
 
-# Character-related classes
+
 class Trainers(Json):
+    """Class for trainers (player and foes) with Pokedex list as owned pokemon, stats for stat menu"""
     def __init__(self, name):
         self.name = name
         #self.image = image
         self.victory = False
         self.pokedex = [] 
         self.stats = []
-    
-    def first_pokemon(self, pokemon):
-        self.pokedex.append(pokemon)
-        self.save()
-        self.load()
 
     def add_pokemon(self, pokemon):
+        """To add a pokemon after a win. Also called on the first pokemon the player get"""
         self.pokedex.append(pokemon)
-        
+        self.update_pokedex_json()
+
     def remove_pokemon(self, pokemon):
+        """To remove defeated pokemon from pour pokedex"""
         self.pokedex.remove(pokemon)
+        self.update_pokedex_json()
 
-# class Monsters:
-#     def __init__(self, name, move_list, hp):
-#         pass # image = f"{name}.jpg
-#     pass
 
-# class Moves:
-#     def __init__(self, name, attribute, effect ):
-#         pass # sound = f"{sound}.jpg
-#     pass
+    def update_pokedex_json(self):
+        """Update the json and the pokedex list"""
+        self.save_json(self.pokedex)
+        self.pokedex = self.load_json()
 
-# Gameplay-related classes
-# class Graphics:
-#     def __init__(self):
-#         pass
+trainer1 = Trainers("George")
 
-# class Games:
-#     def __init__(self, number, player):
-#         pass
-#     pass
+class Pokemon:
+    def __init__(self, name, stat):
+        self.name = name
+        self.stat = stat
 
-# class Attributes:
-#     def __init__(self):
-#         pass
-    # pass
+pokemon1 = Pokemon("aaaa", [1,2,3])
+
+trainer1.add_pokemon(pokemon1)
+
+print(trainer1.pokedex)
