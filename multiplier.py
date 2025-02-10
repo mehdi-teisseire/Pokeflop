@@ -56,6 +56,26 @@ type_multiplier = {
     ('dragon', 'ground'): 1,
     ('dragon', 'ghost'): 1,
     ('dragon', 'dark'): 1,
-    ('dragon', 'flying'): 1,   
+    ('dragon', 'flying'): 1, 
+
+    ('water', 'steel'): 1,
+    ('water', 'fighting'): 1,
+    ('water', 'dragon'): 1,
+    ('water', 'water'): 1,
+    ('water', 'electric'): 1,
+    ('water', 'fairy'): 1,
+    ('water', 'fire'): 2,
+    ('water', 'ice'): 1,
+    ('water', 'bug'): 1,
+    ('water', 'normal'): 1,
+    ('water', 'grass'): 0.5,
+    ('water', 'poison'): 1,
+    ('water', 'psychic'): 1,
+    ('water', 'rock'): 1,
+    ('water', 'ground'): 1,
+    ('water', 'ghost'): 1,
+    ('water', 'dark'): 1,
+    ('water', 'flying'): 1,
+
 
 }
