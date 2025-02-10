@@ -20,4 +20,23 @@ type_multiplier = {
     ('steel', 'dark'): 1,
     ('steel', 'flying'): 1,
 
+    ('fighting', 'steel'): 0.5,
+    ('fighting', 'fighting'): 1,
+    ('fighting', 'dragon'): 1,
+    ('fighting', 'water'): 1,
+    ('fighting', 'electric'): 1,
+    ('fighting', 'fairy'): 0.5,
+    ('fighting', 'fire'): 1,
+    ('fighting', 'ice'): 1,
+    ('fighting', 'bug'): 1,
+    ('fighting', 'normal'): 1,
+    ('fighting', 'grass'): 1,
+    ('fighting', 'poison'): 1,
+    ('fighting', 'psychic'): 1,
+    ('fighting', 'rock'): 1,
+    ('fighting', 'ground'): 1,
+    ('fighting', 'ghost'): 1,
+    ('fighting', 'dark'): 1,
+    ('fighting', 'flying'): 1,    
+
 }
