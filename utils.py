@@ -17,3 +17,8 @@ class Button:
     
     def is_clicked(self, mouse_pos):
         return self.rect.collidepoint(mouse_pos)
+
+# To render a message on the game pygame screen
+def render_message(screen, message, font, position= (100, 100), color = (0, 0, 0)):
+    render_message = font.render(message, True, color)
+    screen.blit(render_message, position)
