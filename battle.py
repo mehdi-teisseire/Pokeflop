@@ -78,5 +78,6 @@ class Battle:
         defender.take_damage(effective_damage)
 
         message = f"{attacker.name} dealt {effective_damage} damage!"
-        return message, effective_damage      
+        render_message(screen, message, font)
+        return effective_damage      
 
