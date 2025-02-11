@@ -18,3 +18,10 @@ class Battle:
                 return json.load(file)
         except(FileNotFoundError, json.JSONDecodeError):
             return[]
+
+    # To save to the Pokedex
+    def save_pokedex(self):
+        with open('pokedex.json', 'r') as file:
+            json.dump(self.pokedex, file)
+    
+    
