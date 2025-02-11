@@ -1,4 +1,3 @@
-
    .venv/
 
    __pycache__/
@@ -11,3 +10,4 @@
    .idea/
    *.sublime-project
    *.sublime-workspace
+
