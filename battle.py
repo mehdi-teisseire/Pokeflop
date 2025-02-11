@@ -93,3 +93,17 @@ class Battle:
         message = f"{pokemon.name} is victorious!"
         render_message(screen, message, font)
         pokemon.level_up() 
+    
+    # To change the active pokemon in the battle
+    def switch_pokemon(self, new_pokemon,screen, font):
+        if new_pokemon in self.player_1_pokemons:
+            self.current_pokemon_1 = new_pokemon
+            message = f"{self.current_pokemon_1.name} is now active for Player 1."
+            render_message(screen, message, font)
+        elif new_pokemon in self.player_2_pokemons:
+            self.current_pokemon_2 = new_pokemon
+            message = f"{self.current_pokemon_2.name} is now active for Player 2."
+            render_message(screen, message, font)
+        else:
+            message = f"The chosen Pokémon is not part of the player's team."
+            render_message(screen, message, font)   
