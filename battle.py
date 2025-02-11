@@ -44,9 +44,6 @@ class Battle:
         button2 = Button(pokemon.moov2, 400, 300, 200, 50) # should be changed
         while True:
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = event.pos
                     if button1.is_clicked(mouse_pos):
@@ -95,7 +92,7 @@ class Battle:
         pokemon.level_up() 
     
     # To change the active pokemon in the battle
-    def switch_pokemon(self, new_pokemon,screen, font):
+    def switch_pokemon(self, new_pokemon, screen, font):
         if new_pokemon in self.player_1_pokemons:
             self.current_pokemon_1 = new_pokemon
             message = f"{self.current_pokemon_1.name} is now active for Player 1."
@@ -106,4 +103,20 @@ class Battle:
             render_message(screen, message, font)
         else:
             message = f"The chosen Pokémon is not part of the player's team."
-            render_message(screen, message, font)   
+            render_message(screen, message, font)  
+
+    # A button to surrender 
+    def surrender(screen, self, pokemon, font, player):
+        surrender_button = Button("Surrender", 250, 300, 200, 50)
+        screen.fill(Button.WHITE)
+        surrender_button.draw(screen)
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = event.pos
+                if surrender_button.is_clicked(mouse_pos):
+                    message = f"{pokemon.name} has surrendered !"  
+                    render_message(screen, message, font)
+                    winner = self.current_pokemon_2.name if player == self.current_pokemon_1 else self.current_pokemon_1.name 
+                    message = f"{winner} wins by default!"         
