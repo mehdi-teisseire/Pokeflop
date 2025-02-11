@@ -11,8 +11,8 @@ class Pokemon (Moove):
         self.attack = attack
         self.defence = defence
         self.sprite = sprite
-        self.moove_type_2 = pkmn_type
         self.moove_type_1 = 'Normal'
+        self.moove_type_2 = pkmn_type
     
     def get_pokemon(self):
         return f"Name: {self.name}, Type: {self.pkmn_type}, Level: {self.level}, Attack: {self.attack}, Defence: {self.defence}, Moove: {self.moov1},' ',{self.moov2};"
@@ -26,10 +26,11 @@ class Pokemon (Moove):
     
     def evolve(self,new_name,new_pkmn_type,new_sprite):
         '''Evolve the pokemon'''
+        temp_str = self.name
         self.name = new_name
         self.pkmn_type = new_pkmn_type
         self.sprite = new_sprite
-        return f"{self.name} has evolved into {new_name}!" # TODO FIX:  self.name display the new name and not the old one 
+        return f"{temp_str} has evolved into {new_name}!" # TODO FIX:  self.name display the new name and not the old one 
     
     def attack_damage(self,opponent):
         '''Calculate the damage of an attack'''
