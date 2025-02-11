@@ -1,4 +1,5 @@
 import pygame, sys
+from ui import Button 
 
 # To allow the player to choose an attack
 def choose_attack(screen, self, pokemon):
