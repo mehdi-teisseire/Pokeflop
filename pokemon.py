@@ -2,10 +2,11 @@ from moove import Moove
 class Pokemon (Moove): 
     '''Class to create a pokemon'''
 
-    def __init__(self,name,pkmn_type,attack,defence,sprite,moov1,moov2):
+    def __init__(self,name,pkmn_type,attack,defence,sprite,moov1,moov2,life = 100):
         '''Initialize the pokemon'''
         Moove.__init__(self,moov1,moov2)
         self.name = name
+        self.life = life
         self.pkmn_type = pkmn_type
         self.level = 5
         self.attack = attack
@@ -15,7 +16,7 @@ class Pokemon (Moove):
         self.moove_type_2 = pkmn_type
     
     def get_pokemon(self):
-        return f"Name: {self.name}, Type: {self.pkmn_type}, Level: {self.level}, Attack: {self.attack}, Defence: {self.defence}, Moove: {self.moov1},' ',{self.moov2};"
+        return f"Name: {self.name}, Type: {self.pkmn_type}, Level: {self.level}, Attack: {self.attack}, Defence: {self.defence}, Moove: {self.moov1},' ',{self.moov2}; Life: {self.life}"
     
     def level_up(self):
         '''Level up the pokemon'''
@@ -30,11 +31,12 @@ class Pokemon (Moove):
         self.name = new_name
         self.pkmn_type = new_pkmn_type
         self.sprite = new_sprite
-        return f"{temp_str} has evolved into {new_name}!" # TODO FIX:  self.name display the new name and not the old one 
+        return f"{temp_str} has evolved into {new_name}!"
     
     def attack_damage(self,opponent):
         '''Calculate the damage of an attack'''
         damage = self.attack * self.level * 0.2 - opponent.defence * opponent.level * 0.05
+        opponent.life -= damage
         return f"{self.name} has inflicted {damage} damage to {opponent.name}!"
     
     def get_moove_accuracy(self):
@@ -42,24 +44,25 @@ class Pokemon (Moove):
         return f"{self.moov1} has an accuracy of {self.accuracy_mouv1} and {self.moov2} has an accuracy of {self.accuracy_mouv2}"
 
 pokemon_template = [
-    {'name':'Squirtle','type':'water','attack':50,'defence':50,'sprite':'media/pokemon_assets/Squirtle_back.png','moov1':'Charge','moov2':'Watter gun'},
-    {'name':'Pikachu','type':'electric','attack':60,'defence':45,'sprite':'media/pokemon_assets/Pikachu_back.png','moov1':'Charge','moov2':'Thunder'},
-    {'name':'Bulbasaur','type':'grass','attack':40,'defence':50,'sprite':'media/pokemon_assets/Bulbasur_back.png','moov1':'Charge','moov2':'Leaf'},
-    {'name':'Charmander','type':'fire','attack':70,'defence':30,'sprite':'media/pokemon_assets/Charmander_back.png','moov1':'Charge','moov2':'Flamethrower'},
-    {'name':'Pidgey','type':'normal','attack':45,'defence':45,'sprite':'media/pokemon_assets/Pidgey_back.png','moov1':'Tackle','moov2':'Gust'},
-    {'name':'Rattata','type':'normal','attack':48,'defence':43,'sprite':'media/pokemon_assets/Rattata_back.png','moov1':'Tackle','moov2':'Quick Attack'}
+    {'name':'Squirtle','type':'water','attack':50,'defence':50,'life':100,'sprite':'media/pokemon_assets/Squirtle_back.png','moov1':'Charge','moov2':'Watter gun'},
+    {'name':'Pikachu','type':'electric','attack':60,'defence':45,'life':100,'sprite':'media/pokemon_assets/Pikachu_back.png','moov1':'Charge','moov2':'Thunder'},
+    {'name':'Bulbasaur','type':'grass','attack':40,'defence':50,'life':100,'sprite':'media/pokemon_assets/Bulbasur_back.png','moov1':'Charge','moov2':'Leaf'},
+    {'name':'Charmander','type':'fire','attack':70,'defence':30,'life':100,'sprite':'media/pokemon_assets/Charmander_back.png','moov1':'Charge','moov2':'Flamethrower'},
+    {'name':'Pidgey','type':'normal','attack':45,'defence':45,'life':100,'sprite':'media/pokemon_assets/Pidgey_back.png','moov1':'Tackle','moov2':'Gust'},
+    {'name':'Rattata','type':'normal','attack':48,'defence':43,'life':100,'sprite':'media/pokemon_assets/Rattata_back.png','moov1':'Tackle','moov2':'Quick Attack'}
 ]
 
 player_pokemons = []
 trainer_pokemons = []
 
 for pokemon in pokemon_template:
-    player_pokemons.append(Pokemon(pokemon['name'],pokemon['type'],pokemon['attack'],pokemon['defence'],pokemon['sprite'],pokemon['moov1'],pokemon['moov2']))
-    trainer_pokemons.append(Pokemon(pokemon['name'],pokemon['type'],pokemon['attack'],pokemon['defence'],pokemon['sprite'],pokemon['moov1'],pokemon['moov2']))
+    player_pokemons.append(Pokemon(pokemon['name'],pokemon['type'],pokemon['attack'],pokemon['defence'],pokemon['sprite'],pokemon['moov1'],pokemon['moov2'],pokemon['life']))
+    trainer_pokemons.append(Pokemon(pokemon['name'],pokemon['type'],pokemon['attack'],pokemon['defence'],pokemon['sprite'],pokemon['moov1'],pokemon['moov2'],pokemon['life']))
 
 print(player_pokemons[2].get_pokemon())
 print(player_pokemons[2].level_up())
 print(player_pokemons[2].attack_damage(trainer_pokemons[3]))
+print(trainer_pokemons[3].get_pokemon())
 print(player_pokemons[2].get_moove_accuracy())
 print(player_pokemons[2].evolve('Ivysaur','plante','sprite.png'))
 print(player_pokemons[2].get_pokemon())
