@@ -1,9 +1,4 @@
 import json
-# from objdict import ObjDict 
-
-# TODO Have to use a class to create an object then a dict then on Json then on dict then on object
-# TODO Need to have a formated JSON on multiple lines
-
 
 class Json:
     def save_json(self, object_list, filename):
