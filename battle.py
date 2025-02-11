@@ -4,7 +4,7 @@ import pygame
 import sys
 from pokemon import Pokemon
 from multiplier import type_multiplier
-from utils import Button
+#from utils import Button
 
 
 
@@ -37,7 +37,7 @@ class Battle:
         elif self.current_pokemon_2 <= 0:
             return self.current_pokemon_1.name, self.current_pokemon_2.name
         return None, None  
-
+        
     # To allow the player to choose an attack
     def choose_attack(screen, self, pokemon):
         button1 = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
