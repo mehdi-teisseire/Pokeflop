@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Bulbosaur",
+        "stats": [
+            1,
+            2,
+            3
+        ]
+    },
+    {
+        "name": "Squirtle",
+        "stats": [
+            3,
+            2,
+            1
+        ]
+    },
+    {
+        "name": "Charizard",
+        "stats": [
+            2,
+            1,
+            3
+        ]
+    }
+]
