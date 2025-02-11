@@ -19,6 +19,8 @@ class Button:
         return self.rect.collidepoint(mouse_pos)
 
 # To render a message on the game pygame screen
-def render_message(screen, message, font, position= (100, 100), color = (0, 0, 0)):
-    render_message = font.render(message, True, color)
-    screen.blit(render_message, position)
+def render_message(screen, message, font, position= (100, 100), color = (0, 0, 0), background_color=(255, 255, 255)):
+    rendered_text = font.render(message, True, color)
+    text_rect = rendered_text.get_rect(topleft = position)
+    pygame.draw.rect(screen, background_color, text_rect)
+    screen.blit(rendered_text, position)
