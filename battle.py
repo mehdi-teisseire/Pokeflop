@@ -1,7 +1,6 @@
 import json
 import random
 import pygame
-import sys
 from pokemon import Pokemon
 from multiplier import type_multiplier
 from utils import Button, render_message
@@ -34,12 +33,12 @@ class Battle:
     def check_health_points(self):
         if self.current_pokemon_1.hp <= 0:
             return self.current_pokemon_1.name, self.current_pokemon_2.name
-        elif self.current_pokemon_2 <= 0:
-            return self.current_pokemon_1.name, self.current_pokemon_2.name
+        elif self.current_pokemon_2.hp <= 0:
+            return self.current_pokemon_2.name, self.current_pokemon_1.name
         return None, None  
 
     # To allow the player to choose an attack
-    def choose_attack(screen, self, pokemon):
+    def choose_attack(self, screen, pokemon):
         button1 = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
         button2 = Button(pokemon.moov2, 400, 300, 200, 50) # should be changed
         while True:
@@ -106,7 +105,7 @@ class Battle:
             render_message(screen, message, font)  
 
     # A button to surrender 
-    def surrender(screen, self, pokemon, font, player):
+    def surrender(self, screen, pokemon, font, player):
         surrender_button = Button("Surrender", 250, 300, 200, 50)
         screen.fill(Button.WHITE)
         surrender_button.draw(screen)
@@ -119,4 +118,29 @@ class Battle:
                     message = f"{pokemon.name} has surrendered !"  
                     render_message(screen, message, font)
                     winner = self.current_pokemon_2.name if player == self.current_pokemon_1 else self.current_pokemon_1.name 
-                    message = f"{winner} wins by default!"         
+                    message = f"{winner} wins by default!"
+                    return         
+
+    # To start the battle
+    def start_battle(self, screen, font):
+        turn = 0
+        while self.current_pokemon_1.hp > 0 and self.current_pokemon_2.hp > 0:
+            if turn % 2 == 0:
+                move, move_type = self.choose_attack(screen, self.current_pokemon_1)
+                damage = self.calculate_damage(self.current_pokemon_1, self.current_pokemon_2, move_type, screen, self.font)
+                message = f"{self.current_pokemon_1.name} uses {move} on {self.current_pokemon_2.name} and inflicts {damage} damage."
+                render_message(screen, message, font)
+            else:
+                move, move_type = self.choose_attack(screen, self.current_pokemon_2)
+                damage = self.calculate_damage(self.current_pokemon_2, self.current_pokemon_1, move_type, screen, self.font)
+                message = f" {self.current_pokemon_2.name} uses {move} on {self.current_pokemon_1.name} and inflicts {damage} damage."
+                render_message(screen, message, font)
+
+            winner_name, loser_name = self.check_health_points()
+            if winner_name:
+                message = f"{winner_name} won the battle against {loser_name}!"
+                render_message(screen, message, font)
+                self.display_victory(self.current_pokemon_1 if winner_name == self.current_pokemon_1 else self.current_pokemon_2, screen, self.font)
+                return
+
+            turn += 1                            
