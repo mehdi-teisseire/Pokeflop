@@ -86,4 +86,10 @@ class Battle:
         message = f"{pokemon.name} has been defeated."
         render_message(screen, message, font)
         self.pokedex = [p for p in self.pokedex if p['name'] != pokemon.name]  # Retirer le Pokémon du Pokédex
-        self.save_pokedex() 
+        self.save_pokedex()
+
+    # To display the victory
+    def display_victory(self, pokemon, screen, font):
+        message = f"{pokemon.name} is victorious!"
+        render_message(screen, message, font)
+        pokemon.level_up() 
