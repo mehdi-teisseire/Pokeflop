@@ -4,7 +4,7 @@ import pygame
 import sys
 from pokemon import Pokemon
 from multiplier import type_multiplier
-from utils import Button
+from utils import Button, render_message
 
 
 
@@ -66,5 +66,17 @@ class Battle:
             button2.draw(screen)
             pygame.display.flip()
             
-            
+    # To calculate damage based on the attacker's chosen move
+    def calculate_damage(self, attacker, defender, move_type, screen, font):
+        if random.random() < 0.1:
+            message = f"{attacker.name}'s attack missed!"
+            render_message(screen, message, font)
+            return 0  
+        damage = attacker.attack
+        multiplier = type_multiplier.get((move_type, defender.pkm_type), 1)
+        effective_damage = damage * multiplier
+        defender.take_damage(effective_damage)
+
+        message = f"{attacker.name} dealt {effective_damage} damage!"
+        return message, effective_damage      
 
