@@ -79,5 +79,11 @@ class Battle:
 
         message = f"{attacker.name} dealt {effective_damage} damage!"
         render_message(screen, message, font)
-        return effective_damage      
+        return effective_damage 
 
+    # To display the defeat
+    def display_defeat(self, pokemon, screen, font):
+        message = f"{pokemon.name} has been defeated."
+        render_message(screen, message, font)
+        self.pokedex = [p for p in self.pokedex if p['name'] != pokemon.name]  # Retirer le Pokémon du Pokédex
+        self.save_pokedex() 
