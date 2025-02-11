@@ -1,70 +1,25 @@
-import json
-import random
-import pygame
-import sys
-from pokemon import Pokemon
-from multiplier import type_multiplier
-from utils import Button
+from back_end.pokemon import Pokemon
+from back_end.multiplier import type_multiplier
+# from utils import Button
 
 
 
 #Battle class for managing Pokémon battles
 class Battle:
-    def __init__(self, player_1_pokemons, player_2_pokemons):
-        self.player_1_pokemons = player_1_pokemons
-        self.player_2_pokemons = player_2_pokemons
-        self.current_pokemon_1 = player_1_pokemons[0]
-        self.current_pokemon_2 = player_2_pokemons[0]
-        self.pokedex = self.load_pokedex()
-    
-    # To load the Pokedex
-    def load_pokedex(self):
-        try:
-            with open('pokedex.json', 'r') as file:
-                return json.load(file)
-        except(FileNotFoundError, json.JSONDecodeError):
-            return[]
-
-    # To save to the Pokedex
-    def save_pokedex(self):
-        with open('pokedex.json', 'r') as file:
-            json.dump(self.pokedex, file)
+    def __init__(self, trainer, enemy):
+        self.trainer_pokemon = trainer.pokedex[0]
+        self.enemy_pokemon = enemy.pokedex[0]
     
     # To check if Pokemon is alive or not
     def check_health_points(self):
-        if self.current_pokemon_1.hp <= 0:
-            return self.current_pokemon_1.name, self.current_pokemon_2.name
+        if self.trainer_pokemon.hp <= 0:
+            return self.trainer_pokemon.name, self.enemy_pokemon.name
         elif self.current_pokemon_2 <= 0:
-            return self.current_pokemon_1.name, self.current_pokemon_2.name
+            return self.trainer_pokemon.name, self.enemy_pokemon.name
         return None, None  
+    
 
-    # To allow the player to choose an attack
-    def choose_attack(screen, self, pokemon):
-        button1 = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
-        button2 = Button(pokemon.moov2, 400, 300, 200, 50) # should be changed
-        while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    mouse_pos = event.pos
-                    if button1.is_clicked(mouse_pos):
-                        return pokemon.moov1, pokemon.moove_type_1
-                    elif button2.is_clicked(mouse_pos):
-                        return pokemon.moov2, pokemon.moove_type_2
-            screen.fill(Button.WHITE)
-            option_text = self.font.render(f"{pokemon.name}, choose your attack:", True, self.BLUE) # Should be changed
-            instruction_line1 = self.font.render("Press 1 :" + pokemon.moov1, True, self.BLUE) # Should be changed
-            instruction_line2 = self.font.render("Press 2 :" + pokemon.moov2, True, self.BLUE) # Should be changed
 
-            screen.blit(option_text, (100, 200))
-            screen.blit(instruction_line1, (100, 250))
-            screen.blit(instruction_line2 (100, 280))
 
-            button1.draw(screen)
-            button2.draw(screen)
-            pygame.display.flip()
-            
             
 
