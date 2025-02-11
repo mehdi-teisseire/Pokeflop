@@ -1,1 +1,18 @@
-"[\n    {\n        \"name\": \"aaaa\",\n        \"stat\": [\n            1,\n            2,\n            3\n        ]\n    }\n]"
+[
+    {
+        "name": "Bulbosaur",
+        "stat": [
+            1,
+            2,
+            3
+        ]
+    },
+    {
+        "name": "Squirtle",
+        "stat": [
+            3,
+            2,
+            1
+        ]
+    }
+]
