@@ -65,6 +65,3 @@ class Battle:
             button1.draw(screen)
             button2.draw(screen)
             pygame.display.flip()
-            
-            
-
