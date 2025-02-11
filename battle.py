@@ -24,4 +24,10 @@ class Battle:
         with open('pokedex.json', 'r') as file:
             json.dump(self.pokedex, file)
     
-    
+    # To check if Pokemon is alive or not
+    def check_health_points(self):
+        if self.current_pokemon_1.hp <= 0:
+            return self.current_pokemon_1.name, self.current_pokemon_2.name
+        elif self.current_pokemon_2 <= 0:
+            return self.current_pokemon_1.name, self.current_pokemon_2.name
+        return None, None   
