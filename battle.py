@@ -40,20 +40,20 @@ class Battle:
 
     # To allow the player to choose an attack
     def choose_attack(self, screen, font):
-        button1 = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
-        button2 = Button(pokemon.moov2, 400, 300, 200, 50) # should be changed
+        button1 = Button(pokemon['moov1'], 100, 300, 200, 50) # should be changed
+        button2 = Button(pokemon['moov2'], 400, 300, 200, 50) # should be changed
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = event.pos
                     if button1.is_clicked(mouse_pos):
-                        return pokemon.moov1, pokemon.moove_type_1
+                        return pokemon['moov1'], pokemon.moove_type_1
                     elif button2.is_clicked(mouse_pos):
-                        return pokemon.moov2, pokemon.moove_type_2
+                        return pokemon['moov2'], pokemon.moove_type_2
             screen.fill(Button.WHITE)
-            render_message(screen, font, f"{pokemon.name}, choose your attack!")
-            render_message(screen, font, "Press 1 :" + pokemon.moov1)
-            render_message(screen, font,"Press 2 :" + pokemon.moov2)
+            render_message(screen, font, f"{pokemon['name']}, choose your attack!")
+            render_message(screen, font, "Press 1 :" + pokemon['moov1'])
+            render_message(screen, font,"Press 2 :" + pokemon['moov2'])
 
             button1.draw(screen)
             button2.draw(screen)
