@@ -2,11 +2,13 @@ import pygame
 
 pygame.init()
 
+font = pygame.font.Font(None, 36)
+
 class Button:
     WHITE = (255, 255, 255) # Should be changed
     BLUE = (0, 0, 255) #Should be changed
     RED = (255, 0, 0) # Should be changed
-    font = pygame.font.Font(None, 36) # Should be changed 
+    font = font
 
     def __init__ (self, text, x, y, width, height):
         self.text = text
@@ -22,7 +24,8 @@ class Button:
 
 # To render a message on the game pygame screen
 def render_message(screen, message, font, position= (100, 100), color = (0, 0, 0), background_color=(255, 255, 255)):
-    font = pygame.font.Font(None, 36) 
+    if not isinstance(message, str):
+        message = str(message)
     rendered_text = font.render(message, True, color)
     text_rect = rendered_text.get_rect(topleft = position)
     pygame.draw.rect(screen, background_color, text_rect)
