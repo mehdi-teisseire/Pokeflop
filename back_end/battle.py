@@ -1,5 +1,8 @@
 from back_end.pokemon import Pokemon
 from back_end.multiplier import type_multiplier
+from TrainerClass import Trainer
+from EnemyTrainerClass import EnemyTrainer
+from pokemon import Pokemon
 # from utils import Button
 
 
@@ -9,7 +12,7 @@ class Battle:
     def __init__(self, trainer, enemy):
         self.trainer_pokemon = trainer.pokedex[0]
         self.enemy_pokemon = enemy.pokedex[0]
-    
+
     # To check if Pokemon is alive or not
     def check_health_points(self):
         if self.trainer_pokemon.hp <= 0:

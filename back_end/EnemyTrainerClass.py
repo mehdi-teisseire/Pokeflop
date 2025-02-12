@@ -1,9 +1,9 @@
-from JsonClass import Json
 from TrainerClass import Trainer
 
 class EnemyTrainer(Trainer):
     def __init__(self, name):
         super().__init__(name)
+        self.pokemon = [] # List of possible pokemon enemy can choose from 
 
     def add_pokemon(self, pokemon):
         """To add a pokemon after a win. Also called on the first pokemon the player get"""

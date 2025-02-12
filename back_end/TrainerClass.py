@@ -30,7 +30,7 @@ class Trainer(Json):
         """When loading a save, add all saved pokemon on trainer object"""
         pokedex = self.load_json("pokedex")
         for pokemon in pokedex:
-            self.pokedex.append(Pokemon(pokemon["name"], pokemon["life"], pokemon["pkmn_type"], pokemon["level"], pokemon["attack"], pokemon["defense"], pokemon["sprite"], pokemon["moove_type_1"], pokemon["moove_type_2"]))
+            self.pokedex.append(Pokemon(pokemon["name"], pokemon["sprite"], pokemon["pkmn_type"], pokemon["level"], pokemon["life"], pokemon["attack"], pokemon["defense"], pokemon["moove_type_1"], pokemon["moove_type_2"]))
 
     def check_if_owned(self, pokemon):
         for pokemon_pokedex in self.pokedex:

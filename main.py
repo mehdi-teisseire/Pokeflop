@@ -13,7 +13,7 @@ while running:
 
     screen.fill("black")
 
-    game()
+    game.game()
 
 
 
