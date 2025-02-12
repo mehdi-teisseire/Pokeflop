@@ -37,27 +37,6 @@ class Battle:
         elif self.current_pokemon_2.life <= 0:
             return self.current_pokemon_2.name, self.current_pokemon_1.name
         return None, None  
-
-    # To allow the player to choose an attack
-    def choose_attack(self, screen, pokemon):
-        button1 = Button(pokemon['moov1'], 100, 300, 200, 50) # should be changed
-        button2 = Button(pokemon['moov2'], 400, 300, 200, 50) # should be changed
-        while True:
-            for event in pygame.event.get():
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    mouse_pos = event.pos
-                    if button1.is_clicked(mouse_pos):
-                        return pokemon['moov1'], pokemon.moove_type_1
-                    elif button2.is_clicked(mouse_pos):
-                        return pokemon['moov2'], pokemon.moove_type_2
-            screen.fill(Button.WHITE)
-            render_message(screen, font, f"{pokemon['name']}, choose your attack!")
-            render_message(screen, font, "Press 1 :" + pokemon['moov1'])
-            render_message(screen, font,"Press 2 :" + pokemon['moov2'])
-
-            button1.draw(screen)
-            button2.draw(screen)
-            pygame.display.flip()
             
     # To calculate damage based on the attacker's chosen move
     def calculate_damage(self, attacker, defender, move_type, screen, font):
