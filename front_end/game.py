@@ -1,5 +1,5 @@
 import pygame, sys
-from ui import UIElement 
+from utils import Button 
 
 from back_end.TrainerClass import Trainer
 from back_end.EnemyTrainerClass import EnemyTrainer
@@ -23,9 +23,9 @@ def game():
 
 
 # To allow the player to choose an attack
-def choose_attack(screen, pokemon):
-    button1 = UIElement(pokemon.moov1, 100, 300, 200, 50) # should be changed
-    button2 = UIElement(pokemon.moov2, 400, 300, 200, 50) # should be changed
+def display_attack_choice(screen, pokemon):
+    button1 = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
+    button2 = Button(pokemon.moov2, 400, 300, 200, 50) # should be changed
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
