@@ -34,4 +34,11 @@ class POKEFLOP:
                     exit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
-                        return    
+                        return  
+
+"""
+# snipset to display de pokeflop screen
+    pokeflop = Pokeflop(screen)
+    pokeflop.display_pokeflop()
+
+"""  
