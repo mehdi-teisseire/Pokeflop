@@ -1,9 +1,9 @@
 import json
 import random
 import pygame
-from pokemon import Pokemon
+from pokemon import *
 from multiplier import type_multiplier
-from utils import Button, render_message
+from utils import *
 
 
 
