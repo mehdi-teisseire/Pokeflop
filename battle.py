@@ -39,7 +39,7 @@ class Battle:
         return None, None  
 
     # To allow the player to choose an attack
-    def choose_attack(self, screen, font):
+    def choose_attack(self, screen):
         button1 = Button(pokemon['moov1'], 100, 300, 200, 50) # should be changed
         button2 = Button(pokemon['moov2'], 400, 300, 200, 50) # should be changed
         while True:
