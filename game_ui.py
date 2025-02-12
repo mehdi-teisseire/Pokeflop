@@ -54,3 +54,14 @@ class GameUI:
                     winner = self.current_pokemon_2.name if player == self.current_pokemon_1 else self.current_pokemon_1.name 
                     message = f"{winner} wins by default!"
                     return  
+
+"""
+# to place in the function or 
+# in the main at the place where 
+# we want this file to be called
+ui = GameUI(screen)
+ui.clear_screen()
+pygame.display.flip()
+pygame.time.delay(2000)
+
+"""
