@@ -4,10 +4,10 @@ pygame.init()
 
 font = pygame.font.Font(None, 36)
 
+# To display the same buttons everywhere
 class Button:
-    WHITE = (255, 255, 255) # Should be changed
-    BLUE = (0, 0, 255) #Should be changed
-    RED = (255, 0, 0) # Should be changed
+    WHITE = (255, 255, 255)
+    BLUE = (0, 0, 255) 
     font = font
 
     def __init__ (self, text, x, y, width, height):
