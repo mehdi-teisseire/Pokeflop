@@ -1,5 +1,7 @@
 import pygame
 
+pygame.init()
+
 class Button:
     WHITE = (255, 255, 255) # Should be changed
     BLUE = (0, 0, 255) #Should be changed
