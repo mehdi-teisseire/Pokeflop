@@ -10,7 +10,7 @@ class Button:
 
     def __init__ (self, text, x, y, width, height):
         self.text = text
-        self.text = pygame.Rect(x, y, width, height)
+        self.rect = pygame.Rect(x, y, width, height)
     
     def draw(self, screen):
         pygame.draw.rect(screen, self.BLUE, self.rect)
