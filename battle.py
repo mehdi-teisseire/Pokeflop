@@ -4,6 +4,7 @@ import pygame
 from pokemon import *
 from multiplier import type_multiplier
 from utils import *
+from game_ui import GameUI
 
 
 
@@ -31,9 +32,9 @@ class Battle:
     
     # To check if Pokemon is alive or not
     def check_health_points(self):
-        if self.current_pokemon_1.hp <= 0:
+        if self.current_pokemon_1.life <= 0:
             return self.current_pokemon_1.name, self.current_pokemon_2.name
-        elif self.current_pokemon_2.hp <= 0:
+        elif self.current_pokemon_2.life <= 0:
             return self.current_pokemon_2.name, self.current_pokemon_1.name
         return None, None  
 
@@ -123,8 +124,13 @@ class Battle:
 
     # To start the battle
     def start_battle(self, screen, font):
+        ui = GameUI(screen)
+        ui.clear_screen()
+        ui.draw_text("A wild Pokémon appeared!")
+        pygame.display.flip()
+        pygame.time.delay(2000)
         turn = 0
-        while self.current_pokemon_1.hp > 0 and self.current_pokemon_2.hp > 0:
+        while self.current_pokemon_1.life > 0 and self.current_pokemon_2.life > 0:
             if turn % 2 == 0:
                 move, move_type = self.choose_attack(screen, self.current_pokemon_1)
                 damage = self.calculate_damage(self.current_pokemon_1, self.current_pokemon_2, move_type, screen, self.font)
