@@ -37,3 +37,20 @@ class GameUI:
             button1.draw(screen)
             button2.draw(screen)
             pygame.display.flip()
+    
+    # A button to surrender 
+    def surrender(self, screen, pokemon, font, player):
+        surrender_button = Button("Surrender", 250, 300, 200, 50)
+        screen.fill(Button.WHITE)
+        surrender_button.draw(screen)
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = event.pos
+                if surrender_button.is_clicked(mouse_pos):
+                    message = f"{pokemon.name} has surrendered !"  
+                    render_message(screen, message, font)
+                    winner = self.current_pokemon_2.name if player == self.current_pokemon_1 else self.current_pokemon_1.name 
+                    message = f"{winner} wins by default!"
+                    return  
