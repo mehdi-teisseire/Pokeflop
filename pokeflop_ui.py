@@ -16,5 +16,22 @@ class POKEFLOP:
         aspect_ratio = image.get_height() / image.get_width()
         target_height = int(target_width * aspect_ratio)
         return pygame.transform.scale(image, (target_width, target_height))
-    
+
+    def display_pokeflop(self):
+        self.ui.clear_screen()
+        self.screen.blit(self.background_image, (0,0))
+
+        logo_rect = self.logo_image.get_rect(center=(self.screen.get_width() // 2, 100))
+        self.screen.blit(self.logo_image, logo_rect)
+
+        pygame.display.flip()
+
+        while True:
         
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        return    
