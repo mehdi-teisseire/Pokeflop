@@ -12,4 +12,9 @@ class POKEFLOP:
         self.logo_image = pygame.image.load('media/picture/PokeFlop-2-12-2025.png')
         self.start_text_image = pygame.image.load('media/picture/press_space_to_start-2-12-2025.png')
 
+    def scale_image(self, image, target_width):
+        aspect_ratio = image.get_height() / image.get_width()
+        target_height = int(target_width * aspect_ratio)
+        return pygame.transform.scale(image, (target_width, target_height))
+    
         
