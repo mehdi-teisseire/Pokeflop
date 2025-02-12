@@ -22,6 +22,7 @@ class Button:
 
 # To render a message on the game pygame screen
 def render_message(screen, message, font, position= (100, 100), color = (0, 0, 0), background_color=(255, 255, 255)):
+    font = pygame.font.Font(None, 36) 
     rendered_text = font.render(message, True, color)
     text_rect = rendered_text.get_rect(topleft = position)
     pygame.draw.rect(screen, background_color, text_rect)
