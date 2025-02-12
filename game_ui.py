@@ -19,8 +19,8 @@ class GameUI:
 
     # To allow the player to choose an attack
     def choose_attack(screen, pokemon):
-        button1 = Button(pokemon['moov1'], 100, 300, 200, 50) # should be changed
-        button2 = Button(pokemon['moov2'], 400, 300, 200, 50) # should be changed
+        button1 = Button(pokemon['moov1'], 100, 300, 200, 50) 
+        button2 = Button(pokemon['moov2'], 400, 300, 200, 50)
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
