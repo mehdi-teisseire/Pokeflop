@@ -45,7 +45,7 @@ class Game:
             
             match self.game_state:
                 case "intro":
-                    display_intro()    # first state
+                    display_intro(self)    # first state
                 case "main_menu":
                     display_main_menu()    # will return game.state depending on button clicked
                 case "new_game":
