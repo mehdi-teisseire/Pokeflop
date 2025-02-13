@@ -1,8 +1,8 @@
 import pygame, sys
-from utils import Button 
+from ui.ButtonClass import Button 
 
-from back_end.TrainerClass import Trainer
-from back_end.EnemyTrainerClass import EnemyTrainer
+from model.TrainerClass import Trainer
+from model.EnemyTrainerClass import EnemyTrainer
 
 def game():
     

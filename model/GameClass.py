@@ -3,7 +3,8 @@ from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
 from ui.intro import display_intro
-from ui.main_menu import display_menu
+from ui.main_menu import display_main_menu
+from ui.save_slots import new_game, load_game
 from ui.game_menu import display_game_menu
 from ui.ingame import display_ingame
 from ui.pokedex import display_pokedex
@@ -56,7 +57,7 @@ class Game:
                     display_game_menu()
                 case "game":
                     # enemy.choose_pokemon() -> in display_game?
-                    display_game()  #from game menu and return to it
+                    display_ingame()  #from game menu and return to it
                 case "pokedex":
                     display_pokedex()   #from game menu and return to it
                 case "pokelist":
