@@ -2,17 +2,16 @@ from moove import Moove
 class Pokemon (Moove): 
     '''Class to create a pokemon'''
 
-    def __init__(self,name,pkmn_type,attack,defence,sprite,moov1,moov2,life = 100):
+    def __init__(self,name,sprite,pkmn_type,attack,defence,moove1,moove2,level = 5,life = 100):
         '''Initialize the pokemon'''
-        Moove.__init__(self,moov1,moov2)
         self.name = name
-        self.life = life
+        self.sprite = sprite
         self.pkmn_type = pkmn_type
-        self.level = 5
+        self.level = level
+        self.life = life
         self.attack = attack
         self.defence = defence
-        self.sprite = sprite
-        self.moove_type_1 = 'Normal'
+        Moove.__init__(self,moove1,moove2)
         self.moove_type_2 = pkmn_type
     
     def get_pokemon(self):
@@ -43,26 +42,3 @@ class Pokemon (Moove):
         '''Get the accuracy of a moove'''
         return f"{self.moov1} has an accuracy of {self.accuracy_mouv1} and {self.moov2} has an accuracy of {self.accuracy_mouv2}"
 
-pokemon_template = [
-    {'name':'Squirtle','type':'water','attack':50,'defence':50,'life':100,'sprite':'media/pokemon_assets/Squirtle_back.png','moov1':'Charge','moov2':'Watter gun'},
-    {'name':'Pikachu','type':'electric','attack':60,'defence':45,'life':100,'sprite':'media/pokemon_assets/Pikachu_back.png','moov1':'Charge','moov2':'Thunder'},
-    {'name':'Bulbasaur','type':'grass','attack':40,'defence':50,'life':100,'sprite':'media/pokemon_assets/Bulbasur_back.png','moov1':'Charge','moov2':'Leaf'},
-    {'name':'Charmander','type':'fire','attack':70,'defence':30,'life':100,'sprite':'media/pokemon_assets/Charmander_back.png','moov1':'Charge','moov2':'Flamethrower'},
-    {'name':'Pidgey','type':'normal','attack':45,'defence':45,'life':100,'sprite':'media/pokemon_assets/Pidgey_back.png','moov1':'Tackle','moov2':'Gust'},
-    {'name':'Rattata','type':'normal','attack':48,'defence':43,'life':100,'sprite':'media/pokemon_assets/Rattata_back.png','moov1':'Tackle','moov2':'Quick Attack'}
-]
-
-player_pokemons = []
-trainer_pokemons = []
-
-for pokemon in pokemon_template:
-    player_pokemons.append(Pokemon(pokemon['name'],pokemon['type'],pokemon['attack'],pokemon['defence'],pokemon['sprite'],pokemon['moov1'],pokemon['moov2'],pokemon['life']))
-    trainer_pokemons.append(Pokemon(pokemon['name'],pokemon['type'],pokemon['attack'],pokemon['defence'],pokemon['sprite'],pokemon['moov1'],pokemon['moov2'],pokemon['life']))
-
-print(player_pokemons[2].get_pokemon())
-print(player_pokemons[2].level_up())
-print(player_pokemons[2].attack_damage(trainer_pokemons[3]))
-print(trainer_pokemons[3].get_pokemon())
-print(player_pokemons[2].get_moove_accuracy())
-print(player_pokemons[2].evolve('Ivysaur','plante','sprite.png'))
-print(player_pokemons[2].get_pokemon())

@@ -1,6 +1,5 @@
-from JsonClass import Json
 from pokemon import Pokemon
-
+from JsonClass import Json
 
 class Trainer(Json):
     """Class for trainers (player) with Pokedex list as owned pokemon, stats for stat menu"""
@@ -8,11 +7,16 @@ class Trainer(Json):
         self.name = name
         #self.image = image
         self.victory = False
+        self.pokemon = [] # List of possible pokemon enemy can choose from 
         self.pokedex = [] # Only contain Objects
         self.stats = []
 
+    def give_first_pokemon(self):
+        if not self.pokedex:
+            self.add_pokemon(self.convert_pokemon_to_obj(POKEMON_TEMPLATE[0]))
+
     def add_pokemon(self, pokemon):
-        """To add a pokemon after a win. Also called on the first pokemon the player get"""
+        """To add a pokemon when player doesn't have one."""
         self.pokedex.append(pokemon)
         self.update_json()
 
@@ -21,6 +25,11 @@ class Trainer(Json):
         self.pokedex.remove(pokemon)
         self.update_json()
 
+    def convert_pokemon_to_obj(self, pokemon):
+        return Pokemon(name=pokemon["name"], sprite=pokemon["sprite"], pkmn_type=pokemon["pkmn_type"],
+                       attack=pokemon["attack"], defence=pokemon["defence"],
+                       moove1=pokemon["moove1"], moove2=pokemon["moove2"],
+                       life=pokemon["life"])
 
     def update_json(self):
         """Update the json from the pokedex list"""
@@ -30,7 +39,7 @@ class Trainer(Json):
         """When loading a save, add all saved pokemon on trainer object"""
         pokedex = self.load_json("pokedex")
         for pokemon in pokedex:
-            self.pokedex.append(Pokemon(pokemon["name"], pokemon["sprite"], pokemon["pkmn_type"], pokemon["level"], pokemon["life"], pokemon["attack"], pokemon["defense"], pokemon["moove_type_1"], pokemon["moove_type_2"]))
+            self.pokedex.append(self.convert_pokemon_to_obj(pokemon))
 
     def check_if_owned(self, pokemon):
         for pokemon_pokedex in self.pokedex:
@@ -44,11 +53,7 @@ pokemon_list.append(Json.load_json(pokemon_list, "pokemon"))
 
 print(pokemon_list)
 
-
-
 choosed_pokemon = "Bulbosaur"
-
-
 
 for pokemon in pokemon_list:
     try:

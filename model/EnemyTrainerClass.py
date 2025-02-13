@@ -1,17 +1,29 @@
 from TrainerClass import Trainer
+from pokemon import Pokemon
 
 class EnemyTrainer(Trainer):
     def __init__(self, name):
         super().__init__(name)
         self.pokemon = [] # List of possible pokemon enemy can choose from 
 
-    def add_pokemon(self, pokemon):
-        """To add a pokemon after a win. Also called on the first pokemon the player get"""
-        self.pokedex.append(pokemon)
 
-    def remove_pokemon(self, pokemon):
+    def add_pokemon_to_list(self, pokemon_template):
+        """To add a pokemon from the template to pokemon list."""
+        self.pokemon.append(pokemon_template[0]) 
+
+    def remove_pokemon_to_list(self, pokemon_template):
+        """To remove a pokemon from the pokemon list."""
+        self.pokemon.remove(pokemon_template[0]) 
+
+        
+    def choose_pokemon(self):
+        """Choose a pokemon from the pokemon_list and add it to battle"""
+        pokemon = self.pokemon[0]
+        self.pokedex.append(self.convert_pokemon_to_obj(pokemon)) # Will make it random
+
+    def remove_pokemon(self):
         """To remove defeated pokemon from our pokedex. pokemon is an object"""
-        self.pokedex.remove(pokemon)
+        self.pokedex.remove(self.pokedex[0])
 
 # Add "if hp <= 0" and "if not already_owned" before this when you call it
     def give_pokemon(self, trainer):
@@ -19,7 +31,7 @@ class EnemyTrainer(Trainer):
         already_owned = trainer.check_if_owned(self.pokedex[0])
         if not already_owned:
             trainer.add_pokemon(self.pokedex[0])
-        self.remove_pokemon(self.pokedex[0])
+        self.remove_pokemon()
 
 """
 class Pokemon(Json):

@@ -2,9 +2,12 @@ from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
-from ui.display_intro import display_intro
-from ui.display_menu import display_menu
-from ui.display_game import display_game
+from ui.intro import display_intro
+from ui.main_menu import display_menu
+from ui.game_menu import display_game_menu
+from ui.ingame import display_ingame
+from ui.pokedex import display_pokedex
+from ui.pokelist import display_pokelist
 
 import pygame
 
