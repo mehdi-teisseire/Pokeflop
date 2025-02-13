@@ -2,7 +2,7 @@ from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
-from ui.ButtonClass import Button
+from ui.ui import UIElement
 from ui.intro import display_intro
 #from ui.main_menu import display_main_menu
 #from ui.save_slots import new_game, load_game
@@ -40,7 +40,7 @@ class Game:
 
         #All game button
         ##First Screen - Intro
-        self.button_intro = Button('test', 120, 210, 600,95)
+        self.button_intro = UIElement('test', 120, 210, 600,95)
 
         ##Second Screen - Main Menu
         # self.button_new_game = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
@@ -49,8 +49,8 @@ class Game:
         ##Third Screen - Game Menu
 
         ##Fourth Screen - Ingame
-        self.button_moov1 = Button(self.POKEMON_TEMPLATE[0]["name"], 500, 0, 600,95)
-        self.button_moov2 = Button(self.POKEMON_TEMPLATE[0]["name"], 0, 0, 600,95)
+        self.button_moov1 = UIElement(self.POKEMON_TEMPLATE[0]["name"], 500, 0, 600,95)
+        self.button_moov2 = UIElement(self.POKEMON_TEMPLATE[0]["name"], 0, 0, 600,95)
 
         ##Fourth Screen - Pokedex
 
