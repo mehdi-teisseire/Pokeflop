@@ -35,6 +35,17 @@ class Menu:
                     for button in self.buttons:
                         if button.is_clicked(mouse_pos):
                             self.handle_button_click(button.text)
+
+    # To handle the button click event
+    def handle_button_click(self, button_text):
+        if button_text == "Button 1":
+            self.blablabla() # insert here the function or class to call
+        elif button_text == "Button 2":
+            self.blablabla() # insert here the function or class to call
+        elif button_text == "Button 3":
+            self.blablabla() # insert here the function or class to call
+        elif button_text == "Button 4":
+            self.blablabla() # insert here the function or class to call
         
     
 
