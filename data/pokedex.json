@@ -1,10 +1,17 @@
 [
     {
         "name": "Squirtle",
-        "stat": [
-            3,
-            2,
-            1
-        ]
+        "sprite": "media/pokemon_assets/Squirtle_back.png",
+        "pkmn_type": "water",
+        "level": 5,
+        "life": 100,
+        "attack": 50,
+        "defence": 50,
+        "moove1": "Charge",
+        "moove2": "Water gun",
+        "accuracy_mouv1": 95,
+        "accuracy_mouv2": 90,
+        "moove_type_1": "normal",
+        "moove_type_2": "water"
     }
 ]

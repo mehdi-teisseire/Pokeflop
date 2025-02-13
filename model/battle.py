@@ -20,7 +20,7 @@ class Battle:
         self.turn_pkmn = self.trainer_pokemon
         self.opponent_pkmn = self.enemy_pokemon
 
-        self.choosed_move = self.choose_move() #would be a return from the button with the move name
+        self.choosed_move = "" #would be a return from the button with the move name
         
 
     def change_turn(self):
@@ -31,11 +31,11 @@ class Battle:
             self.turn = self.trainer_name
             self.turn_pkmn = self.trainer_pokemon
     
-    def choose_move(self):
+    def choose_move(self, move):
         if self.turn == self.enemy_name:
             return choice([self.turn_pkmn.moove1, self.turn_pkmn.moove2]) 
         else:
-            return self.turn_pkmn.moove1
+            return move
 
 
     def get_moove_accuracy(self):
