@@ -45,7 +45,6 @@ class Pokeflop:
                     exit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
-                        #display_menu_ui = Menu(screen)
                         self.display_menu_ui() 
 
     # To display the menu screen
