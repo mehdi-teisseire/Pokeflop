@@ -2,6 +2,7 @@ from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
+from ui.ButtonClass import Button
 from ui.intro import display_intro
 #from ui.main_menu import display_main_menu
 #from ui.save_slots import new_game, load_game
@@ -29,17 +30,23 @@ class Game:
     {'name':'Pidgey','type':'normal','attack':45,'defence':45,'life':100,'sprite':'media/pokemon_assets/Pidgey_back.png','moov1':'Tackle','moov2':'Gust'},
     {'name':'Rattata','type':'normal','attack':48,'defence':43,'life':100,'sprite':'media/pokemon_assets/Rattata_back.png','moov1':'Tackle','moov2':'Quick Attack'}
     ]
+        self.button_intro = Button("",0,0,800,450)
+        # self.button_new_game = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
+        # self.button_load_game = Button(pokemon.moov2, 400, 300, 200, 50)
 
     def start(self):
-        trainer = Trainer("Player")
-        enemy = EnemyTrainer("Rival")
+        self.trainer = Trainer("Player")
+        self.enemy = EnemyTrainer("Rival")
 
         pygame.init()
         while self.running:
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_pos = event.pos
+                    if self.button_intro.is_clicked(mouse_pos):
+                        self.state = "ingame"
 
             self.screen.fill("black")
             
@@ -55,7 +62,7 @@ class Game:
                     load_game()     #will change game state to "game_menu"
                 case "game_menu":
                     display_game_menu()
-                case "game":
+                case "ingame":
                     # enemy.choose_pokemon() -> in display_game?
                     display_ingame()  #from game menu and return to it
                 case "pokedex":
