@@ -24,4 +24,6 @@ class UIElement:
     
     def get_label(self):
         return self.label
-button = UIElement('test',100, 100, 200, 50)
+#button = UIElement('test',100, 100, 200, 50)
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
