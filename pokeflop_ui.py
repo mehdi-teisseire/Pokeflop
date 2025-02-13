@@ -1,10 +1,13 @@
 import pygame
 from game_ui import GameUI
+from menu_ui import Menu
 
+# To display the Welcome page
 class Pokeflop:
     def __init__(self, screen):
         self.screen = screen
         self.ui = GameUI(screen)
+        self.menu_ui = Menu(screen)
 
         self.background_image = pygame.image.load('media/picture/bg.png')
         self.background_image = pygame.transform.scale(self.background_image, (800, 400)) 
@@ -15,11 +18,13 @@ class Pokeflop:
         self.start_text_image = pygame.image.load('media/picture/Press-space-to-start-2-12-2025.png')
         self.start_text_image = self.scale_image(self.start_text_image, 400)  
 
+    # To scale the images with aspect ratio 
     def scale_image(self, image, target_width):
         aspect_ratio = image.get_height() / image.get_width()
         target_height = int(target_width * aspect_ratio)
         return pygame.transform.scale(image, (target_width, target_height))
 
+    # To display the pokeflop screen
     def display_pokeflop(self):
         self.ui.clear_screen()
         self.screen.blit(self.background_image, (0, 0))
@@ -40,9 +45,10 @@ class Pokeflop:
                     exit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
-                        self.display_menu() 
+                        #display_menu_ui = Menu(screen)
+                        self.display_menu_ui() 
 
+    # To display the menu screen
+    def display_menu_ui(self):
+        self.menu_ui.display_menu()
 
-# screen should be defined in your main game file
-# pokeflop = Pokeflop(screen)
-# pokeflop.display_pokeflop()
