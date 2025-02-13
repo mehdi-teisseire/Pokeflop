@@ -1,8 +1,8 @@
 from random import randint, choice
-from multiplier import type_multiplier
-from TrainerClass import Trainer
-from EnemyTrainerClass import EnemyTrainer
-from pokemon import Pokemon
+from model.multiplier import type_multiplier
+from model.TrainerClass import Trainer
+from model.EnemyTrainerClass import EnemyTrainer
+from model.pokemon import Pokemon
 # from utils import Button
 
 

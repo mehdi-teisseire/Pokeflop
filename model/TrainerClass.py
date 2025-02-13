@@ -1,5 +1,5 @@
-from pokemon import Pokemon
-from JsonClass import Json
+from model.pokemon import Pokemon
+from model.JsonClass import Json
 
 class Trainer(Json):
     """Class for trainers (player) with Pokedex list as owned pokemon, stats for stat menu"""

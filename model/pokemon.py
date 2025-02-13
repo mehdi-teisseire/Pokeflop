@@ -1,4 +1,4 @@
-from moove import Moove
+from model.moove import Moove
 class Pokemon (Moove): 
     '''Class to create a pokemon'''
 

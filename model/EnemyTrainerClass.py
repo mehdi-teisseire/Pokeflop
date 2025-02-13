@@ -1,5 +1,5 @@
-from TrainerClass import Trainer
-from pokemon import Pokemon
+from model.TrainerClass import Trainer
+from model.pokemon import Pokemon
 
 class EnemyTrainer(Trainer):
     def __init__(self, name):
