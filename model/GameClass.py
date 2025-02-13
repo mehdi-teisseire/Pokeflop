@@ -7,7 +7,7 @@ from ui.intro import display_intro
 #from ui.main_menu import display_main_menu
 #from ui.save_slots import new_game, load_game
 #from ui.game_menu import display_game_menu
-#from ui.ingame import display_ingame
+from ui.ingame import display_ingame
 #from ui.pokedex import display_pokedex
 #from ui.pokelist import display_pokelist
 
@@ -19,6 +19,7 @@ class Game:
     def __init__(self):
         self.screen = pygame.display.set_mode((800,450))
         self.clock = pygame.time.Clock()
+        self.font = pygame.font.SysFont("Comic Sans MS", 25)
 
         self.running = True
         self.game_state = "intro"
@@ -33,6 +34,9 @@ class Game:
         self.button_intro = Button('test', 120, 210, 600,95)
         # self.button_new_game = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
         # self.button_load_game = Button(pokemon.moov2, 400, 300, 200, 50)
+        self.button_moov1 = Button(self.POKEMON_TEMPLATE[0]["name"], 120, 210, 600,95)
+        self.button_moov2 = Button(self.POKEMON_TEMPLATE[0]["name"], 0, 210, 600,95)
+
 
     def start(self):
         self.trainer = Trainer("Player")
@@ -44,10 +48,9 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.running = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    mouse_pos = event.pos
                     if self.button_intro.is_clicked(pygame.mouse.get_pos()):
-                        print('gud')
-                        self.state = "ingame"
+                        print('gud', self.game_state)
+                        self.game_state = "ingame"
 
             self.screen.fill("black")
             
@@ -65,7 +68,7 @@ class Game:
                     display_game_menu()
                 case "ingame":
                     # enemy.choose_pokemon() -> in display_game?
-                    display_ingame()  #from game menu and return to it
+                    display_ingame(self)  #from game menu and return to it
                 case "pokedex":
                     display_pokedex()   #from game menu and return to it
                 case "pokelist":

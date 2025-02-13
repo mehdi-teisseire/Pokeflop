@@ -22,7 +22,7 @@ def display_attack_choice(game):
             
     game.screen.fill("white")
 
-    option_text = game.font.render(f"{game.pokemon.name}, choose your attack:", True, "blue") # Should be changed
+    option_text = game.font.render(f"{game.POKEMON_TEMPLATE[0]["name"]}, choose your attack:", True, "blue") # Should be changed
 
     game.screen.blit(option_text, (100, 200))
     
