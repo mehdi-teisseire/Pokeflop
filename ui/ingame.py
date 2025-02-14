@@ -1,11 +1,10 @@
 import pygame
 
 from model.battle import Battle
-
+from model.pokemon import Pokemon
 def display_ingame(game):
     display_buttons_hitboxes(game)
     display_background(game)
-    #display_pokemon()
     display_attack_choice(game)
 
 def display_buttons_hitboxes(game):
