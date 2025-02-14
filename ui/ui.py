@@ -1,10 +1,13 @@
 import pygame
 
 class UIElement:
-    def __init__(self, x, y, width, height, label='', color=(255, 255, 255)):
-        self.label = label
+    def __init__(self, x, y, width, height, label='', color=(255, 255, 255), text_color=(0,0,0)):
         self.rect = pygame.Rect(x, y, width, height)
         self.color = color
+
+        self.label = label
+        self.text_color = text_color
+
         self.active = True
         self.visible = True
 
@@ -23,15 +26,8 @@ class UIElement:
     def is_clicked(self, pos):
         return self.active and self.rect.collidepoint(pos)
     
-    def draw_label(self, game):
+    def draw_label(self, game, x, y):
         if self.visible:
-            return game.font.render(self.label, True, self.color) # Should be changed
-
-class UIText(UIElement):
-    def __init__(self, x, y, width, height, label = '', color=(255, 255, 255)):
-        super().__init__(x, y, width, height, label, color)
-
-    def draw(self, game, text):
-        if self.visible:
-            self.label = text
-            game.font.render(self.label, True, self.color) # Should be changed
+            text = game.font.render(self.label, True, self.text_color) # Should be changed
+            game.button_moove1.draw(game.screen)
+            game.screen.blit(text, (x, y))

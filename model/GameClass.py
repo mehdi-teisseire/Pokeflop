@@ -2,7 +2,7 @@ from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
-from ui.ui import UIElement, UIText
+from ui.ui import UIElement
 from ui.intro import display_intro
 #from ui.main_menu import display_main_menu
 #from ui.save_slots import new_game, load_game
@@ -38,6 +38,12 @@ class Game:
             {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','pkmn_type':'normal','life':100,'attack':48,'defence':43,'moove1':'Tackle','moove2':'Quick Attack'}
             ]
 
+        ##Colors - Last number is alpha
+        #CUSTOM_BLUE = (0,0,0,0)
+        #CUSTOM_YELLOW = (0,0,0,0)
+        #ETC = (0,0,0,0)
+
+
         #All game button
         ##First Screen - Intro
         self.button_intro = UIElement(120, 210, 600,95, 'test')
@@ -49,8 +55,8 @@ class Game:
         ##Third Screen - Game Menu
 
         ##Fourth Screen - Ingame
-        self.button_moove1 = UIElement(500, 0, 600,95)
-        self.button_moove2 = UIElement(0, 0, 600,95)
+        self.button_moove1 = UIElement(100, 100, 600,95, 'move1', "blue", "black")
+        # self.button_moove2 = UIElement(0, 0, 600,95)
 
         ##Fourth Screen - Pokedex
 
@@ -74,8 +80,10 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.running = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if self.button_intro.is_clicked(pygame.mouse.get_pos()) and self.game_state == "intro":
+                    if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = "ingame"
+                    if self.game_state == "ingame" and self.button_moove1.is_clicked(pygame.mouse.get_pos()):
+                        self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn)
 
 
             self.screen.fill("black")
@@ -83,15 +91,20 @@ class Game:
             match self.game_state:
                 case "intro":
                     display_intro(self)    # first state
+
                 case "main_menu":
                     display_main_menu()    # will return game.state depending on button clicked
+
                 case "new_game":
                     #trainer.give_first_pokemon() -> in new_game()
                     new_game()      #will change game state to "game_menu"
+
                 case "load_game":
                     load_game()     #will change game state to "game_menu"
+
                 case "game_menu":
                     display_game_menu()
+
                 case "ingame":
                     # enemy.choose_pokemon() -> in display_game?
                     if not self.battle_start:
@@ -100,6 +113,7 @@ class Game:
 
                 case "pokedex":
                     display_pokedex()   #from game menu and return to it
+
                 case "pokelist":
                     #enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE) -> dans display_pokelist, "add" boutton
                     display_pokelist()  #from game menu and return to it

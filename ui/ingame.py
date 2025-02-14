@@ -10,18 +10,10 @@ def display_ingame(game):
 
 
 # To allow the player to choose an attack
-def display_attack_choice(game):
-    for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if game.button_moove1.is_clicked(pygame.mouse.get_pos()):
-                game.battle.turn_pkmn.attacking(game.battle.opponent_pkmn)
-            
+def display_attack_choice(game):            
     game.screen.fill("white")
 
-    game.button_moove1.label = game.trainer.pokedex[0].moove1
-    text = game.button_moove1.draw_label(game)
+    game.button_moove1.label = game.trainer.pokedex[0].moove1 #Change button label to move name
+    game.button_moove1.draw_label(game, 0, 0)
 
-    game.screen.blit(text, (400, 0))
-    
-    game.button_moove1.draw(game.screen)
     # game.button_moov2.draw(game.screen)
