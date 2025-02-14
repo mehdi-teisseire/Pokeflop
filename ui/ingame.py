@@ -12,13 +12,13 @@ def display_background(game):
 
 # To allow the player to choose an attack
 def display_attack_choice(game):
-    game.background_button_moov.draw(game)
+    game.background_button_moov1.draw(game)
+    game.background_button_moov2.draw(game)
 
-    game.button_moov1.draw(game.screen)
-    game.button_moov2.draw(game.screen)
+    game.text_button_moov1.draw(game, game.trainer.pokedex[0].moov1, game.background_button_moov1)    
+    game.text_button_moov2.draw(game, game.trainer.pokedex[0].moov2, game.background_button_moov2)
 
-    game.text_button_moov1.draw(game, game.trainer.pokedex[0].moove1, game.background_button_moov)    
-    game.text_button_moov2.draw(game, game.trainer.pokedex[0].moove2, game.background_button_moov)
-
+    game.button_moov1.draw(game.screen, game.background_button_moov1)
+    game.button_moov2.draw(game.screen, game.background_button_moov2)
 
     # game.button_moov2.draw(game.screen)

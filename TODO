@@ -1,5 +1,4 @@
 # Write anything you want to not forget here
 
-Button Label?
-
-Maybe creating a text Class just to display text is better
+Make an event in only one condition that gets the button text (= move you want to attack with) and returns it depending on where you press
+(maybe put coordinates of each button in a list and iterate with mouse position on click?)

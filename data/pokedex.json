@@ -7,11 +7,11 @@
         "life": 100,
         "attack": 50,
         "defence": 50,
-        "moove1": "Charge",
-        "moove2": "Water gun",
+        "moov1": "Charge",
+        "moov2": "Water gun",
         "accuracy_mouv1": 95,
         "accuracy_mouv2": 90,
-        "moove_type_1": "normal",
-        "moove_type_2": "water"
+        "moov_type_1": "normal",
+        "moov_type_2": "water"
     }
 ]

@@ -6,6 +6,5 @@ def display_intro(game):
 
     game.background.draw(game)
     game.start_text_img.draw(game)
-    game.button_intro.draw(game.screen) #Hitbox to click for next screen
-
+    game.button_intro.draw(game.screen, game.background) #Hitbox to click for next screen
     

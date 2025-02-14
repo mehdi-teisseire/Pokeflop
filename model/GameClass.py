@@ -30,12 +30,12 @@ class Game:
         #Constants
         #can make a separate file and import it (list would be long right?) - constant.py?
         self.POKEMON_TEMPLATE = [
-            {'name':'Squirtle','sprite':'media/pokemon_assets/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moove1':'Charge','moove2':'Water gun'},
-            {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','pkmn_type':'electric','life':100,'attack':60,'defence':45,'moove1':'Charge','moove2':'Thunder'},
-            {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','pkmn_type':'grass','life':100,'attack':40,'defence':50,'moove1':'Charge','moove2':'Leaf'},
-            {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','pkmn_type':'fire','life':100,'attack':70,'defence':30,'moove1':'Charge','moove2':'Flamethrower'},
-            {'name':'Pidgey','sprite':'media/pokemon_assets/Pidgey_back.png','pkmn_type':'normal','life':100,'attack':45,'defence':45,'moove1':'Tackle','moove2':'Gust'},
-            {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','pkmn_type':'normal','life':100,'attack':48,'defence':43,'moove1':'Tackle','moove2':'Quick Attack'}
+            {'name':'Squirtle','sprite':'media/pokemon_assets/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moov1':'Charge','moov2':'Water gun'},
+            {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','pkmn_type':'electric','life':100,'attack':60,'defence':45,'moov1':'Charge','moov2':'Thunder'},
+            {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','pkmn_type':'grass','life':100,'attack':40,'defence':50,'moov1':'Charge','moov2':'Leaf'},
+            {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','pkmn_type':'fire','life':100,'attack':70,'defence':30,'moov1':'Charge','moov2':'Flamethrower'},
+            {'name':'Pidgey','sprite':'media/pokemon_assets/Pidgey_back.png','pkmn_type':'normal','life':100,'attack':45,'defence':45,'moov1':'Tackle','moov2':'Gust'},
+            {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','pkmn_type':'normal','life':100,'attack':48,'defence':43,'moov1':'Tackle','moov2':'Quick Attack'}
             ]
 
         ##Colors - Last number is alpha
@@ -59,10 +59,11 @@ class Game:
         ##Third Screen - Game Menu
 
         ##Fourth Screen - Ingame
-        self.background_button_moov = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (150, 400), (250, 75))
+        self.background_button_moov1 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (100, 300), (250, 75))
+        self.background_button_moov2 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (450, 300), (250, 75))
         
-        self.button_moov1 = UIElement('moove1', 150, 400, 150, 75)
-        self.button_moov2 = UIElement('moove2', 550, 400, 150, 75)
+        self.button_moov1 = UIElement('moov1', 150, 200, 150, 50)
+        self.button_moov2 = UIElement('moov2', 550, 200, 150, 50)
 
         ##Fourth Screen - Pokedex
 
@@ -93,7 +94,9 @@ class Game:
                     if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = "ingame"
                     if self.game_state == "ingame" and self.button_moov1.is_clicked(pygame.mouse.get_pos()):
-                        self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn)
+                        self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn, self.text_button_moov1.text)
+                    if self.game_state == "ingame" and self.button_moov2.is_clicked(pygame.mouse.get_pos()):
+                        self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn, self.text_button_moov2.text)
 
 
             self.screen.fill("black")

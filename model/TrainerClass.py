@@ -28,7 +28,7 @@ class Trainer(Json):
     def convert_pokemon_to_obj(self, pokemon):
         return Pokemon(name=pokemon["name"], sprite=pokemon["sprite"], pkmn_type=pokemon["pkmn_type"],
                        attack=pokemon["attack"], defence=pokemon["defence"],
-                       moove1=pokemon["moove1"], moove2=pokemon["moove2"],
+                       moov1=pokemon["moov1"], moov2=pokemon["moov2"],
                        life=pokemon["life"])
 
     def update_json(self):

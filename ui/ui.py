@@ -10,11 +10,16 @@ class UIElement:
         self.active = True
         self.visible = True
 
-    def draw(self, surface):
+    def draw(self, surface, background = ''):
         if self.visible:
+            if background: # Will make Hitbox follow background
+                self.rect.x = background.coord[0]
+                self.rect.y = background.coord[1]
+                self.rect.width = background.size[0]
+                self.rect.height = background.size[1]
             pygame.draw.rect(surface, self.color, self.rect)
     
-    def set_position(self, x, y):
+    def set_position(self, x, y):        
         self.rect.x = x
         self.rect.y = y
 
@@ -35,10 +40,13 @@ class Text:
         self.pos_x = pos_x
         self.pos_y = pos_y
 
-    def draw(self, game, text, background):
+    def draw(self, game, text, background = ''):
         self.text = text #Change button label to move name
         self.surface = self.font.render(self.text, True, self.color)
-        self.rect = background.scaled_img.get_rect(center=(self.pos_x, self.pos_y))
+        if background:
+            self.rect = background.scaled_img.get_rect(center=(background.coord[0] + background.size[0] *0.75, background.coord[1] + background.size[1] * 0.75)) #background.size[0] *0.5 background.size[1] *0.5
+        else:
+            self.rect = self.surface.get_rect(topleft=(self.pos_x, self.pos_y))
         game.screen.blit(self.surface, self.rect)
 
         #def update_text(self, new_text): // TODO need fix on this

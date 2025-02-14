@@ -33,7 +33,7 @@ class Battle:
     
     def choose_move(self, move):
         if self.turn == self.enemy_name:
-            return choice([self.turn_pkmn.moove1, self.turn_pkmn.moove2]) 
+            return choice([self.turn_pkmn.moov1, self.turn_pkmn.moov2]) 
         else:
             return move     
 
