@@ -39,7 +39,7 @@ class Game:
             ]
 
         ##Colors - Last number is alpha
-        self.TRANSPARENT = pygame.Color(0,0,0,0)
+        #self.TRANSPARENT = pygame.Color(0,0,0,0)
         #CUSTOM_BLUE = (0,0,0,0)
         #CUSTOM_YELLOW = (0,0,0,0)
         #ETC = (0,0,0,0)
@@ -47,9 +47,10 @@ class Game:
 
         #All game button
         ##First Screen - Intro
-        self.background = ImageElement("media/ui-elements/background.png", (800, 450), (0, 0))
-        self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (579, 88), (120, 200))
-        self.button_intro = UIElement('test', 0, 0, 400, 450, (12,12,12))
+        self.background = ImageElement("media/ui-elements/background.png", (0, 0), (800, 450))
+        self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (120, 200), (579, 88))
+        
+        self.button_intro = UIElement('test', 0, 0, 800, 450)
 
         ##Second Screen - Main Menu
         # self.button_new_game = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
@@ -58,10 +59,10 @@ class Game:
         ##Third Screen - Game Menu
 
         ##Fourth Screen - Ingame
-        self.background_button_moov = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (150, 50), (0, 0))
+        self.background_button_moov = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (150, 400), (250, 75))
         
-        self.button_moov1 = UIElement('moove1', 150, 400, 150, 50)
-        self.button_moov2 = UIElement('moove2', 550, 400, 150, 50)
+        self.button_moov1 = UIElement('moove1', 150, 400, 150, 75)
+        self.button_moov2 = UIElement('moove2', 550, 400, 150, 75)
 
         ##Fourth Screen - Pokedex
 
