@@ -1,7 +1,7 @@
 import pygame
 
 class UIElement:
-    def __init__(self,label, x, y, width, height, color=(255, 255, 255)):
+    def __init__(self, x, y, width, height, label='', color=(255, 255, 255)):
         self.label = label
         self.rect = pygame.Rect(x, y, width, height)
         self.color = color
@@ -23,5 +23,15 @@ class UIElement:
     def is_clicked(self, pos):
         return self.active and self.rect.collidepoint(pos)
     
-    def get_label(self):
-        return self.label
+    def draw_label(self, game):
+        if self.visible:
+            return game.font.render(self.label, True, self.color) # Should be changed
+
+class UIText(UIElement):
+    def __init__(self, x, y, width, height, label = '', color=(255, 255, 255)):
+        super().__init__(x, y, width, height, label, color)
+
+    def draw(self, game, text):
+        if self.visible:
+            self.label = text
+            game.font.render(self.label, True, self.color) # Should be changed

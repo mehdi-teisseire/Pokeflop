@@ -2,7 +2,7 @@ from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
-from ui.ui import UIElement
+from ui.ui import UIElement, UIText
 from ui.intro import display_intro
 #from ui.main_menu import display_main_menu
 #from ui.save_slots import new_game, load_game
@@ -20,7 +20,6 @@ class Game:
         #Pygame Variables
         self.screen = pygame.display.set_mode((800,450))
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.SysFont("Comic Sans MS", 25)
 
         #Loop variables
         self.running = True
@@ -30,17 +29,17 @@ class Game:
 
         #Constants
         self.POKEMON_TEMPLATE = [
-    {'name':'Squirtle','sprite':'media/pokemon_assets/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moove1':'Charge','moove2':'Water gun'},
-    {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','pkmn_type':'electric','life':100,'attack':60,'defence':45,'moove1':'Charge','moove2':'Thunder'},
-    {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','pkmn_type':'grass','life':100,'attack':40,'defence':50,'moove1':'Charge','moove2':'Leaf'},
-    {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','pkmn_type':'fire','life':100,'attack':70,'defence':30,'moove1':'Charge','moove2':'Flamethrower'},
-    {'name':'Pidgey','sprite':'media/pokemon_assets/Pidgey_back.png','pkmn_type':'normal','life':100,'attack':45,'defence':45,'moove1':'Tackle','moove2':'Gust'},
-    {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','pkmn_type':'normal','life':100,'attack':48,'defence':43,'moove1':'Tackle','moove2':'Quick Attack'}
-    ]
+            {'name':'Squirtle','sprite':'media/pokemon_assets/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moove1':'Charge','moove2':'Water gun'},
+            {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','pkmn_type':'electric','life':100,'attack':60,'defence':45,'moove1':'Charge','moove2':'Thunder'},
+            {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','pkmn_type':'grass','life':100,'attack':40,'defence':50,'moove1':'Charge','moove2':'Leaf'},
+            {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','pkmn_type':'fire','life':100,'attack':70,'defence':30,'moove1':'Charge','moove2':'Flamethrower'},
+            {'name':'Pidgey','sprite':'media/pokemon_assets/Pidgey_back.png','pkmn_type':'normal','life':100,'attack':45,'defence':45,'moove1':'Tackle','moove2':'Gust'},
+            {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','pkmn_type':'normal','life':100,'attack':48,'defence':43,'moove1':'Tackle','moove2':'Quick Attack'}
+            ]
 
         #All game button
         ##First Screen - Intro
-        self.button_intro = UIElement('test', 120, 210, 600,95)
+        self.button_intro = UIElement(120, 210, 600,95, 'test')
 
         ##Second Screen - Main Menu
         # self.button_new_game = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
@@ -49,8 +48,8 @@ class Game:
         ##Third Screen - Game Menu
 
         ##Fourth Screen - Ingame
-        self.button_moov1 = UIElement(self.POKEMON_TEMPLATE[0]["name"], 500, 0, 600,95)
-        self.button_moov2 = UIElement(self.POKEMON_TEMPLATE[0]["name"], 0, 0, 600,95)
+        self.button_moove1 = UIElement(500, 0, 600,95)
+        self.button_moove2 = UIElement(0, 0, 600,95)
 
         ##Fourth Screen - Pokedex
 
@@ -58,10 +57,17 @@ class Game:
 
 
     def start(self):
+        """Initialise the game and start the main loop"""
+        # Player and AI object are created here. It's for deck-building/random encounter feature
         self.trainer = Trainer("Player")
         self.enemy = EnemyTrainer("Rival")
 
         pygame.init()
+        self.font = pygame.font.SysFont("Comic Sans MS", 25)
+
+        self.main_loop()
+     
+    def main_loop(self):
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -103,11 +109,12 @@ class Game:
         pygame.quit()
 
     def battle_ini(self):
+        """Attributes that needs to be set only once (before battle) are here"""
         #----TEMP----
         self.trainer.add_pokemon(self.trainer.convert_pokemon_to_obj(self.POKEMON_TEMPLATE[0]))
         self.enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE)
-        self.enemy.choose_pokemon()
         #------------
+        self.enemy.choose_pokemon()
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
         

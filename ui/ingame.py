@@ -13,16 +13,17 @@ def display_attack_choice(game):
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = event.pos
-            if game.button_moov1.is_clicked(mouse_pos):
+            if game.button_moove1.is_clicked(mouse_pos):
                 game.battle.choose_move() # execute attack function for move 1
-            elif game.button_moov2.is_clicked(mouse_pos):
+            elif game.button_moove2.is_clicked(mouse_pos):
                 pass # execute attack function for move 2
             
     game.screen.fill("white")
 
-    option_text = game.font.render(f"{game.trainer.pokedex[0].name}, choose your attack:", True, "blue") # Should be changed
+    game.button_moove1.label = game.trainer.pokedex[0].moove1
+    text = game.button_moove1.draw_label(game)
 
-    game.screen.blit(option_text, (100, 200))
+    game.screen.blit(text, (400, 0))
     
-    game.button_moov1.draw(game.screen)
-    game.button_moov2.draw(game.screen)
+    game.button_moove1.draw(game.screen)
+    # game.button_moov2.draw(game.screen)
