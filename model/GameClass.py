@@ -2,7 +2,7 @@ from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
-from ui.ui import UIElement, Text
+from ui.ui import UIElement, Text, ImageElement
 from ui.intro import display_intro
 #from ui.main_menu import display_main_menu
 #from ui.save_slots import new_game, load_game
@@ -39,6 +39,7 @@ class Game:
             ]
 
         ##Colors - Last number is alpha
+        self.TRANSPARENT = pygame.Color(0,0,0,0)
         #CUSTOM_BLUE = (0,0,0,0)
         #CUSTOM_YELLOW = (0,0,0,0)
         #ETC = (0,0,0,0)
@@ -46,7 +47,9 @@ class Game:
 
         #All game button
         ##First Screen - Intro
-        self.button_intro = UIElement('test', 120, 210, 600, 95)
+        self.background = ImageElement("media/ui-elements/background.png", (800, 450), (0, 0))
+        self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (579, 88), (120, 200))
+        self.button_intro = UIElement('test', 0, 0, 400, 450, (12,12,12))
 
         ##Second Screen - Main Menu
         # self.button_new_game = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
@@ -55,8 +58,10 @@ class Game:
         ##Third Screen - Game Menu
 
         ##Fourth Screen - Ingame
-        self.button_moove1 = UIElement('moove1', 100, 100, 600,95)
-          # self.button_moove2 = UIElement(0, 0, 600,95)
+        self.background_button_moov = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (150, 50), (0, 0))
+        
+        self.button_moov1 = UIElement('moove1', 150, 400, 150, 50)
+        self.button_moov2 = UIElement('moove2', 550, 400, 150, 50)
 
         ##Fourth Screen - Pokedex
 
@@ -72,7 +77,9 @@ class Game:
         pygame.init()
 
         # Texts are declared here. Have to init fonts to create them (or declare font separateley)
-        self.text_button_moove1 = Text("freesansbold.ttf", 36, "", (0,0,0), 400, 300)
+        self.text_button_moov1 = Text("freesansbold.ttf", 36, "", (0,0,0), 150, 400)
+        self.text_button_moov2 = Text("freesansbold.ttf", 36, "", (0,0,0), 550, 400)
+
 
         self.main_loop()
      
@@ -84,7 +91,7 @@ class Game:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = "ingame"
-                    if self.game_state == "ingame" and self.button_moove1.is_clicked(pygame.mouse.get_pos()):
+                    if self.game_state == "ingame" and self.button_moov1.is_clicked(pygame.mouse.get_pos()):
                         self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn)
 
 

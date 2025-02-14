@@ -4,6 +4,9 @@ class UIElement:
     def __init__(self,label, x, y, width, height, color=(255, 255, 255)):
         self.label = label
         
+        self.x = x
+        self.y = y
+
         self.rect = pygame.Rect(x, y, width, height)
         self.color = color
 
@@ -35,8 +38,8 @@ class Text:
         self.pos_x = pos_x
         self.pos_y = pos_y
 
-    def draw(self, game):
-        self.text = game.trainer.pokedex[0].moove1 #Change button label to move name
+    def draw(self, game, text):
+        self.text = text #Change button label to move name
         self.surface = self.font.render(self.text, True, self.color)
         self.rect = self.surface.get_rect(center=(self.pos_x, self.pos_y))
         game.screen.blit(self.surface, self.rect)
@@ -45,3 +48,15 @@ class Text:
         #self.text = new_text
         #self.surface = self.font.render(self.text, True, self.color)
         #self.rect = self.surface.get_rect(center=(self.pos_x, self.pos_y))
+
+class ImageElement:
+    def __init__(self, image_path, size, coord):
+        self.image_path = image_path
+        self.size = size
+        self.coord = coord
+
+    def draw(self, game):
+        original_img = pygame.image.load(self.image_path)
+        scaled_img = pygame.transform.scale(original_img, self.size)
+
+        game.screen.blit(scaled_img, self.coord)
