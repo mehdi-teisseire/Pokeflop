@@ -2,7 +2,7 @@ from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
-from ui.ui import UIElement
+from ui.ui import UIElement, Text
 from ui.intro import display_intro
 #from ui.main_menu import display_main_menu
 #from ui.save_slots import new_game, load_game
@@ -56,7 +56,7 @@ class Game:
 
         ##Fourth Screen - Ingame
         self.button_moove1 = UIElement(100, 100, 600,95, 'move1', "blue", "black")
-        # self.button_moove2 = UIElement(0, 0, 600,95)
+          # self.button_moove2 = UIElement(0, 0, 600,95)
 
         ##Fourth Screen - Pokedex
 
@@ -70,7 +70,10 @@ class Game:
         self.enemy = EnemyTrainer("Rival")
 
         pygame.init()
-        self.font = pygame.font.SysFont("Comic Sans MS", 25)
+        self.text_buttton_moove1 = Text("", 36, "", (255, 255, 255), 400, 300 )
+      
+        self.font_button = pygame.font.Font("freesansbold.ttf", 36)
+        self.font_text = pygame.font.SysFont("Comic Sans MS", 25)
 
         self.main_loop()
      

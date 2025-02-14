@@ -13,7 +13,7 @@ def display_ingame(game):
 def display_attack_choice(game):            
     game.screen.fill("white")
 
-    game.button_moove1.label = game.trainer.pokedex[0].moove1 #Change button label to move name
-    game.button_moove1.draw_label(game, 0, 0)
+    game.text_button_moove1.text = game.trainer.pokedex[0].moove1 #Change button label to move name
+    game.text_button_moove1.draw(game)
 
     # game.button_moov2.draw(game.screen)
