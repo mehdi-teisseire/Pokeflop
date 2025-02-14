@@ -46,7 +46,7 @@ class Game:
 
         #All game button
         ##First Screen - Intro
-        self.button_intro = UIElement(120, 210, 600,95, 'test')
+        self.button_intro = UIElement('test', 120, 210, 600, 95)
 
         ##Second Screen - Main Menu
         # self.button_new_game = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
@@ -55,7 +55,7 @@ class Game:
         ##Third Screen - Game Menu
 
         ##Fourth Screen - Ingame
-        self.button_moove1 = UIElement(100, 100, 600,95, 'move1', "blue", "black")
+        self.button_moove1 = UIElement('moove1', 100, 100, 600,95)
           # self.button_moove2 = UIElement(0, 0, 600,95)
 
         ##Fourth Screen - Pokedex
@@ -70,10 +70,9 @@ class Game:
         self.enemy = EnemyTrainer("Rival")
 
         pygame.init()
-        self.text_buttton_moove1 = Text("", 36, "", (255, 255, 255), 400, 300 )
-      
-        self.font_button = pygame.font.Font("freesansbold.ttf", 36)
-        self.font_text = pygame.font.SysFont("Comic Sans MS", 25)
+
+        # Texts are declared here. Have to init fonts to create them (or declare font separateley)
+        self.text_button_moove1 = Text("freesansbold.ttf", 36, "", (0,0,0), 400, 300)
 
         self.main_loop()
      
