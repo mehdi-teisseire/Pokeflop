@@ -34,34 +34,11 @@ class EnemyTrainer(Trainer):
         self.remove_pokemon()
 
 """
-class Pokemon(Json):
-    def __init__(self, name, stat):
-        self.name = name
-        self.stat = stat
-
 
 # Pokemon pool and list will contain Dict (from there, it'll create object for pokedex)
 POKEMON_DB = [{"name": "Bulbosaur", "stats": [1,2,3]}, {"name": "Squirtle", "stats": [3,2,1]}, {"name": "Charizard", "stats": [2,1,3]}]
 pokemon_list = [{"name": "Squirtle", "stats": [3,2,1]}]
 
 
-trainer1 = Trainer("George")
-enemy1 = EnemyTrainer("Gorgeorge")
-
-trainer1.load_pokedex()
-
-enemy1.add_pokemon(Pokemon(pokemon_list[0]["name"], pokemon_list[0]["stats"]))
-try:
-    print(f"enemy: {enemy1.pokedex}")
-    print(f"player: {trainer1.pokedex}")
-except Exception:
-    pass
-if enemy1.pokedex[0].name == "Squirtle":
-    enemy1.give_pokemon(trainer1)
-try:
-    print(f"enemy: {enemy1.pokedex}")
-    print(f"player: {trainer1.pokedex}")
-except Exception:
-    pass
 """
 

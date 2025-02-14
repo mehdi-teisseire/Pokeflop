@@ -1,4 +1,6 @@
+from random import randint
 from model.moove import Moove
+from model.multiplier import type_multiplier
 class Pokemon (Moove): 
     '''Class to create a pokemon'''
 
@@ -34,11 +36,33 @@ class Pokemon (Moove):
     
     def attack_damage(self,opponent):
         '''Calculate the damage of an attack'''
-        damage = self.attack * self.level * 0.2 - opponent.defence * opponent.level * 0.05
+        multi = type_multiplier[(self.turn_pkmn.pkmn_type, self.opponent_pkmn.pkmn_type)]
+        damage = (self.turn_pkmn.attack * self.turn_pkmn.level * 0.2 - self.opponent_pkmn.defence * self.opponent_pkmn.level * 0.05) * multi
         opponent.life -= damage
-        return f"{self.name} has inflicted {damage} damage to {opponent.name}!"
+        # return f"{self.name} has inflicted {damage} damage to {opponent.name}!"
     
     def get_moove_accuracy(self):
         '''Get the accuracy of a moove'''
-        return f"{self.moov1} has an accuracy of {self.accuracy_mouv1} and {self.moov2} has an accuracy of {self.accuracy_mouv2}"
+        match self.choosed_move:
+            case self.turn_pkmn.moove1:
+                return self.turn_pkmn.accuracy_mouv1
+            case self.turn_pkmn.moov2:
+                return self.turn_pkmn.accuracy_mouv2
 
+    def has_missed(self):
+        '''Calculate if the move missed with a random number (0-100).
+        
+        Gen 1 miss included! (which is 1/100 and not 1/256)'''
+        random_nb = randint(0,100)
+        accuracy = self.get_moove_accuracy()
+        if accuracy < random_nb: #Gen 1 miss if randint=100 when acc = 100!! (intentional)
+            return True
+        else:
+            return False
+        # return f"{self.moov1} has an accuracy of {self.accuracy_mouv1} and {self.moov2} has an accuracy of {self.accuracy_mouv2}"
+
+    def attacking(self, opponent):
+        if self.has_missed():
+            print('Too Bad!')
+        else:
+            self.attack_damage(opponent)

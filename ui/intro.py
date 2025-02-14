@@ -2,6 +2,7 @@ import pygame
 from ui.ui import UIElement
 
 def display_intro(game):
+    """Display The first screen of the game"""       
     game.background = pygame.image.load("media/ui-elements/background.png")
     game.background = pygame.transform.scale(game.background, (800, 450))
 

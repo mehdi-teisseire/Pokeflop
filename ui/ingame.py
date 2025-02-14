@@ -3,6 +3,7 @@ import pygame
 from model.battle import Battle
 
 def display_ingame(game):
+                
     #displaybackground()
     #display_pokemon()
     display_attack_choice(game)
@@ -12,11 +13,8 @@ def display_ingame(game):
 def display_attack_choice(game):
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_pos = event.pos
-            if game.button_moove1.is_clicked(mouse_pos):
-                game.battle.choose_move() # execute attack function for move 1
-            elif game.button_moove2.is_clicked(mouse_pos):
-                pass # execute attack function for move 2
+            if game.button_moove1.is_clicked(pygame.mouse.get_pos()):
+                game.battle.turn_pkmn.attacking(game.battle.opponent_pkmn)
             
     game.screen.fill("white")
 

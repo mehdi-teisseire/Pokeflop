@@ -28,6 +28,7 @@ class Game:
         self.battle_start = False
 
         #Constants
+        #can make a separate file and import it (list would be long right?) - constant.py?
         self.POKEMON_TEMPLATE = [
             {'name':'Squirtle','sprite':'media/pokemon_assets/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moove1':'Charge','moove2':'Water gun'},
             {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','pkmn_type':'electric','life':100,'attack':60,'defence':45,'moove1':'Charge','moove2':'Thunder'},
@@ -73,9 +74,9 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.running = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if self.button_intro.is_clicked(pygame.mouse.get_pos()):
-                        print('gud', self.game_state)
+                    if self.button_intro.is_clicked(pygame.mouse.get_pos()) and self.game_state == "intro":
                         self.game_state = "ingame"
+
 
             self.screen.fill("black")
             

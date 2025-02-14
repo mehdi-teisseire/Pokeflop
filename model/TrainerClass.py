@@ -48,13 +48,8 @@ class Trainer(Json):
         return False
 
 """
-Json.save_json(pokemon_list, pokemon_list, "pokemon")
-pokemon_list.append(Json.load_json(pokemon_list, "pokemon"))
 
-print(pokemon_list)
-
-choosed_pokemon = "Bulbosaur"
-
+#check if owned but for list (obsolete)
 for pokemon in pokemon_list:
     try:
         if pokemon["name"] == choosed_pokemon:
@@ -67,9 +62,6 @@ for pokemon in pokemon_list:
         print("No pokemon in the list!")
 
 
-
-print(trainer1.pokedex)
-print(trainer1.pokedex[0].name)
 """
 
 """
