@@ -35,4 +35,24 @@ class Pokedex:
 
         pygame.display.flip()
         self.handle_pokemon_selection()
+    
+    # To handle player interaction
+    def handle_pokemon_selection(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_pos = event.pos
+                    index = (mouse_pos[1] - 100) //30
+                    if 0 <= index <len(self.pokemon_data):
+                        self.display_pokemon_details(self.pokemon_date[index])
+                    return
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        self.go_to_previous_screen()  
+
+
 
