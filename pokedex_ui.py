@@ -1,6 +1,7 @@
 import pygame
 import json
 
+# To display the pokedex screen
 class Pokedex:
     def __init__(self, screen, json_file):
         self.screen = screen
@@ -13,6 +14,12 @@ class Pokedex:
         self.text_box_image = pygame.image.load('media/picture/MDPokemonBattle_TextBox.png')
         self.text_box_image = pygame.transform.scale(self.text_box_image, (550, 80)) 
 
+    # To load the data
     def load_pokemon_data(self, json_file):
         with open(json_file, 'r') as file:
-            return json.load(file)    
+            return json.load(file)
+
+
+    def draw_text(self, text, position, color = (0, 0, 0)):
+        rendered_text = self.font.render(text, True, color)
+        self.screen.blit(rendered_text, position)        
