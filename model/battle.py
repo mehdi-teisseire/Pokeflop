@@ -16,20 +16,31 @@ class Battle:
         self.enemy_pokemon = enemy.pokedex[0]
 
         self.turn = self.trainer_name
-        self.opponent = self.enemy_name
         self.turn_pkmn = self.trainer_pokemon
+
+        self.opponent = self.enemy_name
         self.opponent_pkmn = self.enemy_pokemon
 
-        self.chosen_move = "" #would be a return from the button with the move name
+        self.mooving = False
+        self.moov_missed = False
+        self.moov_damage = 0
+        # self.chosen_move = "" #would be a return from the button with the move name
         
 
     def change_turn(self):
         if self.turn == self.trainer_name:
             self.turn = self.enemy_name
             self.turn_pkmn = self.enemy_pokemon
+
+            self.opponent = self.trainer_name
+            self.opponent_pkmn = self.trainer_pokemon
+
         else:
             self.turn = self.trainer_name
             self.turn_pkmn = self.trainer_pokemon
+
+            self.opponent = self.enemy_name
+            self.opponent_pkmn = self.enemy_pokemon
     
     def choose_move(self, move):
         if self.turn == self.enemy_name:
@@ -38,10 +49,10 @@ class Battle:
             return move     
 
     # To check if Pokemon is alive or not
-    def check_health_points(self):
-        if self.turn_pkmn.life <= 0:
-            return False
-        return True
+    def opponent_pokemon_ko(self):
+        if self.opponent_pkmn.life <= 0:
+            return True
+        return False
     
 
 

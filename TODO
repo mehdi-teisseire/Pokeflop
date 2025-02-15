@@ -2,3 +2,7 @@
 
 Make an event in only one condition that gets the button text (= move you want to attack with) and returns it depending on where you press
 (maybe put coordinates of each button in a list and iterate with mouse position on click?)
+
+for multiple loops: just return the function to "game.state"; smaller loops may avoid memory leak?
+
+import strictly what it is used; maybe it can reduce lags?

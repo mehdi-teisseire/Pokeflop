@@ -25,7 +25,7 @@ class Game:
         self.running = True
         self.game_state = "intro"
 
-        self.battle_start = False
+        self.battle_start = False # For the Battle_ini(). Makes it so you don't repeat it. Revert to false when battle ends.
 
         #Constants
         #can make a separate file and import it (list would be long right?) - constant.py?
@@ -58,12 +58,16 @@ class Game:
 
         ##Third Screen - Game Menu
 
-        ##Fourth Screen - Ingame
+        ##Fourth Screen - Ingame      
         self.background_button_moov1 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (100, 300), (250, 75))
         self.background_button_moov2 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (450, 300), (250, 75))
         
+        
         self.button_moov1 = UIElement('moov1', 150, 200, 150, 50)
         self.button_moov2 = UIElement('moov2', 550, 200, 150, 50)
+
+        self.button_moov = [self.button_moov1, self.button_moov2]
+        
 
         ##Fourth Screen - Pokedex
 
@@ -79,6 +83,11 @@ class Game:
         pygame.init()
 
         # Texts are declared here. Have to init fonts to create them (or declare font separateley)
+       
+        ## Ingame Text
+        self.life_trainer_text = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
+        self.life_opponent_text = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+       
         self.text_button_moov1 = Text("freesansbold.ttf", 36, "", (0,0,0), 150, 400)
         self.text_button_moov2 = Text("freesansbold.ttf", 36, "", (0,0,0), 550, 400)
 
@@ -91,13 +100,38 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.running = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    #----- Intro screen events
                     if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = "ingame"
-                    if self.game_state == "ingame" and self.button_moov1.is_clicked(pygame.mouse.get_pos()):
-                        self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn, self.text_button_moov1.text)
-                    if self.game_state == "ingame" and self.button_moov2.is_clicked(pygame.mouse.get_pos()):
-                        self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn, self.text_button_moov2.text)
+                    #-----
 
+                    #----- Ingame screen events
+                    for button in self.button_moov:
+                        if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
+                            # TODO maybe refractor this into ingame.py? I don't know
+                            self.battle.mooving = True
+                            self.battle.moov_missed = self.battle.turn_pkmn.attacking(self)
+                            self.battle.mooving = False
+                            if self.battle.opponent_pokemon_ko():
+                                print("Battle Finished! Return to main menu")
+                                self.enemy.give_pokemon(self.trainer)
+                                pygame.time.wait(1000)
+                                self.battle_start = False
+                                self.game_state = "intro"
+                            self.battle.change_turn()
+                    #-----
+                    
+                    # if self.game_state == "ingame" and self.button_moov1.is_clicked(pygame.mouse.get_pos()):
+                    #     self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn, self.text_button_moov1.text)
+                    #     self.battle.change_turn()
+                    # if self.game_state == "ingame" and self.button_moov2.is_clicked(pygame.mouse.get_pos()):
+                    #     self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn, self.text_button_moov2.text)
+                        
+                    #     if self.battle.opponent_pkmn_ko():
+                    #         pygame.time.wait(1000)
+                    #         self.game_state = "intro"
+                            
+                    #     self.battle.change_turn()
 
             self.screen.fill("black")
             
@@ -119,7 +153,6 @@ class Game:
                     display_game_menu()
 
                 case "ingame":
-                    # enemy.choose_pokemon() -> in display_game?
                     if not self.battle_start:
                         self.battle_ini()
                     display_ingame(self)  #from game menu and return to it
@@ -143,6 +176,8 @@ class Game:
         self.enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE)
         #------------
         self.enemy.choose_pokemon()
+        self.trainer.load_pokedex() #It's for healink!!
+
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
         

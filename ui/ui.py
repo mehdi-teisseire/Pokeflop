@@ -8,15 +8,15 @@ class UIElement:
         self.color = color
 
         self.active = True
-        self.visible = True
+        self.visible = False
 
-    def draw(self, surface, background = ''):
+    def draw(self, surface, background = ''):        
+        if background: # Will make Hitbox follow background
+            self.rect.x = background.coord[0]
+            self.rect.y = background.coord[1]
+            self.rect.width = background.size[0]
+            self.rect.height = background.size[1]
         if self.visible:
-            if background: # Will make Hitbox follow background
-                self.rect.x = background.coord[0]
-                self.rect.y = background.coord[1]
-                self.rect.width = background.size[0]
-                self.rect.height = background.size[1]
             pygame.draw.rect(surface, self.color, self.rect)
     
     def set_position(self, x, y):        
@@ -34,7 +34,7 @@ class Text:
     """Parameters: font name, size, text content, color (RGB), x position, y position"""
     def __init__(self, font_name, font_size, text, color, pos_x, pos_y):
         self.font = pygame.font.Font(font_name, font_size)
-        self.text = text
+        self.text = text #TODO May want to either remove, make optional argument, or do either on draw()
         self.color = color
 
         self.pos_x = pos_x

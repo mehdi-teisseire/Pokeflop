@@ -28,8 +28,7 @@ class EnemyTrainer(Trainer):
 # Add "if hp <= 0" and "if not already_owned" before this when you call it
     def give_pokemon(self, trainer):
         """Copy itself to trainer pokedex and get removed."""
-        already_owned = trainer.check_if_owned(self.pokedex[0])
-        if not already_owned:
+        if not trainer.already_owned(self.pokedex[0]):
             trainer.add_pokemon(self.pokedex[0])
         self.remove_pokemon()
 
