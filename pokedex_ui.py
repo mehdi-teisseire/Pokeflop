@@ -56,14 +56,13 @@ class Pokedex:
 
     # To display pokemon details
     def display_pokemon_details(self, pokemon):
-        self.screen.blit(self.background_image, (0,0))
+        self.screen.blit(self.background_image, (0, 0))
+        self.screen.blit(self.text_box_image, (130, 292))  
 
-        self.screen.blit(self.text_box_image, (130, 292))
-
-        self.draw_text(f"Name: {pokemon['name']}", (100, 120))
-        self.draw_text(f"Type: {pokemon['pkm_type']}", (100, 160))
+        self.draw_text(f"Name: {pokemon['name']}", (100, 120)) 
+        self.draw_text(f"Type: {pokemon['pkmn_type']}", (100, 160))
         self.draw_text(f"Attack: {pokemon['attack']}", (100, 200))
-        self.draw_text(f"Defence: {pokemon['defence']}", (100, 280))
+        self.draw_text(f"Defence: {pokemon['defence']}", (100, 240))
         self.draw_text(f"Life: {pokemon['life']}", (100, 280))
         self.draw_text(f"Moves: {pokemon['moov1']}, {pokemon['moov2']}", (100, 320))
 
