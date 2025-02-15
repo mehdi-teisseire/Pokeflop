@@ -13,3 +13,6 @@ class Pokedex:
         self.text_box_image = pygame.image.load('media/picture/MDPokemonBattle_TextBox.png')
         self.text_box_image = pygame.transform.scale(self.text_box_image, (550, 80)) 
 
+    def load_pokemon_data(self, json_file):
+        with open(json_file, 'r') as file:
+            return json.load(file)    
