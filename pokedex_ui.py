@@ -47,7 +47,7 @@ class Pokedex:
                     mouse_pos = event.pos
                     index = (mouse_pos[1] - 100) //30
                     if 0 <= index <len(self.pokemon_data):
-                        self.display_pokemon_details(self.pokemon_date[index])
+                        self.display_pokemon_details(self.pokemon_data[index])
                     return
 
                 if event.type == pygame.KEYDOWN:
@@ -64,6 +64,7 @@ class Pokedex:
         self.draw_text(f"Type: {pokemon['pkm_type']}", (100, 160))
         self.draw_text(f"Attack: {pokemon['attack']}", (100, 200))
         self.draw_text(f"Defence: {pokemon['defence']}", (100, 280))
+        self.draw_text(f"Life: {pokemon['life']}", (100, 280))
         self.draw_text(f"Moves: {pokemon['moov1']}, {pokemon['moov2']}", (100, 320))
 
         self.draw_text("Press Space to go back", (100, 350))
