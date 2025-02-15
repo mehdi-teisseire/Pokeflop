@@ -52,7 +52,45 @@ class Pokedex:
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
-                        self.go_to_previous_screen()  
+                        self.go_to_previous_screen() 
+
+    # To display pokemon details
+    def display_pokemon_details(self, pokemon):
+        self.screen.blit(self.background_image, (0,0))
+
+        self.screen.blit(self.text_box_image, (130, 292))
+
+        self.draw_text(f"Name: {pokemon['name']}", (100, 120))
+        self.draw_text(f"Type: {pokemon['pkm_type']}", (100, 160))
+        self.draw_text(f"Attack: {pokemon['attack']}", (100, 200))
+        self.draw_text(f"Defence: {pokemon['defence']}", (100, 280))
+        self.draw_text(f"Moves: {pokemon['moov1']}, {pokemon['moov2']}", (100, 320))
+
+        self.draw_text("Press Space to go back", (100, 350))
+
+        pygame.display.flip()
+
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        return
+                    if event.key == pygame.K_SPACE:
+                        self.go_to_previous_screen()
+
+    # To go to the previous screen
+    def go_to_previous_screen(self):
+        self.display_pokedex() # Change here to go to the desired screen
+
+# To call the pokedex:
+#pokedex = Pokedex(scree, 'pokedex.json')
+#pokedex.display_pokedex()
+
+# Also to do the intire pokemon list copy this file, rename it and 
+# change the source
 
 
 
