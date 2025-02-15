@@ -1,5 +1,7 @@
 import pygame
-from pokeflop_ui import Pokeflop 
+#from pokeflop_ui import Pokeflop 
+from pokedex_ui import Pokedex
+
 
 
 pygame.init()
@@ -10,14 +12,15 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("PokeFlop Game")
 
 
-pokeflop = Pokeflop(screen)
+#pokeflop = Pokeflop(screen)
+pokedex = Pokedex(screen, 'pokedex.json')
 
 
 running = True
 while running:
 
-    pokeflop.display_pokeflop()
-
+    #pokeflop.display_pokeflop()
+    pokedex.display_pokedex()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
