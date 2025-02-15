@@ -19,7 +19,20 @@ class Pokedex:
         with open(json_file, 'r') as file:
             return json.load(file)
 
-
+    # to draw text on the screen
     def draw_text(self, text, position, color = (0, 0, 0)):
         rendered_text = self.font.render(text, True, color)
-        self.screen.blit(rendered_text, position)        
+        self.screen.blit(rendered_text, position)   
+
+    # To display the pokedex list
+    def display_pokedex(self):
+
+        self.screen.blit(self.background_image, (0, 0))
+        self.draw_text("Pokédex", (100, 50), (0, 0, 0)) 
+
+        for i, pokemon in enumerate(self.pokemon_data):
+            self.draw_text(pokemon["name"], (100, 100 + i * 30))
+
+        pygame.display.flip()
+        self.handle_pokemon_selection()
+
