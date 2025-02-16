@@ -16,3 +16,5 @@ class Json:
                 return json.load(file)
         except Exception:
             print("Couldn't load JSON data!")
+
+load_json = Json().load_json
