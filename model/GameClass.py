@@ -207,6 +207,6 @@ class Game:
                             self.enemy.give_pokemon(self.trainer)
                             pygame.time.wait(1000)
                             self.battle_start = False
-                            self.game_state = "intro"
+                            self.game_state = "game_menu"
                         self.battle.change_turn()
                 #-----

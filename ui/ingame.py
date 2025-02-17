@@ -24,7 +24,10 @@ def display_battle_interface(game):
 
 def display_enemy_choosing_move(game):
     """Display a message to let AI play without interferences"""
-    display_attack_choice(game) #TODO placeholder for enemy message when acting 
+    
+    
+    #display_attack_choice(game) #TODO placeholder for enemy message when acting
+
 
 # To allow the player to choose an attack
 def display_attack_choice(game):

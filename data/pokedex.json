@@ -1,17 +1,47 @@
 [
-    {
-        "name": "Squirtle",
-        "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
-        "pkmn_type": "water",
-        "level": 5,
-        "life": 100,
-        "attack": 50,
-        "defence": 50,
-        "moov1": "Charge",
-        "moov2": "Water gun",
-        "accuracy_mouv1": 95,
-        "accuracy_mouv2": 90,
-        "moov_type_1": "normal",
-        "moov_type_2": "water"
-    }
+  {
+    "name": "Charmander",
+    "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
+    "pkmn_type": "fire",
+    "level": 5,
+    "life": -36,
+    "attack": 50,
+    "defence": 50,
+    "moov1": "Charge",
+    "moov2": "Fire gun",
+    "accuracy_mouv1": 95,
+    "accuracy_mouv2": 90,
+    "moov_type_1": "normal",
+    "moov_type_2": "fire"
+  },
+  {
+    "name": "Charmander",
+    "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
+    "pkmn_type": "fire",
+    "level": 5,
+    "life": 100,
+    "attack": 50,
+    "defence": 50,
+    "moov1": "Charge",
+    "moov2": "Fire gun",
+    "accuracy_mouv1": 95,
+    "accuracy_mouv2": 90,
+    "moov_type_1": "normal",
+    "moov_type_2": "fire"
+  },
+  {
+    "name": "Squirtle",
+    "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
+    "pkmn_type": "water",
+    "level": 5,
+    "life": 39,
+    "attack": 50,
+    "defence": 50,
+    "moov1": "Charge",
+    "moov2": "Water gun",
+    "accuracy_mouv1": 95,
+    "accuracy_mouv2": 90,
+    "moov_type_1": "normal",
+    "moov_type_2": "water"
+  }
 ]
