@@ -18,6 +18,7 @@ import pygame
 
 class Game:
     def __init__(self):
+        pygame.init()
         #Pygame Variables
         self.screen = pygame.display.set_mode((800,450))
         self.clock = pygame.time.Clock()
@@ -93,6 +94,7 @@ class Game:
         self.button_moov = [self.button_moov1, self.button_moov2]
         ##Fourth Screen - Pokedex
         self.background_pokedex = ImageElement("media/ui-elements/button.png", (130, 350), (536, 91))
+        self.button_pokedex = UIElement('game_menu', 130, 350, 536, 91)
         ##Fifth Screen - Pokelist
 
     def start(self):
@@ -101,7 +103,7 @@ class Game:
         self.trainer = Trainer("Player")
         self.enemy = EnemyTrainer("Rival")
 
-        pygame.init()
+        #pygame.init()
 
         ##Colors - Last number is alpha
         #self.TRANSPARENT = pygame.Color(0,0,0,0)
@@ -134,39 +136,35 @@ class Game:
     def main_loop(self):
         while self.running:
             self.events()
-
             self.screen.fill("black")
-            
+
             match self.game_state:
                 case "intro":
-                    display_intro(self)    # first state
-
+                    display_intro(self)
                 case "main_menu":
-                    display_main_menu(self)    # will return game.state depending on button clicked
-
+                    display_main_menu(self)
                 case "new_game":
                      new_game(self)      #will change game state to "game_menu"
 
                 case "load_game":
-                    load_game(self)     #will change game state to "game_menu"
-
+                    load_game(self)
                 case "game_menu":
                     display_game_menu(self)
-
                 case "ingame":
                     if not self.battle_start:
                         self.battle_ini()
-                    display_ingame(self)  #from game menu and return to it
-
+                    display_ingame(self)
                 case "pokedex":
-                    display_pokedex(self)   #from game menu and return to it
-
-                case "pokelist":
-                    #enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE) -> dans display_pokelist, "add" boutton
-                    display_pokelist(self)  #from game menu and return to it
-
+                    display_pokedex(self)
+                case "pokemon":
+                    display_pokelist(self)
+                case "battle_end":
+                    if pygame.time.get_ticks() >= self.battle_end_time:
+                        self.game_state = "game_menu"
                 case _:
-                    pygame.quit()
+                    self.running = False
+                
+
 
             pygame.display.flip()
             self.clock.tick(60)
@@ -202,13 +200,17 @@ class Game:
                 for button in self.button_game_menu:
                     if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = button.label
+                #----- Pokelist screen events
+                
+                if self.game_state == "pokedex" and self.button_pokedex.is_clicked(pygame.mouse.get_pos()):
+                    self.game_state = button.label
                 #-----
                 #----- Ingame screen events
                 for button in self.button_moov:
                     if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
                         # TODO maybe refractor this into ingame.py? I don't know
                         for moov in self.battle.turn_pkmn.moov:
-                            if moov.name == button.label: ###
+                            if moov.name == button.label: 
                                 self.battle.chosen_moov = moov
                         #TODO should just change chosen_move and chosen_move back to False after the attack
                         #TODO Begin_move should happen in the display

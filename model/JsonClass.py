@@ -18,6 +18,8 @@ class Json:
                 return json.load(file)
         except Exception:
             print("Couldn't load JSON data!")
+            return [] 
+
 
     def convert_moovs(self, object_list):
         """Convert moovs objects in string to stock in json"""

@@ -4,6 +4,7 @@ def display_pokedex(game):
     game.background.draw(game)
     game.open_json("pokedex")
     pokedex_data = game.open_json('pokedex')
+    game.button_pokedex.draw(game)
     
     x, y = 50, 50
     spacing = 50
@@ -24,21 +25,21 @@ def display_pokedex(game):
             game.background_pokedex.draw(game)
             font = pygame.font.Font(None, 24)
             level_text = font.render(f"Level: {pokemon['level']}", True, (0, 0, 0))
-            game.screen.blit(level_text, (200, 400))
+            game.screen.blit(level_text, (145, 360))
             type_text = font.render(f"Type: {pokemon['type']}", True, (0, 0, 0))
-            game.screen.blit(type_text, (200, 420))
+            game.screen.blit(type_text, (145, 390))
             name_text = font.render(f"Name: {pokemon['name']}", True, (255, 255, 255))
-            game.screen.blit(name_text, (mouse_pos[0], mouse_pos[1] + 20))
+            game.screen.blit(name_text, (310,360))
             attack_text = font.render(f"Attack: {pokemon['attack']}", True, (255, 255, 255))
-            game.screen.blit(attack_text, (mouse_pos[0], mouse_pos[1] + 40))
+            game.screen.blit(attack_text, (500,410))
             defense_text = font.render(f"Defense: {pokemon['defence']}", True, (255, 255, 255))
-            game.screen.blit(defense_text, (mouse_pos[0], mouse_pos[1] + 60))
+            game.screen.blit(defense_text, (500,390))
             life_text = font.render(f"Life: {pokemon['life']}", True, (255, 255, 255))
-            game.screen.blit(life_text, (mouse_pos[0], mouse_pos[1] + 80))
+            game.screen.blit(life_text, (500,360))
             moov1_text = font.render(f"Moov1: {pokemon['moov1']}", True, (255, 255, 255))
-            game.screen.blit(moov1_text, (mouse_pos[0], mouse_pos[1] + 100))
+            game.screen.blit(moov1_text, (310,390))
             moov2_text = font.render(f"Moov2: {pokemon['moov2']}", True, (255, 255, 255))
-            game.screen.blit(moov2_text, (mouse_pos[0], mouse_pos[1] + 120))
+            game.screen.blit(moov2_text, (310,410))
             
         x += spacing
         if x > game.screen.get_width() - spacing:
