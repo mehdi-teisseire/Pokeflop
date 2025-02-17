@@ -8,7 +8,7 @@ from ui.intro import display_intro
 
 #from ui.main_menu import display_main_menu
 #from ui.save_slots import new_game, load_game
-#from ui.game_menu import display_game_menu
+from ui.main_menu import display_main_menu
 from ui.ingame import display_ingame
 from ui.pokedex import display_pokedex
 #from ui.pokelist import display_pokelist
@@ -32,7 +32,7 @@ class Game:
         #Constants
         #can make a separate file and import it (list would be long right?) - constant.py?
         self.POKEMON_TEMPLATE = [
-            {'name':'Squirtle','sprite':'media/pokemon_assets/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moov1':'Charge','moov2':'Water gun'},
+            {'name':'Squirtle','sprite':'media/Pokemons-assets/front/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moov1':'Charge','moov2':'Water gun'},
             {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','pkmn_type':'electric','life':100,'attack':60,'defence':45,'moov1':'Charge','moov2':'Thunder'},
             {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','pkmn_type':'grass','life':100,'attack':40,'defence':50,'moov1':'Charge','moov2':'Leaf'},
             {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','pkmn_type':'fire','life':100,'attack':70,'defence':30,'moov1':'Charge','moov2':'Flamethrower'},
@@ -77,7 +77,7 @@ class Game:
         
 
         ##Fourth Screen - Pokedex
-
+        self.background_pokedex = ImageElement("media/ui-elements/button.png", (130, 350), (536, 91))
         ##Fifth Screen - Pokelist
 
 
@@ -144,11 +144,10 @@ class Game:
             
             match self.game_state:
                 case "intro":
-                    display_ingame(self)    # first state
+                    display_pokedex(self)    # first state
 
                 case "main_menu":
-                    display_main_menu()    # will return game.state depending on button clicked
-
+                    display_main_menu()     #will change game state to "game_menu"
                 case "new_game":
                     #trainer.give_first_pokemon() -> in new_game()
                     new_game()      #will change game state to "game_menu"
