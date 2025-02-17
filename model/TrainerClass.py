@@ -11,9 +11,9 @@ class Trainer(Json):
         self.pokedex = [] # Only contain Objects
         self.stats = []
 
-    def give_first_pokemon(self):
-        if not self.pokedex:
-            self.add_pokemon(self.convert_pokemon_to_obj(POKEMON_TEMPLATE[0]))
+    #def give_first_pokemon(self):
+        #if not self.pokedex:
+            #self.add_pokemon(self.convert_pokemon_to_obj(POKEMON_TEMPLATE[0]))
 
     def add_pokemon(self, pokemon):
         """To add a pokemon when player doesn't have one."""

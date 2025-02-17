@@ -19,6 +19,7 @@ import pygame
 
 class Game:
     def __init__(self):
+        pygame.init()
         #Pygame Variables
         self.screen = pygame.display.set_mode((800,450))
         self.clock = pygame.time.Clock()
@@ -93,7 +94,7 @@ class Game:
         self.trainer = Trainer("Player")
         self.enemy = EnemyTrainer("Rival")
 
-        pygame.init()
+        #pygame.init()
 
         ##Colors - Last number is alpha
         #self.TRANSPARENT = pygame.Color(0,0,0,0)
@@ -126,40 +127,31 @@ class Game:
     def main_loop(self):
         while self.running:
             self.events()
-
             self.screen.fill("black")
-            
+
             match self.game_state:
                 case "intro":
-                    display_intro(self)    # first state
-
+                    display_intro(self)
                 case "main_menu":
-                    display_main_menu(self)    # will return game.state depending on button clicked
-
+                    display_main_menu(self)
                 case "new_game":
-                    #trainer.give_first_pokemon() -> in new_game()
-                    new_game(self)      #will change game state to "game_menu"
-
+                    new_game(self)
                 case "load_game":
-                    load_game(self)     #will change game state to "game_menu"
-
+                    load_game(self)
                 case "game_menu":
                     display_game_menu(self)
-
                 case "ingame":
                     if not self.battle_start:
                         self.battle_ini()
-                    display_ingame(self)  #from game menu and return to it
-
+                    display_ingame(self)
                 case "pokedex":
-                    display_pokedex(self)   #from game menu and return to it
-
+                    display_pokedex(self)
                 case "pokelist":
-                    #enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE) -> dans display_pokelist, "add" boutton
-                    display_pokelist(self)  #from game menu and return to it
-
-                case _:
-                    pygame.quit()
+                    display_pokelist(self)
+                case "battle_end":
+                    if pygame.time.get_ticks() >= self.battle_end_time:
+                        self.game_state = "game_menu"
+                    self.running = False
 
             pygame.display.flip()
             self.clock.tick(60)
@@ -184,7 +176,7 @@ class Game:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 #----- Intro screen events
                 if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
-                    self.game_state = button.label
+                    self.game_state = self.button_intro.label
                 #-----
                 #----- Main Menu screen events
                 for button in self.button_main_menu:
@@ -203,15 +195,15 @@ class Game:
                 #----- Ingame screen events
                 for button in self.button_moov:
                     if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
-                        # TODO maybe refractor this into ingame.py? I don't know
+                        # TODO: Refactor the battle logic into ingame.py to separate game state management from battle mechanics.
                         self.battle.mooving = True
                         self.battle.moov_missed = self.battle.turn_pkmn.attacking(self)
                         self.battle.mooving = False
                         if self.battle.opponent_pokemon_ko():
                             print("Battle Finished! Return to main menu")
                             self.enemy.give_pokemon(self.trainer)
-                            pygame.time.wait(1000)
+                            self.battle_end_time = pygame.time.get_ticks() + 1000
                             self.battle_start = False
-                            self.game_state = "game_menu"
+                            self.game_state = "battle_end"
                         self.battle.change_turn()
                 #-----
