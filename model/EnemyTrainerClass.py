@@ -37,6 +37,14 @@ class EnemyTrainer(Trainer):
         """Update the json from the pokedex list"""
         self.save_json(self.pokemon, "pokemon")
 
+    def ia_choose_move(self, game):
+        moov1_dmg = self.pokedex[0].attack_damage(game.battle.opponent_pkmn, self.pokedex[0].moov_type_1)
+        moov2_dmg = self.pokedex[0].attack_damage(game.battle.opponent_pkmn, self.pokedex[0].moov_type_2)
+        if moov1_dmg < moov2_dmg:
+            return self.pokedex[0].moov2
+        else:
+            return self.pokedex[0].moov1
+
 """
 
 # Pokemon pool and list will contain Dict (from there, it'll create object for pokedex)

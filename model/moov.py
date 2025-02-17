@@ -7,4 +7,4 @@ class Moov:
         self.accuracy_mouv1 = 95
         self.accuracy_mouv2 = 90
         
-        self.moov_type_1 = 'normal'  
+        self.moov_type_1 = 'normal'

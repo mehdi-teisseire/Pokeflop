@@ -34,12 +34,11 @@ class Pokemon (Moov):
         self.sprite = new_sprite
         return f"{temp_str} has evolved into {new_name}!"
     
-    def attack_damage(self, battle, opponent):
+    def attack_damage(self, opponent, moov_type):
         '''Calculate the damage of an attack'''
-        multi = type_multiplier[(self.pkmn_type, opponent.pkmn_type)]
+        multi = type_multiplier[(moov_type, opponent.pkmn_type)]
         damage = round((self.attack * self.level * 0.2 - opponent.defence * opponent.level * 0.05) * multi * uniform(0.8, 1.2))
-        opponent.life -= damage
-        battle.moov_damage = damage
+        return damage
         # return f"{self.name} has inflicted {damage} damage to {opponent.name}!"
     
     def get_moov_accuracy(self, moov):
@@ -68,5 +67,7 @@ class Pokemon (Moov):
             print('Calculation: Move missed!')
             return True
         else:
-            self.attack_damage(game.battle, game.battle.opponent_pkmn)
+            damage = self.attack_damage(game.battle.opponent_pkmn, game.text_button_moov1.text)
+            game.battle.opponent.pokemon[0].life -= damage
+            game.battle.moov_damage = damage
             return False

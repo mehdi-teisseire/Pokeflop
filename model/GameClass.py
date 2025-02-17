@@ -45,7 +45,7 @@ class Game:
         self.background = ImageElement("media/ui-elements/background.png", (0, 0), (800, 450))
         self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (120, 200), (579, 88))
         
-        self.button_intro = UIElement('test', 0, 0, 800, 450)
+        self.button_intro = UIElement('main_menu', 0, 0, 800, 450)
         
         self.open_json = Json().load_json
         self.save_json = Json().save_json
@@ -183,7 +183,7 @@ class Game:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 #----- Intro screen events
                 if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
-                    self.game_state = "main_menu"
+                    self.game_state = button.label
                 #-----
                 #----- Main Menu screen events
                 for button in self.button_main_menu:
