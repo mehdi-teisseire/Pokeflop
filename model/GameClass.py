@@ -146,12 +146,15 @@ class Game:
                     display_ingame(self)
                 case "pokedex":
                     display_pokedex(self)
-                case "pokelist":
+                case "pokemon":
                     display_pokelist(self)
                 case "battle_end":
                     if pygame.time.get_ticks() >= self.battle_end_time:
                         self.game_state = "game_menu"
+                case _:
                     self.running = False
+                
+
 
             pygame.display.flip()
             self.clock.tick(60)
