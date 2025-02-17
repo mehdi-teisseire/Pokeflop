@@ -84,6 +84,7 @@ class Game:
         self.button_moov = [self.button_moov1, self.button_moov2]
         ##Fourth Screen - Pokedex
         self.background_pokedex = ImageElement("media/ui-elements/button.png", (130, 350), (536, 91))
+        self.button_pokedex = UIElement('game_menu', 130, 350, 536, 91)
         ##Fifth Screen - Pokelist
 
     def start(self):
@@ -194,6 +195,10 @@ class Game:
                 for button in self.button_game_menu:
                     if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = button.label
+                #----- Pokelist screen events
+                
+                if self.game_state == "pokedex" and self.button_pokedex.is_clicked(pygame.mouse.get_pos()):
+                    self.game_state = button.label
                 #-----
                 #----- Ingame screen events
                 for button in self.button_moov:
