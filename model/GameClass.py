@@ -2,13 +2,15 @@ from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
+from model.JsonClass import Json
 from ui.ui import UIElement, Text, ImageElement
 from ui.intro import display_intro
+
 #from ui.main_menu import display_main_menu
 #from ui.save_slots import new_game, load_game
 #from ui.game_menu import display_game_menu
 from ui.ingame import display_ingame
-#from ui.pokedex import display_pokedex
+from ui.pokedex import display_pokedex
 #from ui.pokelist import display_pokelist
 
 import pygame
@@ -51,6 +53,11 @@ class Game:
         self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (120, 200), (579, 88))
         
         self.button_intro = UIElement('test', 0, 0, 800, 450)
+        
+        self.open_json = Json().load_json
+        self.save_json = Json().save_json
+
+        
 
         ##Second Screen - Main Menu
         # self.button_new_game = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
@@ -137,7 +144,7 @@ class Game:
             
             match self.game_state:
                 case "intro":
-                    display_intro(self)    # first state
+                    display_ingame(self)    # first state
 
                 case "main_menu":
                     display_main_menu()    # will return game.state depending on button clicked
