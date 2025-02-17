@@ -3,8 +3,8 @@ def display_pokelist(game):
     
     game.background.image_path = "media/ui-elements/box_background.png"
     game.background.draw(game)
-    game.open_json("pokedex")
-    pokedex_data = game.open_json('pokedex')
+    game.open_json("pokemon")
+    pokedex_data = game.open_json('pokemon')
     game.button_pokedex.draw(game)
     
     x, y = 50, 50
