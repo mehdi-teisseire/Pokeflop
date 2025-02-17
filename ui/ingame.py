@@ -44,13 +44,14 @@ def display_attacking_text(game):
 
 
 def display_moov_animation(game):
-    #placeholder/test for animation
+    #TODO placeholder/test for animation
     print("Mooving!")
     from pygame.time import wait
     wait(1000)
     print("Finished mooving!")
     
 def display_damage_text(game):
+    #TODO placeholder 
     print(f"{game.battle.turn_pkmn.name} has inflicted {game.battle.moov_damage} damage to {game.battle.opponent_pkmn.name}!"
 )
 
