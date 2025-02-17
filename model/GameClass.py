@@ -3,15 +3,15 @@ from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
 from model.battle import Battle
 from model.JsonClass import Json
+
 from ui.ui import UIElement, Text, ImageElement
 from ui.intro import display_intro
-
-#from ui.main_menu import display_main_menu
-#from ui.save_slots import new_game, load_game
 from ui.main_menu import display_main_menu
+from ui.save_slots import new_game, load_game
+from ui.game_menu import display_game_menu
 from ui.ingame import display_ingame
 from ui.pokedex import display_pokedex
-#from ui.pokelist import display_pokelist
+from ui.pokelist import display_pokelist
 
 import pygame
 
@@ -40,13 +40,6 @@ class Game:
             {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','pkmn_type':'normal','life':100,'attack':48,'defence':43,'moov1':'Tackle','moov2':'Quick Attack'}
             ]
 
-        ##Colors - Last number is alpha
-        #self.TRANSPARENT = pygame.Color(0,0,0,0)
-        #CUSTOM_BLUE = (0,0,0,0)
-        #CUSTOM_YELLOW = (0,0,0,0)
-        #ETC = (0,0,0,0)
-
-
         #All game button
         ##First Screen - Intro
         self.background = ImageElement("media/ui-elements/background.png", (0, 0), (800, 450))
@@ -57,13 +50,29 @@ class Game:
         self.open_json = Json().load_json
         self.save_json = Json().save_json
 
-        
-
         ##Second Screen - Main Menu
-        # self.button_new_game = Button(pokemon.moov1, 100, 300, 200, 50) # should be changed
-        # self.button_load_game = Button(pokemon.moov2, 400, 300, 200, 50)
+        self.button_main1 = UIElement('new_game', 300, 100, 200, 50)
+        self.button_main2 = UIElement('load_game', 300, 200, 200, 50)
+        self.button_main3 = UIElement('exit', 300, 300, 200, 50)
+        
+        self.background_button_main1 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 100), (200, 50))
+        self.background_button_main2 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 200), (200, 50))
+        self.background_button_main3 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 300), (200, 50))
+
+        self.button_main_menu = [self.button_main1, self.button_main2, self.button_main3]
 
         ##Third Screen - Game Menu
+        self.button_game1 = UIElement('ingame', 300, 100, 200, 50)
+        self.button_game2 = UIElement('pokedex', 300, 200, 200, 50)
+        self.button_game3 = UIElement('pokemon', 300, 300, 200, 50)
+        self.button_game4 = UIElement('main_menu', 300, 400, 200, 50)
+        
+        self.background_button_game1 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 100), (200, 50))
+        self.background_button_game2 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 200), (200, 50))
+        self.background_button_game3 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 300), (200, 50))
+        self.background_button_game4 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 400), (200, 50))
+        
+        self.button_game_menu = [self.button_game1, self.button_game2, self.button_game3, self.button_game4]
 
         ##Fourth Screen - Ingame      
         self.background_button_moov1 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (100, 300), (250, 75))
@@ -74,12 +83,9 @@ class Game:
         self.button_moov2 = UIElement('moov2', 550, 200, 150, 50)
 
         self.button_moov = [self.button_moov1, self.button_moov2]
-        
-
         ##Fourth Screen - Pokedex
         self.background_pokedex = ImageElement("media/ui-elements/button.png", (130, 350), (536, 91))
         ##Fifth Screen - Pokelist
-
 
     def start(self):
         """Initialise the game and start the main loop"""
@@ -89,7 +95,24 @@ class Game:
 
         pygame.init()
 
+        ##Colors - Last number is alpha
+        #self.TRANSPARENT = pygame.Color(0,0,0,0)
+        #CUSTOM_BLUE = (0,0,0,0)
+        #CUSTOM_YELLOW = (0,0,0,0)
+        #ETC = (0,0,0,0)
+
         # Texts are declared here. Have to init fonts to create them (or declare font separateley)
+       
+        ## Main Menu Text
+        self.text_button_main1 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
+        self.text_button_main2 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+        self.text_button_main3 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+       
+        ## Game Menu Text
+        self.text_button_game1 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
+        self.text_button_game2 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+        self.text_button_game3 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
+        self.text_button_game4 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
        
         ## Ingame Text
         self.life_trainer_text = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
@@ -97,7 +120,6 @@ class Game:
        
         self.text_button_moov1 = Text("freesansbold.ttf", 36, "", (0,0,0), 150, 400)
         self.text_button_moov2 = Text("freesansbold.ttf", 36, "", (0,0,0), 550, 400)
-
 
         self.main_loop()
      
@@ -109,9 +131,18 @@ class Game:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     #----- Intro screen events
                     if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
-                        self.game_state = "ingame"
+                        self.game_state = "main_menu"
                     #-----
-
+                    #----- Main Menu screen events
+                    for button in self.button_main_menu:
+                        if self.game_state == "main_menu" and button.is_clicked(pygame.mouse.get_pos()):
+                            self.game_state = button.label
+                    #-----
+                    #----- Game Menu screen events
+                    for button in self.button_game_menu:
+                        if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
+                            self.game_state = button.label
+                    #-----
                     #----- Ingame screen events
                     for button in self.button_moov:
                         if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
@@ -127,36 +158,25 @@ class Game:
                                 self.game_state = "intro"
                             self.battle.change_turn()
                     #-----
-                    
-                    # if self.game_state == "ingame" and self.button_moov1.is_clicked(pygame.mouse.get_pos()):
-                    #     self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn, self.text_button_moov1.text)
-                    #     self.battle.change_turn()
-                    # if self.game_state == "ingame" and self.button_moov2.is_clicked(pygame.mouse.get_pos()):
-                    #     self.battle.turn_pkmn.attacking(self.battle.opponent_pkmn, self.text_button_moov2.text)
-                        
-                    #     if self.battle.opponent_pkmn_ko():
-                    #         pygame.time.wait(1000)
-                    #         self.game_state = "intro"
-                            
-                    #     self.battle.change_turn()
 
             self.screen.fill("black")
             
             match self.game_state:
                 case "intro":
-                    display_pokedex(self)    # first state
+                    display_intro(self)    # first state
 
                 case "main_menu":
-                    display_main_menu()     #will change game state to "game_menu"
+                    display_main_menu(self)    # will return game.state depending on button clicked
+
                 case "new_game":
                     #trainer.give_first_pokemon() -> in new_game()
-                    new_game()      #will change game state to "game_menu"
+                    new_game(self)      #will change game state to "game_menu"
 
                 case "load_game":
-                    load_game()     #will change game state to "game_menu"
+                    load_game(self)     #will change game state to "game_menu"
 
                 case "game_menu":
-                    display_game_menu()
+                    display_game_menu(self)
 
                 case "ingame":
                     if not self.battle_start:
@@ -164,11 +184,14 @@ class Game:
                     display_ingame(self)  #from game menu and return to it
 
                 case "pokedex":
-                    display_pokedex()   #from game menu and return to it
+                    display_pokedex(self)   #from game menu and return to it
 
                 case "pokelist":
                     #enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE) -> dans display_pokelist, "add" boutton
-                    display_pokelist()  #from game menu and return to it
+                    display_pokelist(self)  #from game menu and return to it
+
+                case _:
+                    pygame.quit()
 
             pygame.display.flip()
             self.clock.tick(60)
@@ -186,21 +209,3 @@ class Game:
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
-        
-        # running = True
-        # battle = Battle(trainer, enemy)
-
-        # while True:
-        #     battle.choosed_move = battle.choose_move()
-        #     if battle.has_missed(): #maybe go into pokemon class
-        #         print("missed!")
-        #     else:
-        #         battle.attack_damage() #maybe go into pokemon class
-        #         running = battle.check_health_points()
-        #     battle.change_turn()
-
-        #move selected self.choosed_move
-        #accuracy check if has_missed() : you missed, else:
-        #damage_calc attack_damage()
-        #check 0 hp check_health_points()
-        #turn change change_turn()
