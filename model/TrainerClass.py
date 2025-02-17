@@ -11,9 +11,10 @@ class Trainer(Json):
         self.pokedex = [] # Only contain Objects
         self.stats = []
 
-    def give_first_pokemon(self):
+    def give_first_pokemon(self, pkmn_list, moov_list):
+        #TODO change to adapt for first pokemon choice
         if not self.pokedex:
-            self.add_pokemon(self.convert_pokemon_to_obj(POKEMON_TEMPLATE[0]))
+            self.add_pokemon(self.convert_pokemon_to_obj(pkmn_list[0], moov_list))
 
     def add_pokemon(self, pokemon):
         """To add a pokemon when player doesn't have one."""
@@ -26,21 +27,21 @@ class Trainer(Json):
         self.pokedex.remove(pokemon)
         self.update_json()
 
-    def convert_pokemon_to_obj(self, pokemon):
-        return Pokemon(name=pokemon["name"], sprite=pokemon["sprite"], pkmn_type=pokemon["pkmn_type"],
+    def convert_pokemon_to_obj(self, pokemon, moov_list):
+        return Pokemon(name=pokemon["name"], sprite=pokemon["sprite"], type=pokemon["type"],
                        attack=pokemon["attack"], defence=pokemon["defence"],
-                       moov1=pokemon["moov1"], moov2=pokemon["moov2"],
+                       moov1=pokemon["moov"][0], moov2=pokemon["moov"][1], moov_list=moov_list,
                        life=pokemon["life"])
 
     def update_json(self):
         """Update the json from the pokedex list"""
         self.save_json(self.pokedex, "pokedex")
 
-    def load_pokedex(self):
+    def load_pokedex(self, moov_list):
         """When loading a save, add all saved pokemon on trainer object"""
         pokedex = self.load_json("pokedex")
         for pokemon in pokedex:
-            self.pokedex.append(self.convert_pokemon_to_obj(pokemon))
+            self.pokedex.append(self.convert_pokemon_to_obj(pokemon, moov_list))
 
     def already_owned(self, pokemon):
         for pokemon_pokedex in self.pokedex:
@@ -53,7 +54,7 @@ class Trainer(Json):
 #check if owned but for list (obsolete)
 for pokemon in pokemon_list:
     try:
-        if pokemon["name"] == choosed_pokemon:
+        if pokemon["name"] == chosen_pokemon:
             already_owned = check_if_owned(pokemon)
             if not already_owned:
                 new_pokemon = Pokemon(pokemon["name"], pokemon["stats"])

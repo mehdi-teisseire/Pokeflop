@@ -6,3 +6,8 @@ Make an event in only one condition that gets the button text (= move you want t
 for multiple loops: just return the function to "game.state"; smaller loops may avoid memory leak?
 
 import strictly what it is used; maybe it can reduce lags?
+
+put trainer obj in turn instead and rename turn to player turn or something
+
+healing doesn't work
+append move in json makes multiple moves (see json)

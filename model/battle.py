@@ -21,11 +21,23 @@ class Battle:
         self.opponent = self.enemy_name
         self.opponent_pkmn = self.enemy_pokemon
 
-        self.mooving = False
-        self.moov_missed = False
-        self.moov_damage = 0
-        # self.chosen_move = "" #would be a return from the button with the move name
+        self.chosen_moov = ""
         
+    def finish_turn(self, game):        
+
+        #TODO make it so the display can keep up (should check after the display)
+        if self.opponent_pokemon_ko():
+            print("Battle Finished! Return to main menu")
+            game.enemy.give_pokemon(game.trainer)
+            # pygame.time.wait(1000)
+            game.battle_start = False
+            game.game_state = "game_menu"
+        
+        #TODO make it so the display can keep up (change turn should happen after the display, not here)
+        
+        game.battle.chosen_moov = ''
+        self.change_turn()
+
 
     def change_turn(self):
         if self.turn == self.trainer_name:
@@ -40,13 +52,16 @@ class Battle:
             self.turn_pkmn = self.trainer_pokemon
 
             self.opponent = self.enemy_name
-            self.opponent_pkmn = self.enemy_pokemon
-    
-    def choose_move(self, move):
-        if self.turn == self.enemy_name:
-            return choice([self.turn_pkmn.moov1, self.turn_pkmn.moov2]) 
+            self.opponent_pkmn = self.enemy_pokemon 
+        
+    def ia_choose_moov(self, game):
+        moov1_dmg = self.turn_pkmn.attack_damage(game.battle.opponent_pkmn, self.turn_pkmn.moov[0].type)
+        moov2_dmg = self.turn_pkmn.attack_damage(game.battle.opponent_pkmn, self.turn_pkmn.moov[1].type)
+        if moov1_dmg < moov2_dmg:
+            return self.turn_pkmn.moov[1]
         else:
-            return move     
+            return self.turn_pkmn.moov[0]
+    
 
     # To check if Pokemon is alive or not
     def opponent_pokemon_ko(self):

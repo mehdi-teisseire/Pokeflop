@@ -1,6 +1,5 @@
 from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
-from model.pokemon import Pokemon
 from model.battle import Battle
 from model.JsonClass import Json
 
@@ -31,13 +30,23 @@ class Game:
 
         #Constants
         #can make a separate file and import it (list would be long right?) - constant.py?
+        self.MOOV_TEMPLATE = [
+            {'name':'Tackle','type':'normal','accuracy':95},
+            {'name':'Water Gun','type':'water','accuracy':80},
+            {'name':'Thunder','type':'electric','accuracy':100},
+            {'name':'Leaf','type':'grass','accuracy':60},
+            {'name':'Flamethrower','type':'fire','accuracy':30},
+            {'name':'Gust','type':'normal','accuracy':95},
+            {'name':'Quick Attack','type':'normal','accuracy':100}
+            ]
+        
         self.POKEMON_TEMPLATE = [
-            {'name':'Squirtle','sprite':'media/Pokemons-assets/front/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moov1':'Charge','moov2':'Water gun'},
-            {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','pkmn_type':'electric','life':100,'attack':60,'defence':45,'moov1':'Charge','moov2':'Thunder'},
-            {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','pkmn_type':'grass','life':100,'attack':40,'defence':50,'moov1':'Charge','moov2':'Leaf'},
-            {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','pkmn_type':'fire','life':100,'attack':70,'defence':30,'moov1':'Charge','moov2':'Flamethrower'},
-            {'name':'Pidgey','sprite':'media/pokemon_assets/Pidgey_back.png','pkmn_type':'normal','life':100,'attack':45,'defence':45,'moov1':'Tackle','moov2':'Gust'},
-            {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','pkmn_type':'normal','life':100,'attack':48,'defence':43,'moov1':'Tackle','moov2':'Quick Attack'}
+            {'name':'Squirtle','sprite':'media/Pokemons-assets/front/Squirtle_back.png','type':'water','life':100,'attack':50,'defence':50,'moov':['Tackle','Water Gun']},
+            {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','type':'electric','life':100,'attack':60,'defence':45,'moov':['Tackle','Thunder']},
+            {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','type':'grass','life':100,'attack':40,'defence':50,'moov':['Tackle','Leaf']},
+            {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','type':'fire','life':100,'attack':70,'defence':30,'moov':['Tackle','Flamethrower']},
+            {'name':'Pidgey','sprite':'media/pokemon_assets/Pidgey_back.png','type':'normal','life':100,'attack':45,'defence':45,'moov':['Tackle','Gust']},
+            {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','type':'normal','life':100,'attack':48,'defence':43,'moov':['Tackle','Quick Attack']}
             ]
 
         #All game button
@@ -47,8 +56,8 @@ class Game:
         
         self.button_intro = UIElement('main_menu', 0, 0, 800, 450)
         
-        self.open_json = Json().load_json
-        self.save_json = Json().save_json
+        # self.open_json = Json().load_json
+        # self.save_json = Json().save_json
 
         ##Second Screen - Main Menu
         self.button_main1 = UIElement('new_game', 300, 100, 200, 50)
@@ -136,8 +145,7 @@ class Game:
                     display_main_menu(self)    # will return game.state depending on button clicked
 
                 case "new_game":
-                    #trainer.give_first_pokemon() -> in new_game()
-                    new_game(self)      #will change game state to "game_menu"
+                     new_game(self)      #will change game state to "game_menu"
 
                 case "load_game":
                     load_game(self)     #will change game state to "game_menu"
@@ -168,10 +176,10 @@ class Game:
     def battle_ini(self):
         """Attributes that needs to be set only once (before battle) are here"""
         #----TEMP----
-        self.enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE)
+        self.enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE[0], self.MOOV_TEMPLATE)
         #------------
         self.enemy.choose_pokemon()
-        self.trainer.load_pokedex() #It's for healink!!
+        self.trainer.load_pokedex(self.MOOV_TEMPLATE) #It's for healink!!
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
@@ -183,7 +191,7 @@ class Game:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 #----- Intro screen events
                 if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
-                    self.game_state = button.label
+                    self.game_state = self.button_intro.label
                 #-----
                 #----- Main Menu screen events
                 for button in self.button_main_menu:
@@ -199,14 +207,10 @@ class Game:
                 for button in self.button_moov:
                     if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
                         # TODO maybe refractor this into ingame.py? I don't know
-                        self.battle.mooving = True
-                        self.battle.moov_missed = self.battle.turn_pkmn.attacking(self)
-                        self.battle.mooving = False
-                        if self.battle.opponent_pokemon_ko():
-                            print("Battle Finished! Return to main menu")
-                            self.enemy.give_pokemon(self.trainer)
-                            pygame.time.wait(1000)
-                            self.battle_start = False
-                            self.game_state = "game_menu"
-                        self.battle.change_turn()
+                        for moov in self.battle.turn_pkmn.moov:
+                            if moov.name == button.label: ###
+                                self.battle.chosen_moov = moov
+                        #TODO should just change chosen_move and chosen_move back to False after the attack
+                        #TODO Begin_move should happen in the display
+                        
                 #-----

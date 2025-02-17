@@ -7,20 +7,20 @@ class EnemyTrainer(Trainer):
         self.pokemon = [] # List of possible pokemon enemy can choose from 
 
 
-    def add_pokemon_to_list(self, pokemon_template):
+    def add_pokemon_to_list(self, pokemon, moov_list):
         """To add a pokemon from the template to pokemon list."""
-        self.pokemon.append(pokemon_template[0])
+        self.pokemon.append(self.convert_pokemon_to_obj(pokemon, moov_list))
         self.update_json()
 
-    def remove_pokemon_to_list(self, pokemon_template):
+    def remove_pokemon_to_list(self, pokemon, moov_list):
         """To remove a pokemon from the pokemon list."""
-        self.pokemon.remove(pokemon_template[0]) 
+        self.pokemon.remove(self.convert_pokemon_to_obj(pokemon, moov_list)) 
         self.update_json()
         
     def choose_pokemon(self):
         """Choose a pokemon from the pokemon_list and add it to battle"""
         pokemon = self.pokemon[0]
-        self.pokedex.append(self.convert_pokemon_to_obj(pokemon)) # Will make it random
+        self.pokedex.append(pokemon) # Will make it random
 
     def remove_pokemon(self):
         """To remove defeated pokemon from our pokedex. pokemon is an object"""
@@ -37,13 +37,7 @@ class EnemyTrainer(Trainer):
         """Update the json from the pokedex list"""
         self.save_json(self.pokemon, "pokemon")
 
-    def ia_choose_move(self, game):
-        moov1_dmg = self.pokedex[0].attack_damage(game.battle.opponent_pkmn, self.pokedex[0].moov_type_1)
-        moov2_dmg = self.pokedex[0].attack_damage(game.battle.opponent_pkmn, self.pokedex[0].moov_type_2)
-        if moov1_dmg < moov2_dmg:
-            return self.pokedex[0].moov2
-        else:
-            return self.pokedex[0].moov1
+
 
 """
 
