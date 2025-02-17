@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, uniform
 from model.moov import Moov
 from model.multiplier import type_multiplier
 class Pokemon (Moov): 
@@ -37,7 +37,7 @@ class Pokemon (Moov):
     def attack_damage(self, battle, opponent):
         '''Calculate the damage of an attack'''
         multi = type_multiplier[(self.pkmn_type, opponent.pkmn_type)]
-        damage = (self.attack * self.level * 0.2 - opponent.defence * opponent.level * 0.05) * multi
+        damage = round((self.attack * self.level * 0.2 - opponent.defence * opponent.level * 0.05) * multi * uniform(0.8, 1.2))
         opponent.life -= damage
         battle.moov_damage = damage
         # return f"{self.name} has inflicted {damage} damage to {opponent.name}!"
@@ -64,6 +64,7 @@ class Pokemon (Moov):
 
     def attacking(self, game): 
         if self.has_missed(game.text_button_moov1.text):
+            #TODO placeholder for miss message
             print('Calculation: Move missed!')
             return True
         else:

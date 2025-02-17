@@ -78,7 +78,6 @@ class Game:
         self.background_button_moov1 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (100, 300), (250, 75))
         self.background_button_moov2 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (450, 300), (250, 75))
         
-        
         self.button_moov1 = UIElement('moov1', 150, 200, 150, 50)
         self.button_moov2 = UIElement('moov2', 550, 200, 150, 50)
 
@@ -125,39 +124,7 @@ class Game:
      
     def main_loop(self):
         while self.running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    #----- Intro screen events
-                    if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
-                        self.game_state = "main_menu"
-                    #-----
-                    #----- Main Menu screen events
-                    for button in self.button_main_menu:
-                        if self.game_state == "main_menu" and button.is_clicked(pygame.mouse.get_pos()):
-                            self.game_state = button.label
-                    #-----
-                    #----- Game Menu screen events
-                    for button in self.button_game_menu:
-                        if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
-                            self.game_state = button.label
-                    #-----
-                    #----- Ingame screen events
-                    for button in self.button_moov:
-                        if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
-                            # TODO maybe refractor this into ingame.py? I don't know
-                            self.battle.mooving = True
-                            self.battle.moov_missed = self.battle.turn_pkmn.attacking(self)
-                            self.battle.mooving = False
-                            if self.battle.opponent_pokemon_ko():
-                                print("Battle Finished! Return to main menu")
-                                self.enemy.give_pokemon(self.trainer)
-                                pygame.time.wait(1000)
-                                self.battle_start = False
-                                self.game_state = "intro"
-                            self.battle.change_turn()
-                    #-----
+            self.events()
 
             self.screen.fill("black")
             
@@ -209,3 +176,38 @@ class Game:
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
+
+    def events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                #----- Intro screen events
+                if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
+                    self.game_state = "main_menu"
+                #-----
+                #----- Main Menu screen events
+                for button in self.button_main_menu:
+                    if self.game_state == "main_menu" and button.is_clicked(pygame.mouse.get_pos()):
+                        self.game_state = button.label
+                #-----
+                #----- Game Menu screen events
+                for button in self.button_game_menu:
+                    if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
+                        self.game_state = button.label
+                #-----
+                #----- Ingame screen events
+                for button in self.button_moov:
+                    if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
+                        # TODO maybe refractor this into ingame.py? I don't know
+                        self.battle.mooving = True
+                        self.battle.moov_missed = self.battle.turn_pkmn.attacking(self)
+                        self.battle.mooving = False
+                        if self.battle.opponent_pokemon_ko():
+                            print("Battle Finished! Return to main menu")
+                            self.enemy.give_pokemon(self.trainer)
+                            pygame.time.wait(1000)
+                            self.battle_start = False
+                            self.game_state = "intro"
+                        self.battle.change_turn()
+                #-----

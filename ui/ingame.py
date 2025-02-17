@@ -38,10 +38,9 @@ def display_attack_choice(game):
     game.button_moov1.draw(game.screen, game.background_button_moov1)
     game.button_moov2.draw(game.screen, game.background_button_moov2)
 
-
 def display_attacking_text(game):
+    #TODO text for attacking text (pokemon uses move)
     game.text_attacking()
-
 
 def display_moov_animation(game):
     #TODO placeholder/test for animation
@@ -51,9 +50,8 @@ def display_moov_animation(game):
     print("Finished mooving!")
     
 def display_damage_text(game):
-    #TODO placeholder 
-    print(f"{game.battle.turn_pkmn.name} has inflicted {game.battle.moov_damage} damage to {game.battle.opponent_pkmn.name}!"
-)
+    #TODO placeholder for damage text
+    print(f"{game.battle.turn_pkmn.name} has inflicted {game.battle.moov_damage} damage to {game.battle.opponent_pkmn.name}!")
 
 def display_moov_missed_text(game):
     print("UI: Show missed message!")
