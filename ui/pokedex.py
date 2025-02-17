@@ -36,9 +36,9 @@ def display_pokedex(game):
             game.screen.blit(defense_text, (500,390))
             life_text = font.render(f"Life: {pokemon['life']}", True, (255, 255, 255))
             game.screen.blit(life_text, (500,360))
-            moov1_text = font.render(f"Moov1: {pokemon['moov1']}", True, (255, 255, 255))
+            moov1_text = font.render(f"Moov1: {pokemon['moov'][0]}", True, (255, 255, 255))
             game.screen.blit(moov1_text, (310,390))
-            moov2_text = font.render(f"Moov2: {pokemon['moov2']}", True, (255, 255, 255))
+            moov2_text = font.render(f"Moov2: {pokemon['moov'][1]}", True, (255, 255, 255))
             game.screen.blit(moov2_text, (310,410))
             
         x += spacing

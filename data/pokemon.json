@@ -4,27 +4,10 @@
         "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
         "type": "water",
         "level": 5,
-        "life": -19,
-        "attack": 50,
-        "defence": 50,
-        "moov": [
-            "Tackle",
-            "Water Gun",
-            "Tackle",
-            "Water Gun"
-        ]
-    },
-    {
-        "name": "Squirtle",
-        "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
-        "type": "water",
-        "level": 5,
         "life": 100,
         "attack": 50,
         "defence": 50,
         "moov": [
-            "Tackle",
-            "Water Gun",
             "Tackle",
             "Water Gun"
         ]

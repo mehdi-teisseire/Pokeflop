@@ -57,8 +57,7 @@ class Game:
         
         self.button_intro = UIElement('main_menu', 0, 0, 800, 450)
         
-        # self.open_json = Json().load_json
-        # self.save_json = Json().save_json
+        
 
         ##Second Screen - Main Menu
         self.button_main1 = UIElement('new_game', 300, 100, 200, 50)
@@ -95,6 +94,8 @@ class Game:
         ##Fourth Screen - Pokedex
         self.background_pokedex = ImageElement("media/ui-elements/button.png", (130, 350), (536, 91))
         self.button_pokedex = UIElement('game_menu', 130, 350, 536, 91)
+        self.open_json = Json().load_json
+        self.save_json = Json().save_json
         ##Fifth Screen - Pokelist
 
     def start(self):
