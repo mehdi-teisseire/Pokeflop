@@ -168,7 +168,6 @@ class Game:
     def battle_ini(self):
         """Attributes that needs to be set only once (before battle) are here"""
         #----TEMP----
-        self.trainer.add_pokemon(self.trainer.convert_pokemon_to_obj(self.POKEMON_TEMPLATE[0]))
         self.enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE)
         #------------
         self.enemy.choose_pokemon()

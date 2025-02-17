@@ -1,7 +1,7 @@
 [
     {
         "name": "Squirtle",
-        "sprite": "media/pokemon_assets/Squirtle_back.png",
+        "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
         "pkmn_type": "water",
         "life": 100,
         "attack": 50,
