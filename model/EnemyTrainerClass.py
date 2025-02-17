@@ -9,12 +9,13 @@ class EnemyTrainer(Trainer):
 
     def add_pokemon_to_list(self, pokemon_template):
         """To add a pokemon from the template to pokemon list."""
-        self.pokemon.append(pokemon_template[0]) 
+        self.pokemon.append(pokemon_template[0])
+        self.update_json()
 
     def remove_pokemon_to_list(self, pokemon_template):
         """To remove a pokemon from the pokemon list."""
         self.pokemon.remove(pokemon_template[0]) 
-
+        self.update_json()
         
     def choose_pokemon(self):
         """Choose a pokemon from the pokemon_list and add it to battle"""
@@ -31,6 +32,10 @@ class EnemyTrainer(Trainer):
         if not trainer.already_owned(self.pokedex[0]):
             trainer.add_pokemon(self.pokedex[0])
         self.remove_pokemon()
+
+    def update_json(self):
+        """Update the json from the pokedex list"""
+        self.save_json(self.pokemon, "pokemon")
 
 """
 

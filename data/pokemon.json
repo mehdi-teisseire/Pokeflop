@@ -1,26 +1,12 @@
 [
     {
-        "name": "Bulbosaur",
-        "stats": [
-            1,
-            2,
-            3
-        ]
-    },
-    {
         "name": "Squirtle",
-        "stats": [
-            3,
-            2,
-            1
-        ]
-    },
-    {
-        "name": "Charizard",
-        "stats": [
-            2,
-            1,
-            3
-        ]
+        "sprite": "media/pokemon_assets/Squirtle_back.png",
+        "pkmn_type": "water",
+        "life": 100,
+        "attack": 50,
+        "defence": 50,
+        "moov1": "Charge",
+        "moov2": "Water gun"
     }
 ]
