@@ -32,7 +32,7 @@ class Game:
         #Constants
         #can make a separate file and import it (list would be long right?) - constant.py?
         self.POKEMON_TEMPLATE = [
-            {'name':'Squirtle','sprite':'media/pokemon_assets/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moov1':'Charge','moov2':'Water gun'},
+            {'name':'Squirtle','sprite':'media/Pokemons-assets/front/Squirtle_back.png','pkmn_type':'water','life':100,'attack':50,'defence':50,'moov1':'Charge','moov2':'Water gun'},
             {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','pkmn_type':'electric','life':100,'attack':60,'defence':45,'moov1':'Charge','moov2':'Thunder'},
             {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','pkmn_type':'grass','life':100,'attack':40,'defence':50,'moov1':'Charge','moov2':'Leaf'},
             {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','pkmn_type':'fire','life':100,'attack':70,'defence':30,'moov1':'Charge','moov2':'Flamethrower'},
@@ -83,7 +83,7 @@ class Game:
 
         self.button_moov = [self.button_moov1, self.button_moov2]
         ##Fourth Screen - Pokedex
-
+        self.background_pokedex = ImageElement("media/ui-elements/button.png", (130, 350), (536, 91))
         ##Fifth Screen - Pokelist
 
     def start(self):
