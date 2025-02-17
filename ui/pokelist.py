@@ -27,7 +27,7 @@ def display_pokelist(game):
             font = pygame.font.Font(None, 24)
             level_text = font.render(f"Level: {pokemon['level']}", True, (0, 0, 0))
             game.screen.blit(level_text, (145, 360))
-            pkmn_type_text = font.render(f"Type: {pokemon['pkmn_type']}", True, (0, 0, 0))
+            pkmn_type_text = font.render(f"Type: {pokemon['type']}", True, (0, 0, 0))
             game.screen.blit(pkmn_type_text, (145, 390))
             name_text = font.render(f"Name: {pokemon['name']}", True, (255, 255, 255))
             game.screen.blit(name_text, (310,360))

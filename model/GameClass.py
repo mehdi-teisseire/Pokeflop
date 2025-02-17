@@ -64,9 +64,9 @@ class Game:
         self.button_main2 = UIElement('load_game', 300, 200, 200, 50)
         self.button_main3 = UIElement('exit', 300, 300, 200, 50)
         
-        self.background_button_main1 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 100), (200, 50))
-        self.background_button_main2 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 200), (200, 50))
-        self.background_button_main3 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 300), (200, 50))
+        self.background_button_main1 = ImageElement("media/ui-elements/button.png", (300, 100), (200, 50))
+        self.background_button_main2 = ImageElement("media/ui-elements/button.png", (300, 200), (200, 50))
+        self.background_button_main3 = ImageElement("media/ui-elements/button.png", (300, 300), (200, 50))
 
         self.button_main_menu = [self.button_main1, self.button_main2, self.button_main3]
 
@@ -76,16 +76,16 @@ class Game:
         self.button_game3 = UIElement('pokemon', 300, 300, 200, 50)
         self.button_game4 = UIElement('main_menu', 300, 400, 200, 50)
         
-        self.background_button_game1 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 100), (200, 50))
-        self.background_button_game2 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 200), (200, 50))
-        self.background_button_game3 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 300), (200, 50))
-        self.background_button_game4 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (300, 400), (200, 50))
+        self.background_button_game1 = ImageElement("media/ui-elements/button.png", (300, 100), (200, 50))
+        self.background_button_game2 = ImageElement("media/ui-elements/button.png", (300, 200), (200, 50))
+        self.background_button_game3 = ImageElement("media/ui-elements/button.png", (300, 300), (200, 50))
+        self.background_button_game4 = ImageElement("media/ui-elements/button.png", (300, 400), (200, 50))
         
         self.button_game_menu = [self.button_game1, self.button_game2, self.button_game3, self.button_game4]
 
         ##Fourth Screen - Ingame      
-        self.background_button_moov1 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (100, 300), (250, 75))
-        self.background_button_moov2 = ImageElement("media/ui-elements/MDPokemonBattle_Notextbox.png", (450, 300), (250, 75))
+        self.background_button_moov1 = ImageElement("media/ui-elements/button.png", (100, 300), (250, 75))
+        self.background_button_moov2 = ImageElement("media/ui-elements/button.png", (450, 300), (250, 75))
         
         self.button_moov1 = UIElement('moov1', 150, 200, 150, 50)
         self.button_moov2 = UIElement('moov2', 550, 200, 150, 50)
