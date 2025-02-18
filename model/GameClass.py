@@ -53,7 +53,7 @@ class Game:
         self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (180, 300), (869, 132))  
         
         self.button_intro = UIElement('main_menu', 0, 0, 1200, 675)
-        self.rectangle = ImageElement("media/ui-elements/RectangleSettings.png", (280, 200),(668,467))
+        self.rectangle = ImageElement("media/ui-elements/RectangleSettings.png", (280, 200),(607,424))
         
         ## Second Screen - Main Menu
         self.button_main1 = UIElement('new_game', 450, 150, 300, 75)  

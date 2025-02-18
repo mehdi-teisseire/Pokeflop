@@ -1,7 +1,10 @@
 [
     {
         "name": "Squirtle",
-        "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
+        "sprite": [
+            "media/pokemon_assets/Squirtle_front.png",
+            "media/pokemon_assets/Squirtle_back.png"
+        ],
         "type": "water",
         "level": 5,
         "life": 120,
@@ -14,7 +17,10 @@
     },
     {
         "name": "Rattata",
-        "sprite": "media/pokemon_assets/Rattata_back.png",
+        "sprite": [
+            "media/pokemon_assets/Rattata_front.png",
+            "media/pokemon_assets/Rattata_back.png"
+        ],
         "type": "normal",
         "level": 5,
         "life": 50,
@@ -27,7 +33,10 @@
     },
     {
         "name": "Pikachu",
-        "sprite": "media/pokemon_assets/Pikachu_back.png",
+        "sprite": [
+            "media/pokemon_assets/Pikachu_front.png",
+            "media/pokemon_assets/Pikachu_back.png"
+        ],
         "type": "electric",
         "level": 5,
         "life": 90,
