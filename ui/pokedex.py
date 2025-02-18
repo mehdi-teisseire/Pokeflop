@@ -10,7 +10,7 @@ def display_pokedex(game):
     spacing = 50
     
     for pokemon in pokedex_data:
-        sprite_path = pokemon['sprite']
+        sprite_path = pokemon['sprite'][0]
         sprite = pygame.image.load(sprite_path)
         game.screen.blit(sprite, (x, y))
         x += spacing
