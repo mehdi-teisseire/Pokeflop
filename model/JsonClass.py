@@ -25,18 +25,19 @@ class Json:
         """Convert moovs objects in string to stock in json"""
         moov_list = []
         for object in object_list:
-            for moov in object.moov:
-                moov_list.append(moov.name)
+            moov_list.append(object.name)
+        #     for moov in object.moov:
+        #         moov_list.append(moov.name)
         return moov_list
     
     def create_temp_list(self, object_list):
         """Create temp list to avoid editing real object (may have another way to not get a reference)"""
-        #TODO have to not paste the erference (copy.copy())
         temp_list = []
         for object in object_list:
             temp_list.append(copy.copy(object))
             
         for temp_object in temp_list:
-            temp_object.moov = self.convert_moovs(object_list)
+            # temp_object.moov = self.convert_moovs(object_list)
+            temp_object.moov = self.convert_moovs(temp_object.moov)
         
         return temp_list

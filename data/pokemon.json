@@ -1,15 +1,15 @@
 [
     {
-        "name": "Squirtle",
-        "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
-        "type": "water",
+        "name": "Pikachu",
+        "sprite": "media/pokemon_assets/Pikachu_back.png",
+        "type": "electric",
         "level": 5,
         "life": 100,
-        "attack": 50,
-        "defence": 50,
+        "attack": 60,
+        "defence": 45,
         "moov": [
             "Tackle",
-            "Water Gun"
+            "Thunder"
         ]
     }
 ]

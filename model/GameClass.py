@@ -175,7 +175,7 @@ class Game:
     def battle_ini(self):
         """Attributes that needs to be set only once (before battle) are here"""
         #----TEMP----
-        self.enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE[0], self.MOOV_TEMPLATE)
+        self.enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE[1], self.MOOV_TEMPLATE)
         #------------
         self.enemy.choose_pokemon()
         self.trainer.load_pokedex(self.MOOV_TEMPLATE) #It's for healink!!

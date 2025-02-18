@@ -2,7 +2,10 @@
 
 put trainer obj in turn instead and rename turn to player turn or something
 
-healing doesn't work
 append move in json makes multiple moves (see json)
-text not centered (text surface size, hitbox surface something something)
+text not centered (text surface size, hitbox surface something something) padding = hitbox size - text size /2 = where text should start (add it to the box position)
 some ui elements are initialized with args and initialized again with method (need to fix repeats)
+
+healing doesn't work -> add max health to fix it. When saved to json, only max hp stays
+
+Need to apply level up and do evolution
