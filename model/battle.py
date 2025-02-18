@@ -3,6 +3,8 @@ from model.multiplier import type_multiplier
 from model.TrainerClass import Trainer
 from model.EnemyTrainerClass import EnemyTrainer
 from model.pokemon import Pokemon
+
+import pygame
 # from utils import Button
 
 
@@ -30,6 +32,8 @@ class Battle:
             print("Battle Finished! Return to main menu")
             game.enemy.give_pokemon(game.trainer)
             # pygame.time.wait(1000)
+            pygame.time.get_ticks() + 1000
+
             game.battle_start = False
             game.game_state = "game_menu"
         
