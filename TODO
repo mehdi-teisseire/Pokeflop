@@ -6,8 +6,17 @@ put trainer obj in turn instead and rename turn to player turn or something
 
 ---text not centered (text surface size, hitbox surface something something) padding = hitbox size - text size /2 = where text should start (add it to the box position)
 
+background coord + (background size - self.size /2)
+
 some ui elements are initialized with args and initialized again with method (need to fix repeats)
 
-healing doesn't work -> add max health to fix it. When saved to json, only max hp stays
 Need to apply level up and do evolution
-add pokemon only if you win
+
+on new game, it appends only if ingame pokedex is empty (normal behavior)
+
+on load game, it append instead of replacing
+
+have to clear the pokedex enemy after battle
+
+on new game -> confirmation message (display on saveslot.py)
+On load game -> multiple saves (display on saveslot.py)

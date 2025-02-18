@@ -29,19 +29,23 @@ class Battle:
         self.chosen_moov = ""
         
     def finish_turn(self, game):        
-
-        #TODO make it so the display can keep up (should check after the display)
         if self.opponent_pokemon_ko():
-            print("Battle Finished! Return to main menu")
-            game.enemy.give_pokemon(game.trainer)
+            print("Battle Finished!")
+            if self.trainer_current_hp <= 0:
+                print("You Lose!!")
+            else:
+                print("You Win!!")
+                gave_pokemon = game.enemy.give_pokemon(game.trainer)
+                if gave_pokemon:
+                    print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! So cool!")
+                else:
+                    print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! Unfortunately, you already had one...")
             # pygame.time.wait(1000)
             pygame.time.get_ticks() + 1000
 
             game.battle_start = False
             game.game_state = "game_menu"
-        
-        #TODO make it so the display can keep up (change turn should happen after the display, not here)
-        
+                
         game.battle.chosen_moov = ''
         self.change_turn()
 
@@ -72,7 +76,7 @@ class Battle:
 
     # To check if Pokemon is alive or not
     def opponent_pokemon_ko(self):
-        if self.enemy_current_hp <= 0:
+        if self.enemy_current_hp <= 0 or self.trainer_current_hp <= 0:
             return True
         return False
     

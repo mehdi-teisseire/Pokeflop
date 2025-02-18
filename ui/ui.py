@@ -44,7 +44,7 @@ class Text:
         self.text = text #Change button label to move name
         self.surface = self.font.render(self.text, True, self.color)
         if background:
-            self.rect = background.scaled_img.get_rect(center=(background.coord[0] + background.size[0] *0.75, background.coord[1] + background.size[1] * 0.75)) #background.size[0] *0.5 background.size[1] *0.5
+            self.rect = background.scaled_img.get_rect(topleft=(background.coord[0] + (background.size[0] - self.surface.get_width()) /2, background.coord[1] + (background.size[1] - self.surface.get_height() )/2)) #background.size[0] *0.5 background.size[1] *0.5
         else:
             self.rect = self.surface.get_rect(topleft=(self.pos_x, self.pos_y))
         game.screen.blit(self.surface, self.rect)
