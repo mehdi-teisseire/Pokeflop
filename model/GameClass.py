@@ -49,13 +49,13 @@ class Game:
 
         # Declaration of all UI Elements
         ## First Screen - Intro
-        self.background = ImageElement("media/ui-elements/background.png", (0, 0), (1200, 675))  # Ajusté à la nouvelle taille
-        self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (180, 300), (869, 132))  # Proportionnellement ajusté
+        self.background = ImageElement("media/ui-elements/background.png", (0, 0), (1200, 675)) 
+        self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (180, 300), (869, 132))  # Proportional to screen
         
-        self.button_intro = UIElement('main_menu', 0, 0, 1200, 675)  # Ajusté à la nouvelle taille
+        self.button_intro = UIElement('main_menu', 0, 0, 1200, 675)  
         
         ## Second Screen - Main Menu
-        self.button_main1 = UIElement('new_game', 450, 150, 300, 75)  # Proportionnellement ajusté
+        self.button_main1 = UIElement('new_game', 450, 150, 300, 75)  # Proportional to screen
         self.button_main2 = UIElement('load_game', 450, 300, 300, 75)
         self.button_main3 = UIElement('exit', 450, 450, 300, 75)
         
