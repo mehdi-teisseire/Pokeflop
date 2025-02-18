@@ -1,17 +1,15 @@
 import pygame
 def display_pokelist(game):
-    
-    game.background.image_path = "media/ui-elements/box_background.png"
-    game.background.draw(game)
-    game.open_json("pokemon")
+    game.background.draw(game.screen, image_path="media/ui-elements/box_background.png")
+    # game.open_json("pokemon")
     pokedex_data = game.open_json('pokemon')
-    game.button_pokedex.draw(game)
+    game.button_pokedex.draw(game.screen)
     
     x, y = 50, 50
     spacing = 50
     
     for pokemon in pokedex_data:
-        sprite_path = pokemon['sprite'][0]
+        sprite_path = pokemon['sprite']["front"]
         sprite = pygame.image.load(sprite_path)
         game.screen.blit(sprite, (x, y))
         x += spacing
@@ -23,7 +21,7 @@ def display_pokelist(game):
     for pokemon in pokedex_data:
         sprite_rect = pygame.Rect(x, y, 40, 40)
         if sprite_rect.collidepoint(mouse_pos):
-            game.background_pokedex.draw(game)
+            game.background_pokedex.draw(game.screen)
             font = pygame.font.Font(None, 24)
             level_text = font.render(f"Level: {pokemon['level']}", True, (0, 0, 0))
             game.screen.blit(level_text, (145, 360))

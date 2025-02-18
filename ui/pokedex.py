@@ -13,8 +13,6 @@ def render_pokemon_info(game, pokemon, font):
         'moov2': (50, 410)
     }
     
-    
-    
     text_items = {
         'level': f"Level: {pokemon['level']}",
         'type': f"Type: {pokemon['type']}",

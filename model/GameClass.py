@@ -98,7 +98,7 @@ class Game:
         self.button_pokedex = Hitbox((195, 525), (804, 136), 'game_menu')
 
         self.box_background = ImageElement("media/ui-elements/box_background.png") 
-        
+
     def start(self):
         """Start the main loop and switch state to change screen"""
         self.main_loop()
@@ -140,6 +140,7 @@ class Game:
     def battle_ini(self):
         """Attributes that needs to be set only once (before battle) are here"""
         #----TEMP----
+        #TODO remove this
         for pokemon in self.POKEMON_TEMPLATE:
             self.enemy.add_pokemon_to_list(pokemon, self.MOOV_TEMPLATE)
         #------------
@@ -169,7 +170,7 @@ class Game:
                         self.game_state = button.label
                 #----- Pokelist screen events
                 
-                if self.game_state == "pokedex" and self.button_pokedex.is_clicked(pygame.mouse.get_pos()):
+                if (self.game_state == "pokedex" or self.game_state == "pokelist") and self.button_pokedex.is_clicked(pygame.mouse.get_pos()):
                     self.game_state = button.label
                 #-----
                 #----- Ingame screen events
