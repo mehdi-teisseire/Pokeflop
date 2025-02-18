@@ -4,10 +4,6 @@
 
 put trainer obj in turn instead and rename turn to player turn or something
 
----text not centered (text surface size, hitbox surface something something) padding = hitbox size - text size /2 = where text should start (add it to the box position)
-
-background coord + (background size - self.size /2)
-
 some ui elements are initialized with args and initialized again with method (need to fix repeats)
 
 Need to apply level up and do evolution
@@ -20,3 +16,7 @@ have to clear the pokedex enemy after battle
 
 on new game -> confirmation message (display on saveslot.py)
 On load game -> multiple saves (display on saveslot.py)
+
+ingame text to change with boxes
+
+sprite in list/dict

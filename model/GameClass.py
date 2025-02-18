@@ -6,7 +6,7 @@ from ui.intro import display_intro
 from ui.main_menu import display_main_menu
 from ui.save_slots import new_game, load_game
 from ui.game_menu import display_game_menu
-from ui.ingame import display_ingame
+from ui.ingame import display_ingame, display_battle_end
 from ui.pokedex import display_pokedex
 from ui.pokelist import display_pokelist
 
@@ -135,9 +135,7 @@ class Game:
                         self.battle_ini()
                     display_ingame(self)
                 case "battle_end":
-                    #TODO Summary of battle, level up and evolution
-                    if pygame.time.get_ticks() >= self.battle_end_time:
-                        self.game_state = "game_menu"
+                    display_battle_end(self)
                 case "pokedex":
                     display_pokedex(self)
                 case "pokemon":
