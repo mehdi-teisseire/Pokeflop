@@ -1,4 +1,5 @@
 def display_main_menu(game):
+    
     game.background.image_path = "media/ui-elements/background.png"
     game.background.draw(game)
     game.background_button_main1.draw(game)

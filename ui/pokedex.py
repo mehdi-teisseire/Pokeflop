@@ -6,7 +6,7 @@ def display_pokedex(game):
     pokedex_data = game.open_json('pokedex')
     game.button_pokedex.draw(game)
     
-    x, y = 50, 50
+    x, y = 580, 100
     spacing = 50
     
     for pokemon in pokedex_data:
@@ -18,15 +18,15 @@ def display_pokedex(game):
             x = 50
             y += spacing
     mouse_pos = pygame.mouse.get_pos()
-    x, y = 50, 50
+    x, y = 580, 100
     for pokemon in pokedex_data:
         sprite_rect = pygame.Rect(x, y, 40, 40)
         if sprite_rect.collidepoint(mouse_pos):
             game.background_pokedex.draw(game)
             font = pygame.font.Font(None, 24)
-            level_text = font.render(f"Level: {pokemon['level']}", True, (0, 0, 0))
-            game.screen.blit(level_text, (145, 360))
-            type_text = font.render(f"Type: {pokemon['type']}", True, (0, 0, 0))
+            level_text = font.render(f"Level: {pokemon['level']}", True, (255, 255, 255))
+            game.screen.blit(level_text, (50, 130))
+            type_text = font.render(f"Type: {pokemon['type']}", True, (255, 255, 255))
             game.screen.blit(type_text, (145, 390))
             name_text = font.render(f"Name: {pokemon['name']}", True, (255, 255, 255))
             game.screen.blit(name_text, (310,360))
