@@ -60,5 +60,8 @@ class Pokemon():
         # return f"{self.moov1} has an accuracy of {self.accuracy_mouv1} and {self.moov2} has an accuracy of {self.accuracy_mouv2}"
 
     def apply_damage(self, game, damage):
-        game.battle.opponent_pkmn.life -= damage
+        if game.battle.opponent == game.battle.enemy_name:
+            game.battle.enemy_current_hp -= damage
+        else:
+            game.battle.trainer_current_hp -= damage
         return damage

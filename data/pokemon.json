@@ -11,5 +11,31 @@
             "Tackle",
             "Thunder"
         ]
+    },
+    {
+        "name": "Pikachu",
+        "sprite": "media/pokemon_assets/Pikachu_back.png",
+        "type": "electric",
+        "level": 5,
+        "life": 100,
+        "attack": 60,
+        "defence": 45,
+        "moov": [
+            "Tackle",
+            "Thunder"
+        ]
+    },
+    {
+        "name": "Pikachu",
+        "sprite": "media/pokemon_assets/Pikachu_back.png",
+        "type": "electric",
+        "level": 5,
+        "life": 100,
+        "attack": 60,
+        "defence": 45,
+        "moov": [
+            "Tackle",
+            "Thunder"
+        ]
     }
 ]

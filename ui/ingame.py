@@ -25,8 +25,8 @@ def display_background(game):
     game.background.draw(game)
 
 def display_battle_interface(game):
-    game.life_trainer_text.draw(game, f"{game.trainer.pokedex[0].life} / 100") #TODO change "100" to "trainer.pokemon[0].max_life"
-    game.life_opponent_text.draw(game, f"{game.enemy.pokedex[0].life} / 100") #TODO change "100" to "enemy.pokemon[0].max_life"
+    game.life_trainer_text.draw(game, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}") #TODO change "100" to "trainer.pokemon[0].max_life"
+    game.life_opponent_text.draw(game, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}") #TODO change "100" to "enemy.pokemon[0].max_life"
 
 def display_enemy_choosing_move(game):
     """Display a message to let AI play without interferences"""

@@ -13,9 +13,12 @@ import pygame
 class Battle:
     def __init__(self, trainer, enemy):
         self.trainer_name = trainer.name
-        self.enemy_name = enemy.name
         self.trainer_pokemon = trainer.pokedex[0]
+        self.trainer_current_hp = trainer.pokedex[0].life
+
+        self.enemy_name = enemy.name
         self.enemy_pokemon = enemy.pokedex[0]
+        self.enemy_current_hp = enemy.pokedex[0].life
 
         self.turn = self.trainer_name
         self.turn_pkmn = self.trainer_pokemon
@@ -69,7 +72,7 @@ class Battle:
 
     # To check if Pokemon is alive or not
     def opponent_pokemon_ko(self):
-        if self.opponent_pkmn.life <= 0:
+        if self.enemy_current_hp <= 0:
             return True
         return False
     
