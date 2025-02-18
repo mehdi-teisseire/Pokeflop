@@ -1,5 +1,7 @@
+from random import choice
+
 from model.TrainerClass import Trainer
-from model.pokemon import Pokemon
+
 
 class EnemyTrainer(Trainer):
     def __init__(self, name):
@@ -19,8 +21,8 @@ class EnemyTrainer(Trainer):
         
     def choose_pokemon(self):
         """Choose a pokemon from the pokemon_list and add it to battle"""
-        pokemon = self.pokemon[0]
-        self.pokedex.append(pokemon) # TODO Will make it random
+        pokemon = choice(self.pokemon)
+        self.pokedex.append(pokemon)
 
     def remove_pokemon(self):
         """To remove defeated pokemon from our pokedex. pokemon is an object"""
@@ -29,9 +31,12 @@ class EnemyTrainer(Trainer):
 # Add "if hp <= 0" and "if not already_owned" before this when you call it
     def give_pokemon(self, trainer):
         """Copy itself to trainer pokedex and get removed."""
+        gift_success = False
         if not trainer.already_owned(self.pokedex[0]):
             trainer.add_pokemon(self.pokedex[0])
+            gift_success = True
         self.remove_pokemon()
+        return gift_success
 
     def update_json(self):
         """Update the json from the pokedex list"""

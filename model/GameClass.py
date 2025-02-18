@@ -1,5 +1,3 @@
-from model.TrainerClass import Trainer
-from model.EnemyTrainerClass import EnemyTrainer
 from model.battle import Battle
 from model.JsonClass import Json
 
@@ -42,22 +40,20 @@ class Game:
             ]
         
         self.POKEMON_TEMPLATE = [
-            {'name':'Squirtle','sprite':'media/Pokemons-assets/front/Squirtle_back.png','type':'water','life':100,'attack':50,'defence':50,'moov':['Tackle','Water Gun']},
-            {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','type':'electric','life':100,'attack':60,'defence':45,'moov':['Tackle','Thunder']},
-            {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','type':'grass','life':100,'attack':40,'defence':50,'moov':['Tackle','Leaf']},
-            {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','type':'fire','life':100,'attack':70,'defence':30,'moov':['Tackle','Flamethrower']},
-            {'name':'Pidgey','sprite':'media/pokemon_assets/Pidgey_back.png','type':'normal','life':100,'attack':45,'defence':45,'moov':['Tackle','Gust']},
-            {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','type':'normal','life':100,'attack':48,'defence':43,'moov':['Tackle','Quick Attack']}
+            {'name':'Squirtle','sprite':'media/Pokemons-assets/front/Squirtle_back.png','type':'water','life':120,'attack':50,'defence':50,'moov':['Tackle','Water Gun']},
+            {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','type':'electric','life':90,'attack':60,'defence':45,'moov':['Tackle','Thunder']},
+            {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','type':'grass','life':180,'attack':40,'defence':50,'moov':['Tackle','Leaf']},
+            {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','type':'fire','life':150,'attack':70,'defence':30,'moov':['Tackle','Flamethrower']},
+            {'name':'Pidgey','sprite':'media/pokemon_assets/Pidgey_back.png','type':'normal','life':80,'attack':45,'defence':45,'moov':['Tackle','Gust']},
+            {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','type':'normal','life':50,'attack':48,'defence':43,'moov':['Tackle','Quick Attack']}
             ]
 
-        #All game button
+        #Declaration of all UI Elements
         ##First Screen - Intro
         self.background = ImageElement("media/ui-elements/background.png", (0, 0), (800, 450))
         self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (120, 200), (579, 88))
         
         self.button_intro = UIElement('main_menu', 0, 0, 800, 450)
-        
-        
 
         ##Second Screen - Main Menu
         self.button_main1 = UIElement('new_game', 300, 100, 200, 50)
@@ -69,6 +65,10 @@ class Game:
         self.background_button_main3 = ImageElement("media/ui-elements/button.svg", (300, 300), (200, 50))
 
         self.button_main_menu = [self.button_main1, self.button_main2, self.button_main3]
+
+        self.text_button_main1 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
+        self.text_button_main2 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+        self.text_button_main3 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
 
         ##Third Screen - Game Menu
         self.button_game1 = UIElement('ingame', 300, 100, 200, 50)
@@ -83,6 +83,11 @@ class Game:
         
         self.button_game_menu = [self.button_game1, self.button_game2, self.button_game3, self.button_game4]
 
+        self.text_button_game1 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
+        self.text_button_game2 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+        self.text_button_game3 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
+        self.text_button_game4 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+
         ##Fourth Screen - Ingame      
         self.background_button_moov1 = ImageElement("media/ui-elements/button.png", (100, 300), (250, 75))
         self.background_button_moov2 = ImageElement("media/ui-elements/button.png", (450, 300), (250, 75))
@@ -91,6 +96,13 @@ class Game:
         self.button_moov2 = UIElement('moov2', 550, 200, 150, 50)
 
         self.button_moov = [self.button_moov1, self.button_moov2]
+
+        self.life_trainer_text = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
+        self.life_opponent_text = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+       
+        self.text_button_moov1 = Text("freesansbold.ttf", 36, "", (0,0,0), 150, 400)
+        self.text_button_moov2 = Text("freesansbold.ttf", 36, "", (0,0,0), 550, 400)
+
         ##Fourth Screen - Pokedex
         self.background_pokedex = ImageElement("media/ui-elements/button.png", (130, 350), (536, 91))
         self.button_pokedex = UIElement('game_menu', 130, 350, 536, 91)
@@ -99,39 +111,7 @@ class Game:
         ##Fifth Screen - Pokelist
 
     def start(self):
-        """Initialise the game and start the main loop"""
-        # Player and AI object are created here. It's for deck-building/random encounter feature
-        self.trainer = Trainer("Player")
-        self.enemy = EnemyTrainer("Rival")
-
-        #pygame.init()
-
-        ##Colors - Last number is alpha
-        #self.TRANSPARENT = pygame.Color(0,0,0,0)
-        #CUSTOM_BLUE = (0,0,0,0)
-        #CUSTOM_YELLOW = (0,0,0,0)
-        #ETC = (0,0,0,0)
-
-        # Texts are declared here. Have to init fonts to create them (or declare font separateley)
-       
-        ## Main Menu Text
-        self.text_button_main1 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
-        self.text_button_main2 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
-        self.text_button_main3 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
-       
-        ## Game Menu Text
-        self.text_button_game1 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
-        self.text_button_game2 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
-        self.text_button_game3 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
-        self.text_button_game4 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
-       
-        ## Ingame Text
-        self.life_trainer_text = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
-        self.life_opponent_text = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
-       
-        self.text_button_moov1 = Text("freesansbold.ttf", 36, "", (0,0,0), 150, 400)
-        self.text_button_moov2 = Text("freesansbold.ttf", 36, "", (0,0,0), 550, 400)
-
+        """Start the main loop and switch state to change screen"""
         self.main_loop()
      
     def main_loop(self):
@@ -146,7 +126,6 @@ class Game:
                     display_main_menu(self)
                 case "new_game":
                      new_game(self)      #will change game state to "game_menu"
-
                 case "load_game":
                     load_game(self)
                 case "game_menu":
@@ -155,13 +134,14 @@ class Game:
                     if not self.battle_start:
                         self.battle_ini()
                     display_ingame(self)
+                case "battle_end":
+                    #TODO Summary of battle, level up and evolution
+                    if pygame.time.get_ticks() >= self.battle_end_time:
+                        self.game_state = "game_menu"
                 case "pokedex":
                     display_pokedex(self)
                 case "pokemon":
                     display_pokelist(self)
-                case "battle_end":
-                    if pygame.time.get_ticks() >= self.battle_end_time:
-                        self.game_state = "game_menu"
                 case _:
                     self.running = False
                 
@@ -175,10 +155,11 @@ class Game:
     def battle_ini(self):
         """Attributes that needs to be set only once (before battle) are here"""
         #----TEMP----
-        self.enemy.add_pokemon_to_list(self.POKEMON_TEMPLATE[1], self.MOOV_TEMPLATE)
+        for pokemon in self.POKEMON_TEMPLATE:
+            self.enemy.add_pokemon_to_list(pokemon, self.MOOV_TEMPLATE)
         #------------
         self.enemy.choose_pokemon()
-        self.trainer.load_pokedex(self.MOOV_TEMPLATE) #It's for healink!!
+        # self.trainer.load_pokedex(self.MOOV_TEMPLATE)
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True

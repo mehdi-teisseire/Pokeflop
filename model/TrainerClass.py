@@ -18,9 +18,8 @@ class Trainer(Json):
 
     def add_pokemon(self, pokemon):
         """To add a pokemon when player doesn't have one."""
-        if not self.already_owned(pokemon):
-            self.pokedex.append(pokemon)
-            self.update_json()
+        self.pokedex.append(pokemon)
+        self.update_json()
 
     def remove_pokemon(self, pokemon):
         """To remove defeated pokemon from our pokedex. pokemon is an object"""
