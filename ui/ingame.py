@@ -11,7 +11,7 @@ def display_ingame(game):
             display_moov_animation(game)
             game.battle.turn_pkmn.apply_damage(game, damage)
             display_damage_text(game, damage)
-            game.battle.finish_turn(game)
+        game.battle.finish_turn(game)
 
     else:
         if game.battle.turn == game.enemy.name:
