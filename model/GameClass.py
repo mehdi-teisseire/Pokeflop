@@ -144,8 +144,6 @@ class Game:
                     display_pokelist(self)
                 case _:
                     self.running = False
-                
-
 
             pygame.display.flip()
             self.clock.tick(60)

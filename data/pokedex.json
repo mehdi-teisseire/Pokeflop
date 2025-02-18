@@ -11,31 +11,5 @@
             "Tackle",
             "Water Gun"
         ]
-    },
-    {
-        "name": "Rattata",
-        "sprite": "media/pokemon_assets/Rattata_back.png",
-        "type": "normal",
-        "level": 5,
-        "life": 50,
-        "attack": 48,
-        "defence": 43,
-        "moov": [
-            "Tackle",
-            "Quick Attack"
-        ]
-    },
-    {
-        "name": "Charmander",
-        "sprite": "media/pokemon_assets/Charmander_back.png",
-        "type": "fire",
-        "level": 5,
-        "life": 150,
-        "attack": 70,
-        "defence": 30,
-        "moov": [
-            "Tackle",
-            "Flamethrower"
-        ]
     }
 ]

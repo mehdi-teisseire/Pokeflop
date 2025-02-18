@@ -37,9 +37,9 @@ class Battle:
                 print("You Win!!")
                 gave_pokemon = game.enemy.give_pokemon(game.trainer)
                 if gave_pokemon:
-                    print(f"{self.enemy_name} gave you a {self.trainer_pokemon.name}!! So cool!")
+                    print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! So cool!")
                 else:
-                    print(f"{self.enemy_name} gave you a {self.trainer_pokemon.name}!! Unfortunately, you already had one...")
+                    print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! Unfortunately, you already had one...")
             # pygame.time.wait(1000)
             pygame.time.get_ticks() + 1000
 
