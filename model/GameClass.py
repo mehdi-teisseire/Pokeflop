@@ -64,9 +64,9 @@ class Game:
         self.button_main2 = UIElement('load_game', 300, 200, 200, 50)
         self.button_main3 = UIElement('exit', 300, 300, 200, 50)
         
-        self.background_button_main1 = ImageElement("media/ui-elements/button.png", (300, 100), (200, 50))
-        self.background_button_main2 = ImageElement("media/ui-elements/button.png", (300, 200), (200, 50))
-        self.background_button_main3 = ImageElement("media/ui-elements/button.png", (300, 300), (200, 50))
+        self.background_button_main1 = ImageElement("media/ui-elements/button.svg", (300, 100), (200, 50))
+        self.background_button_main2 = ImageElement("media/ui-elements/button.svg", (300, 200), (200, 50))
+        self.background_button_main3 = ImageElement("media/ui-elements/button.svg", (300, 300), (200, 50))
 
         self.button_main_menu = [self.button_main1, self.button_main2, self.button_main3]
 
