@@ -4,7 +4,7 @@
         "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
         "type": "water",
         "level": 5,
-        "life": 5,
+        "life": 15,
         "attack": 50,
         "defence": 50,
         "moov": [
@@ -30,7 +30,7 @@
         "sprite": "media/pokemon_assets/Pikachu_back.png",
         "type": "electric",
         "level": 5,
-        "life": -5,
+        "life": -18,
         "attack": 60,
         "defence": 45,
         "moov": [

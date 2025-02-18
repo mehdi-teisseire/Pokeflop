@@ -1,7 +1,7 @@
 [
     {
         "name": "Pikachu",
-        "sprite": "media/pokemon_assets/Pikachu_back.png",
+        "sprite": "media/pokemon_assets/front/Pikachu_back.png",
         "type": "electric",
         "level": 5,
         "life": 100,
