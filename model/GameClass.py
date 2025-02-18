@@ -105,8 +105,8 @@ class Game:
 
 
         ## Fourth Screen - Pokedex
-        self.background_pokedex = ImageElement("media/ui-elements/button.png", (195, 525), (804, 136))
         self.button_pokedex = UIElement('game_menu', 195, 525, 804, 136)
+        self.box_background = ImageElement("media/ui-elements/box_background.png",(0,0),(1200, 675)) 
         
         self.open_json = Json().load_json
         self.save_json = Json().save_json
