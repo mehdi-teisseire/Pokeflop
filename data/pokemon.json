@@ -1,32 +1,42 @@
 [
-    {
-        "name": "Squirtle",
-        "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
-        "type": "water",
-        "level": 5,
-        "life": -10,
-        "attack": 50,
-        "defence": 50,
-        "moov": [
-            "Tackle",
-            "Water Gun",
-            "Tackle",
-            "Water Gun"
-        ]
-    },
-    {
-        "name": "Squirtle",
-        "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
-        "type": "water",
-        "level": 5,
-        "life": 100,
-        "attack": 50,
-        "defence": 50,
-        "moov": [
-            "Tackle",
-            "Water Gun",
-            "Tackle",
-            "Water Gun"
-        ]
-    }
+  {
+    "name": "Squirtle",
+    "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
+    "type": "water",
+    "level": 5,
+    "life": 100,
+    "attack": 50,
+    "defence": 50,
+    "moov": ["Tackle", "Water Gun"]
+  },
+  {
+    "name": "Bulbasaur",
+    "sprite": "media/Pokemons-assets/front/Bulbasaur_back.png",
+    "type": "grass",
+    "level": 5,
+    "life": 100,
+    "attack": 50,
+    "defence": 50,
+    "moov": ["Tackle", "Vine Whip"]
+  },
+  {
+    "name": "Charmander",
+    "sprite": "media/Pokemons-assets/front/Charmander_back.png",
+    "type": "fire",
+    "level": 5,
+    "life": 100,
+    "attack": 50,
+    "defence": 50,
+    "moov": ["Tackle", "Ember"]
+  },
+  {
+    "name": "Pikachu",
+    "sprite": "media/Pokemons-assets/front/Pikachu_back.png",
+    "type": "electric",
+    "level": 5,
+    "life": 100,
+    "attack": 50,
+    "defence": 50,
+    "moov": ["Tackle", "Thunder Shock"]
+  }
 ]
