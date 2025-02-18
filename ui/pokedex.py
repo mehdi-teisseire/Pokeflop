@@ -1,47 +1,76 @@
 import pygame
-def display_pokedex(game):
-    game.background.image_path = "media/ui-elements/box_background.png"
-    game.background.draw(game)
-    game.open_json("pokedex")
-    pokedex_data = game.open_json('pokedex')
-    game.button_pokedex.draw(game)
+
+def render_pokemon_info(game, pokemon, font):
+    """Render information for a single Pokemon."""
+    info_positions = {
+        'level': (50, 130),
+        'type': (50, 180),
+        'name': (50, 230),
+        'attack': (50, 270),
+        'defence': (50, 310),
+        'life': (50, 360),
+        'moov1': (50, 390),
+        'moov2': (50, 410)
+    }
     
+    
+    
+    text_items = {
+        'level': f"Level: {pokemon['level']}",
+        'type': f"Type: {pokemon['type']}",
+        'name': f"Name: {pokemon['name']}",
+        'attack': f"Attack: {pokemon['attack']}",
+        'defence': f"Defense: {pokemon['defence']}",
+        'life': f"Life: {pokemon['life']}",
+        'moov1': f"Moov1: {pokemon['moov'][0]}",
+        'moov2': f"Moov2: {pokemon['moov'][1]}"
+    }
+    
+    for key, text in text_items.items():
+        rendered_text = font.render(text, True, (255, 255, 255))
+        game.screen.blit(rendered_text, info_positions[key])
+
+def display_pokemon_sprites(game, pokedex_data):
+    """Display all Pokemon sprites in a grid."""
     x, y = 580, 100
     spacing = 50
+    sprite_positions = []
     
     for pokemon in pokedex_data:
-        sprite_path = pokemon['sprite']
-        sprite = pygame.image.load(sprite_path)
+        sprite = pygame.image.load(pokemon['sprite'][0])
         game.screen.blit(sprite, (x, y))
+        sprite_positions.append((pygame.Rect(x, y, 40, 40), pokemon))
+        
         x += spacing
         if x > game.screen.get_width() - spacing:
             x = 50
             y += spacing
-    mouse_pos = pygame.mouse.get_pos()
-    x, y = 580, 100
-    for pokemon in pokedex_data:
-        sprite_rect = pygame.Rect(x, y, 40, 40)
-        if sprite_rect.collidepoint(mouse_pos):
-            game.background_pokedex.draw(game)
-            font = pygame.font.Font(None, 24)
-            level_text = font.render(f"Level: {pokemon['level']}", True, (255, 255, 255))
-            game.screen.blit(level_text, (50, 130))
-            type_text = font.render(f"Type: {pokemon['type']}", True, (255, 255, 255))
-            game.screen.blit(type_text, (145, 390))
-            name_text = font.render(f"Name: {pokemon['name']}", True, (255, 255, 255))
-            game.screen.blit(name_text, (310,360))
-            attack_text = font.render(f"Attack: {pokemon['attack']}", True, (255, 255, 255))
-            game.screen.blit(attack_text, (500,410))
-            defense_text = font.render(f"Defense: {pokemon['defence']}", True, (255, 255, 255))
-            game.screen.blit(defense_text, (500,390))
-            life_text = font.render(f"Life: {pokemon['life']}", True, (255, 255, 255))
-            game.screen.blit(life_text, (500,360))
-            moov1_text = font.render(f"Moov1: {pokemon['moov'][0]}", True, (255, 255, 255))
-            game.screen.blit(moov1_text, (310,390))
-            moov2_text = font.render(f"Moov2: {pokemon['moov'][1]}", True, (255, 255, 255))
-            game.screen.blit(moov2_text, (310,410))
             
-        x += spacing
-        if x > game.screen.get_width() - spacing:
-            x = 50
-            y += spacing
+    return sprite_positions
+
+def display_pokedex(game):
+    """Main function to display the Pokedex."""
+    game.background.image_path = "media/ui-elements/box.png"
+    game.background.draw(game)
+    game.box_background.draw(game)
+    
+    pokedex_data = game.open_json('pokedex')
+    if not pokedex_data:
+        return
+        
+
+    font = pygame.font.Font(None, 50)
+    
+
+    sprite_positions = display_pokemon_sprites(game, pokedex_data)
+    
+    current_pokemon = pokedex_data[0]
+    
+    mouse_pos = pygame.mouse.get_pos()
+    for sprite_rect, pokemon in sprite_positions:
+        if sprite_rect.collidepoint(mouse_pos):
+            current_pokemon = pokemon
+            break
+    
+    # Render the current Pokemon's information
+    render_pokemon_info(game, current_pokemon, font)

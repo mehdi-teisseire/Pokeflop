@@ -53,7 +53,7 @@ class Game:
         self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (180, 300), (869, 132))  
         
         self.button_intro = UIElement('main_menu', 0, 0, 1200, 675)
-        self.rectangle = ImageElement("media/ui-elements/RectangleSettings.png", (280, 200),(668,467))
+        self.rectangle = ImageElement("media/ui-elements/RectangleSettings.png", (280, 200),(607,424))
         
         ## Second Screen - Main Menu
         self.button_main1 = UIElement('new_game', 450, 150, 300, 75)  
@@ -105,8 +105,8 @@ class Game:
 
 
         ## Fourth Screen - Pokedex
-        self.background_pokedex = ImageElement("media/ui-elements/button.png", (195, 525), (804, 136))
         self.button_pokedex = UIElement('game_menu', 195, 525, 804, 136)
+        self.box_background = ImageElement("media/ui-elements/box_background.png",(0,0),(1200, 675)) 
         
         self.open_json = Json().load_json
         self.save_json = Json().save_json
