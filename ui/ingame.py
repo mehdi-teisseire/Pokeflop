@@ -3,7 +3,6 @@ def display_ingame(game):
     display_battle_interface(game)
     if game.battle.chosen_moov:
         display_attacking_text(game)
-        #TODO from here, refractor to the minimum (remove "game." and keep "battle"?)
         if game.battle.turn_pkmn.has_missed(game.battle.chosen_moov):
             display_moov_missed_text(game)
         else:
@@ -14,7 +13,7 @@ def display_ingame(game):
         game.battle.finish_turn(game)
 
     else:
-        if game.battle.turn == game.enemy.name:
+        if game.battle.turn == game.battle.enemy_name:
             game.battle.chosen_moov = game.battle.ia_choose_moov(game)
             display_enemy_choosing_move(game)
         else:
@@ -41,7 +40,8 @@ def display_attack_choice(game):
     game.background_button_moov2.draw(game)
 
     game.text_button_moov1.draw(game, game.trainer.pokedex[0].moov[0].name, game.background_button_moov1)    
-    game.text_button_moov2.draw(game, game.trainer.pokedex[0].moov[1].name, game.background_button_moov2)
+    game.text_button_moov1.draw(game, game.trainer.pokedex[0].moov[0].name, game.background_button_moov2)    
+    # game.text_button_moov2.draw(game, game.trainer.pokedex[0].moov[1].name, game.background_button_moov2)
 
     game.button_moov1.label = game.trainer.pokedex[0].moov[0].name
     game.button_moov2.label = game.trainer.pokedex[0].moov[1].name
@@ -64,3 +64,9 @@ def display_damage_text(game, damage):
 def display_moov_missed_text(game):
     #TODO placeholder for miss text
     print(f"{game.battle.chosen_moov.name} has missed!!")
+
+def display_battle_end(game):                
+    #TODO Summary of battle, level up and evolution
+    from pygame import time
+    if time.get_ticks() >= game.battle.battle_end_time:
+        game.game_state = "game_menu"

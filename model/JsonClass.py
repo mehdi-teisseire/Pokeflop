@@ -21,7 +21,7 @@ class Json:
             return [] 
 
 
-    def convert_moovs(self, object_list):
+    def convert_obj_moovs_to_str(self, object_list):
         """Convert moovs objects in string to stock in json"""
         moov_list = []
         for object in object_list:
@@ -38,6 +38,6 @@ class Json:
             
         for temp_object in temp_list:
             # temp_object.moov = self.convert_moovs(object_list)
-            temp_object.moov = self.convert_moovs(temp_object.moov)
+            temp_object.moov = self.convert_obj_moovs_to_str(temp_object.moov)
         
         return temp_list

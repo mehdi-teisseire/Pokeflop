@@ -41,10 +41,10 @@ class Battle:
                 else:
                     print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! Unfortunately, you already had one...")
             # pygame.time.wait(1000)
-            pygame.time.get_ticks() + 1000
+            self.battle_end_time = pygame.time.get_ticks() + 4000
 
             game.battle_start = False
-            game.game_state = "game_menu"
+            game.game_state = "battle_end"
                 
         game.battle.chosen_moov = ''
         self.change_turn()
