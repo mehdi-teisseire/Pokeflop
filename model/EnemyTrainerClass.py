@@ -20,7 +20,7 @@ class EnemyTrainer(Trainer):
     def choose_pokemon(self):
         """Choose a pokemon from the pokemon_list and add it to battle"""
         pokemon = self.pokemon[0]
-        self.pokedex.append(pokemon) # Will make it random
+        self.pokedex.append(pokemon) # TODO Will make it random
 
     def remove_pokemon(self):
         """To remove defeated pokemon from our pokedex. pokemon is an object"""

@@ -4,7 +4,7 @@
         "sprite": "media/Pokemons-assets/front/Squirtle_back.png",
         "type": "water",
         "level": 5,
-        "life": -19,
+        "life": -10,
         "attack": 50,
         "defence": 50,
         "moov": [

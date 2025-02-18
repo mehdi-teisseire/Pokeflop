@@ -11,3 +11,4 @@ put trainer obj in turn instead and rename turn to player turn or something
 
 healing doesn't work
 append move in json makes multiple moves (see json)
+if missed, redo move until not miss (I know how to fix)
