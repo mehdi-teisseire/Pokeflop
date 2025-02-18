@@ -4,11 +4,13 @@ from model.multiplier import type_multiplier
 class Pokemon(): 
     '''Class to create a pokemon'''
 
-    def __init__(self,name,sprite,type,attack,defence,moov1,moov2,moov_list,level = 5,life = 100):
+    def __init__(self,name,type,attack,defence,moov1,moov2,moov_list,level = 5,life = 100):
         '''Initialize the pokemon'''
         self.name = name
-        self.sprite = sprite
-
+        self.sprite = {
+            "front": f"media/Pokemons-assets/front/{self.name}_front.png",
+            "back": f"media/Pokemons-assets/back/{self.name}_back.png"
+        }
         self.type = type
         self.level = level
         self.life = life

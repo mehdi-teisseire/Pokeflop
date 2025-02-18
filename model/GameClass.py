@@ -1,7 +1,7 @@
 from model.battle import Battle
 from model.JsonClass import Json
 
-from ui.ui import UIElement, Text, ImageElement
+from ui.ui import Hitbox, Text, ImageElement
 from ui.intro import display_intro
 from ui.main_menu import display_main_menu
 from ui.save_slots import new_game, load_game
@@ -18,7 +18,8 @@ class Game:
     def __init__(self):
         pygame.init()
         #Pygame Variables
-        self.screen = pygame.display.set_mode((1200, 675))  # Nouvelle résolution
+        self.screen_size = (1200,675)
+        self.screen = pygame.display.set_mode(self.screen_size)  # Nouvelle résolution
         self.clock = pygame.time.Clock()
 
         #Loop variables
@@ -26,6 +27,10 @@ class Game:
         self.game_state = "intro"
 
         self.battle_start = False
+
+        #JSON
+        self.open_json = Json().load_json
+        self.save_json = Json().save_json
 
         #Constants
         self.MOOV_TEMPLATE = [
@@ -39,78 +44,61 @@ class Game:
         ]
         
         self.POKEMON_TEMPLATE = [
-            {'name':'Squirtle','sprite':'media/Pokemons-assets/front/Squirtle_back.png','type':'water','life':120,'attack':50,'defence':50,'moov':['Tackle','Water Gun']},
-            {'name':'Pikachu','sprite':'media/pokemon_assets/Pikachu_back.png','type':'electric','life':90,'attack':60,'defence':45,'moov':['Tackle','Thunder']},
-            {'name':'Bulbasaur','sprite':'media/pokemon_assets/Bulbasaur_back.png','type':'grass','life':180,'attack':40,'defence':50,'moov':['Tackle','Leaf']},
-            {'name':'Charmander','sprite':'media/pokemon_assets/Charmander_back.png','type':'fire','life':150,'attack':70,'defence':30,'moov':['Tackle','Flamethrower']},
-            {'name':'Pidgey','sprite':'media/pokemon_assets/Pidgey_back.png','type':'normal','life':80,'attack':45,'defence':45,'moov':['Tackle','Gust']},
-            {'name':'Rattata','sprite':'media/pokemon_assets/Rattata_back.png','type':'normal','life':50,'attack':48,'defence':43,'moov':['Tackle','Quick Attack']}
+            {'name':'Squirtle','type':'water','life':120,'attack':50,'defence':50,'moov':['Tackle','Water Gun']},
+            {'name':'Pikachu','type':'electric','life':90,'attack':60,'defence':45,'moov':['Tackle','Thunder']},
+            {'name':'Bulbasaur','type':'grass','life':180,'attack':40,'defence':50,'moov':['Tackle','Leaf']},
+            {'name':'Charmander','type':'fire','life':150,'attack':70,'defence':30,'moov':['Tackle','Flamethrower']},
+            {'name':'Pidgey','type':'normal','life':80,'attack':45,'defence':45,'moov':['Tackle','Gust']},
+            {'name':'Rattata','type':'normal','life':50,'attack':48,'defence':43,'moov':['Tackle','Quick Attack']}
             ]
 
         # Declaration of all UI Elements
         ## First Screen - Intro
-        self.background = ImageElement("media/ui-elements/background.png", (0, 0), (1200, 675))  
-        self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png", (180, 300), (869, 132))  
+        self.button_intro = Hitbox((0,0), self.screen_size, 'main_menu')
+
+        self.background = ImageElement("media/ui-elements/background.png")  
+        self.start_text_img = ImageElement("media/ui-elements/Press-space-to-start-2-12-2025.png")  
         
-        self.button_intro = UIElement('main_menu', 0, 0, 1200, 675)
-        self.rectangle = ImageElement("media/ui-elements/RectangleSettings.png", (280, 200),(607,424))
         
         ## Second Screen - Main Menu
-        self.button_main1 = UIElement('new_game', 450, 150, 300, 75)  
-        self.button_main2 = UIElement('load_game', 450, 300, 300, 75)
-        self.button_main3 = UIElement('exit', 450, 450, 300, 75)
-        
-        self.background_button_main1 = ImageElement("media/ui-elements/button.svg", (450, 150), (300, 75))
-        self.background_button_main2 = ImageElement("media/ui-elements/button.svg", (450, 300), (300, 75))
-        self.background_button_main3 = ImageElement("media/ui-elements/button.svg", (450, 450), (300, 75))
-
+        self.button_main1 = Hitbox((450, 150), (300, 75), 'new_game')
+        self.button_main2 = Hitbox((450, 300), (300, 75), 'load_game')
+        self.button_main3 = Hitbox((450, 450), (300, 75), 'exit')
         self.button_main_menu = [self.button_main1, self.button_main2, self.button_main3]
-
-        self.text_button_main1 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
-        self.text_button_main2 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
-        self.text_button_main3 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+        
+        self.background_button_main = ImageElement("media/ui-elements/button.svg")
+        
+        self.text_button_main = Text("freesansbold.ttf", 36, (0,0,0))
 
         ## Third Screen - Game Menu
-        self.button_game1 = UIElement('ingame', 450, 150, 300, 75)
-        self.button_game2 = UIElement('pokedex', 450, 275, 300, 75)
-        self.button_game3 = UIElement('pokemon', 450, 400, 300, 75)
-        self.button_game4 = UIElement('main_menu', 450, 525, 300, 75)
-        
-        self.background_button_game1 = ImageElement("media/ui-elements/button.png", (450, 150), (300, 75))
-        self.background_button_game2 = ImageElement("media/ui-elements/button.png", (450, 275), (300, 75))
-        self.background_button_game3 = ImageElement("media/ui-elements/button.png", (450, 400), (300, 75))
-        self.background_button_game4 = ImageElement("media/ui-elements/button.png", (450, 525), (300, 75))
-        
+        self.button_game1 = Hitbox((350, 230), (500, 150), 'ingame')
+        self.button_game2 = Hitbox((330, 400), (250, 75), 'pokedex')
+        self.button_game3 = Hitbox((620, 400), (250, 75), 'pokemon')
+        self.button_game4 = Hitbox((350, 500), (500, 100), 'main_menu')
         self.button_game_menu = [self.button_game1, self.button_game2, self.button_game3, self.button_game4]
 
-        self.text_button_game1 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
-        self.text_button_game2 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
-        self.text_button_game3 = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
-        self.text_button_game4 = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
+        self.rectangle = ImageElement("media/ui-elements/RectangleSettings.png")
+        
+        self.background_button_game = ImageElement("media/ui-elements/button.png")
+                
+        self.text_button_game = Text("freesansbold.ttf", 36, (0,0,0))
 
         ## Fourth Screen - Ingame      
-        self.background_button_moov1 = ImageElement("media/ui-elements/button.png", (150, 450), (375, 112))
-        self.background_button_moov2 = ImageElement("media/ui-elements/button.png", (675, 450), (375, 112))
-        
-        self.button_moov1 = UIElement('moov1', 225, 300, 225, 75)
-        self.button_moov2 = UIElement('moov2', 825, 300, 225, 75)
-
+        self.button_moov1 = Hitbox((225, 500), (225, 75))
+        self.button_moov2 = Hitbox((825, 500), (225, 75))
         self.button_moov = [self.button_moov1, self.button_moov2]
 
-        self.life_trainer_text = Text("freesansbold.ttf", 36, "", (0,0,0), 20, 50)
-        self.life_opponent_text = Text("freesansbold.ttf", 36, "", (0,0,0), 320, 50)
-       
-        self.text_button_moov1 = Text("freesansbold.ttf", 36, "", (0,0,0), 150, 400)
-        self.text_button_moov2 = Text("freesansbold.ttf", 36, "", (0,0,0), 550, 400)
+        self.background_button_moov = ImageElement("media/ui-elements/button.png")
 
+        self.text_button_moov = Text("freesansbold.ttf", 36, (0,0,0))
+        
+        self.life_text = Text("freesansbold.ttf", 36, (0,0,0))
 
         ## Fourth Screen - Pokedex
-        self.button_pokedex = UIElement('game_menu', 195, 525, 804, 136)
-        self.box_background = ImageElement("media/ui-elements/box_background.png",(0,0),(1200, 675)) 
-        
-        self.open_json = Json().load_json
-        self.save_json = Json().save_json
+        self.button_pokedex = Hitbox((195, 525), (804, 136), 'game_menu')
 
+        self.box_background = ImageElement("media/ui-elements/box_background.png") 
+        
     def start(self):
         """Start the main loop and switch state to change screen"""
         self.main_loop()

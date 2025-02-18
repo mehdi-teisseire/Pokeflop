@@ -20,3 +20,5 @@ On load game -> multiple saves (display on saveslot.py)
 ingame text to change with boxes
 
 sprite in list/dict
+
+event.SPACE in intro

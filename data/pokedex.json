@@ -1,10 +1,10 @@
 [
     {
         "name": "Squirtle",
-        "sprite": [
-            "media/Pokemons-assets/front/Squirtle_front.png",
-            "media/Pokemons-assets/back/Squirtle_back.png"
-        ],
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Squirtle_front.png",
+            "back": "media/Pokemons-assets/back/Squirtle_back.png"
+        },
         "type": "water",
         "level": 5,
         "life": 120,
@@ -13,118 +13,6 @@
         "moov": [
             "Tackle",
             "Water Gun"
-        ]
-    },
-    {
-        "name": "Pikachu",
-        "sprite": [
-            "media/Pokemons-assets/front/Pikachu_front.png",
-            "media/Pokemons-assets/back/Pikachu_back.png"
-        ],
-        "type": "electric",
-        "level": 5,
-        "life": 90,
-        "attack": 60,
-        "defence": 45,
-        "moov": [
-            "Tackle",
-            "Thunder"
-        ]
-    },
-    {
-        "name": "Bulbasaur",
-        "sprite": [
-            "media/Pokemons-assets/front/Bulbasaur_front.png",
-            "media/Pokemons-assets/back/Bulbasaur_back.png"
-        ],
-        "type": "grass",
-        "level": 5,
-        "life": 180,
-        "attack": 40,
-        "defence": 50,
-        "moov": [
-            "Tackle",
-            "Leaf"
-        ]
-    },
-    {
-        "name": "Pikachu",
-        "sprite": [
-            "media/Pokemons-assets/front/Pikachu_front.png",
-            "media/Pokemons-assets/back/Pikachu_back.png"
-        ],
-        "type": "electric",
-        "level": 5,
-        "life": 90,
-        "attack": 60,
-        "defence": 45,
-        "moov": [
-            "Tackle",
-            "Thunder"
-        ]
-    },
-    {
-        "name": "Bulbasaur",
-        "sprite": [
-            "media/Pokemons-assets/front/Bulbasaur_front.png",
-            "media/Pokemons-assets/back/Bulbasaur_back.png"
-        ],
-        "type": "grass",
-        "level": 5,
-        "life": 180,
-        "attack": 40,
-        "defence": 50,
-        "moov": [
-            "Tackle",
-            "Leaf"
-        ]
-    },
-    {
-        "name": "Charmander",
-        "sprite": [
-            "media/Pokemons-assets/front/Charmander_front.png",
-            "media/Pokemons-assets/back/Charmander_back.png"
-        ],
-        "type": "fire",
-        "level": 5,
-        "life": 150,
-        "attack": 70,
-        "defence": 30,
-        "moov": [
-            "Tackle",
-            "Flamethrower"
-        ]
-    },
-    {
-        "name": "Pidgey",
-        "sprite": [
-            "media/Pokemons-assets/front/Pidgey_front.png",
-            "media/Pokemons-assets/back/Pidgey_back.png"
-        ],
-        "type": "normal",
-        "level": 5,
-        "life": 80,
-        "attack": 45,
-        "defence": 45,
-        "moov": [
-            "Tackle",
-            "Gust"
-        ]
-    },
-    {
-        "name": "Rattata",
-        "sprite": [
-            "media/Pokemons-assets/front/Rattata_front.png",
-            "media/Pokemons-assets/back/Rattata_back.png"
-        ],
-        "type": "normal",
-        "level": 5,
-        "life": 50,
-        "attack": 48,
-        "defence": 43,
-        "moov": [
-            "Tackle",
-            "Quick Attack"
         ]
     }
 ]

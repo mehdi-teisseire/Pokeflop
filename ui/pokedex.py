@@ -37,7 +37,7 @@ def display_pokemon_sprites(game, pokedex_data):
     sprite_positions = []
     
     for pokemon in pokedex_data:
-        sprite = pygame.image.load(pokemon['sprite'][0])
+        sprite = pygame.image.load(pokemon['sprite']["front"])  # From object: sprite = pygame.image.load(pokemon.sprite[0])
         game.screen.blit(sprite, (x, y))
         sprite_positions.append((pygame.Rect(x, y, 40, 40), pokemon))
         
@@ -50,17 +50,17 @@ def display_pokemon_sprites(game, pokedex_data):
 
 def display_pokedex(game):
     """Main function to display the Pokedex."""
-    game.background.image_path = "media/ui-elements/box.png"
-    game.background.draw(game)
-    game.box_background.draw(game)
-    
-    pokedex_data = game.open_json('pokedex')
+    game.button_pokedex.draw(game.screen)
+
+    game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/box.png")
+    game.box_background.draw(game.screen)
+    game.background_button_main.draw(game.screen, hitbox=game.button_pokedex)
+
+    pokedex_data = game.open_json('pokedex') # from object: # pokedex_data = game.trainer.pokedex
     if not pokedex_data:
         return
         
-
     font = pygame.font.Font(None, 50)
-    
 
     sprite_positions = display_pokemon_sprites(game, pokedex_data)
     

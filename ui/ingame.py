@@ -20,12 +20,11 @@ def display_ingame(game):
             display_attack_choice(game)
 
 def display_background(game):
-    game.background.image_path = "media/ui-elements/MDPokemonBattle_Notextbox.png"
-    game.background.draw(game)
+    game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
 
 def display_battle_interface(game):
-    game.life_trainer_text.draw(game, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}") #TODO change "100" to "trainer.pokemon[0].max_life"
-    game.life_opponent_text.draw(game, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}") #TODO change "100" to "enemy.pokemon[0].max_life"
+    game.life_text.draw(game.screen, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}", (200,50)) #TODO change "100" to "trainer.pokemon[0].max_life"
+    game.life_text.draw(game.screen, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}", (500,50)) #TODO change "100" to "enemy.pokemon[0].max_life"
 
 def display_enemy_choosing_move(game):
     """Display a message to let AI play without interferences"""
@@ -36,18 +35,15 @@ def display_enemy_choosing_move(game):
 # To allow the player to choose an attack
 def display_attack_choice(game):
     """Show the moov buttons and allow to choose an attack"""
-    game.background_button_moov1.draw(game)
-    game.background_button_moov2.draw(game)
+    game.button_moov1.draw(game.screen, game.battle.turn_pkmn.moov[0].name) #game.trainer.pokedex[0].moov[0].name
+    game.button_moov2.draw(game.screen, game.battle.turn_pkmn.moov[1].name) #game.trainer.pokedex[0].moov[1].name)
 
-    game.text_button_moov1.draw(game, game.trainer.pokedex[0].moov[0].name, game.background_button_moov1)    
-    game.text_button_moov1.draw(game, game.trainer.pokedex[0].moov[0].name, game.background_button_moov2)    
-    # game.text_button_moov2.draw(game, game.trainer.pokedex[0].moov[1].name, game.background_button_moov2)
-
-    game.button_moov1.label = game.trainer.pokedex[0].moov[0].name
-    game.button_moov2.label = game.trainer.pokedex[0].moov[1].name
-    game.button_moov1.draw(game.screen, game.background_button_moov1)
-    game.button_moov2.draw(game.screen, game.background_button_moov2)
-
+    game.background_button_moov.draw(game.screen, hitbox=game.button_moov1)
+    game.background_button_moov.draw(game.screen, hitbox=game.button_moov2)
+    
+    game.text_button_moov.draw(game.screen, game.trainer.pokedex[0].moov[0].name, hitbox=game.button_moov1)    
+    game.text_button_moov.draw(game.screen, game.trainer.pokedex[0].moov[1].name, hitbox=game.button_moov2)    
+    
 def display_attacking_text(game):
     #TODO text for attacking text (pokemon uses move)
     print(f"{game.battle.turn}'s {game.battle.turn_pkmn.name} uses {game.battle.chosen_moov.name}!!")
