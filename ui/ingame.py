@@ -29,6 +29,8 @@ def display_ingame(game):
             display_damage_text(game, game.battle.damage)
         case "turn_finish":
             game.battle.finish_turn(game)
+        case "pokemon_ko":
+            game.battle.end_results(game)
         case _:
             print("Error selecting an ingame state")
 
@@ -96,8 +98,15 @@ def display_enemy_choosing_move(game):
         game.ingame_state = "attacking"
         game.battle.chosen_moov = game.battle.ia_choose_moov(game)
 
-def display_battle_end(game):                
-    #TODO Summary of battle, level up and evolution + pokemon give?
+def display_battle_end(game):    
+    if game.battle.has_won:
+        if game.battle.gave_pokemon:
+            print(f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! So cool!")
+        else:
+            print(f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! Unfortunately, you already had one...")
+    else:
+        print("Nothing to show here")
+
     if time.get_ticks() >= game.delay:
         game.game_state = "game_menu"
 

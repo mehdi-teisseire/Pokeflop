@@ -12,8 +12,6 @@ from ui.pokelist import display_pokelist
 
 import pygame
 
-
-
 class Game:
     def __init__(self):
         pygame.init()
