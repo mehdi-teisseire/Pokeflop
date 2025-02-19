@@ -1,15 +1,15 @@
 [
     {
-        "name": "Pikachu",
+        "name": "Bulbasaur",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Pikachu_front.png",
-            "back": "media/Pokemons-assets/back/Pikachu_back.png"
+            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
+            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
         },
-        "type": "electric",
+        "type": "grass",
         "level": 5,
-        "life": 90,
-        "attack": 60,
-        "defence": 45,
+        "life": 180,
+        "attack": 40,
+        "defence": 50,
         "ingame": true,
         "moov": [
             {
@@ -18,24 +18,24 @@
                 "accuracy": 95
             },
             {
-                "name": "Thunder",
-                "type": "electric",
-                "accuracy": 100
+                "name": "Leaf",
+                "type": "grass",
+                "accuracy": 60
             }
         ]
     },
     {
-        "name": "Pidgey",
+        "name": "Charmander",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Pidgey_front.png",
-            "back": "media/Pokemons-assets/back/Pidgey_back.png"
+            "front": "media/Pokemons-assets/front/Charmander_front.png",
+            "back": "media/Pokemons-assets/back/Charmander_back.png"
         },
-        "type": "normal",
+        "type": "fire",
         "level": 5,
-        "life": 80,
-        "attack": 45,
-        "defence": 45,
-        "ingame": false,
+        "life": 150,
+        "attack": 70,
+        "defence": 30,
+        "ingame": true,
         "moov": [
             {
                 "name": "Tackle",
@@ -43,9 +43,9 @@
                 "accuracy": 95
             },
             {
-                "name": "Gust",
-                "type": "normal",
-                "accuracy": 95
+                "name": "Flamethrower",
+                "type": "fire",
+                "accuracy": 30
             }
         ]
     }

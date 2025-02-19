@@ -71,7 +71,7 @@ def display_pokelist(game):
     if pygame.mouse.get_pressed()[0]:  
         for sprite_rect, pokemon in sprite_positions:
             if sprite_rect.collidepoint(mouse_pos):
-                existing_pokemon = game.open_json('pokemon') or []
+                existing_pokemon = game.open_json('pokemon')
                 pokemon_exists = any(p['name'] == pokemon['name'] for p in existing_pokemon)
                 
                 if pokemon_exists:
