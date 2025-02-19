@@ -10,7 +10,7 @@ def render_pokemon_info(game, pokemon, font):
         'defence': (300, 350),
         'life': (300, 250),
         'moov1': (30, 300),
-        'moov2': (30, 350)
+        'moov2': (30, 350),
     }
     
     text_items = {
@@ -20,13 +20,17 @@ def render_pokemon_info(game, pokemon, font):
         'attack': f"Attack: {pokemon['attack']}",
         'defence': f"Defense: {pokemon['defence']}",
         'life': f"Life: {pokemon['life']}",
-        'moov1': f"Moov: {pokemon['moov'][0]}",
-        'moov2': f"Moov: {pokemon['moov'][1]}"
-    }
+        'moov1': f"Moov: {pokemon['moov'][0]["name"]}",
+        'moov2': f"Moov: {pokemon['moov'][1]["name"]}",
     
+    }
     for key, text in text_items.items():
         rendered_text = font.render(text, True, (255, 255, 255))
         game.screen.blit(rendered_text, info_positions[key])
+        if key == 'name':
+            sprite = pygame.image.load(pokemon['sprite']["front"])
+            sprite = pygame.transform.scale(sprite, (250, 250))
+            game.screen.blit(sprite, (40, 450))
 
 def display_pokemon_sprites(game, pokedex_data):
     """Display all Pokemon sprites in a grid."""
@@ -53,7 +57,7 @@ def display_pokelist(game):
     game.button_quit.draw(game.screen)
     game.button_quit_image.draw(game.screen,hitbox=game.button_quit,image_path="media/ui-elements/cross.svg")
 
-    pokedex_data = game.open_json('pokemon') # from object: # pokedex_data = game.trainer.pokedex
+    pokedex_data = game.open_json('poke_db')
     if not pokedex_data:
         return
         
@@ -61,13 +65,21 @@ def display_pokelist(game):
 
     sprite_positions = display_pokemon_sprites(game, pokedex_data)
     
-    current_pokemon = pokedex_data[0]
+    current_pokemon = pokedex_data[0] 
     
     mouse_pos = pygame.mouse.get_pos()
+    if pygame.mouse.get_pressed()[0]:  
+        for sprite_rect, pokemon in sprite_positions:
+            if sprite_rect.collidepoint(mouse_pos):
+                pokemon['ingame'] = not pokemon['ingame']
+                print(f"Selected {pokemon['ingame']}")
+                game.save_json(pokedex_data, 'pokemon')
+                break
+        
     for sprite_rect, pokemon in sprite_positions:
         if sprite_rect.collidepoint(mouse_pos):
             current_pokemon = pokemon
             break
-    
+
     # Render the current Pokemon's information
     render_pokemon_info(game, current_pokemon, font)

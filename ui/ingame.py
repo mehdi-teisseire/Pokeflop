@@ -17,6 +17,7 @@ def display_ingame(game):
             game.battle.chosen_moov = game.battle.ia_choose_moov(game)
             display_enemy_choosing_move(game)
         else:
+            #print(game.battle.turn_pkmn)
             display_attack_choice(game)
 
 def display_background(game):

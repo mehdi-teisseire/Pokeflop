@@ -10,7 +10,8 @@ def render_pokemon_info(game, pokemon, font):
         'defence': (300, 350),
         'life': (300, 250),
         'moov1': (30, 300),
-        'moov2': (30, 350)
+        'moov2': (30, 350),
+        'pokedex': (600, 25)
     }
     
     text_items = {
@@ -20,13 +21,19 @@ def render_pokemon_info(game, pokemon, font):
         'attack': f"Attack: {pokemon['attack']}",
         'defence': f"Defense: {pokemon['defence']}",
         'life': f"Life: {pokemon['life']}",
-        'moov1': f"Moov: {pokemon['moov'][0]}",
-        'moov2': f"Moov: {pokemon['moov'][1]}"
+        'moov1': f"Moov: {pokemon['moov'][0]["name"]}",
+        'moov2': f"Moov: {pokemon['moov'][1]["name"]}",
+        'pokedex': f"M  y     P  o  k  e  d  e  x"
     }
     
     for key, text in text_items.items():
         rendered_text = font.render(text, True, (255, 255, 255))
         game.screen.blit(rendered_text, info_positions[key])
+        if key == 'name':
+            sprite = pygame.image.load(pokemon['sprite']["front"])
+            sprite = pygame.transform.scale(sprite, (250, 250))
+            game.screen.blit(sprite, (40, 450))
+
 
 def display_pokemon_sprites(game, pokedex_data):
     """Display all Pokemon sprites in a grid."""
@@ -41,7 +48,7 @@ def display_pokemon_sprites(game, pokedex_data):
         
         x += spacing
         if x > game.screen.get_width() - spacing:
-            x = 50
+            x = 580
             y += spacing
             
     return sprite_positions

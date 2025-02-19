@@ -44,12 +44,12 @@ class Game:
         ]
         
         self.POKEMON_TEMPLATE = [
-            {'name':'Squirtle','type':'water','life':120,'attack':50,'defence':50,'moov':['Tackle','Water Gun']},
-            {'name':'Pikachu','type':'electric','life':90,'attack':60,'defence':45,'moov':['Tackle','Thunder']},
-            {'name':'Bulbasaur','type':'grass','life':180,'attack':40,'defence':50,'moov':['Tackle','Leaf']},
-            {'name':'Charmander','type':'fire','life':150,'attack':70,'defence':30,'moov':['Tackle','Flamethrower']},
-            {'name':'Pidgey','type':'normal','life':80,'attack':45,'defence':45,'moov':['Tackle','Gust']},
-            {'name':'Rattata','type':'normal','life':50,'attack':48,'defence':43,'moov':['Tackle','Quick Attack']}
+            {'name':'Squirtle','type':'water','life':120,'attack':50,'defence':50,'moov':['Tackle','Water Gun'],'ingame':True},
+            {'name':'Pikachu','type':'electric','life':90,'attack':60,'defence':45,'moov':['Tackle','Thunder'],'ingame':True},
+            {'name':'Bulbasaur','type':'grass','life':180,'attack':40,'defence':50,'moov':['Tackle','Leaf'],'ingame':True},
+            {'name':'Charmander','type':'fire','life':150,'attack':70,'defence':30,'moov':['Tackle','Flamethrower'],'ingame':True},
+            {'name':'Pidgey','type':'normal','life':80,'attack':45,'defence':45,'moov':['Tackle','Gust'],'ingame':False},
+            {'name':'Rattata','type':'normal','life':50,'attack':48,'defence':43,'moov':['Tackle','Quick Attack'],'ingame':False}
             ]
 
         # Declaration of all UI Elements
