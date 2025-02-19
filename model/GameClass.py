@@ -25,6 +25,8 @@ class Game:
         #Loop variables
         self.running = True
         self.game_state = "intro"
+        self.ingame_state = "attacking"
+        self.delay = 0
 
         self.battle_start = False
 
@@ -153,7 +155,7 @@ class Game:
             self.enemy.add_pokemon_to_list(pokemon, self.MOOV_TEMPLATE)
         #------------
         self.enemy.choose_pokemon()
-        # self.trainer.load_pokedex(self.MOOV_TEMPLATE)
+        self.trainer.load_pokedex(self.MOOV_TEMPLATE)
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
@@ -164,28 +166,27 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+
             if event.type == pygame.K_SPACE:
                 if self.game_state == "intro":
                     self.game_state = self.button_intro.label
-                    self.delay = pygame.time.get_ticks() + 500
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 #----- Intro screen events
                 if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
                     self.game_state = self.button_intro.label
-                    self.delay = pygame.time.get_ticks() + 500
 
                 #-----
                 #----- Main Menu screen events
                 for button in self.button_main_menu:
                     if self.game_state == "main_menu" and button.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = button.label
-                    self.delay = pygame.time.get_ticks() + 500
                 #-----
                 #----- Game Menu screen events
                 for button in self.button_game_menu:
                     if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = button.label
-                    self.delay = pygame.time.get_ticks() + 500
+                #-----
                 #----- Pokelist screen events
                 # TODO add a state for enable/disabled pokemon + create button_pokemon_list (button on each pokemon)
                 # for button in self.button_pokemon_list:
@@ -194,7 +195,6 @@ class Game:
 
                 if (self.game_state == "pokedex" or self.game_state == "pokelist") and self.button_pokedex.is_clicked(pygame.mouse.get_pos()):
                     self.game_state = button.label
-                    self.delay = pygame.time.get_ticks() + 500
                 #-----
                 #----- Ingame screen events
                 for button in self.button_moov:
@@ -202,5 +202,6 @@ class Game:
                         for moov in self.battle.turn_pkmn.moov:
                             if moov.name == button.label: 
                                 self.battle.chosen_moov = moov
-                        
+                                self.delay = pygame.time.get_ticks() + 1500   
+                                self.battle.ingame_state = "attacking" 
                 #-----

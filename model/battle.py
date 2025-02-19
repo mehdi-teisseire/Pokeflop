@@ -1,10 +1,4 @@
-from random import randint, choice
-from model.multiplier import type_multiplier
-from model.TrainerClass import Trainer
-from model.EnemyTrainerClass import EnemyTrainer
-from model.pokemon import Pokemon
-
-import pygame
+from pygame import time
 # from utils import Button
 
 
@@ -27,27 +21,21 @@ class Battle:
         self.opponent_pkmn = self.enemy_pokemon
 
         self.chosen_moov = ""
+        self.damage = 0
+        self.applied_damage = False
+        self.miss_check = False
+        self.has_missed = False
         
-    def finish_turn(self, game):        
+    def finish_turn(self, game):  
         if self.opponent_pokemon_ko():
-            print("Battle Finished!")
-            if self.trainer_current_hp <= 0:
-                print("You Lose!!")
-                game.enemy.remove_pokemon()
-            else:
-                print("You Win!!")
-                gave_pokemon = game.enemy.give_pokemon(game.trainer)
-                if gave_pokemon:
-                    print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! So cool!")
-                else:
-                    print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! Unfortunately, you already had one...")
-                
-            game.delay = pygame.time.get_ticks() + 4000
+            self.battle_end_results(game)
+            
+        self.chosen_moov = ''
+        self.damage = 0
+        self.applied_damage = False
+        self.miss_check = False
 
-            game.battle_start = False
-            game.game_state = "battle_end"
-                
-        game.battle.chosen_moov = ''
+        self.custom_wait(game, "attacking", 1500)
         self.change_turn()
 
 
@@ -81,8 +69,24 @@ class Battle:
             return True
         return False
     
+    def battle_end_results(self, game):
+        print("Battle Finished!")
+        if self.trainer_current_hp <= 0:
+            print("You Lose!!")
+            game.enemy.remove_pokemon()
+        else:
+            print("You Win!!")
+            gave_pokemon = game.enemy.give_pokemon(game.trainer)
+            if gave_pokemon:
+                print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! So cool!")
+            else:
+                print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! Unfortunately, you already had one...")
+                
+            game.battle_start = False
 
+            game.game_state = "battle_end"
 
-
-            
-
+    def custom_wait(self, game, state, wait_time = 1000):
+        if time.get_ticks() >= game.delay:
+            game.delay = time.get_ticks() + wait_time
+            game.ingame_state = state

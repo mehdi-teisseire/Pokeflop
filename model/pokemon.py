@@ -66,4 +66,4 @@ class Pokemon():
             game.battle.enemy_current_hp -= damage
         else:
             game.battle.trainer_current_hp -= damage
-        return damage
+        return True
