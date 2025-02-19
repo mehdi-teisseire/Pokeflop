@@ -44,12 +44,12 @@ class Game:
         ]
         
         self.POKEMON_TEMPLATE = [
-            {'name':'Squirtle','type':'water','life':120,'attack':50,'defence':50,'moov':['Tackle','Water Gun']},
-            {'name':'Pikachu','type':'electric','life':90,'attack':60,'defence':45,'moov':['Tackle','Thunder']},
-            {'name':'Bulbasaur','type':'grass','life':180,'attack':40,'defence':50,'moov':['Tackle','Leaf']},
-            {'name':'Charmander','type':'fire','life':150,'attack':70,'defence':30,'moov':['Tackle','Flamethrower']},
-            {'name':'Pidgey','type':'normal','life':80,'attack':45,'defence':45,'moov':['Tackle','Gust']},
-            {'name':'Rattata','type':'normal','life':50,'attack':48,'defence':43,'moov':['Tackle','Quick Attack']}
+            {'name':'Squirtle','type':'water','life':120,'attack':50,'defence':50,'moov':['Tackle','Water Gun'],'ingame':True},
+            {'name':'Pikachu','type':'electric','life':90,'attack':60,'defence':45,'moov':['Tackle','Thunder'],'ingame':True},
+            {'name':'Bulbasaur','type':'grass','life':180,'attack':40,'defence':50,'moov':['Tackle','Leaf'],'ingame':True},
+            {'name':'Charmander','type':'fire','life':150,'attack':70,'defence':30,'moov':['Tackle','Flamethrower'],'ingame':True},
+            {'name':'Pidgey','type':'normal','life':80,'attack':45,'defence':45,'moov':['Tackle','Gust'],'ingame':False},
+            {'name':'Rattata','type':'normal','life':50,'attack':48,'defence':43,'moov':['Tackle','Quick Attack'],'ingame':False}
             ]
 
         # Declaration of all UI Elements
@@ -61,9 +61,9 @@ class Game:
         
         
         ## Second Screen - Main Menu
-        self.button_main1 = Hitbox((450, 150), (300, 75), 'new_game')
-        self.button_main2 = Hitbox((450, 300), (300, 75), 'load_game')
-        self.button_main3 = Hitbox((450, 450), (300, 75), 'exit')
+        self.button_main1 = Hitbox((450, 230), (300, 75), 'new_game')
+        self.button_main2 = Hitbox((450, 330), (300, 75), 'load_game')
+        self.button_main3 = Hitbox((450, 430), (300, 75), 'exit')
         self.button_main_menu = [self.button_main1, self.button_main2, self.button_main3]
         
         self.background_button_main = ImageElement("media/ui-elements/button.svg")
@@ -71,15 +71,15 @@ class Game:
         self.text_button_main = Text("freesansbold.ttf", 36, (0,0,0))
 
         ## Third Screen - Game Menu
-        self.button_game1 = Hitbox((350, 230), (500, 150), 'ingame')
-        self.button_game2 = Hitbox((330, 400), (250, 75), 'pokedex')
-        self.button_game3 = Hitbox((620, 400), (250, 75), 'pokemon')
-        self.button_game4 = Hitbox((350, 500), (500, 100), 'main_menu')
+        self.button_game1 = Hitbox((450, 230), (300, 75), 'ingame')
+        self.button_game2 = Hitbox((450, 330), (300, 75), 'pokedex')
+        self.button_game3 = Hitbox((450, 430), (300, 75), 'pokemon')
+        self.button_game4 = Hitbox((450, 530), (300, 75), 'main_menu')
         self.button_game_menu = [self.button_game1, self.button_game2, self.button_game3, self.button_game4]
 
-        self.rectangle = ImageElement("media/ui-elements/RectangleSettings.png")
+        self.rectangle = ImageElement("media/ui-elements/button_square_border.svg")
         
-        self.background_button_game = ImageElement("media/ui-elements/button.png")
+        self.background_button_game = ImageElement("media/ui-elements/button.svg")
                 
         self.text_button_game = Text("freesansbold.ttf", 36, (0,0,0))
 
@@ -89,7 +89,7 @@ class Game:
         self.button_moov2 = Hitbox((825, 500), (225, 75))
         self.button_moov = [self.button_moov1, self.button_moov2]
 
-        self.background_button_moov = ImageElement("media/ui-elements/button.png")
+        self.background_button_moov = ImageElement("media/ui-elements/button_green.svg")
 
         self.text_button_moov = Text("freesansbold.ttf", 36, (0,0,0))
 
@@ -103,7 +103,9 @@ class Game:
         self.text_battle_message = Text("freesansbold.ttf", 36, (0,0,0))
 
         ## Fourth Screen - Pokedex
-        self.button_pokedex = Hitbox((195, 525), (804, 136), 'game_menu')
+      
+        self.button_quit = Hitbox((10,10), (30,30), 'game_menu')
+        self.button_quit_image = ImageElement("media/ui-elements/button.svg")
 
         self.box_background = ImageElement("media/ui-elements/box_background.png") 
 
@@ -186,13 +188,9 @@ class Game:
                         self.game_state = button.label
                 #-----
                 #----- Pokelist screen events
-                # TODO add a state for enable/disabled pokemon + create button_pokemon_list (button on each pokemon)
-                # for button in self.button_pokemon_list:
-                #     if self.game_state == "pokelist" and button.is_clicked(pygame.mouse.get_pos()):
-                #         self.enemy.add_pokemon_to_list()
-
-                if (self.game_state == "pokedex" or self.game_state == "pokelist") and self.button_pokedex.is_clicked(pygame.mouse.get_pos()):
-                    self.game_state = button.label
+                
+                if (self.game_state == "pokedex" or self.game_state == "pokemon") and self.button_quit.is_clicked(pygame.mouse.get_pos()):
+                    self.game_state = self.button_quit.label
                 #-----
                 #----- Ingame screen events
                 for button in self.button_moov:

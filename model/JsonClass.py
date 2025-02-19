@@ -3,14 +3,15 @@ import json, copy
 class Json:
     def save_json(self, object_list, filename):
         """ To write changes in the JSON"""
-        temp_list = self.create_temp_list(object_list)
-       
-        try:
+        if not isinstance(object_list, dict):
+            temp_list = object_list
             with open("./data/" + filename + ".json", "w") as file:
                 json.dump(temp_list, file, default=lambda o: o.__dict__, indent=4)
-        except Exception:
-            print("Couldn't save JSON data!")
-
+        else:
+            temp_list = self.create_temp_list(object_list)
+            with open("./data/" + filename + ".json", "w") as file:
+                json.dump(temp_list, file, default=lambda o: o.__dict__, indent=4)
+         
     def load_json(self, filename):
         """ To load JSON to display it(for the pokedex). Return a LIST that contain DICT!"""
         try:

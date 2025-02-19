@@ -10,9 +10,18 @@
         "life": 120,
         "attack": 50,
         "defence": 50,
+        "ingame": true,
         "moov": [
-            "Tackle",
-            "Water Gun"
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Water Gun",
+                "type": "water",
+                "accuracy": 80
+            }
         ]
     },
     {

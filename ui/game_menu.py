@@ -5,7 +5,7 @@ def display_game_menu(game):
     game.button_game4.draw(game.screen)
 
     game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/background.png")
-    game.rectangle.draw(game.screen, ((game.screen_size[0] - 607)/2, (game.screen_size[1] - 250)/2), (607,424)) #coords=(280, 200)
+    #game.rectangle.draw(game.screen, ((game.screen_size[0] - 607)/2, (game.screen_size[1] - 250)/2), (607,424)) #coords=(280, 200)
 
     game.background_button_game.draw(game.screen, hitbox=game.button_game1)
     game.background_button_game.draw(game.screen, hitbox=game.button_game2)

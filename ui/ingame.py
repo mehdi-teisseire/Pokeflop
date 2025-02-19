@@ -36,7 +36,7 @@ def display_ingame(game):
 
 
 def display_background(game):
-    game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
+    game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_TextBox.png")
 
 def display_battle_interface(game):
     game.life_text.draw(game.screen, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}", (200,50)) #TODO change "100" to "trainer.pokemon[0].max_life"
