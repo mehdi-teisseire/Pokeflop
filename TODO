@@ -4,21 +4,23 @@
 
 put trainer obj in turn instead and rename turn to player turn or something
 
-some ui elements are initialized with args and initialized again with method (need to fix repeats)
-
 Need to apply level up and do evolution
-
-on new game, it appends only if ingame pokedex is empty (normal behavior)
-
-on load game, it append instead of replacing
-
-have to clear the pokedex enemy after battle
 
 on new game -> confirmation message (display on saveslot.py)
 On load game -> multiple saves (display on saveslot.py)
 
 ingame text to change with boxes
 
-sprite in list/dict
+add a state for enable/disabled pokemon + create button_pokemon_list (button on each pokemon)
 
-event.SPACE in intro
+pokemon buttons in pokelist -> loop to create in a list then iterate it in event
+
+add pokemon selection menu before battle and after pokemon die
+
+error handling
+
+add sounds
+
+--- Time/Delay issue! ---
+fix double input on button (tick add or wait)
+add delay to message boxes

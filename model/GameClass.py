@@ -12,8 +12,6 @@ from ui.pokelist import display_pokelist
 
 import pygame
 
-
-
 class Game:
     def __init__(self):
         pygame.init()
@@ -25,6 +23,8 @@ class Game:
         #Loop variables
         self.running = True
         self.game_state = "intro"
+        self.ingame_state = "attacking"
+        self.delay = 0
 
         self.battle_start = False
 
@@ -83,7 +83,8 @@ class Game:
                 
         self.text_button_game = Text("freesansbold.ttf", 36, (0,0,0))
 
-        ## Fourth Screen - Ingame      
+        ## Fourth Screen - Ingame
+        # Moov display 
         self.button_moov1 = Hitbox((225, 500), (225, 75))
         self.button_moov2 = Hitbox((825, 500), (225, 75))
         self.button_moov = [self.button_moov1, self.button_moov2]
@@ -91,8 +92,15 @@ class Game:
         self.background_button_moov = ImageElement("media/ui-elements/button_green.svg")
 
         self.text_button_moov = Text("freesansbold.ttf", 36, (0,0,0))
-        
+
+        #Interface
+        #TODO add name and place it into frame
         self.life_text = Text("freesansbold.ttf", 36, (0,0,0))
+
+        #battle messages
+        self.button_battle_message = Hitbox((0, 500),(1200, 175))
+        self.background_battle_message = ImageElement('media/ui-elements/button.png')
+        self.text_battle_message = Text("freesansbold.ttf", 36, (0,0,0))
 
         ## Fourth Screen - Pokedex
       
@@ -142,24 +150,32 @@ class Game:
     def battle_ini(self):
         """Attributes that needs to be set only once (before battle) are here"""
         #----TEMP----
-        #TODO remove this
+        #TODO remove this; this should be in pokemon.py
         for pokemon in self.POKEMON_TEMPLATE:
             self.enemy.add_pokemon_to_list(pokemon, self.MOOV_TEMPLATE)
         #------------
         self.enemy.choose_pokemon()
-        # self.trainer.load_pokedex(self.MOOV_TEMPLATE)
+        self.trainer.load_pokedex(self.MOOV_TEMPLATE)
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
 
-    def events(self):
+    def events(self):                    
+        # TODO refractor some events in their files or put ticks after a state change
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+
+            if event.type == pygame.K_SPACE:
+                if self.game_state == "intro":
+                    self.game_state = self.button_intro.label
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 #----- Intro screen events
                 if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
                     self.game_state = self.button_intro.label
+
                 #-----
                 #----- Main Menu screen events
                 for button in self.button_main_menu:
@@ -170,6 +186,7 @@ class Game:
                 for button in self.button_game_menu:
                     if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = button.label
+                #-----
                 #----- Pokelist screen events
                 
                 if (self.game_state == "pokedex" or self.game_state == "pokemon") and self.button_quit.is_clicked(pygame.mouse.get_pos()):
@@ -178,11 +195,9 @@ class Game:
                 #----- Ingame screen events
                 for button in self.button_moov:
                     if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
-                        # TODO maybe refractor this into ingame.py? I don't know
                         for moov in self.battle.turn_pkmn.moov:
                             if moov.name == button.label: 
                                 self.battle.chosen_moov = moov
-                        #TODO should just change chosen_move and chosen_move back to False after the attack
-                        #TODO Begin_move should happen in the display
-                        
+                                self.delay = pygame.time.get_ticks() + 1500   
+                                self.battle.ingame_state = "attacking" 
                 #-----

@@ -23,5 +23,37 @@
                 "accuracy": 80
             }
         ]
+    },
+    {
+        "name": "Squirtle",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Squirtle_front.png",
+            "back": "media/Pokemons-assets/back/Squirtle_back.png"
+        },
+        "type": "water",
+        "level": 5,
+        "life": 120,
+        "attack": 50,
+        "defence": 50,
+        "moov": [
+            "Tackle",
+            "Water Gun"
+        ]
+    },
+    {
+        "name": "Pidgey",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Pidgey_front.png",
+            "back": "media/Pokemons-assets/back/Pidgey_back.png"
+        },
+        "type": "normal",
+        "level": 5,
+        "life": 80,
+        "attack": 45,
+        "defence": 45,
+        "moov": [
+            "Tackle",
+            "Gust"
+        ]
     }
 ]

@@ -65,6 +65,10 @@ class Pokemon():
     def apply_damage(self, game, damage):
         if game.battle.opponent == game.battle.enemy_name:
             game.battle.enemy_current_hp -= damage
+            if game.battle.enemy_current_hp < 0:
+                game.battle.enemy_current_hp = 0
         else:
             game.battle.trainer_current_hp -= damage
-        return damage
+            if game.battle.trainer_current_hp < 0:
+                game.battle.trainer_current_hp = 0
+        return True
