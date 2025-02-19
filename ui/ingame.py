@@ -1,3 +1,5 @@
+import pygame
+
 def display_ingame(game):
     display_background(game)
     display_battle_interface(game)
@@ -48,6 +50,10 @@ def display_attacking_text(game):
     #TODO text for attacking text (pokemon uses move)
     print(f"{game.battle.turn}'s {game.battle.turn_pkmn.name} uses {game.battle.chosen_moov.name}!!")
 
+    game.button_battle_message.draw(game.screen)
+    game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+    game.text_battle_message.draw(game.screen, f"{game.battle.turn}'s {game.battle.turn_pkmn.name} uses {game.battle.chosen_moov.name}!!" ,hitbox=game.button_battle_message)
+
 def display_moov_animation(game):
     #TODO placeholder/test for animation
     print("Mooving!")
@@ -56,13 +62,14 @@ def display_moov_animation(game):
 def display_damage_text(game, damage):
     #TODO placeholder for damage text
     print(f"{game.battle.turn}'s {game.battle.turn_pkmn.name} has inflicted {damage} damage to {game.battle.opponent_pkmn.name}!")
+    game.delay = pygame.time.get_ticks() + 1000
 
 def display_moov_missed_text(game):
     #TODO placeholder for miss text
     print(f"{game.battle.chosen_moov.name} has missed!!")
 
 def display_battle_end(game):                
-    #TODO Summary of battle, level up and evolution
+    #TODO Summary of battle, level up and evolution + pokemon give?
     from pygame import time
-    if time.get_ticks() >= game.battle.battle_end_time:
+    if time.get_ticks() >= game.delay:
         game.game_state = "game_menu"

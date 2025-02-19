@@ -33,6 +33,7 @@ class Battle:
             print("Battle Finished!")
             if self.trainer_current_hp <= 0:
                 print("You Lose!!")
+                game.enemy.remove_pokemon()
             else:
                 print("You Win!!")
                 gave_pokemon = game.enemy.give_pokemon(game.trainer)
@@ -40,8 +41,8 @@ class Battle:
                     print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! So cool!")
                 else:
                     print(f"{self.enemy_name} gave you a {self.enemy_pokemon.name}!! Unfortunately, you already had one...")
-            # pygame.time.wait(1000)
-            self.battle_end_time = pygame.time.get_ticks() + 4000
+                
+            game.delay = pygame.time.get_ticks() + 4000
 
             game.battle_start = False
             game.game_state = "battle_end"

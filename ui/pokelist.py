@@ -21,7 +21,7 @@ def display_pokelist(game):
     for pokemon in pokedex_data:
         sprite_rect = pygame.Rect(x, y, 40, 40)
         if sprite_rect.collidepoint(mouse_pos):
-            game.background_pokedex.draw(game.screen)
+            game.background_pokedex.draw(game.screenw)
             font = pygame.font.Font(None, 24)
             level_text = font.render(f"Level: {pokemon['level']}", True, (0, 0, 0))
             game.screen.blit(level_text, (145, 360))

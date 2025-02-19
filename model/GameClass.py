@@ -83,7 +83,8 @@ class Game:
                 
         self.text_button_game = Text("freesansbold.ttf", 36, (0,0,0))
 
-        ## Fourth Screen - Ingame      
+        ## Fourth Screen - Ingame
+        # Moov display 
         self.button_moov1 = Hitbox((225, 500), (225, 75))
         self.button_moov2 = Hitbox((825, 500), (225, 75))
         self.button_moov = [self.button_moov1, self.button_moov2]
@@ -91,8 +92,15 @@ class Game:
         self.background_button_moov = ImageElement("media/ui-elements/button.png")
 
         self.text_button_moov = Text("freesansbold.ttf", 36, (0,0,0))
-        
+
+        #Interface
+        #TODO add name and place it into frame
         self.life_text = Text("freesansbold.ttf", 36, (0,0,0))
+
+        #battle messages
+        self.button_battle_message = Hitbox((0, 500),(1200, 175))
+        self.background_battle_message = ImageElement('media/ui-elements/button.png')
+        self.text_battle_message = Text("freesansbold.ttf", 36, (0,0,0))
 
         ## Fourth Screen - Pokedex
         self.button_pokedex = Hitbox((195, 525), (804, 136), 'game_menu')
@@ -140,7 +148,7 @@ class Game:
     def battle_ini(self):
         """Attributes that needs to be set only once (before battle) are here"""
         #----TEMP----
-        #TODO remove this
+        #TODO remove this; this should be in pokemon.py
         for pokemon in self.POKEMON_TEMPLATE:
             self.enemy.add_pokemon_to_list(pokemon, self.MOOV_TEMPLATE)
         #------------
@@ -150,37 +158,49 @@ class Game:
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
 
-    def events(self):
+    def events(self):                    
+        # TODO refractor some events in their files or put ticks after a state change
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+            if event.type == pygame.K_SPACE:
+                if self.game_state == "intro":
+                    self.game_state = self.button_intro.label
+                    self.delay = pygame.time.get_ticks() + 500
             if event.type == pygame.MOUSEBUTTONDOWN:
                 #----- Intro screen events
                 if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
                     self.game_state = self.button_intro.label
+                    self.delay = pygame.time.get_ticks() + 500
+
                 #-----
                 #----- Main Menu screen events
                 for button in self.button_main_menu:
                     if self.game_state == "main_menu" and button.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = button.label
+                    self.delay = pygame.time.get_ticks() + 500
                 #-----
                 #----- Game Menu screen events
                 for button in self.button_game_menu:
                     if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = button.label
+                    self.delay = pygame.time.get_ticks() + 500
                 #----- Pokelist screen events
-                
+                # TODO add a state for enable/disabled pokemon + create button_pokemon_list (button on each pokemon)
+                # for button in self.button_pokemon_list:
+                #     if self.game_state == "pokelist" and button.is_clicked(pygame.mouse.get_pos()):
+                #         self.enemy.add_pokemon_to_list()
+
                 if (self.game_state == "pokedex" or self.game_state == "pokelist") and self.button_pokedex.is_clicked(pygame.mouse.get_pos()):
                     self.game_state = button.label
+                    self.delay = pygame.time.get_ticks() + 500
                 #-----
                 #----- Ingame screen events
                 for button in self.button_moov:
                     if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
-                        # TODO maybe refractor this into ingame.py? I don't know
                         for moov in self.battle.turn_pkmn.moov:
                             if moov.name == button.label: 
                                 self.battle.chosen_moov = moov
-                        #TODO should just change chosen_move and chosen_move back to False after the attack
-                        #TODO Begin_move should happen in the display
                         
                 #-----
