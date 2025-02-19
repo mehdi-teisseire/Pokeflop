@@ -71,11 +71,16 @@ def display_pokelist(game):
     if pygame.mouse.get_pressed()[0]:  
         for sprite_rect, pokemon in sprite_positions:
             if sprite_rect.collidepoint(mouse_pos):
-                pokemon['ingame'] = not pokemon['ingame']
-                print(f"Selected {pokemon['ingame']}")
-                game.save_json(pokedex_data, 'pokemon')
+                existing_pokemon = game.open_json('pokemon') or []
+                pokemon_exists = any(p['name'] == pokemon['name'] for p in existing_pokemon)
+                
+                if pokemon_exists:
+                    existing_pokemon = [p for p in existing_pokemon if p['name'] != pokemon['name']]
+                else:
+                    existing_pokemon.append(pokemon)
+                
+                game.save_json(existing_pokemon, 'pokemon')
                 break
-        
     for sprite_rect, pokemon in sprite_positions:
         if sprite_rect.collidepoint(mouse_pos):
             current_pokemon = pokemon
