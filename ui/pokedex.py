@@ -3,14 +3,14 @@ import pygame
 def render_pokemon_info(game, pokemon, font):
     """Render information for a single Pokemon."""
     info_positions = {
-        'level': (50, 130),
-        'type': (50, 180),
-        'name': (50, 230),
-        'attack': (50, 270),
-        'defence': (50, 310),
-        'life': (50, 360),
-        'moov1': (50, 390),
-        'moov2': (50, 410)
+        'name': (30, 130),
+        'level': (300, 130),
+        'type': (30, 180),
+        'attack': (300, 300),
+        'defence': (300, 350),
+        'life': (300, 250),
+        'moov1': (30, 300),
+        'moov2': (30, 350)
     }
     
     text_items = {
@@ -20,8 +20,8 @@ def render_pokemon_info(game, pokemon, font):
         'attack': f"Attack: {pokemon['attack']}",
         'defence': f"Defense: {pokemon['defence']}",
         'life': f"Life: {pokemon['life']}",
-        'moov1': f"Moov1: {pokemon['moov'][0]}",
-        'moov2': f"Moov2: {pokemon['moov'][1]}"
+        'moov1': f"Moov: {pokemon['moov'][0]}",
+        'moov2': f"Moov: {pokemon['moov'][1]}"
     }
     
     for key, text in text_items.items():
@@ -48,17 +48,16 @@ def display_pokemon_sprites(game, pokedex_data):
 
 def display_pokedex(game):
     """Main function to display the Pokedex."""
-    game.button_pokedex.draw(game.screen)
-
     game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/box.png")
-    game.box_background.draw(game.screen)
-    game.background_button_main.draw(game.screen, hitbox=game.button_pokedex)
+    game.box_background.draw(game.screen,size=game.screen_size, image_path="media/ui-elements/box_background.png")
+    game.button_quit.draw(game.screen)
+    game.button_quit_image.draw(game.screen,hitbox=game.button_quit,image_path="media/ui-elements/cross.svg")
 
     pokedex_data = game.open_json('pokedex') # from object: # pokedex_data = game.trainer.pokedex
     if not pokedex_data:
         return
         
-    font = pygame.font.Font(None, 50)
+    font = pygame.font.Font(None, 40)
 
     sprite_positions = display_pokemon_sprites(game, pokedex_data)
     
