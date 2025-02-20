@@ -50,6 +50,7 @@ class EnemyTrainer(Trainer):
 
 
 
+
 """
 
 # Pokemon pool and list will contain Dict (from there, it'll create object for pokedex)
