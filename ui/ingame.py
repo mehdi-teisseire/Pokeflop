@@ -1,5 +1,7 @@
 from pygame import time
 
+
+
 def display_ingame(game):
     display_background(game)
     display_battle_interface(game)
@@ -113,6 +115,7 @@ def display_end_results(game):
         game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
         game.text_battle_message.draw(game.screen, f"Too bad, {game.battle.trainer_name}'s {game.battle.trainer_pokemon.name} had been defeated by {game.battle.enemy_name}'s {game.battle.enemy_pokemon.name}!!" ,hitbox=game.button_battle_message)
         
+        
     else:
         game.button_battle_message.draw(game.screen)
         game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
@@ -143,10 +146,11 @@ def custom_wait(game, state, wait_time = 1000):
 def display_battle_end(game):    
     if game.battle.won:
         if game.battle.gave_pokemon:
+            game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
             game.button_battle_message.draw(game.screen)
             game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
             game.text_battle_message.draw(game.screen, f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! So cool!" ,hitbox=game.button_battle_message)
-            
+           
    
         else:
             game.button_battle_message.draw(game.screen)
@@ -161,7 +165,7 @@ def display_battle_end(game):
     if time.get_ticks() >= game.delay:
         game.trainer.pokedex[0].level_up()
         display_evolve(game)
-        game.delay = time.get_ticks() + 5000
+        game.delay = time.get_ticks() + 50000
         game.save_json(game.trainer.pokedex, 'pokedex')
         game.mixer.music.stop()
         game.mixer.music.load('media/audio/bgm_menu.mp3')
