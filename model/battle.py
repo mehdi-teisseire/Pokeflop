@@ -20,7 +20,7 @@ class Battle:
         self.damage = 0
         self.applied_damage = False
         self.miss_check = False
-        self.has_missed = False
+        self.pokemon_missed = False
 
         
     def finish_turn(self, game):  
@@ -28,11 +28,16 @@ class Battle:
         self.damage = 0
         self.applied_damage = False
         self.miss_check = False
+        self.pokemon_ko = self.is_pokemon_ko()
 
-        if self.opponent_pokemon_ko():
-            self.custom_wait(game, "pokemon_ko", 2000)
+        if self.pokemon_ko:
+            # if time.get_ticks() >= game.delay:
+            game.delay = time.get_ticks() + 2000
+            game.ingame_state = "pokemon_ko"
         else:
-            self.custom_wait(game, "attacking", 1500)
+            # if time.get_ticks() >= game.delay:
+            game.delay = time.get_ticks() + 1500
+            game.ingame_state = "attacking"
             self.change_turn()
 
 
@@ -60,36 +65,15 @@ class Battle:
             return self.turn_pkmn.moov[0]
     
 
-    def opponent_pokemon_ko(self):
+    def is_pokemon_ko(self):
         """To check if Pokemon is alive or not"""
-        if self.enemy_current_hp <= 0 or self.trainer_current_hp <= 0:
-            return True
-        return False
-    
-    def end_results(self, game):
-        if self.trainer_current_hp <= 0:
-            self.has_won = False
-
-            game.button_battle_message.draw(game.screen)
-            game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
-            game.text_battle_message.draw(game.screen, f"Too bad, {self.trainer_name}'s {self.trainer_pokemon} had been defeated by {self.enemy_name}'s {self.enemy_pokemon}!!" ,hitbox=game.button_battle_message)
-    
-            game.enemy.remove_pokemon()
+        if self.enemy_current_hp <= 0:
+            self.won = True
+            return self.enemy_name
+        elif self.trainer_current_hp <= 0:
+            self.won = False
+            return self.trainer_name
         else:
-            self.has_won = True
-
-            game.button_battle_message.draw(game.screen)
-            game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
-            game.text_battle_message.draw(game.screen, f"Good job, {self.trainer_name}'s {self.trainer_pokemon} had defeated {self.enemy_name}'s {self.enemy_pokemon}!!" ,hitbox=game.button_battle_message)
+            return False
     
-            self.gave_pokemon = game.enemy.give_pokemon(game.trainer)
 
-        game.battle_start = False
-
-        game.delay = time.get_ticks() + 5000
-        game.game_state = "battle_end"
-
-    def custom_wait(self, game, state, wait_time = 1000):
-        if time.get_ticks() >= game.delay:
-            game.delay = time.get_ticks() + wait_time
-            game.ingame_state = state

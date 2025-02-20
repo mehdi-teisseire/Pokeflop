@@ -9,14 +9,14 @@ class EnemyTrainer(Trainer):
         self.pokemon = [] # List of possible pokemon enemy can choose from 
 
 
-    def add_pokemon_to_list(self, pokemon, moov_list):
+    def add_pokemon_to_list(self, pokemon):
         """To add a pokemon from the template to pokemon list."""
-        self.pokemon.append(self.convert_pokemon_to_obj(pokemon, moov_list))
+        self.pokemon.append(self.convert_pokemon_to_obj(pokemon))
         self.update_json()
 
-    def remove_pokemon_to_list(self, pokemon, moov_list):
+    def remove_pokemon_to_list(self, pokemon):
         """To remove a pokemon from the pokemon list."""
-        self.pokemon.remove(self.convert_pokemon_to_obj(pokemon, moov_list)) 
+        self.pokemon.remove(self.convert_pokemon_to_obj(pokemon)) 
         self.update_json()
         
     def choose_pokemon(self):

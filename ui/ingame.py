@@ -15,9 +15,9 @@ def display_ingame(game):
                     display_attack_choice(game)
         case "mooving":
             if not game.battle.miss_check:
-                game.battle.has_missed = game.battle.turn_pkmn.has_missed(game.battle.chosen_moov)
+                game.battle.pokemon_missed = game.battle.turn_pkmn.has_missed(game.battle.chosen_moov)
                 game.battle.miss_check = True
-            if game.battle.has_missed:
+            if game.battle.pokemon_missed:
                 display_moov_missed_text(game)
             else:
                 if not game.battle.damage:
@@ -30,7 +30,7 @@ def display_ingame(game):
         case "turn_finish":
             game.battle.finish_turn(game)
         case "pokemon_ko":
-            game.battle.end_results(game)
+            display_end_results(game)
         case _:
             print("Error selecting an ingame state")
 
@@ -55,12 +55,11 @@ def display_attack_choice(game):
     game.text_button_moov.draw(game.screen, game.trainer.pokedex[0].moov[1].name, hitbox=game.button_moov2)    
     
 def display_attacking_text(game):
-    #TODO text for attacking text (pokemon uses move)
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
     game.text_battle_message.draw(game.screen, f"{game.battle.turn}'s {game.battle.turn_pkmn.name} uses {game.battle.chosen_moov.name}!!" ,hitbox=game.button_battle_message)
     
-    game.battle.custom_wait(game, "mooving", 1000)
+    custom_wait(game, "mooving", 1000)
 
 def display_moov_animation(game):
     #TODO placeholder/test for animation
@@ -68,23 +67,21 @@ def display_moov_animation(game):
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
     game.text_battle_message.draw(game.screen, f"Moooving!" ,hitbox=game.button_battle_message)
    
-    game.battle.custom_wait(game, "damage", 2000)
+    custom_wait(game, "damage", 2000)
     
 def display_damage_text(game, damage):
-    #TODO placeholder for damage text
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
     game.text_battle_message.draw(game.screen, f"{game.battle.turn}'s {game.battle.turn_pkmn.name} has inflicted {damage} damage to {game.battle.opponent_pkmn.name}!" ,hitbox=game.button_battle_message)
     
-    game.battle.custom_wait(game, "turn_finish", 0)
+    custom_wait(game, "turn_finish", 0)
 
 def display_moov_missed_text(game):
-    #TODO placeholder for miss text
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
     game.text_battle_message.draw(game.screen, f"{game.battle.chosen_moov.name} has missed!!" ,hitbox=game.button_battle_message)
     
-    game.battle.custom_wait(game, "turn_finish", 0)
+    custom_wait(game, "turn_finish", 0)
 
 def display_enemy_choosing_move(game):
     """Display a message to let AI play without interferences"""
@@ -98,15 +95,53 @@ def display_enemy_choosing_move(game):
         game.ingame_state = "attacking"
         game.battle.chosen_moov = game.battle.ia_choose_moov(game)
 
-def display_battle_end(game):    
-    if game.battle.has_won:
-        if game.battle.gave_pokemon:
-            print(f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! So cool!")
-        else:
-            print(f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! Unfortunately, you already had one...")
+def display_end_results(game):
+    if not game.battle.won:
+        game.button_battle_message.draw(game.screen)
+        game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+        game.text_battle_message.draw(game.screen, f"Too bad, {game.battle.trainer_name}'s {game.battle.trainer_pokemon.name} had been defeated by {game.battle.enemy_name}'s {game.battle.enemy_pokemon.name}!!" ,hitbox=game.button_battle_message)
+        
     else:
-        print("Nothing to show here")
+        game.button_battle_message.draw(game.screen)
+        game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+        game.text_battle_message.draw(game.screen, f"Good job, {game.battle.trainer_name}'s {game.battle.trainer_pokemon.name} had defeated {game.battle.enemy_name}'s {game.battle.enemy_pokemon.name}!!" ,hitbox=game.button_battle_message)
+        
+    if time.get_ticks() >= game.delay:
+        game.delay = time.get_ticks() + 5000
+        if not game.battle.won:
+            print(game.trainer.pokedex, game.enemy.pokedex)
+            game.enemy.remove_pokemon()
+            game.trainer.remove_pokemon(game.battle.opponent_pkmn)
+            print(game.trainer.pokedex, game.enemy.pokedex)
+        else:
+            game.battle.gave_pokemon = game.enemy.give_pokemon(game.trainer)
 
+        game.game_state = "battle_end"
+        game.battle_start = False
+        game.battle.ingame_state = "attacking"
+
+def custom_wait(game, state, wait_time = 1000):
+    if time.get_ticks() >= game.delay:
+        game.delay = time.get_ticks() + wait_time
+        game.ingame_state = state
+
+def display_battle_end(game):    
+    if game.battle.won:
+        if game.battle.gave_pokemon:
+            game.button_battle_message.draw(game.screen)
+            game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+            game.text_battle_message.draw(game.screen, f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! So cool!" ,hitbox=game.button_battle_message)
+   
+        else:
+            game.button_battle_message.draw(game.screen)
+            game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+            game.text_battle_message.draw(game.screen, f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! Unfortunately, you already had one..." ,hitbox=game.button_battle_message)
+   
+    else:
+        game.button_battle_message.draw(game.screen)
+        game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+        game.text_battle_message.draw(game.screen, f"{game.battle.trainer_name}'s {game.battle.enemy_pokemon.name} is dead forever..." ,hitbox=game.button_battle_message)
+   
     if time.get_ticks() >= game.delay:
         game.game_state = "game_menu"
 

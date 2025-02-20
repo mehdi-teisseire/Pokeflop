@@ -23,7 +23,6 @@ class Game:
         #Loop variables
         self.running = True
         self.game_state = "intro"
-        self.ingame_state = "attacking"
         self.delay = 0
 
         self.battle_start = False
@@ -44,12 +43,12 @@ class Game:
         ]
         
         self.POKEMON_TEMPLATE = [
-            {'name':'Squirtle','type':'water','life':120,'attack':50,'defence':50,'moov':['Tackle','Water Gun'],'ingame':True},
-            {'name':'Pikachu','type':'electric','life':90,'attack':60,'defence':45,'moov':['Tackle','Thunder'],'ingame':True},
-            {'name':'Bulbasaur','type':'grass','life':180,'attack':40,'defence':50,'moov':['Tackle','Leaf'],'ingame':True},
-            {'name':'Charmander','type':'fire','life':150,'attack':70,'defence':30,'moov':['Tackle','Flamethrower'],'ingame':True},
-            {'name':'Pidgey','type':'normal','life':80,'attack':45,'defence':45,'moov':['Tackle','Gust'],'ingame':False},
-            {'name':'Rattata','type':'normal','life':50,'attack':48,'defence':43,'moov':['Tackle','Quick Attack'],'ingame':False}
+            {'name':'Squirtle','type':'water','life':120,'attack':50,'defence':50,'moov':[self.parse_moov_dict('Tackle'),self.parse_moov_dict('Water Gun')],'ingame':True},
+            {'name':'Pikachu','type':'electric','life':90,'attack':60,'defence':45,'moov':[self.parse_moov_dict('Tackle'),self.parse_moov_dict('Thunder')],'ingame':True},
+            {'name':'Bulbasaur','type':'grass','life':180,'attack':40,'defence':50,'moov':[self.parse_moov_dict('Tackle'),self.parse_moov_dict('Leaf')],'ingame':True},
+            {'name':'Charmander','type':'fire','life':150,'attack':70,'defence':30,'moov':[self.parse_moov_dict('Tackle'),self.parse_moov_dict('Flamethrower')],'ingame':True},
+            {'name':'Pidgey','type':'normal','life':80,'attack':45,'defence':45,'moov':[self.parse_moov_dict('Tackle'),self.parse_moov_dict('Gust')],'ingame':False},
+            {'name':'Rattata','type':'normal','life':50,'attack':48,'defence':43,'moov':[self.parse_moov_dict('Tackle'),self.parse_moov_dict('Quick Attack')],'ingame':False}
             ]
 
         # Declaration of all UI Elements
@@ -69,6 +68,15 @@ class Game:
         self.background_button_main = ImageElement("media/ui-elements/button.svg")
         
         self.text_button_main = Text("freesansbold.ttf", 36, (0,0,0))
+        # New Game
+        self.button_pokemon1 = Hitbox((200,200), (100,100),'Squirtle')
+        self.button_pokemon2 = Hitbox((500,200), (100,100),'Bulbasaur')
+        self.button_pokemon3 = Hitbox((800,200), (100,100),'Charmander')
+        self.button_first_pokemon = [self.button_pokemon1, self.button_pokemon2, self.button_pokemon3]
+
+        self.image_pokemon1 = ImageElement("media/Pokemons-assets/front/Squirtle_front.png")
+        self.image_pokemon2 = ImageElement("media/Pokemons-assets/front/Bulbasaur_front.png")
+        self.image_pokemon3 = ImageElement("media/Pokemons-assets/front/Charmander_front.png")
 
         ## Third Screen - Game Menu
         self.button_game1 = Hitbox((450, 230), (300, 75), 'ingame')
@@ -149,16 +157,13 @@ class Game:
 
     def battle_ini(self):
         """Attributes that needs to be set only once (before battle) are here"""
-        #----TEMP----
-        #TODO remove this; this should be in pokemon.py
-        for pokemon in self.POKEMON_TEMPLATE:
-            self.enemy.add_pokemon_to_list(pokemon, self.MOOV_TEMPLATE)
-        #------------
         self.enemy.choose_pokemon()
         self.trainer.load_pokedex(self.MOOV_TEMPLATE)
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
+        self.ingame_state = "attacking"
+
 
     def events(self):                    
         # TODO refractor some events in their files or put ticks after a state change
@@ -182,6 +187,15 @@ class Game:
                     if self.game_state == "main_menu" and button.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = button.label
                 #-----
+                #----- New Game screen events
+                for button in self.button_first_pokemon:
+                    if self.game_state == "new_game" and button.is_clicked(pygame.mouse.get_pos()):
+                        self.game_state = "game_menu"
+                        for pokemon in self.POKEMON_TEMPLATE:
+                            if pokemon["name"] == button.label:
+                                self.trainer.give_first_pokemon(pokemon)
+
+                #-----
                 #----- Game Menu screen events
                 for button in self.button_game_menu:
                     if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
@@ -201,3 +215,7 @@ class Game:
                                 self.delay = pygame.time.get_ticks() + 1500   
                                 self.battle.ingame_state = "attacking" 
                 #-----
+    def parse_moov_dict(self, moov):
+        for moovs in self.MOOV_TEMPLATE:
+            if moovs["name"] == moov:
+                return moovs

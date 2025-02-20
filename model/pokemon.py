@@ -4,7 +4,7 @@ from model.multiplier import type_multiplier
 class Pokemon(): 
     '''Class to create a pokemon'''
 
-    def __init__(self,name,type,attack,defence,moov1,moov2,moov_list,level = 5,life = 100,ingame = False):
+    def __init__(self, name, type, attack, defence, moov, level = 5, life = 100, ingame = False):
         '''Initialize the pokemon'''
         self.name = name
         self.sprite = {
@@ -18,15 +18,13 @@ class Pokemon():
         self.defence = defence
         self.ingame = ingame
 
-        self.moov = [self.create_moov(moov1, moov_list), self.create_moov(moov2, moov_list)]
+        self.moov = [self.create_moov(moov[0]), self.create_moov(moov[1])]
     
     def get_pokemon(self):
         return f"Name: {self.name}, Type: {self.type}, Level: {self.level}, Attack: {self.attack}, Defence: {self.defence}, Moov: {self.moov1},' ',{self.moov2}; Life: {self.life}"
     
-    def create_moov(self, moov_name, moov_list):
-        for moov in moov_list:
-            if moov["name"] == moov_name:
-                return Moov(name=moov["name"], type=moov["type"], accuracy=moov["accuracy"])
+    def create_moov(self, moov):
+        return Moov(name=moov["name"], type=moov["type"], accuracy=moov["accuracy"])
 
     def level_up(self):
         '''Level up the pokemon'''
@@ -60,8 +58,7 @@ class Pokemon():
             return True
         else:
             return False
-        # return f"{self.moov1} has an accuracy of {self.accuracy_mouv1} and {self.moov2} has an accuracy of {self.accuracy_mouv2}"
-
+       
     def apply_damage(self, game, damage):
         if game.battle.opponent == game.battle.enemy_name:
             game.battle.enemy_current_hp -= damage
