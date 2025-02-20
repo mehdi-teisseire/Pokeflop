@@ -1,6 +1,8 @@
 from pygame import time
 
 def display_ingame(game):
+    game.mixer.music.load('media/audio/bgm_fight.mp3')
+    game.mixer.music.play(-1)
     display_background(game)
     display_battle_interface(game)
 
@@ -36,7 +38,7 @@ def display_ingame(game):
 
 
 def display_background(game):
-    game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_NoTextBox.png")
+    game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
 
 def display_battle_interface(game):
     game.trainer_pokemon.draw(game.screen, (100, 250), (300,300), f"media/Pokemons-assets/back/{game.battle.trainer_pokemon.name}_back.png")

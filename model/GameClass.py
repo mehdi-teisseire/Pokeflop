@@ -19,6 +19,8 @@ class Game:
         self.screen_size = (1200,675)
         self.screen = pygame.display.set_mode(self.screen_size)  # Nouvelle résolution
         self.clock = pygame.time.Clock()
+        self.mixer = pygame.mixer
+        self.mixer.init()
 
         #Loop variables
         self.running = True
@@ -122,8 +124,11 @@ class Game:
     def start(self):
         """Start the main loop and switch state to change screen"""
         self.main_loop()
+# -1 means loop indefinitely
      
     def main_loop(self):
+        self.mixer.music.load('media/audio/bgm_menu.mp3')
+        self.mixer.music.play(-1)
         while self.running:
             self.events()
             self.screen.fill("black")

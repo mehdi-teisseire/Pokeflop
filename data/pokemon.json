@@ -88,14 +88,12 @@
         "ingame": true,
         "moov": [
             {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
+
+
                 "name": "Leaf",
                 "type": "grass",
                 "accuracy": 60
+
             }
         ]
     }
