@@ -1,41 +1,16 @@
 [
     {
-        "name": "Charizard",
+        "name": "Rattata",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Charizard_front.png",
-            "back": "media/Pokemons-assets/back/Charizard_back.png"
+            "front": "media/Pokemons-assets/front/Rattata_front.png",
+            "back": "media/Pokemons-assets/back/Rattata_back.png"
         },
-        "type": "fire",
-        "level": 10,
-        "life": 170,
-        "attack": 75,
-        "defence": 75,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Water Gun",
-                "type": "water",
-                "accuracy": 80
-            }
-        ]
-    },
-    {
-        "name": "Bulbasaur",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
-            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
-        },
-        "type": "grass",
+        "type": "normal",
         "level": 5,
-        "life": 180,
-        "attack": 40,
-        "defence": 50,
-        "ingame": true,
+        "life": 50,
+        "attack": 48,
+        "defence": 43,
+        "ingame": false,
         "moov": [
             {
                 "name": "Tackle",
@@ -43,9 +18,9 @@
                 "accuracy": 95
             },
             {
-                "name": "Leaf",
-                "type": "grass",
-                "accuracy": 60
+                "name": "Quick Attack",
+                "type": "normal",
+                "accuracy": 100
             }
         ]
     }

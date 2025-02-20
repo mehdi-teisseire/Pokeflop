@@ -216,7 +216,7 @@ def display_battle_end(game):
         game.text_battle_message.draw(game.screen, f"{game.battle.trainer_name}'s {game.battle.trainer_pokemon.name} is dead forever..." ,hitbox=game.button_battle_message)
    
     if time.get_ticks() >= game.delay:
-        game.trainer.pokedex[0].level_up()
+        game.battle.turn_pkmn.level_up()
        # display_evolve(game)
         game.delay = time.get_ticks() + 50000
         game.save_json(game.trainer.pokedex, 'pokedex')
@@ -224,6 +224,7 @@ def display_battle_end(game):
         game.mixer.music.load('media/audio/bgm_menu.mp3')
         game.mixer.music.play(-1)
         game.game_state = "game_menu"
+
 
 def display_evolve(game):
     if game.trainer.pokedex[0].level == 6 and not game.trainer.pokedex[0].name == "Charizard":
