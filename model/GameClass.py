@@ -71,9 +71,9 @@ class Game:
         
         self.text_button_main = Text("freesansbold.ttf", 36, (0,0,0))
         # New Game
-        self.button_pokemon1 = Hitbox((200,200), (100,100),'Squirtle')
-        self.button_pokemon2 = Hitbox((500,200), (100,100),'Bulbasaur')
-        self.button_pokemon3 = Hitbox((800,200), (100,100),'Charmander')
+        self.button_pokemon1 = Hitbox((200,200), (200,200),'Squirtle')
+        self.button_pokemon2 = Hitbox((500,300), (200,200),'Bulbasaur')
+        self.button_pokemon3 = Hitbox((790,200), (200,200),'Charmander')
         self.button_first_pokemon = [self.button_pokemon1, self.button_pokemon2, self.button_pokemon3]
 
         self.image_pokemon1 = ImageElement("media/Pokemons-assets/front/Squirtle_front.png")
@@ -169,7 +169,7 @@ class Game:
         self.enemy.choose_pokemon()
 
         #trainer loads its pokedex
-        self.trainer.load_pokedex()
+        # self.trainer.load_pokedex()
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True

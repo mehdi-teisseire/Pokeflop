@@ -28,7 +28,6 @@ def new_game(game):
     game.text_battle_message.draw(game.screen, "Choose a pokemon (for free)" ,hitbox=game.button_battle_message)
 
 def load_game(game):
-    # TODO Player and AI object are created here. It's for deck-building/random encounter feature
     game.trainer = Trainer("Player")
     game.enemy = EnemyTrainer("Rival")
 
