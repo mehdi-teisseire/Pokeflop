@@ -30,7 +30,9 @@ class Battle:
         self.miss_check = False
         self.pokemon_ko = self.is_pokemon_ko()
 
-        
+        game.button_battle_message.draw(game.screen)
+        game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+    
 
         if self.pokemon_ko:
             # if time.get_ticks() >= game.delay:

@@ -40,16 +40,16 @@ def display_background(game):
 
 def display_battle_interface(game):
     game.trainer_pokemon.draw(game.screen, (100, 250), (300,300), f"media/Pokemons-assets/back/{game.battle.trainer_pokemon.name}_back.png")
-    game.enemy_pokemon.draw(game.screen, (750,200), (300,300), f"media/Pokemons-assets/front/{game.battle.enemy_pokemon.name}_front.png")
+    game.enemy_pokemon.draw(game.screen, (750,170), (300,300), f"media/Pokemons-assets/front/{game.battle.enemy_pokemon.name}_front.png")
 
-    game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.name}", (300,50)) 
-    game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.name}", (750,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.name}", (80,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.name}", (850,50)) 
     
-    game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.level}", (300,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.level}", (350,55)) 
     game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.level}", (750,50)) 
 
-    game.ingame_text.draw(game.screen, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}", (100,50)) 
-    game.ingame_text.draw(game.screen, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}", (800,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}", (50,85)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}", (800,70)) 
 
 # To allow the player to choose an attack
 def display_attack_choice(game):
