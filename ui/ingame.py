@@ -1,8 +1,6 @@
 from pygame import time
 
 def display_ingame(game):
-    game.mixer.music.load('media/audio/bgm_fight.mp3')
-    game.mixer.music.play(-1)
     display_background(game)
     display_battle_interface(game)
 
@@ -131,6 +129,9 @@ def display_end_results(game):
             game.battle.gave_pokemon = game.enemy.give_pokemon(game.trainer)
 
         game.game_state = "battle_end"
+        game.mixer.music.stop()
+        game.mixer.music.load('media/audio/bgm_battle_end.mp3')
+        game.mixer.music.play(-1)
         game.battle_start = False
         game.battle.ingame_state = "attacking"
 
@@ -157,5 +158,8 @@ def display_battle_end(game):
         game.text_battle_message.draw(game.screen, f"{game.battle.trainer_name}'s {game.battle.enemy_pokemon.name} is dead forever..." ,hitbox=game.button_battle_message)
    
     if time.get_ticks() >= game.delay:
+        game.mixer.music.stop()
+        game.mixer.music.load('media/audio/bgm_menu.mp3')
+        game.mixer.music.play(-1)
         game.game_state = "game_menu"
 
