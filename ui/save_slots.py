@@ -33,7 +33,7 @@ def load_game(game):
     game.enemy = EnemyTrainer("Rival")
 
     # TODO saveslot/ load different files (trainer name = filename)
-    game.trainer.load_pokedex(game.MOOV_TEMPLATE)
+    game.trainer.load_pokedex()
     game.game_state = "game_menu"
 
     for pokemon in game.trainer.pokedex:
