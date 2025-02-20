@@ -1,5 +1,6 @@
 from model.battle import Battle
 from model.JsonClass import Json
+from model.EnemyTrainerClass import EnemyTrainer
 
 from ui.ui import Hitbox, Text, ImageElement
 from ui.intro import display_intro
@@ -175,6 +176,7 @@ class Game:
         self.mixer.music.play(-1)
         """Attributes that needs to be set only once (before battle) are here"""
         #Rival adds pokemon.json into his list and choose one pokemon from it
+        self.enemy = EnemyTrainer("Rival")
         self.enemy.load_pokedex()
         self.enemy.choose_pokemon()
 
