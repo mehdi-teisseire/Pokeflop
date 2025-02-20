@@ -1,10 +1,12 @@
-from pygame import time
+from pygame import time, mouse, image, Rect, Surface, event, MOUSEBUTTONDOWN, SRCALPHA
 
 def display_ingame(game):
     display_background(game)
     display_battle_interface(game)
 
     match game.ingame_state:
+        case "choose_pkmn":
+            choose_pokemon_battle(game)
         case "attacking":
             if game.battle.chosen_moov:
                 display_attacking_text(game)
@@ -34,22 +36,51 @@ def display_ingame(game):
         case _:
             print("Error selecting an ingame state")
 
+def choose_pokemon_battle(game):
+    game.button_battle_message.draw(game.screen)
+    game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+    game.text_battle_message.draw(game.screen, f"Choose a pokemon to send in battle!" ,hitbox=game.button_battle_message)
+
+    background = Surface(game.screen_size, SRCALPHA)
+    background.fill((0,0,0, 128))
+    game.screen.blit(background, (0,0))
+
+    game.sprite_positions = display_pokemon_pokedex(game, game.trainer.pokedex)
+
+def display_pokemon_pokedex(game, pokedex_data):
+    """Display all Pokemon sprites in a grid."""
+    x, y = 80, 150
+    spacing = 50
+    sprite_positions = []
+    
+    for pokemon in pokedex_data:
+        sprite = image.load(pokemon.sprite["front"])
+        game.screen.blit(sprite, (x, y))
+        sprite_positions.append((Rect(x, y, 200, 200), pokemon))
+        
+        x += spacing
+        if x > game.screen.get_width() - spacing:
+            x = 80
+            y += spacing
+            
+    return sprite_positions
 
 def display_background(game):
     game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
+    game.healthbox.draw(game.screen, (700,25), (470, 115), image_path="media/ui-elements/MDPokemonBattle_Healthbox.png")
 
 def display_battle_interface(game):
     game.trainer_pokemon.draw(game.screen, (100, 250), (300,300), f"media/Pokemons-assets/back/{game.battle.trainer_pokemon.name}_back.png")
     game.enemy_pokemon.draw(game.screen, (750,170), (300,300), f"media/Pokemons-assets/front/{game.battle.enemy_pokemon.name}_front.png")
 
-    game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.name}", (80,50)) 
-    game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.name}", (850,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.name}", (70,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.name}", (740,50)) 
     
     game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.level}", (350,55)) 
-    game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.level}", (750,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.level}", (1040,55)) 
 
     game.ingame_text.draw(game.screen, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}", (50,85)) 
-    game.ingame_text.draw(game.screen, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}", (800,70)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}", (720,85)) 
 
 # To allow the player to choose an attack
 def display_attack_choice(game):
@@ -121,10 +152,8 @@ def display_end_results(game):
     if time.get_ticks() >= game.delay:
         game.delay = time.get_ticks() + 5000
         if not game.battle.won:
-            print(game.trainer.pokedex, game.enemy.pokedex)
             game.enemy.remove_pokemon()
-            game.trainer.remove_pokemon(game.battle.opponent_pkmn)
-            print(game.trainer.pokedex, game.enemy.pokedex)
+            game.trainer.remove_pokemon(game.battle.trainer_pokemon)
         else:
             game.battle.gave_pokemon = game.enemy.give_pokemon(game.trainer)
 
@@ -155,7 +184,7 @@ def display_battle_end(game):
     else:
         game.button_battle_message.draw(game.screen)
         game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
-        game.text_battle_message.draw(game.screen, f"{game.battle.trainer_name}'s {game.battle.enemy_pokemon.name} is dead forever..." ,hitbox=game.button_battle_message)
+        game.text_battle_message.draw(game.screen, f"{game.battle.trainer_name}'s {game.battle.trainer_pokemon.name} is dead forever..." ,hitbox=game.button_battle_message)
    
     if time.get_ticks() >= game.delay:
         game.mixer.music.stop()

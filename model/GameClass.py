@@ -6,7 +6,7 @@ from ui.intro import display_intro
 from ui.main_menu import display_main_menu
 from ui.save_slots import new_game, load_game
 from ui.game_menu import display_game_menu
-from ui.ingame import display_ingame, display_battle_end
+from ui.ingame import display_ingame, display_battle_end, choose_pokemon_battle
 from ui.pokedex import display_pokedex
 from ui.pokelist import display_pokelist
 
@@ -28,6 +28,8 @@ class Game:
         self.delay = 0
 
         self.battle_start = False
+
+        self.sprite_positions = []
 
         #JSON
         self.open_json = Json().load_json
@@ -100,6 +102,7 @@ class Game:
         self.button_moov = [self.button_moov1, self.button_moov2]
 
         self.background_button_moov = ImageElement("media/ui-elements/button_green.svg")
+        self.healthbox = ImageElement("media/ui-elements/MDPokemonBattle_Healthbox.png")
 
         self.trainer_pokemon = ImageElement("media/Pokemons-assets/front/Squirtle_front.png")
         self.enemy_pokemon = ImageElement("media/Pokemons-assets/back/Squirtle_back.png")
@@ -163,6 +166,10 @@ class Game:
         pygame.quit()
 
     def battle_ini(self):
+        if not self.trainer.pokedex:
+            print("You can't start without pokemon!")
+            return
+        
         self.mixer.music.load('media/audio/bgm_fight.mp3')
         self.mixer.music.play(-1)
         """Attributes that needs to be set only once (before battle) are here"""
@@ -170,17 +177,12 @@ class Game:
         self.enemy.load_pokedex()
         self.enemy.choose_pokemon()
 
-        #trainer loads its pokedex
-        # self.trainer.load_pokedex()
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True
-        self.ingame_state = "attacking"
-
+        self.ingame_state = "choose_pkmn"
 
     def events(self):                    
-        # TODO refractor some events in their files or put ticks after a state change
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
@@ -191,6 +193,18 @@ class Game:
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 #----- Ingame screen events
+                mouse_pos = pygame.mouse.get_pos()
+                for sprite_rect, pokemon in self.sprite_positions:
+                    if sprite_rect.collidepoint(mouse_pos):
+                        for pokedex_pokemon in self.trainer.pokedex:
+                            if pokedex_pokemon == pokemon:
+                                if pokemon != self.trainer.pokedex[0]:
+                                    pokedex_pokemon, self.trainer.pokedex[0] = self.trainer.pokedex[0], pokedex_pokemon
+                                    self.trainer.update_json()
+                                self.battle.trainer_pokemon = pokemon
+                                self.battle.trainer_current_hp = pokemon.life
+                                self.ingame_state = "attacking"
+
                 for button in self.button_moov:
                     if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
                         for moov in self.battle.turn_pkmn.moov:
@@ -212,7 +226,8 @@ class Game:
                 for button in self.button_first_pokemon:
                     if self.game_state == "new_game" and button.is_clicked(pygame.mouse.get_pos()):
                         self.game_state = "game_menu"
-                        for pokemon in self.POKEMON_TEMPLATE:
+                        pokedex_data = self.open_json('poke_db')
+                        for pokemon in pokedex_data:
                             if pokemon["name"] == button.label:
                                 self.trainer.give_first_pokemon(pokemon)
                 #-----

@@ -1,15 +1,15 @@
 [
     {
-        "name": "Bulbasaur",
+        "name": "Charmander",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
-            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
+            "front": "media/Pokemons-assets/front/Charmander_front.png",
+            "back": "media/Pokemons-assets/back/Charmander_back.png"
         },
-        "type": "grass",
+        "type": "fire",
         "level": 5,
-        "life": 180,
-        "attack": 40,
-        "defence": 50,
+        "life": 150,
+        "attack": 70,
+        "defence": 30,
         "ingame": true,
         "moov": [
             {
@@ -18,9 +18,34 @@
                 "accuracy": 95
             },
             {
-                "name": "Leaf",
-                "type": "grass",
-                "accuracy": 90
+                "name": "Flamethrower",
+                "type": "fire",
+                "accuracy": 30
+            }
+        ]
+    },
+    {
+        "name": "Charmander",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Charmander_front.png",
+            "back": "media/Pokemons-assets/back/Charmander_back.png"
+        },
+        "type": "fire",
+        "level": 5,
+        "life": 150,
+        "attack": 70,
+        "defence": 30,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Flamethrower",
+                "type": "fire",
+                "accuracy": 30
             }
         ]
     }

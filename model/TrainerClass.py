@@ -6,7 +6,6 @@ class Trainer(Json):
     def __init__(self, name):
         self.name = name
         #self.image = image
-        self.victory = False
         self.pokemon = [] # List of possible pokemon enemy can choose from 
         self.pokedex = [] # Only contain Objects
         self.stats = []
@@ -28,7 +27,7 @@ class Trainer(Json):
     def convert_pokemon_to_obj(self, pokemon):
         return Pokemon(name=pokemon["name"], type=pokemon["type"],
                        attack=pokemon["attack"], defence=pokemon["defence"],
-                       moov=pokemon["moov"],
+                       moov=pokemon["moov"], level=pokemon["level"],
                        life=pokemon["life"],ingame=pokemon['ingame'])
 
     def update_json(self):

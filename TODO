@@ -13,7 +13,6 @@ add pokemon selection menu before battle and after pokemon die
 ingame text with name, lvl and hp (+ bar that change size by percent of hp), sprite
 battle end ; display text, Need to apply level up and do evolution
 
-fix multiple entries in pokedex
 
 indicator of add/remove pokemon
 
