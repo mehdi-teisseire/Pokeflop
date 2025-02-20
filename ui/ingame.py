@@ -38,15 +38,27 @@ def display_ingame(game):
 
 
 def display_background(game):
-    game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_TextBox.png")
+    game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
 
 def display_battle_interface(game):
-    game.life_text.draw(game.screen, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}", (200,50)) #TODO change "100" to "trainer.pokemon[0].max_life"
-    game.life_text.draw(game.screen, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}", (500,50)) #TODO change "100" to "enemy.pokemon[0].max_life"
+    game.trainer_pokemon.draw(game.screen, (100, 250), (300,300), f"media/Pokemons-assets/back/{game.battle.trainer_pokemon.name}_back.png")
+    game.enemy_pokemon.draw(game.screen, (750,200), (300,300), f"media/Pokemons-assets/front/{game.battle.enemy_pokemon.name}_front.png")
+
+    game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.name}", (300,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.name}", (750,50)) 
+    
+    game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.level}", (300,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.level}", (750,50)) 
+
+    game.ingame_text.draw(game.screen, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}", (100,50)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}", (800,50)) 
 
 # To allow the player to choose an attack
 def display_attack_choice(game):
     """Show the moov buttons and allow to choose an attack"""
+    game.button_battle_message.draw(game.screen)
+    game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+
     game.button_moov1.draw(game.screen, game.battle.turn_pkmn.moov[0].name) #game.trainer.pokedex[0].moov[0].name
     game.button_moov2.draw(game.screen, game.battle.turn_pkmn.moov[1].name) #game.trainer.pokedex[0].moov[1].name)
 

@@ -15,4 +15,6 @@ battle end ; display text, Need to apply level up and do evolution
 
 fix multiple entries in pokedex
 
+indicator of add/remove pokemon
+
 error handling
