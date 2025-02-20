@@ -1,14 +1,14 @@
 [
     {
-        "name": "Bulbasaur",
+        "name": "Squirtle",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
-            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
+            "front": "media/Pokemons-assets/front/Squirtle_front.png",
+            "back": "media/Pokemons-assets/back/Squirtle_back.png"
         },
-        "type": "grass",
+        "type": "water",
         "level": 5,
-        "life": 180,
-        "attack": 40,
+        "life": 120,
+        "attack": 50,
         "defence": 50,
         "ingame": true,
         "moov": [
@@ -18,9 +18,9 @@
                 "accuracy": 95
             },
             {
-                "name": "Leaf",
-                "type": "grass",
-                "accuracy": 60
+                "name": "Water Gun",
+                "type": "water",
+                "accuracy": 80
             }
         ]
     },

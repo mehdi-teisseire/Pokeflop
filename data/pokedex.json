@@ -1,77 +1,77 @@
 [
-    {
-        "name": "Bulbasaur",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
-            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
-        },
+  {
+    "name": "Bulbasaur",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
+      "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
+    },
+    "type": "grass",
+    "level": 8,
+    "life": 210,
+    "attack": 55,
+    "defence": 65,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Leaf",
         "type": "grass",
-        "level": 8,
-        "life": 210,
-        "attack": 55,
-        "defence": 65,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Leaf",
-                "type": "grass",
-                "accuracy": 60
-            }
-        ]
+        "accuracy": 60
+      }
+    ]
+  },
+  {
+    "name": "Squirtle",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Squirtle_front.png",
+      "back": "media/Pokemons-assets/back/Squirtle_back.png"
     },
-    {
-        "name": "Squirtle",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Squirtle_front.png",
-            "back": "media/Pokemons-assets/back/Squirtle_back.png"
-        },
+    "type": "water",
+    "level": 7,
+    "life": 140,
+    "attack": 60,
+    "defence": 60,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Water Gun",
         "type": "water",
-        "level": 7,
-        "life": 140,
-        "attack": 60,
-        "defence": 60,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Water Gun",
-                "type": "water",
-                "accuracy": 90
-            }
-        ]
+        "accuracy": 90
+      }
+    ]
+  },
+  {
+    "name": "Chansey",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Chansey_front.png",
+      "back": "media/Pokemons-assets/back/Chansey_back.png"
     },
-    {
-        "name": "Chansey",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Chansey_front.png",
-            "back": "media/Pokemons-assets/back/Chansey_back.png"
-        },
+    "type": "fairy",
+    "level": 4,
+    "life": 200,
+    "attack": 20,
+    "defence": 40,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Fairy Wind",
         "type": "fairy",
-        "level": 4,
-        "life": 200,
-        "attack": 20,
-        "defence": 40,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Fairy Wind",
-                "type": "fairy",
-                "accuracy": 100
-            }
-        ]
-    }
+        "accuracy": 100
+      }
+    ]
+  }
 ]
