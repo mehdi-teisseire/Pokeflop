@@ -1,6 +1,8 @@
 from pygame import time
 
 def display_ingame(game):
+    game.mixer.music.load('media/audio/bgm_fight.mp3')
+    game.mixer.music.play(-1)
     display_background(game)
     display_battle_interface(game)
 

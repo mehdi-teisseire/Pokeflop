@@ -223,30 +223,5 @@
                 "accuracy": 80
             }
         ]
-    },
-    {
-        "name": "Pikachu",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Pikachu_front.png",
-            "back": "media/Pokemons-assets/back/Pikachu_back.png"
-        },
-        "type": "electric",
-        "level": 5,
-        "life": 90,
-        "attack": 60,
-        "defence": 45,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Thunder",
-                "type": "electric",
-                "accuracy": 100
-            }
-        ]
     }
 ]
