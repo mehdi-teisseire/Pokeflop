@@ -177,35 +177,6 @@ class Game:
                     self.game_state = self.button_intro.label
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                #----- Intro screen events
-                if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
-                    self.game_state = self.button_intro.label
-
-                #-----
-                #----- Main Menu screen events
-                for button in self.button_main_menu:
-                    if self.game_state == "main_menu" and button.is_clicked(pygame.mouse.get_pos()):
-                        self.game_state = button.label
-                #-----
-                #----- New Game screen events
-                for button in self.button_first_pokemon:
-                    if self.game_state == "new_game" and button.is_clicked(pygame.mouse.get_pos()):
-                        self.game_state = "game_menu"
-                        for pokemon in self.POKEMON_TEMPLATE:
-                            if pokemon["name"] == button.label:
-                                self.trainer.give_first_pokemon(pokemon)
-
-                #-----
-                #----- Game Menu screen events
-                for button in self.button_game_menu:
-                    if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
-                        self.game_state = button.label
-                #-----
-                #----- Pokelist screen events
-                
-                if (self.game_state == "pokedex" or self.game_state == "pokemon") and self.button_quit.is_clicked(pygame.mouse.get_pos()):
-                    self.game_state = self.button_quit.label
-                #-----
                 #----- Ingame screen events
                 for button in self.button_moov:
                     if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
@@ -215,6 +186,33 @@ class Game:
                                 self.delay = pygame.time.get_ticks() + 1500   
                                 self.battle.ingame_state = "attacking" 
                 #-----
+                #----- Pokelist screen events
+                if (self.game_state == "pokedex" or self.game_state == "pokemon") and self.button_quit.is_clicked(pygame.mouse.get_pos()):
+                    self.game_state = self.button_quit.label
+                #-----
+                #----- Game Menu screen events
+                for button in self.button_game_menu:
+                    if self.game_state == "game_menu" and button.is_clicked(pygame.mouse.get_pos()):
+                        self.game_state = button.label
+                #-----
+                #----- New Game screen events
+                for button in self.button_first_pokemon:
+                    if self.game_state == "new_game" and button.is_clicked(pygame.mouse.get_pos()):
+                        self.game_state = "game_menu"
+                        for pokemon in self.POKEMON_TEMPLATE:
+                            if pokemon["name"] == button.label:
+                                self.trainer.give_first_pokemon(pokemon)
+                #-----
+                #----- Main Menu screen events
+                for button in self.button_main_menu:
+                    if self.game_state == "main_menu" and button.is_clicked(pygame.mouse.get_pos()):
+                        self.game_state = button.label
+                #-----
+                #----- Intro screen events
+                if self.game_state == "intro" and self.button_intro.is_clicked(pygame.mouse.get_pos()):
+                    self.game_state = self.button_intro.label
+                #-----
+
     def parse_moov_dict(self, moov):
         for moovs in self.MOOV_TEMPLATE:
             if moovs["name"] == moov:
