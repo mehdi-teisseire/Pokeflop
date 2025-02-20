@@ -41,7 +41,7 @@ def display_pokemon_sprites(game, pokedex_data):
     for pokemon in pokedex_data:
         sprite = pygame.image.load(pokemon['sprite']["front"])  # From object: sprite = pygame.image.load(pokemon.sprite[0])
         game.screen.blit(sprite, (x, y))
-        sprite_positions.append((pygame.Rect(x, y, 40, 40), pokemon))
+        sprite_positions.append((pygame.Rect(x, y, 50, 55), pokemon))
         
         x += spacing
         if x > game.screen.get_width() - spacing:
@@ -81,10 +81,15 @@ def display_pokelist(game):
                 
                 game.save_json(existing_pokemon, 'pokemon')
                 break
+
+    existing_pokemon = game.open_json('pokemon')
     for sprite_rect, pokemon in sprite_positions:
         if sprite_rect.collidepoint(mouse_pos):
             current_pokemon = pokemon
-            break
+            
+        
+        if any(p['name'] == pokemon['name'] for p in existing_pokemon):
+            pygame.draw.rect(game.screen, (0, 0, 0), sprite_rect, 1) 
 
     # Render the current Pokemon's information
     render_pokemon_info(game, current_pokemon, font)
