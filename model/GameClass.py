@@ -163,6 +163,8 @@ class Game:
         pygame.quit()
 
     def battle_ini(self):
+        self.mixer.music.load('media/audio/bgm_fight.mp3')
+        self.mixer.music.play(-1)
         """Attributes that needs to be set only once (before battle) are here"""
         #Rival adds pokemon.json into his list and choose one pokemon from it
         self.enemy.load_pokedex()
