@@ -70,6 +70,8 @@ def display_pokemon_pokedex(game, pokedex_data):
 def display_background(game):
     game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
     game.healthbox.draw(game.screen, (700,25), (470, 115), image_path="media/ui-elements/MDPokemonBattle_Healthbox.png")
+    game.button_quit.draw(game.screen)
+    game.button_quit_image.draw(game.screen,hitbox=game.button_quit,image_path="media/ui-elements/cross.svg")
 
 def display_battle_interface(game):
     game.trainer_pokemon.draw(game.screen, (100, 250), (300,300), f"media/Pokemons-assets/back/{game.battle.trainer_pokemon.name}_back.png")
@@ -193,7 +195,7 @@ def display_battle_end(game):
    
     if time.get_ticks() >= game.delay:
         game.trainer.pokedex[0].level_up()
-        display_evolve(game)
+       # display_evolve(game)
         game.delay = time.get_ticks() + 50000
         game.save_json(game.trainer.pokedex, 'pokedex')
         game.mixer.music.stop()

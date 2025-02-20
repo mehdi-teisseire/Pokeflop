@@ -150,6 +150,7 @@ class Game:
                 case "ingame":
                     if not self.battle_start:
                         self.battle_ini()
+                        
                     display_ingame(self)
                 case "battle_end":
                     display_battle_end(self)
@@ -214,9 +215,16 @@ class Game:
                                 self.battle.chosen_moov = moov
                                 self.delay = pygame.time.get_ticks() + 1500   
                                 self.battle.ingame_state = "attacking" 
+               
+                if self.game_state == 'ingame' and self.button_quit.is_clicked(pygame.mouse.get_pos()):
+                    self.mixer.music.stop()
+                    self.mixer.music.load('media/audio/bgm_menu.mp3')
+                    self.mixer.music.play(-1)
+                    self.battle_start = False
+                    self.game_state = self.button_quit.label
                 #-----
                 #----- Pokelist screen events
-                if (self.game_state == "pokedex" or self.game_state == "pokemon") and self.button_quit.is_clicked(pygame.mouse.get_pos()):
+                if (self.game_state == "pokedex" or self.game_state == "pokemon" or 'ingame') and self.button_quit.is_clicked(pygame.mouse.get_pos()):
                     self.game_state = self.button_quit.label
                 #-----
                 #----- Game Menu screen events
