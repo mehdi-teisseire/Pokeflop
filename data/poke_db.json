@@ -1,152 +1,902 @@
 [
-    {
-        "name": "Squirtle",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Squirtle_front.png",
-            "back": "media/Pokemons-assets/back/Squirtle_back.png"
-        },
+  {
+    "name": "Squirtle",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Squirtle_front.png",
+      "back": "media/Pokemons-assets/back/Squirtle_back.png"
+    },
+    "type": "water",
+    "level": 5,
+    "life": 120,
+    "attack": 50,
+    "defence": 50,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Water Gun",
         "type": "water",
-        "level": 5,
-        "life": 120,
-        "attack": 50,
-        "defence": 50,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Water Gun",
-                "type": "water",
-                "accuracy": 80
-            }
-        ]
+        "accuracy": 90
+      }
+    ]
+  },
+  {
+    "name": "Wartortle",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Wartortle_front.png",
+      "back": "media/Pokemons-assets/back/Wartortle_back.png"
     },
-    {
-        "name": "Pikachu",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Pikachu_front.png",
-            "back": "media/Pokemons-assets/back/Pikachu_back.png"
-        },
-        "type": "electric",
-        "level": 5,
-        "life": 90,
-        "attack": 60,
-        "defence": 45,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Thunder",
-                "type": "electric",
-                "accuracy": 100
-            }
-        ]
+    "type": "water",
+    "level": 20,
+    "life": 210,
+    "attack": 110,
+    "defence": 100,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Water Gun",
+        "type": "water",
+        "accuracy": 90
+      }
+    ]
+  },
+  {
+    "name": "Blastoise",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Blastoise_front.png",
+      "back": "media/Pokemons-assets/back/Blastoise_back.png"
     },
-    {
-        "name": "Bulbasaur",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
-            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
-        },
+    "type": "water",
+    "level": 50,
+    "life": 350,
+    "attack": 240,
+    "defence": 300,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Water Gun",
+        "type": "water",
+        "accuracy": 90
+      }
+    ]
+  },
+  {
+    "name": "Bulbasaur",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
+      "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
+    },
+    "type": "grass",
+    "level": 5,
+    "life": 180,
+    "attack": 40,
+    "defence": 50,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Leaf",
         "type": "grass",
-        "level": 5,
-        "life": 180,
-        "attack": 40,
-        "defence": 50,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Leaf",
-                "type": "grass",
-                "accuracy": 60
-            }
-        ]
+        "accuracy": 80
+      }
+    ]
+  },
+  {
+    "name": "Ivysaur",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Ivysaur_front.png",
+      "back": "media/Pokemons-assets/back/Ivysaur_back.png"
     },
-    {
-        "name": "Charmander",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Charmander_front.png",
-            "back": "media/Pokemons-assets/back/Charmander_back.png"
-        },
+    "type": "grass",
+    "level": 20,
+    "life": 280,
+    "attack": 90,
+    "defence": 85,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Leaf",
+        "type": "grass",
+        "accuracy": 80
+      }
+    ]
+  },
+  {
+    "name": "Venusaur",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Venusaur_front.png",
+      "back": "media/Pokemons-assets/back/Venusaur_back.png"
+    },
+    "type": "grass",
+    "level": 50,
+    "life": 500,
+    "attack": 180,
+    "defence": 170,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Leaf",
+        "type": "grass",
+        "accuracy": 80
+      }
+    ]
+  },
+  {
+    "name": "Charmander",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Charmander_front.png",
+      "back": "media/Pokemons-assets/back/Charmander_back.png"
+    },
+    "type": "fire",
+    "level": 5,
+    "life": 150,
+    "attack": 70,
+    "defence": 30,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Flamethrower",
         "type": "fire",
-        "level": 5,
-        "life": 150,
-        "attack": 70,
-        "defence": 30,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Flamethrower",
-                "type": "fire",
-                "accuracy": 30
-            }
-        ]
+        "accuracy": 70
+      }
+    ]
+  },
+  {
+    "name": "Charmeleon",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Charmeleon_front.png",
+      "back": "media/Pokemons-assets/back/Charmeleon_back.png"
     },
-    {
-        "name": "Pidgey",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Pidgey_front.png",
-            "back": "media/Pokemons-assets/back/Pidgey_back.png"
-        },
+    "type": "fire",
+    "level": 20,
+    "life": 200,
+    "attack": 140,
+    "defence": 60,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
         "type": "normal",
-        "level": 5,
-        "life": 80,
-        "attack": 45,
-        "defence": 45,
-        "ingame": false,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Gust",
-                "type": "normal",
-                "accuracy": 95
-            }
-        ]
+        "accuracy": 95
+      },
+      {
+        "name": "Flamethrower",
+        "type": "fire",
+        "accuracy": 70
+      }
+    ]
+  },
+  {
+    "name": "Charizard",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Charizard_front.png",
+      "back": "media/Pokemons-assets/back/Charizard_back.png"
     },
-    {
-        "name": "Rattata",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Rattata_front.png",
-            "back": "media/Pokemons-assets/back/Rattata_back.png"
-        },
+    "type": "fire",
+    "level": 50,
+    "life": 350,
+    "attack": 300,
+    "defence": 120,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
         "type": "normal",
-        "level": 5,
-        "life": 50,
-        "attack": 48,
-        "defence": 43,
-        "ingame": false,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Quick Attack",
-                "type": "normal",
-                "accuracy": 100
-            }
-        ]
-    }
+        "accuracy": 95
+      },
+      {
+        "name": "Flamethrower",
+        "type": "fire",
+        "accuracy": 70
+      }
+    ]
+  },
+  {
+    "name": "Pikachu",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Pikachu_front.png",
+      "back": "media/Pokemons-assets/back/Pikachu_back.png"
+    },
+    "type": "electric",
+    "level": 5,
+    "life": 90,
+    "attack": 60,
+    "defence": 45,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Thunder",
+        "type": "electric",
+        "accuracy": 90
+      }
+    ]
+  },
+  {
+    "name": "Raichu",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Raichu_front.png",
+      "back": "media/Pokemons-assets/back/Raichu_back.png"
+    },
+    "type": "electric",
+    "level": 30,
+    "life": 250,
+    "attack": 140,
+    "defence": 95,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Thunder",
+        "type": "electric",
+        "accuracy": 90
+      }
+    ]
+  },
+  {
+    "name": "Pidgey",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Pidgey_front.png",
+      "back": "media/Pokemons-assets/back/Pidgey_back.png"
+    },
+    "type": "flying",
+    "level": 5,
+    "life": 80,
+    "attack": 45,
+    "defence": 45,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Gust",
+        "type": "flying",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Pidgeotto",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Pidgeotto_front.png",
+      "back": "media/Pokemons-assets/back/Pidgeotto_back.png"
+    },
+    "type": "flying",
+    "level": 15,
+    "life": 130,
+    "attack": 60,
+    "defence": 60,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Gust",
+        "type": "flying",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Pidgeot",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Pidgeot_front.png",
+      "back": "media/Pokemons-assets/back/Pidgeot_back.png"
+    },
+    "type": "flying",
+    "level": 35,
+    "life": 200,
+    "attack": 125,
+    "defence": 125,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Gust",
+        "type": "flying",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Rattata",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Rattata_front.png",
+      "back": "media/Pokemons-assets/back/Rattata_back.png"
+    },
+    "type": "normal",
+    "level": 5,
+    "life": 50,
+    "attack": 48,
+    "defence": 43,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Quick Attack",
+        "type": "normal",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Raticate",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Raticate_front.png",
+      "back": "media/Pokemons-assets/back/Raticate_back.png"
+    },
+    "type": "normal",
+    "level": 15,
+    "life": 110,
+    "attack": 58,
+    "defence": 63,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Quick Attack",
+        "type": "normal",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Chansey",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Chansey_front.png",
+      "back": "media/Pokemons-assets/back/Chansey_back.png"
+    },
+    "type": "fairy",
+    "level": 4,
+    "life": 200,
+    "attack": 20,
+    "defence": 40,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Fairy Wind",
+        "type": "fairy",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Eevee",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Eevee_front.png",
+      "back": "media/Pokemons-assets/back/Eevee_back.png"
+    },
+    "type": "normal",
+    "level": 4,
+    "life": 85,
+    "attack": 35,
+    "defence": 48,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "elkcaT",
+        "type": "normal",
+        "accuracy": 59
+      }
+    ]
+  },
+  {
+    "name": "Umbreon",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Umbreon_front.png",
+      "back": "media/Pokemons-assets/back/Umbreon_back.png"
+    },
+    "type": "dark",
+    "level": 40,
+    "life": 250,
+    "attack": 140,
+    "defence": 180,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Bite",
+        "type": "dark",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Ekans",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Ekans_front.png",
+      "back": "media/Pokemons-assets/back/Ekans_back.png"
+    },
+    "type": "poison",
+    "level": 6,
+    "life": 70,
+    "attack": 65,
+    "defence": 30,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Acid",
+        "type": "poison",
+        "accuracy": 85
+      }
+    ]
+  },
+  {
+    "name": "Arbok",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Arbok_front.png",
+      "back": "media/Pokemons-assets/back/Arbok_back.png"
+    },
+    "type": "poison",
+    "level": 20,
+    "life": 100,
+    "attack": 80,
+    "defence": 45,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Acid",
+        "type": "poison",
+        "accuracy": 85
+      }
+    ]
+  },
+  {
+    "name": "Chiruno",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Chiruno_front.png",
+      "back": "media/Pokemons-assets/back/Chiruno_back.png"
+    },
+    "type": "ice",
+    "level": 9,
+    "life": 99,
+    "attack": 99,
+    "defence": 9,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Icicle Fall",
+        "type": "ice",
+        "accuracy": 9
+      },
+      {
+        "name": "Perfect Freeze",
+        "type": "ice",
+        "accuracy": 99
+      }
+    ]
+  },
+  {
+    "name": "Gastly",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Gastly_front.png",
+      "back": "media/Pokemons-assets/back/Gastly_back.png"
+    },
+    "type": "ghost",
+    "level": 8,
+    "life": 150,
+    "attack": 75,
+    "defence": 20,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Poltergeist",
+        "type": "ghost",
+        "accuracy": 50
+      }
+    ]
+  },
+  {
+    "name": "Gengar",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Gengar_front.png",
+      "back": "media/Pokemons-assets/back/Gengar_back.png"
+    },
+    "type": "ghost",
+    "level": 25,
+    "life": 250,
+    "attack": 100,
+    "defence": 30,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Poltergeist",
+        "type": "ghost",
+        "accuracy": 50
+      }
+    ]
+  },
+  {
+    "name": "Haunter",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Haunter_front.png",
+      "back": "media/Pokemons-assets/back/Haunter_back.png"
+    },
+    "type": "ghost",
+    "level": 55,
+    "life": 450,
+    "attack": 190,
+    "defence": 45,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Poltergeist",
+        "type": "ghost",
+        "accuracy": 50
+      }
+    ]
+  },
+  {
+    "name": "Diglett",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Diglett_front.png",
+      "back": "media/Pokemons-assets/back/Diglett_back.png"
+    },
+    "type": "ground",
+    "level": 5,
+    "life": 50,
+    "attack": 10,
+    "defence": 90,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Dig",
+        "type": "ground",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Dugtrio",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Dugtrio_front.png",
+      "back": "media/Pokemons-assets/back/Dugtrio_back.png"
+    },
+    "type": "ground",
+    "level": 25,
+    "life": 150,
+    "attack": 30,
+    "defence": 150,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Dig",
+        "type": "ground",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Jynx",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Jynx_front.png",
+      "back": "media/Pokemons-assets/back/Jynx_back.png"
+    },
+    "type": "psychic",
+    "level": 30,
+    "life": 200,
+    "attack": 200,
+    "defence": 100,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Confusion",
+        "type": "psychic",
+        "accuracy": 60
+      }
+    ]
+  },
+  {
+    "name": "Onyx",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Onix_front.png",
+      "back": "media/Pokemons-assets/back/Onix_back.png"
+    },
+    "type": "rock",
+    "level": 40,
+    "life": 250,
+    "attack": 80,
+    "defence": 300,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Rollout",
+        "type": "rock",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Lugia",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Lugia_front.png",
+      "back": "media/Pokemons-assets/back/Lugia_back.png"
+    },
+    "type": "dragon",
+    "level": 90,
+    "life": 850,
+    "attack": 450,
+    "defence": 320,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Draco Meteor",
+        "type": "dragon",
+        "accuracy": 90
+      }
+    ]
+  },
+  {
+    "name": "Vulpix",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Vulpix_front.png",
+      "back": "media/Pokemons-assets/back/Vulpix_back.png"
+    },
+    "type": "fire",
+    "level": 7,
+    "life": 110,
+    "attack": 55,
+    "defence": 50,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Flame Wheel",
+        "type": "fire",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Ninetales",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Ninetales_front.png",
+      "back": "media/Pokemons-assets/back/Ninetales_back.png"
+    },
+    "type": "fire",
+    "level": 25,
+    "life": 190,
+    "attack": 85,
+    "defence": 70,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Tackle",
+        "type": "normal",
+        "accuracy": 95
+      },
+      {
+        "name": "Flame Wheel",
+        "type": "fire",
+        "accuracy": 100
+      }
+    ]
+  },
+  {
+    "name": "Hitmonchan",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Hitmonchan_front.png",
+      "back": "media/Pokemons-assets/back/Hitmonchan_back.png"
+    },
+    "type": "fighting",
+    "level": 10,
+    "life": 40,
+    "attack": 150,
+    "defence": 50,
+    "ingame": true,
+    "moov": [
+      {
+        "name": "Jump Kick",
+        "type": "fighting",
+        "accuracy": 50
+      },
+      {
+        "name": "Triple Kick",
+        "type": "fighting",
+        "accuracy": 10
+      }
+    ]
+  },
+  {
+    "name": "Registeel",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Registeel_front.png",
+      "back": "media/Pokemons-assets/back/Registeel_back.png"
+    },
+    "type": "normal",
+    "level": 40,
+    "life": 550,
+    "attack": 150,
+    "defence": 250,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Pound",
+        "type": "normal",
+        "accuracy": 100
+      },
+      {
+        "name": "Metal Claw",
+        "type": "steel",
+        "accuracy": 80
+      }
+    ]
+  },
+  {
+    "name": "Scyther",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Scyther_front.png",
+      "back": "media/Pokemons-assets/back/Scyther_back.png"
+    },
+    "type": "bug",
+    "level": 20,
+    "life": 165,
+    "attack": 90,
+    "defence": 50,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Bug Bite",
+        "type": "bug",
+        "accuracy": 70
+      },
+      {
+        "name": "X-Scissor",
+        "type": "bug",
+        "accuracy": 90
+      }
+    ]
+  },
+  {
+    "name": "Mew",
+    "sprite": {
+      "front": "media/Pokemons-assets/front/Mew_front.png",
+      "back": "media/Pokemons-assets/back/Mew_back.png"
+    },
+    "type": "normal",
+    "level": 100,
+    "life": 999,
+    "attack": 400,
+    "defence": 400,
+    "ingame": false,
+    "moov": [
+      {
+        "name": "Aura Sphere",
+        "type": "fighting",
+        "accuracy": 100
+      },
+      {
+        "name": "Psychic",
+        "type": "psychic",
+        "accuracy": 100
+      }
+    ]
+  }
 ]
