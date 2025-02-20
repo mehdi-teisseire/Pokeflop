@@ -25,6 +25,81 @@
         ]
     },
     {
+        "name": "Squirtle",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Squirtle_front.png",
+            "back": "media/Pokemons-assets/back/Squirtle_back.png"
+        },
+        "type": "water",
+        "level": 5,
+        "life": 120,
+        "attack": 50,
+        "defence": 50,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Water Gun",
+                "type": "water",
+                "accuracy": 80
+            }
+        ]
+    },
+    {
+        "name": "Rattata",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Rattata_front.png",
+            "back": "media/Pokemons-assets/back/Rattata_back.png"
+        },
+        "type": "normal",
+        "level": 5,
+        "life": 50,
+        "attack": 48,
+        "defence": 43,
+        "ingame": false,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Quick Attack",
+                "type": "normal",
+                "accuracy": 100
+            }
+        ]
+    },
+    {
+        "name": "Pidgey",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Pidgey_front.png",
+            "back": "media/Pokemons-assets/back/Pidgey_back.png"
+        },
+        "type": "normal",
+        "level": 5,
+        "life": 80,
+        "attack": 45,
+        "defence": 45,
+        "ingame": false,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Gust",
+                "type": "normal",
+                "accuracy": 95
+            }
+        ]
+    },
+    {
         "name": "Pikachu",
         "sprite": {
             "front": "media/Pokemons-assets/front/Pikachu_front.png",
@@ -46,6 +121,31 @@
                 "name": "Thunder",
                 "type": "electric",
                 "accuracy": 100
+            }
+        ]
+    },
+    {
+        "name": "Bulbasaur",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
+            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
+        },
+        "type": "grass",
+        "level": 5,
+        "life": 180,
+        "attack": 40,
+        "defence": 50,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Leaf",
+                "type": "grass",
+                "accuracy": 60
             }
         ]
     }

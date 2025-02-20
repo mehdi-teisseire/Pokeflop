@@ -198,11 +198,13 @@ class Game:
                     if sprite_rect.collidepoint(mouse_pos):
                         for pokedex_pokemon in self.trainer.pokedex:
                             if pokedex_pokemon == pokemon:
+                                index = self.trainer.pokedex.index(pokemon)
                                 if pokemon != self.trainer.pokedex[0]:
-                                    pokedex_pokemon, self.trainer.pokedex[0] = self.trainer.pokedex[0], pokedex_pokemon
+                                    self.trainer.pokedex[index], self.trainer.pokedex[0] = self.trainer.pokedex[0], self.trainer.pokedex[index]
                                     self.trainer.update_json()
                                 self.battle.trainer_pokemon = pokemon
                                 self.battle.trainer_current_hp = pokemon.life
+                                self.battle.turn_pkmn = pokemon
                                 self.ingame_state = "attacking"
 
                 for button in self.button_moov:

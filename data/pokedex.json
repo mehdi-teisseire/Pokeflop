@@ -1,52 +1,52 @@
 [
-  {
-    "name": "Charmander",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Charmander_front.png",
-      "back": "media/Pokemons-assets/back/Charmander_back.png"
-    },
-    "type": "fire",
-    "level": 5,
-    "life": 150,
-    "attack": 70,
-    "defence": 30,
-    "ingame": true,
-    "moov": [
-      {
-        "name": "Tackle",
-        "type": "normal",
-        "accuracy": 95
-      },
-      {
-        "name": "Flamethrower",
+    {
+        "name": "Charmeleon",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Charmeleon_front.png",
+            "back": "media/Pokemons-assets/back/Charmeleon_back.png"
+        },
         "type": "fire",
-        "accuracy": 30
-      }
-    ]
-  },
-  {
-    "name": "Charmander",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Charmander_front.png",
-      "back": "media/Pokemons-assets/back/Charmander_back.png"
+        "level": 6,
+        "life": 90,
+        "attack": 50,
+        "defence": 50,
+        "ingame": false,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Gust",
+                "type": "normal",
+                "accuracy": 95
+            }
+        ]
     },
-    "type": "fire",
-    "level": 5,
-    "life": 150,
-    "attack": 70,
-    "defence": 30,
-    "ingame": true,
-    "moov": [
-      {
-        "name": "Tackle",
-        "type": "normal",
-        "accuracy": 95
-      },
-      {
-        "name": "Flamethrower",
+    {
+        "name": "Charmeleon",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Charmeleon_front.png",
+            "back": "media/Pokemons-assets/back/Charmeleon_back.png"
+        },
         "type": "fire",
-        "accuracy": 30
-      }
-    ]
-  }
+        "level": 6,
+        "life": 190,
+        "attack": 45,
+        "defence": 55,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Leaf",
+                "type": "grass",
+                "accuracy": 60
+            }
+        ]
+    }
 ]

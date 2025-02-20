@@ -90,14 +90,14 @@ def display_attack_choice(game):
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
 
-    game.button_moov1.draw(game.screen, game.battle.turn_pkmn.moov[0].name) #game.trainer.pokedex[0].moov[0].name
-    game.button_moov2.draw(game.screen, game.battle.turn_pkmn.moov[1].name) #game.trainer.pokedex[0].moov[1].name)
+    game.button_moov1.draw(game.screen, game.battle.turn_pkmn.moov[0].name) 
+    game.button_moov2.draw(game.screen, game.battle.turn_pkmn.moov[1].name) 
 
     game.background_button_moov.draw(game.screen, hitbox=game.button_moov1)
     game.background_button_moov.draw(game.screen, hitbox=game.button_moov2)
     
-    game.text_button_moov.draw(game.screen, game.trainer.pokedex[0].moov[0].name, hitbox=game.button_moov1)    
-    game.text_button_moov.draw(game.screen, game.trainer.pokedex[0].moov[1].name, hitbox=game.button_moov2)    
+    game.text_button_moov.draw(game.screen, game.battle.turn_pkmn.moov[0].name, hitbox=game.button_moov1)    
+    game.text_button_moov.draw(game.screen, game.battle.turn_pkmn.moov[1].name, hitbox=game.button_moov2)    
     
 def display_attacking_text(game):
     game.button_battle_message.draw(game.screen)
