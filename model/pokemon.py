@@ -28,17 +28,21 @@ class Pokemon():
 
     def level_up(self):
         '''Level up the pokemon'''
+        self.life += 10
         self.level += 1
         self.attack += 5
         self.defence += 5
         return f"{self.name} is now level {self.level}"
     
-    def evolve(self,new_name,new_type,new_sprite):
+    def evolve(self,new_name,new_type):
         '''Evolve the pokemon'''
         temp_str = self.name
         self.name = new_name
         self.type = new_type
-        self.sprite = new_sprite
+        self.sprite = {
+            "front": f"media/Pokemons-assets/front/{self.name}_front.png",
+            "back": f"media/Pokemons-assets/back/{self.name}_back.png"
+        }
         return f"{temp_str} has evolved into {new_name}!"
     
     def attack_damage(self, opponent, moov_type):

@@ -1,5 +1,55 @@
 [
     {
+        "name": "Charizard",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Charizard_front.png",
+            "back": "media/Pokemons-assets/back/Charizard_back.png"
+        },
+        "type": "fire",
+        "level": 8,
+        "life": 180,
+        "attack": 85,
+        "defence": 45,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Flamethrower",
+                "type": "fire",
+                "accuracy": 80
+            }
+        ]
+    },
+    {
+        "name": "Rattata",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Rattata_front.png",
+            "back": "media/Pokemons-assets/back/Rattata_back.png"
+        },
+        "type": "normal",
+        "level": 5,
+        "life": 50,
+        "attack": 48,
+        "defence": 43,
+        "ingame": false,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Quick Attack",
+                "type": "normal",
+                "accuracy": 100
+            }
+        ]
+    },
+    {
         "name": "Bulbasaur",
         "sprite": {
             "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
@@ -20,7 +70,7 @@
             {
                 "name": "Leaf",
                 "type": "grass",
-                "accuracy": 90
+                "accuracy": 60
             }
         ]
     }

@@ -146,6 +146,7 @@ def display_battle_end(game):
             game.button_battle_message.draw(game.screen)
             game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
             game.text_battle_message.draw(game.screen, f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! So cool!" ,hitbox=game.button_battle_message)
+            
    
         else:
             game.button_battle_message.draw(game.screen)
@@ -158,8 +159,17 @@ def display_battle_end(game):
         game.text_battle_message.draw(game.screen, f"{game.battle.trainer_name}'s {game.battle.enemy_pokemon.name} is dead forever..." ,hitbox=game.button_battle_message)
    
     if time.get_ticks() >= game.delay:
+        game.trainer.pokedex[0].level_up()
+        display_evolve(game)
+        game.delay = time.get_ticks() + 5000
+        game.save_json(game.trainer.pokedex, 'pokedex')
         game.mixer.music.stop()
         game.mixer.music.load('media/audio/bgm_menu.mp3')
         game.mixer.music.play(-1)
         game.game_state = "game_menu"
 
+def display_evolve(game):
+    if game.trainer.pokedex[0].level == 6 and not game.trainer.pokedex[0].name == "Charizard":
+            game.trainer.pokedex[0].evolve("Charmeleon", "fire")
+    elif game.trainer.pokedex[0].level == 7:
+            game.trainer.pokedex[0].evolve("Charizard", "fire")
