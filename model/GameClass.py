@@ -36,11 +36,11 @@ class Game:
         #Constants
         self.MOOV_TEMPLATE = [
             {'name':'Tackle','type':'normal','accuracy':95},
-            {'name':'Water Gun','type':'water','accuracy':80},
-            {'name':'Thunder','type':'electric','accuracy':100},
-            {'name':'Leaf','type':'grass','accuracy':60},
-            {'name':'Flamethrower','type':'fire','accuracy':30},
-            {'name':'Gust','type':'normal','accuracy':95},
+            {'name':'Water Gun','type':'water','accuracy':85},
+            {'name':'Thunder','type':'electric','accuracy':90},
+            {'name':'Leaf','type':'grass','accuracy':90},
+            {'name':'Flamethrower','type':'fire','accuracy':80},
+            {'name':'Gust','type':'normal','accuracy':100},
             {'name':'Quick Attack','type':'normal','accuracy':100}
         ]
         
