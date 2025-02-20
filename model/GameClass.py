@@ -32,6 +32,10 @@ class Game:
 
         self.sprite_positions = []
 
+        #Animation variables
+        self.animation_x = 0
+        self.animation_y = 0
+
         #JSON
         self.open_json = Json().load_json
         self.save_json = Json().save_json
@@ -98,13 +102,17 @@ class Game:
 
         ## Fourth Screen - Ingame
         # Moov display 
-        self.button_moov1 = Hitbox((225, 500), (225, 75))
-        self.button_moov2 = Hitbox((825, 500), (225, 75))
+        self.button_moov1 = Hitbox((225, 490), (225, 75))
+        self.button_moov2 = Hitbox((825, 490), (225, 75))
         self.button_moov = [self.button_moov1, self.button_moov2]
+        self.button_change_pkmn = Hitbox((225, 570), (225, 75))
 
         self.background_button_moov = ImageElement("media/ui-elements/button_green.svg")
         self.healthbox = ImageElement("media/ui-elements/MDPokemonBattle_Healthbox.png")
+        self.health_bar = ImageElement("media/ui-elements/Lifebar.png")
 
+        self.hitbox_trainer_pkmn = Hitbox((100, 250), (300,300))
+        self.hitbox_enemy_pkmn =Hitbox((750,170), (300,300))
         self.trainer_pokemon = ImageElement("media/Pokemons-assets/front/Squirtle_front.png")
         self.enemy_pokemon = ImageElement("media/Pokemons-assets/back/Squirtle_back.png")
         
@@ -196,19 +204,20 @@ class Game:
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 #----- Ingame screen events
-                mouse_pos = pygame.mouse.get_pos()
-                for sprite_rect, pokemon in self.sprite_positions:
-                    if sprite_rect.collidepoint(mouse_pos):
-                        for pokedex_pokemon in self.trainer.pokedex:
-                            if pokedex_pokemon == pokemon:
-                                index = self.trainer.pokedex.index(pokemon)
-                                if pokemon != self.trainer.pokedex[0]:
-                                    self.trainer.pokedex[index], self.trainer.pokedex[0] = self.trainer.pokedex[0], self.trainer.pokedex[index]
-                                    self.trainer.update_json()
-                                self.battle.trainer_pokemon = pokemon
-                                self.battle.trainer_current_hp = pokemon.life
-                                self.battle.turn_pkmn = pokemon
-                                self.ingame_state = "attacking"
+                if self.game_state == "ingame":
+                    mouse_pos = pygame.mouse.get_pos()
+                    for sprite_rect, pokemon in self.sprite_positions:
+                        if sprite_rect.collidepoint(mouse_pos):
+                            for pokedex_pokemon in self.trainer.pokedex:
+                                if pokedex_pokemon == pokemon:
+                                    index = self.trainer.pokedex.index(pokemon)
+                                    if pokemon != self.trainer.pokedex[0]:
+                                        self.trainer.pokedex[index], self.trainer.pokedex[0] = self.trainer.pokedex[0], self.trainer.pokedex[index]
+                                        self.trainer.update_json()
+                                    self.battle.trainer_pokemon = pokemon
+                                    self.battle.trainer_current_hp = pokemon.life
+                                    self.battle.turn_pkmn = pokemon
+                                    self.ingame_state = "attacking"
 
                 for button in self.button_moov:
                     if self.game_state == "ingame" and button.is_clicked(pygame.mouse.get_pos()):
@@ -217,6 +226,9 @@ class Game:
                                 self.battle.chosen_moov = moov
                                 self.delay = pygame.time.get_ticks() + 1500   
                                 self.battle.ingame_state = "attacking" 
+                
+                if self.game_state == "ingame" and self.button_change_pkmn.is_clicked(pygame.mouse.get_pos()):
+                    self.ingame_state = "choose_pkmn"
                
                 if self.game_state == 'ingame' and self.button_quit.is_clicked(pygame.mouse.get_pos()):
                     self.mixer.music.stop()

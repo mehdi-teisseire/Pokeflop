@@ -1,16 +1,16 @@
 [
     {
-        "name": "Charmeleon",
+        "name": "Charizard",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Charmeleon_front.png",
-            "back": "media/Pokemons-assets/back/Charmeleon_back.png"
+            "front": "media/Pokemons-assets/front/Charizard_front.png",
+            "back": "media/Pokemons-assets/back/Charizard_back.png"
         },
         "type": "fire",
-        "level": 6,
-        "life": 90,
-        "attack": 50,
-        "defence": 50,
-        "ingame": false,
+        "level": 10,
+        "life": 170,
+        "attack": 75,
+        "defence": 75,
+        "ingame": true,
         "moov": [
             {
                 "name": "Tackle",
@@ -18,23 +18,23 @@
                 "accuracy": 95
             },
             {
-                "name": "Gust",
-                "type": "normal",
-                "accuracy": 95
+                "name": "Water Gun",
+                "type": "water",
+                "accuracy": 80
             }
         ]
     },
     {
-        "name": "Charmeleon",
+        "name": "Bulbasaur",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Charmeleon_front.png",
-            "back": "media/Pokemons-assets/back/Charmeleon_back.png"
+            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
+            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
         },
-        "type": "fire",
-        "level": 6,
-        "life": 190,
-        "attack": 45,
-        "defence": 55,
+        "type": "grass",
+        "level": 5,
+        "life": 180,
+        "attack": 40,
+        "defence": 50,
         "ingame": true,
         "moov": [
             {
