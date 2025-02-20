@@ -159,8 +159,12 @@ class Game:
                 case "ingame":
                     if not self.battle_start:
                         self.battle_ini()
+                    try:
+                        display_ingame(self)
+                    except AttributeError:
+                        self.game_state = "game_menu"   
                         
-                    display_ingame(self)
+                        
                 case "battle_end":
                     display_battle_end(self)
                 case "pokedex":
@@ -176,22 +180,21 @@ class Game:
         pygame.quit()
 
     def battle_ini(self):
-        if not self.trainer.pokedex:
+      
+        try: 
+            """Attributes that needs to be set only once (before battle) are here"""
+            #Rival adds pokemon.json into his list and choose one pokemon from it
+            self.enemy = EnemyTrainer("Rival")
+            self.enemy.load_pokedex()
+            self.enemy.choose_pokemon()
+            self.battle = Battle(self.trainer, self.enemy)
+            self.battle_start = True
+            self.ingame_state = "choose_pkmn"
+            self.mixer.music.load('media/audio/bgm_fight.mp3')
+            self.mixer.music.play(-1)
+        except IndexError:
             print("You can't start without pokemon!")
-            return
-        
-        self.mixer.music.load('media/audio/bgm_fight.mp3')
-        self.mixer.music.play(-1)
-        """Attributes that needs to be set only once (before battle) are here"""
-        #Rival adds pokemon.json into his list and choose one pokemon from it
-        self.enemy = EnemyTrainer("Rival")
-        self.enemy.load_pokedex()
-        self.enemy.choose_pokemon()
-
-
-        self.battle = Battle(self.trainer, self.enemy)
-        self.battle_start = True
-        self.ingame_state = "choose_pkmn"
+            self.game_state = "game_menu"
 
     def events(self):                    
         for event in pygame.event.get():
