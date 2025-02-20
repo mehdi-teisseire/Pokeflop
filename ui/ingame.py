@@ -130,6 +130,8 @@ def display_end_results(game):
 
         game.game_state = "battle_end"
         game.mixer.music.stop()
+        game.mixer.music.load('media/audio/bgm_battle_end.mp3')
+        game.mixer.music.play(-1)
         game.battle_start = False
         game.battle.ingame_state = "attacking"
 
@@ -138,9 +140,7 @@ def custom_wait(game, state, wait_time = 1000):
         game.delay = time.get_ticks() + wait_time
         game.ingame_state = state
 
-def display_battle_end(game):  
-    game.mixer.music.load('media/audio/bgm_battle_end.mp3')
-    game.mixer.music.play(-1)  
+def display_battle_end(game):    
     if game.battle.won:
         if game.battle.gave_pokemon:
             game.button_battle_message.draw(game.screen)
