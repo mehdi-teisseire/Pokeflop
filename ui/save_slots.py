@@ -14,6 +14,7 @@ def new_game(game):
     #     game.enemy.pokemon.append(pkmn)
 
     #starter choose
+    game.background.draw(game.screen, size=(1200,600), image_path="media/ui-elements/newgame_background.png")
     game.button_pokemon1.draw(game.screen)
     game.button_pokemon2.draw(game.screen)
     game.button_pokemon3.draw(game.screen)
