@@ -42,6 +42,12 @@ class EnemyTrainer(Trainer):
         """Update the json from the pokedex list"""
         self.save_json(self.pokemon, "pokemon")
 
+    def load_pokedex(self):
+        """When loading a save, add all saved pokemon on trainer object"""
+        pokelist = self.load_json("pokemon")
+        for pokemon in pokelist:
+            self.pokemon.append(self.convert_pokemon_to_obj(pokemon))
+
 
 
 """

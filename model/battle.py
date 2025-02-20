@@ -30,6 +30,8 @@ class Battle:
         self.miss_check = False
         self.pokemon_ko = self.is_pokemon_ko()
 
+        
+
         if self.pokemon_ko:
             # if time.get_ticks() >= game.delay:
             game.delay = time.get_ticks() + 2000

@@ -99,14 +99,16 @@ class Game:
 
         self.background_button_moov = ImageElement("media/ui-elements/button_green.svg")
 
+        self.trainer_pokemon = ImageElement("media/Pokemons-assets/front/Squirtle_front.png")
+        self.enemy_pokemon = ImageElement("media/Pokemons-assets/back/Squirtle_back.png")
+        
         self.text_button_moov = Text("freesansbold.ttf", 36, (0,0,0))
 
         #Interface
-        #TODO add name and place it into frame
-        self.life_text = Text("freesansbold.ttf", 36, (0,0,0))
+        self.ingame_text = Text("freesansbold.ttf", 36, (0,0,0))
 
         #battle messages
-        self.button_battle_message = Hitbox((0, 500),(1200, 175))
+        self.button_battle_message = Hitbox((0, 460),(1200, 215))
         self.background_battle_message = ImageElement('media/ui-elements/button.png')
         self.text_battle_message = Text("freesansbold.ttf", 36, (0,0,0))
 
@@ -157,8 +159,12 @@ class Game:
 
     def battle_ini(self):
         """Attributes that needs to be set only once (before battle) are here"""
+        #Rival adds pokemon.json into his list and choose one pokemon from it
+        self.enemy.load_pokedex()
         self.enemy.choose_pokemon()
-        self.trainer.load_pokedex(self.MOOV_TEMPLATE)
+
+        #trainer loads its pokedex
+        self.trainer.load_pokedex()
 
         self.battle = Battle(self.trainer, self.enemy)
         self.battle_start = True

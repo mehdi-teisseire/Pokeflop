@@ -35,7 +35,7 @@ class Trainer(Json):
         """Update the json from the pokedex list"""
         self.save_json(self.pokedex, "pokedex")
 
-    def load_pokedex(self, moov_list):
+    def load_pokedex(self):
         """When loading a save, add all saved pokemon on trainer object"""
         pokedex = self.load_json("pokedex")
         for pokemon in pokedex:
