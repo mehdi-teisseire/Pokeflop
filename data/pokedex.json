@@ -1,15 +1,15 @@
 [
     {
-        "name": "Squirtle",
+        "name": "Rattata",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Squirtle_front.png",
-            "back": "media/Pokemons-assets/back/Squirtle_back.png"
+            "front": "media/Pokemons-assets/front/Rattata_front.png",
+            "back": "media/Pokemons-assets/back/Rattata_back.png"
         },
-        "type": "water",
-        "level": 9,
-        "life": 160,
-        "attack": 70,
-        "defence": 70,
+        "type": "normal",
+        "level": 7,
+        "life": 70,
+        "attack": 58,
+        "defence": 53,
         "ingame": true,
         "moov": [
             {
@@ -18,86 +18,12 @@
                 "accuracy": 95
             },
             {
-                "name": "Water Gun",
-                "type": "water",
-                "accuracy": 90
-            }
-        ]
-    },
-    {
-        "name": "Vulpix",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Vulpix_front.png",
-            "back": "media/Pokemons-assets/back/Vulpix_back.png"
-        },
-        "type": "fire",
-        "level": 8,
-        "life": 120,
-        "attack": 60,
-        "defence": 55,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
+                "name": "Quick Attack",
                 "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Flame Wheel",
-                "type": "fire",
                 "accuracy": 100
             }
-        ]
-    },
-    {
-        "name": "Bulbasaur",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
-            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
-        },
-        "type": "grass",
-        "level": 9,
-        "life": 220,
-        "attack": 60,
-        "defence": 70,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Leaf",
-                "type": "grass",
-                "accuracy": 60
-            }
-        ]
-    },
-    {
-        "name": "Chansey",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Chansey_front.png",
-            "back": "media/Pokemons-assets/back/Chansey_back.png"
-        },
-        "type": "fairy",
-        "level": 4,
-        "life": 200,
-        "attack": 20,
-        "defence": 40,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Fairy Wind",
-                "type": "fairy",
-                "accuracy": 100
-            }
-        ]
+        ],
+        "current_health": 70
     },
     {
         "name": "Charmander",
@@ -106,10 +32,10 @@
             "back": "media/Pokemons-assets/back/Charmander_back.png"
         },
         "type": "fire",
-        "level": 5,
-        "life": 150,
-        "attack": 70,
-        "defence": 30,
+        "level": 9,
+        "life": 190,
+        "attack": 90,
+        "defence": 50,
         "ingame": true,
         "moov": [
             {
@@ -122,6 +48,33 @@
                 "type": "fire",
                 "accuracy": 70
             }
-        ]
+        ],
+        "current_health": 190
+    },
+    {
+        "name": "Pidgey",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Pidgey_front.png",
+            "back": "media/Pokemons-assets/back/Pidgey_back.png"
+        },
+        "type": "flying",
+        "level": 5,
+        "life": 80,
+        "attack": 45,
+        "defence": 45,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Gust",
+                "type": "flying",
+                "accuracy": 100
+            }
+        ],
+        "current_health": 80
     }
 ]

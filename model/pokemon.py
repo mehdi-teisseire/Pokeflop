@@ -19,6 +19,8 @@ class Pokemon():
         self.ingame = ingame
 
         self.moov = [self.create_moov(moov[0]), self.create_moov(moov[1])]
+
+        self.current_health = life
     
     def get_pokemon(self):
         return f"Name: {self.name}, Type: {self.type}, Level: {self.level}, Attack: {self.attack}, Defence: {self.defence}, Moov: {self.moov1},' ',{self.moov2}; Life: {self.life}"
@@ -67,11 +69,11 @@ class Pokemon():
        
     def apply_damage(self, game, damage):
         if game.battle.opponent == game.battle.enemy_name:
-            game.battle.enemy_current_hp -= damage
-            if game.battle.enemy_current_hp < 0:
-                game.battle.enemy_current_hp = 0
+            game.battle.enemy_pokemon.current_health -= damage
+            if game.battle.enemy_pokemon.current_health < 0:
+                game.battle.enemy_pokemon.current_health = 0
         else:
-            game.battle.trainer_current_hp -= damage
-            if game.battle.trainer_current_hp < 0:
-                game.battle.trainer_current_hp = 0
+            game.battle.trainer_pokemon.current_health -= damage            # game.battle.trainer_current_hp -= damage
+            if game.battle.trainer_pokemon.current_health < 0:
+                game.battle.trainer_pokemon.current_health = 0
         return True

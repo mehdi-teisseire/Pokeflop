@@ -85,11 +85,11 @@ def display_battle_interface(game):
     game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.level}", (350,55)) 
     game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.level}", (1040,55)) 
 
-    game.ingame_text.draw(game.screen, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}", (50,85)) 
-    game.ingame_text.draw(game.screen, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}", (720,85)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.current_health}/{game.trainer.pokedex[0].life}", (50,85)) 
+    game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.current_health}/{game.enemy.pokedex[0].life}", (720,85)) 
 
-    game.health_bar.draw(game.screen, (227, 92), (1.87* game.battle.trainer_current_hp * 100 / game.trainer.pokedex[0].life, 15))
-    game.health_bar.draw(game.screen, (908, 90), (1.98* game.battle.enemy_current_hp * 100 / game.enemy.pokedex[0].life, 17))
+    game.health_bar.draw(game.screen, (227, 92), (1.87* game.battle.trainer_pokemon.current_health * 100 / game.trainer.pokedex[0].life, 15))
+    game.health_bar.draw(game.screen, (908, 90), (1.98* game.battle.enemy_pokemon.current_health * 100 / game.enemy.pokedex[0].life, 17))
 
 # To allow the player to choose an attack
 def display_attack_choice(game):
@@ -200,17 +200,24 @@ def display_battle_end(game):
     if game.battle.won:
         if game.battle.gave_pokemon:
             game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
+            game.rival.draw(game.screen, (850,180), (100,200), "media/ui-elements/Rival_sad.png")
+            
+
             game.button_battle_message.draw(game.screen)
             game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
             game.text_battle_message.draw(game.screen, f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! So cool!" ,hitbox=game.button_battle_message)
            
    
         else:
+            game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
+            game.rival.draw(game.screen, (850,180), (100,200), "media/ui-elements/Rival_sad.png")
+            
             game.button_battle_message.draw(game.screen)
             game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
             game.text_battle_message.draw(game.screen, f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! Unfortunately, you already had one..." ,hitbox=game.button_battle_message)
    
     else:
+        game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/dead_screen.jpg")
         game.button_battle_message.draw(game.screen)
         game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
         game.text_battle_message.draw(game.screen, f"{game.battle.trainer_name}'s {game.battle.trainer_pokemon.name} is dead forever..." ,hitbox=game.button_battle_message)
@@ -223,7 +230,12 @@ def display_battle_end(game):
         game.mixer.music.stop()
         game.mixer.music.load('media/audio/bgm_menu.mp3')
         game.mixer.music.play(-1)
-        game.game_state = "game_menu"
+        if not game.trainer.pokedex:
+            game.game_state = "intro"
+        else:
+            for pokemon in game.trainer.pokedex:
+                pokemon.current_health = pokemon.life
+            game.game_state = "game_menu"
 
 
 def display_evolve(game):

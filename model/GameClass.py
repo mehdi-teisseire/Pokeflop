@@ -115,6 +115,7 @@ class Game:
         self.hitbox_enemy_pkmn =Hitbox((750,170), (300,300))
         self.trainer_pokemon = ImageElement("media/Pokemons-assets/front/Squirtle_front.png")
         self.enemy_pokemon = ImageElement("media/Pokemons-assets/back/Squirtle_back.png")
+        self.rival = ImageElement("media/ui-elements/Rival.png")
         
         self.text_button_moov = Text("freesansbold.ttf", 36, (0,0,0))
 
@@ -218,7 +219,7 @@ class Game:
                                         self.trainer.pokedex[index], self.trainer.pokedex[0] = self.trainer.pokedex[0], self.trainer.pokedex[index]
                                         self.trainer.update_json()
                                     self.battle.trainer_pokemon = pokemon
-                                    self.battle.trainer_current_hp = pokemon.life
+                                    # self.battle.trainer_current_hp = pokemon.life
                                     self.battle.turn_pkmn = pokemon
                                     self.ingame_state = "attacking"
 
@@ -242,6 +243,8 @@ class Game:
                 #-----
                 #----- Pokelist screen events
                 if (self.game_state == "pokedex" or self.game_state == "pokemon" or 'ingame') and self.button_quit.is_clicked(pygame.mouse.get_pos()):
+                # This fixes the hidden quit button in every screen, but we like the glitch so we don't fix it
+                # if (self.game_state == "pokedex" or self.game_state == "pokemon" or self.game_state == 'ingame') and self.button_quit.is_clicked(pygame.mouse.get_pos()):
                     self.game_state = self.button_quit.label
                 #-----
                 #----- Game Menu screen events

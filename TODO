@@ -15,19 +15,16 @@ replace evolution by another pokemon in db + previous stats?(maybe not)
 ### Required
 
 life regen at max when switch (have to keep current hp somehow (in json maybe))
+send next pokemon in battle after main die
 
 shouldn't level up even when defeated
 any pokemon evolve to charizard
 
-send next pokemon in battle after main die
-need to return to intro when dying
 
 Need to apply level up and do evolution
 
 indicator on pokelist blink too fast (need cooldown?)
 
-When too low on attack, you heal (maybe set it to 0 when <0)
-
-Pokelist overflows (modulo?)
+miss background on defeat screen
 
 error handling

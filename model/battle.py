@@ -4,11 +4,11 @@ class Battle:
     def __init__(self, trainer, enemy):
         self.trainer_name = trainer.name
         self.trainer_pokemon = trainer.pokedex[0]
-        self.trainer_current_hp = self.trainer_pokemon.life
+        # self.trainer_current_hp = self.trainer_pokemon.life
 
         self.enemy_name = enemy.name
         self.enemy_pokemon = enemy.pokedex[0]
-        self.enemy_current_hp = self.enemy_pokemon.life
+        # self.enemy_current_hp = self.enemy_pokemon.life
 
         self.turn = self.trainer_name
         self.turn_pkmn = self.trainer_pokemon
@@ -71,10 +71,10 @@ class Battle:
 
     def is_pokemon_ko(self):
         """To check if Pokemon is alive or not"""
-        if self.enemy_current_hp <= 0:
+        if self.enemy_pokemon.current_health <= 0:
             self.won = True
             return self.enemy_name
-        elif self.trainer_current_hp <= 0:
+        elif self.trainer_pokemon.current_health <= 0:        # elif self.trainer_current_hp <= 0:
             self.won = False
             return self.trainer_name
         else:
