@@ -1,5 +1,31 @@
 [
     {
+        "name": "Squirtle",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Squirtle_front.png",
+            "back": "media/Pokemons-assets/back/Squirtle_back.png"
+        },
+        "type": "water",
+        "level": 6,
+        "life": 130,
+        "attack": 55,
+        "defence": 55,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Water Gun",
+                "type": "water",
+                "accuracy": 90
+            }
+        ],
+        "current_health": 81
+    },
+    {
         "name": "Lugia",
         "sprite": {
             "front": "media/Pokemons-assets/front/Lugia_front.png",
@@ -23,7 +49,7 @@
                 "accuracy": 90
             }
         ],
-        "current_health": 980
+        "current_health": 990
     },
     {
         "name": "Charmander",
@@ -84,10 +110,10 @@
             "back": "media/Pokemons-assets/back/Rattata_back.png"
         },
         "type": "normal",
-        "level": 7,
-        "life": 70,
-        "attack": 58,
-        "defence": 53,
+        "level": 8,
+        "life": 80,
+        "attack": 63,
+        "defence": 58,
         "ingame": true,
         "moov": [
             {
@@ -101,7 +127,33 @@
                 "accuracy": 100
             }
         ],
-        "current_health": 70
+        "current_health": 80
+    },
+    {
+        "name": "Vulpix",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Vulpix_front.png",
+            "back": "media/Pokemons-assets/back/Vulpix_back.png"
+        },
+        "type": "fire",
+        "level": 7,
+        "life": 110,
+        "attack": 55,
+        "defence": 50,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Flame Wheel",
+                "type": "fire",
+                "accuracy": 100
+            }
+        ],
+        "current_health": 110
     },
     {
         "name": "Mew",
@@ -180,31 +232,5 @@
             }
         ],
         "current_health": 200
-    },
-    {
-        "name": "Vulpix",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Vulpix_front.png",
-            "back": "media/Pokemons-assets/back/Vulpix_back.png"
-        },
-        "type": "fire",
-        "level": 7,
-        "life": 110,
-        "attack": 55,
-        "defence": 50,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Flame Wheel",
-                "type": "fire",
-                "accuracy": 100
-            }
-        ],
-        "current_health": 110
     }
 ]
