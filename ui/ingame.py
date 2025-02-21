@@ -54,7 +54,7 @@ def choose_pokemon_battle(game):
 def display_pokemon_pokedex(game, pokedex_data):
     """Display all Pokemon sprites in a grid."""
     x, y = 80, 150
-    spacing = 50
+    spacing = 70
     sprite_positions = []
     
     for pokemon in pokedex_data:
