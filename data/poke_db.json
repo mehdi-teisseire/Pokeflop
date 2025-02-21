@@ -22,7 +22,12 @@
         "type": "water",
         "accuracy": 90
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 20,
+      "name": "Wartortle",
+      "type": "water"
+    }
   },
   {
     "name": "Wartortle",
@@ -47,7 +52,12 @@
         "type": "water",
         "accuracy": 90
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 50,
+      "name": "Blastoise",
+      "type": "water"
+    }
   },
   {
     "name": "Blastoise",
@@ -72,7 +82,8 @@
         "type": "water",
         "accuracy": 90
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Bulbasaur",
@@ -97,7 +108,12 @@
         "type": "grass",
         "accuracy": 80
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 20,
+      "name": "Ivysaur",
+      "type": "grass"
+    }
   },
   {
     "name": "Ivysaur",
@@ -122,7 +138,12 @@
         "type": "grass",
         "accuracy": 80
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 50,
+      "name": "Venusaur",
+      "type": "grass"
+    }
   },
   {
     "name": "Venusaur",
@@ -147,7 +168,8 @@
         "type": "grass",
         "accuracy": 80
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Charmander",
@@ -172,7 +194,12 @@
         "type": "fire",
         "accuracy": 70
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 20,
+      "name": "Charmeleon",
+      "type": "fire"
+    }
   },
   {
     "name": "Charmeleon",
@@ -197,7 +224,12 @@
         "type": "fire",
         "accuracy": 70
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 50,
+      "name": "Charizard",
+      "type": "fire"
+    }
   },
   {
     "name": "Charizard",
@@ -222,7 +254,8 @@
         "type": "fire",
         "accuracy": 70
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Pikachu",
@@ -247,7 +280,12 @@
         "type": "electric",
         "accuracy": 90
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 30,
+      "name": "Raichu",
+      "type": "electric"
+    }
   },
   {
     "name": "Raichu",
@@ -272,7 +310,8 @@
         "type": "electric",
         "accuracy": 90
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Pidgey",
@@ -297,7 +336,12 @@
         "type": "flying",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 15,
+      "name": "Pidgeotto",
+      "type": "flying"
+    }
   },
   {
     "name": "Pidgeotto",
@@ -322,7 +366,12 @@
         "type": "flying",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 35,
+      "name": "Pidgeot",
+      "type": "flying"
+    }
   },
   {
     "name": "Pidgeot",
@@ -347,7 +396,8 @@
         "type": "flying",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Rattata",
@@ -372,7 +422,12 @@
         "type": "normal",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 15,
+      "name": "Raticate",
+      "type": "normal"
+    }
   },
   {
     "name": "Raticate",
@@ -397,7 +452,8 @@
         "type": "normal",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Chansey",
@@ -422,7 +478,8 @@
         "type": "fairy",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Eevee",
@@ -447,7 +504,12 @@
         "type": "normal",
         "accuracy": 59
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 40,
+      "name": "Umbreon",
+      "type": "dark"
+    }
   },
   {
     "name": "Umbreon",
@@ -472,7 +534,8 @@
         "type": "dark",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Ekans",
@@ -497,7 +560,12 @@
         "type": "poison",
         "accuracy": 85
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 20,
+      "name": "Arbok",
+      "type": "poison"
+    }
   },
   {
     "name": "Arbok",
@@ -522,7 +590,8 @@
         "type": "poison",
         "accuracy": 85
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Chiruno",
@@ -547,7 +616,8 @@
         "type": "ice",
         "accuracy": 99
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Gastly",
@@ -572,7 +642,12 @@
         "type": "ghost",
         "accuracy": 50
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 25,
+      "name": "Gengar",
+      "type": "ghost"
+    }
   },
   {
     "name": "Gengar",
@@ -597,7 +672,12 @@
         "type": "ghost",
         "accuracy": 50
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 55,
+      "name": "Haunter",
+      "type": "ghost"
+    }
   },
   {
     "name": "Haunter",
@@ -622,7 +702,8 @@
         "type": "ghost",
         "accuracy": 50
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Diglett",
@@ -647,7 +728,12 @@
         "type": "ground",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 25,
+      "name": "Dugtrio",
+      "type": "ground"
+    }
   },
   {
     "name": "Dugtrio",
@@ -672,7 +758,8 @@
         "type": "ground",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Jynx",
@@ -697,7 +784,8 @@
         "type": "psychic",
         "accuracy": 60
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Onix",
@@ -722,7 +810,8 @@
         "type": "rock",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Lugia",
@@ -747,7 +836,8 @@
         "type": "dragon",
         "accuracy": 90
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Vulpix",
@@ -772,7 +862,12 @@
         "type": "fire",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {
+      "level": 25,
+      "name": "Ninetales",
+      "type": "fire"
+    }
   },
   {
     "name": "Ninetales",
@@ -797,7 +892,8 @@
         "type": "fire",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Hitmonchan",
@@ -822,7 +918,8 @@
         "type": "fighting",
         "accuracy": 10
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Registeel",
@@ -847,7 +944,8 @@
         "type": "steel",
         "accuracy": 80
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Scyther",
@@ -872,7 +970,8 @@
         "type": "bug",
         "accuracy": 90
       }
-    ]
+    ],
+    "evolve_data": {}
   },
   {
     "name": "Mew",
@@ -897,6 +996,7 @@
         "type": "psychic",
         "accuracy": 100
       }
-    ]
+    ],
+    "evolve_data": {}
   }
 ]

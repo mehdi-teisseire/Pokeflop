@@ -4,7 +4,7 @@ from model.multiplier import type_multiplier
 class Pokemon(): 
     '''Class to create a pokemon'''
 
-    def __init__(self, name, type, attack, defence, moov, level = 5, life = 100, ingame = False):
+    def __init__(self, name, type, attack, defence, moov, level = 5, life = 100, ingame = False, evolve_data={}):
         '''Initialize the pokemon'''
         self.name = name
         self.sprite = {
@@ -21,6 +21,7 @@ class Pokemon():
         self.moov = [self.create_moov(moov[0]), self.create_moov(moov[1])]
 
         self.current_health = life
+        self.evolve_data = evolve_data
     
     def get_pokemon(self):
         return f"Name: {self.name}, Type: {self.type}, Level: {self.level}, Attack: {self.attack}, Defence: {self.defence}, Moov: {self.moov1},' ',{self.moov2}; Life: {self.life}"
