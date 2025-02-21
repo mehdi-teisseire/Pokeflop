@@ -1,236 +1,87 @@
 [
-  {
-    "name": "Squirtle",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Squirtle_front.png",
-      "back": "media/Pokemons-assets/back/Squirtle_back.png"
-    },
-    "type": "water",
-    "level": 6,
-    "life": 130,
-    "attack": 55,
-    "defence": 55,
-    "ingame": true,
-    "moov": [
-      {
-        "name": "Tackle",
-        "type": "normal",
-        "accuracy": 95
-      },
-      {
-        "name": "Water Gun",
-        "type": "water",
-        "accuracy": 90
-      }
-    ],
-    "current_health": 81
-  },
-  {
-    "name": "Lugia",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Lugia_front.png",
-      "back": "media/Pokemons-assets/back/Lugia_back.png"
-    },
-    "type": "dragon",
-    "level": 104,
-    "life": 990,
-    "attack": 520,
-    "defence": 390,
-    "ingame": false,
-    "moov": [
-      {
-        "name": "Tackle",
-        "type": "normal",
-        "accuracy": 95
-      },
-      {
-        "name": "Draco Meteor",
+    {
+        "name": "Lugia",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Lugia_front.png",
+            "back": "media/Pokemons-assets/back/Lugia_back.png"
+        },
         "type": "dragon",
-        "accuracy": 90
-      }
-    ],
-    "current_health": 990
-  },
-  {
-    "name": "Charmander",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Charmander_front.png",
-      "back": "media/Pokemons-assets/back/Charmander_back.png"
+        "level": 91,
+        "life": 860,
+        "attack": 455,
+        "defence": 325,
+        "ingame": false,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Draco Meteor",
+                "type": "dragon",
+                "accuracy": 90
+            }
+        ],
+        "current_health": 850,
+        "evolve_data": {}
     },
-    "type": "fire",
-    "level": 10,
-    "life": 200,
-    "attack": 95,
-    "defence": 55,
-    "ingame": true,
-    "moov": [
-      {
-        "name": "Tackle",
-        "type": "normal",
-        "accuracy": 95
-      },
-      {
-        "name": "Flamethrower",
-        "type": "fire",
-        "accuracy": 70
-      }
-    ],
-    "current_health": 200
-  },
-  {
-    "name": "Scyther",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Scyther_front.png",
-      "back": "media/Pokemons-assets/back/Scyther_back.png"
+    {
+        "name": "Squirtle",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Squirtle_front.png",
+            "back": "media/Pokemons-assets/back/Squirtle_back.png"
+        },
+        "type": "water",
+        "level": 6,
+        "life": 130,
+        "attack": 55,
+        "defence": 55,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Water Gun",
+                "type": "water",
+                "accuracy": 90
+            }
+        ],
+        "current_health": 130,
+        "evolve_data": {
+            "level": 20,
+            "name": "Wartortle",
+            "type": "water"
+        }
     },
-    "type": "bug",
-    "level": 21,
-    "life": 175,
-    "attack": 95,
-    "defence": 55,
-    "ingame": false,
-    "moov": [
-      {
-        "name": "Bug Bite",
-        "type": "bug",
-        "accuracy": 70
-      },
-      {
-        "name": "X-Scissor",
-        "type": "bug",
-        "accuracy": 90
-      }
-    ],
-    "current_health": 175
-  },
-  {
-    "name": "Rattata",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Rattata_front.png",
-      "back": "media/Pokemons-assets/back/Rattata_back.png"
-    },
-    "type": "normal",
-    "level": 8,
-    "life": 80,
-    "attack": 63,
-    "defence": 58,
-    "ingame": true,
-    "moov": [
-      {
-        "name": "Tackle",
-        "type": "normal",
-        "accuracy": 95
-      },
-      {
-        "name": "Quick Attack",
-        "type": "normal",
-        "accuracy": 100
-      }
-    ],
-    "current_health": 80
-  },
-  {
-    "name": "Vulpix",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Vulpix_front.png",
-      "back": "media/Pokemons-assets/back/Vulpix_back.png"
-    },
-    "type": "fire",
-    "level": 7,
-    "life": 110,
-    "attack": 55,
-    "defence": 50,
-    "ingame": true,
-    "moov": [
-      {
-        "name": "Tackle",
-        "type": "normal",
-        "accuracy": 95
-      },
-      {
-        "name": "Flame Wheel",
-        "type": "fire",
-        "accuracy": 100
-      }
-    ],
-    "current_health": 110
-  },
-  {
-    "name": "Mew",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Mew_front.png",
-      "back": "media/Pokemons-assets/back/Mew_back.png"
-    },
-    "type": "normal",
-    "level": 101,
-    "life": 1009,
-    "attack": 405,
-    "defence": 405,
-    "ingame": false,
-    "moov": [
-      {
-        "name": "Aura Sphere",
-        "type": "fighting",
-        "accuracy": 100
-      },
-      {
-        "name": "Psychic",
-        "type": "psychic",
-        "accuracy": 100
-      }
-    ],
-    "current_health": 1009
-  },
-  {
-    "name": "Pidgey",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Pidgey_front.png",
-      "back": "media/Pokemons-assets/back/Pidgey_back.png"
-    },
-    "type": "flying",
-    "level": 5,
-    "life": 80,
-    "attack": 45,
-    "defence": 45,
-    "ingame": true,
-    "moov": [
-      {
-        "name": "Tackle",
-        "type": "normal",
-        "accuracy": 95
-      },
-      {
-        "name": "Gust",
-        "type": "flying",
-        "accuracy": 100
-      }
-    ],
-    "current_health": 80
-  },
-  {
-    "name": "Jynx",
-    "sprite": {
-      "front": "media/Pokemons-assets/front/Jynx_front.png",
-      "back": "media/Pokemons-assets/back/Jynx_back.png"
-    },
-    "type": "psychic",
-    "level": 30,
-    "life": 200,
-    "attack": 200,
-    "defence": 100,
-    "ingame": false,
-    "moov": [
-      {
-        "name": "Tackle",
-        "type": "normal",
-        "accuracy": 95
-      },
-      {
-        "name": "Confusion",
-        "type": "psychic",
-        "accuracy": 60
-      }
-    ],
-    "current_health": 200
-  }
+    {
+        "name": "Chiruno",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Chiruno_front.png",
+            "back": "media/Pokemons-assets/back/Chiruno_back.png"
+        },
+        "type": "ice",
+        "level": 9,
+        "life": 99,
+        "attack": 99,
+        "defence": 9,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Icicle Fall",
+                "type": "ice",
+                "accuracy": 9
+            },
+            {
+                "name": "Perfect Freeze",
+                "type": "ice",
+                "accuracy": 99
+            }
+        ],
+        "current_health": 99,
+        "evolve_data": {}
+    }
 ]

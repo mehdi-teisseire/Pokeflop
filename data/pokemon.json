@@ -1,29 +1,33 @@
 [
     {
-        "name": "Chiruno",
+        "name": "Squirtle",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Chiruno_front.png",
-            "back": "media/Pokemons-assets/back/Chiruno_back.png"
+            "front": "media/Pokemons-assets/front/Squirtle_front.png",
+            "back": "media/Pokemons-assets/back/Squirtle_back.png"
         },
-        "type": "ice",
-        "level": 9,
-        "life": 99,
-        "attack": 99,
-        "defence": 9,
+        "type": "water",
+        "level": 5,
+        "life": 120,
+        "attack": 50,
+        "defence": 50,
         "ingame": true,
         "moov": [
             {
-                "name": "Icicle Fall",
-                "type": "ice",
-                "accuracy": 9
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
             },
             {
-                "name": "Perfect Freeze",
-                "type": "ice",
-                "accuracy": 99
+                "name": "Water Gun",
+                "type": "water",
+                "accuracy": 90
             }
         ],
-        "evolve_data": {}
+        "evolve_data": {
+            "level": 20,
+            "name": "Wartortle",
+            "type": "water"
+        }
     },
     {
         "name": "Bulbasaur",
@@ -56,17 +60,17 @@
         }
     },
     {
-        "name": "Ivysaur",
+        "name": "Charmander",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Ivysaur_front.png",
-            "back": "media/Pokemons-assets/back/Ivysaur_back.png"
+            "front": "media/Pokemons-assets/front/Charmander_front.png",
+            "back": "media/Pokemons-assets/back/Charmander_back.png"
         },
-        "type": "grass",
-        "level": 20,
-        "life": 280,
-        "attack": 90,
-        "defence": 85,
-        "ingame": false,
+        "type": "fire",
+        "level": 5,
+        "life": 150,
+        "attack": 70,
+        "defence": 30,
+        "ingame": true,
         "moov": [
             {
                 "name": "Tackle",
@@ -74,41 +78,303 @@
                 "accuracy": 95
             },
             {
-                "name": "Leaf",
-                "type": "grass",
-                "accuracy": 80
+                "name": "Flamethrower",
+                "type": "fire",
+                "accuracy": 70
             }
         ],
         "evolve_data": {
-            "level": 50,
-            "name": "Venusaur",
-            "type": "grass"
+            "level": 20,
+            "name": "Charmeleon",
+            "type": "fire"
         }
     },
     {
-        "name": "Scyther",
+        "name": "Pikachu",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Scyther_front.png",
-            "back": "media/Pokemons-assets/back/Scyther_back.png"
+            "front": "media/Pokemons-assets/front/Pikachu_front.png",
+            "back": "media/Pokemons-assets/back/Pikachu_back.png"
         },
-        "type": "bug",
-        "level": 20,
-        "life": 165,
-        "attack": 90,
-        "defence": 50,
-        "ingame": false,
+        "type": "electric",
+        "level": 5,
+        "life": 90,
+        "attack": 60,
+        "defence": 45,
+        "ingame": true,
         "moov": [
             {
-                "name": "Bug Bite",
-                "type": "bug",
-                "accuracy": 70
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
             },
             {
-                "name": "X-Scissor",
-                "type": "bug",
+                "name": "Thunder",
+                "type": "electric",
                 "accuracy": 90
             }
         ],
+        "evolve_data": {
+            "level": 30,
+            "name": "Raichu",
+            "type": "electric"
+        }
+    },
+    {
+        "name": "Pidgey",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Pidgey_front.png",
+            "back": "media/Pokemons-assets/back/Pidgey_back.png"
+        },
+        "type": "flying",
+        "level": 5,
+        "life": 80,
+        "attack": 45,
+        "defence": 45,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Gust",
+                "type": "flying",
+                "accuracy": 100
+            }
+        ],
+        "evolve_data": {
+            "level": 15,
+            "name": "Pidgeotto",
+            "type": "flying"
+        }
+    },
+    {
+        "name": "Rattata",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Rattata_front.png",
+            "back": "media/Pokemons-assets/back/Rattata_back.png"
+        },
+        "type": "normal",
+        "level": 5,
+        "life": 50,
+        "attack": 48,
+        "defence": 43,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Quick Attack",
+                "type": "normal",
+                "accuracy": 100
+            }
+        ],
+        "evolve_data": {
+            "level": 15,
+            "name": "Raticate",
+            "type": "normal"
+        }
+    },
+    {
+        "name": "Chansey",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Chansey_front.png",
+            "back": "media/Pokemons-assets/back/Chansey_back.png"
+        },
+        "type": "fairy",
+        "level": 4,
+        "life": 200,
+        "attack": 20,
+        "defence": 40,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Fairy Wind",
+                "type": "fairy",
+                "accuracy": 100
+            }
+        ],
         "evolve_data": {}
+    },
+    {
+        "name": "Eevee",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Eevee_front.png",
+            "back": "media/Pokemons-assets/back/Eevee_back.png"
+        },
+        "type": "normal",
+        "level": 4,
+        "life": 85,
+        "attack": 35,
+        "defence": 48,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "elkcaT",
+                "type": "normal",
+                "accuracy": 59
+            }
+        ],
+        "evolve_data": {
+            "level": 40,
+            "name": "Umbreon",
+            "type": "dark"
+        }
+    },
+    {
+        "name": "Ekans",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Ekans_front.png",
+            "back": "media/Pokemons-assets/back/Ekans_back.png"
+        },
+        "type": "poison",
+        "level": 6,
+        "life": 70,
+        "attack": 65,
+        "defence": 30,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Acid",
+                "type": "poison",
+                "accuracy": 85
+            }
+        ],
+        "evolve_data": {
+            "level": 20,
+            "name": "Arbok",
+            "type": "poison"
+        }
+    },
+    {
+        "name": "Chiruno",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Chiruno_front.png",
+            "back": "media/Pokemons-assets/back/Chiruno_back.png"
+        },
+        "type": "ice",
+        "level": 9,
+        "life": 99,
+        "attack": 99,
+        "defence": 9,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Icicle Fall",
+                "type": "ice",
+                "accuracy": 9
+            },
+            {
+                "name": "Perfect Freeze",
+                "type": "ice",
+                "accuracy": 99
+            }
+        ],
+        "evolve_data": {}
+    },
+    {
+        "name": "Diglett",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Diglett_front.png",
+            "back": "media/Pokemons-assets/back/Diglett_back.png"
+        },
+        "type": "ground",
+        "level": 5,
+        "life": 50,
+        "attack": 10,
+        "defence": 90,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Dig",
+                "type": "ground",
+                "accuracy": 100
+            }
+        ],
+        "evolve_data": {
+            "level": 25,
+            "name": "Dugtrio",
+            "type": "ground"
+        }
+    },
+    {
+        "name": "Hitmonchan",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Hitmonchan_front.png",
+            "back": "media/Pokemons-assets/back/Hitmonchan_back.png"
+        },
+        "type": "fighting",
+        "level": 10,
+        "life": 40,
+        "attack": 150,
+        "defence": 50,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Jump Kick",
+                "type": "fighting",
+                "accuracy": 50
+            },
+            {
+                "name": "Triple Kick",
+                "type": "fighting",
+                "accuracy": 10
+            }
+        ],
+        "evolve_data": {}
+    },
+    {
+        "name": "Vulpix",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Vulpix_front.png",
+            "back": "media/Pokemons-assets/back/Vulpix_back.png"
+        },
+        "type": "fire",
+        "level": 7,
+        "life": 110,
+        "attack": 55,
+        "defence": 50,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Flame Wheel",
+                "type": "fire",
+                "accuracy": 100
+            }
+        ],
+        "evolve_data": {
+            "level": 25,
+            "name": "Ninetales",
+            "type": "fire"
+        }
     }
 ]
