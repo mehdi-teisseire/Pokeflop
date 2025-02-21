@@ -34,8 +34,8 @@ def render_pokemon_info(game, pokemon, font):
 
 def display_pokemon_sprites(game, pokedex_data):
     """Display all Pokemon sprites in a grid."""
-    x, y = 580, 100
-    spacing = 50
+    x, y = 590, 100
+    spacing = 65
     sprite_positions = []
     
     for pokemon in pokedex_data:
@@ -45,7 +45,7 @@ def display_pokemon_sprites(game, pokedex_data):
         
         x += spacing
         if x > game.screen.get_width() - spacing:
-            x = 580
+            x = 600
             y += spacing
             
     return sprite_positions
@@ -68,7 +68,7 @@ def display_pokelist(game):
     current_pokemon = pokedex_data[0] 
     
     mouse_pos = pygame.mouse.get_pos()
-    
+
     if not hasattr(display_pokelist, 'last_click_time'):
         display_pokelist.last_click_time = 0
     
