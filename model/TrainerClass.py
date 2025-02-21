@@ -30,7 +30,8 @@ class Trainer(Json):
         return Pokemon(name=pokemon["name"], type=pokemon["type"],
                        attack=pokemon["attack"], defence=pokemon["defence"],
                        moov=pokemon["moov"], level=pokemon["level"],
-                       life=pokemon["life"],ingame=pokemon['ingame'])
+                       life=pokemon["life"], ingame=pokemon['ingame'],
+                       evolve_data=pokemon["evolve_data"])
 
     def update_json(self):
         """Update the json from the pokedex list"""
