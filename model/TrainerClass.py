@@ -22,9 +22,9 @@ class Trainer(Json):
     def remove_pokemon(self, pokemon):
         """To remove defeated pokemon from our pokedex. pokemon is an object.
         Won't remove if it's the last pokemon."""
-        if len(self.pokedex) > 1:
-            self.pokedex.remove(pokemon)
-            self.update_json()
+           
+        self.pokedex.remove(pokemon)
+        self.update_json()
 
     def convert_pokemon_to_obj(self, pokemon):
         return Pokemon(name=pokemon["name"], type=pokemon["type"],

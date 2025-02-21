@@ -179,17 +179,27 @@ def display_end_results(game):
         if not game.battle.won:
             game.enemy.remove_pokemon()
             game.trainer.remove_pokemon(game.battle.trainer_pokemon)
+                
         else:
             game.battle.gave_pokemon = game.enemy.give_pokemon(game.trainer)
-
-        game.game_state = "battle_end"
-        game.mixer.music.stop()
-        game.mixer.music.load('media/audio/bgm_battle_end.mp3')
-        game.mixer.music.play(-1)
-        game.battle_start = False
-        game.battle.ingame_state = "attacking"
-        game.battle.turn_pkmn.level_up()
-        reset_animation(game)
+        
+        if len(game.trainer.pokedex) < 1:
+            game.game_state = "intro"
+            game.mixer.music.stop()
+            game.mixer.music.load('media/audio/bgm_menu.mp3')
+            game.mixer.music.play(-1)
+            game.battle_start = False
+            game.battle.ingame_state = "attacking"
+            reset_animation(game)
+        else:
+            game.game_state = "battle_end"
+            game.mixer.music.stop()
+            game.mixer.music.load('media/audio/bgm_battle_end.mp3')
+            game.mixer.music.play(-1)
+            game.battle_start = False
+            game.battle.ingame_state = "attacking"
+            game.battle.turn_pkmn.level_up()
+            reset_animation(game)
 
 
 def custom_wait(game, state, wait_time = 1000):

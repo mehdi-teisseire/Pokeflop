@@ -16,7 +16,6 @@ replace evolution by another pokemon in db + previous stats?(maybe not)
 
 life regen at max when switch (have to keep current hp somehow (in json maybe))
 
-shouldn't level up even when defeated
 any pokemon evolve to charizard
 
 send next pokemon in battle after main die
