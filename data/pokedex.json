@@ -1,5 +1,83 @@
 [
     {
+        "name": "Lugia",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Lugia_front.png",
+            "back": "media/Pokemons-assets/back/Lugia_back.png"
+        },
+        "type": "dragon",
+        "level": 104,
+        "life": 990,
+        "attack": 520,
+        "defence": 390,
+        "ingame": false,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Draco Meteor",
+                "type": "dragon",
+                "accuracy": 90
+            }
+        ],
+        "current_health": 980
+    },
+    {
+        "name": "Charmander",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Charmander_front.png",
+            "back": "media/Pokemons-assets/back/Charmander_back.png"
+        },
+        "type": "fire",
+        "level": 10,
+        "life": 200,
+        "attack": 95,
+        "defence": 55,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Flamethrower",
+                "type": "fire",
+                "accuracy": 70
+            }
+        ],
+        "current_health": 200
+    },
+    {
+        "name": "Scyther",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Scyther_front.png",
+            "back": "media/Pokemons-assets/back/Scyther_back.png"
+        },
+        "type": "bug",
+        "level": 21,
+        "life": 175,
+        "attack": 95,
+        "defence": 55,
+        "ingame": false,
+        "moov": [
+            {
+                "name": "Bug Bite",
+                "type": "bug",
+                "accuracy": 70
+            },
+            {
+                "name": "X-Scissor",
+                "type": "bug",
+                "accuracy": 90
+            }
+        ],
+        "current_health": 175
+    },
+    {
         "name": "Rattata",
         "sprite": {
             "front": "media/Pokemons-assets/front/Rattata_front.png",
@@ -26,30 +104,30 @@
         "current_health": 70
     },
     {
-        "name": "Charmander",
+        "name": "Mew",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Charmander_front.png",
-            "back": "media/Pokemons-assets/back/Charmander_back.png"
+            "front": "media/Pokemons-assets/front/Mew_front.png",
+            "back": "media/Pokemons-assets/back/Mew_back.png"
         },
-        "type": "fire",
-        "level": 9,
-        "life": 190,
-        "attack": 90,
-        "defence": 50,
-        "ingame": true,
+        "type": "normal",
+        "level": 101,
+        "life": 1009,
+        "attack": 405,
+        "defence": 405,
+        "ingame": false,
         "moov": [
             {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
+                "name": "Aura Sphere",
+                "type": "fighting",
+                "accuracy": 100
             },
             {
-                "name": "Flamethrower",
-                "type": "fire",
-                "accuracy": 70
+                "name": "Psychic",
+                "type": "psychic",
+                "accuracy": 100
             }
         ],
-        "current_health": 190
+        "current_health": 1009
     },
     {
         "name": "Pidgey",
@@ -76,5 +154,57 @@
             }
         ],
         "current_health": 80
+    },
+    {
+        "name": "Jynx",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Jynx_front.png",
+            "back": "media/Pokemons-assets/back/Jynx_back.png"
+        },
+        "type": "psychic",
+        "level": 30,
+        "life": 200,
+        "attack": 200,
+        "defence": 100,
+        "ingame": false,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Confusion",
+                "type": "psychic",
+                "accuracy": 60
+            }
+        ],
+        "current_health": 200
+    },
+    {
+        "name": "Vulpix",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Vulpix_front.png",
+            "back": "media/Pokemons-assets/back/Vulpix_back.png"
+        },
+        "type": "fire",
+        "level": 7,
+        "life": 110,
+        "attack": 55,
+        "defence": 50,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Flame Wheel",
+                "type": "fire",
+                "accuracy": 100
+            }
+        ],
+        "current_health": 110
     }
 ]
