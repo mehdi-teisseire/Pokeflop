@@ -87,7 +87,7 @@ def display_battle_interface(game):
 
     game.ingame_text.draw(game.screen, f"{game.battle.trainer_current_hp}/{game.trainer.pokedex[0].life}", (50,85)) 
     game.ingame_text.draw(game.screen, f"{game.battle.enemy_current_hp}/{game.enemy.pokedex[0].life}", (720,85)) 
-#TODO
+
     game.health_bar.draw(game.screen, (227, 92), (1.87* game.battle.trainer_current_hp * 100 / game.trainer.pokedex[0].life, 15))
     game.health_bar.draw(game.screen, (908, 90), (1.98* game.battle.enemy_current_hp * 100 / game.enemy.pokedex[0].life, 17))
 
