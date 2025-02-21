@@ -323,5 +323,30 @@
                 "accuracy": 100
             }
         ]
+    },
+    {
+        "name": "Onix",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Onix_front.png",
+            "back": "media/Pokemons-assets/back/Onix_back.png"
+        },
+        "type": "rock",
+        "level": 40,
+        "life": 250,
+        "attack": 80,
+        "defence": 300,
+        "ingame": false,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Rollout",
+                "type": "rock",
+                "accuracy": 100
+            }
+        ]
     }
 ]

@@ -12,19 +12,11 @@ On load game -> multiple saves (display on saveslot.py) -> pokedex{trainer_name}
 
 replace evolution by another pokemon in db + previous stats?(maybe not)
 
-### Required
-
 life regen at max when switch (have to keep current hp somehow (in json maybe))
 send next pokemon in battle after main die
-
-shouldn't level up even when defeated
 any pokemon evolve to charizard
-
-
 Need to apply level up and do evolution
 
-indicator on pokelist blink too fast (need cooldown?)
-
-miss background on defeat screen
+### Required
 
 error handling
