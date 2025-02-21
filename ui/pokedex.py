@@ -37,8 +37,8 @@ def render_pokemon_info(game, pokemon, font):
 
 def display_pokemon_sprites(game, pokedex_data):
     """Display all Pokemon sprites in a grid."""
-    x, y = 580, 100
-    spacing = 50
+    x, y = 590, 100
+    spacing = 65
     sprite_positions = []
     
     for pokemon in pokedex_data:
