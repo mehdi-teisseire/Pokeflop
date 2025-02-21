@@ -1,15 +1,46 @@
 [
     {
+        "name": "Arbok",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Arbok_front.png",
+            "back": "media/Pokemons-assets/back/Arbok_back.png"
+        },
+        "type": "poison",
+        "level": 20,
+        "life": 110,
+        "attack": 85,
+        "defence": 50,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Acid",
+                "type": "poison",
+                "accuracy": 85
+            }
+        ],
+        "current_health": 100,
+        "evolve_data": {
+            "level": 20,
+            "name": "Arbok",
+            "type": "poison"
+        }
+    },
+    {
         "name": "Charmeleon",
         "sprite": {
             "front": "media/Pokemons-assets/front/Charmeleon_front.png",
             "back": "media/Pokemons-assets/back/Charmeleon_back.png"
         },
         "type": "fire",
-        "level": 50,
-        "life": 210,
-        "attack": 100,
-        "defence": 60,
+        "level": 55,
+        "life": 260,
+        "attack": 125,
+        "defence": 85,
         "ingame": true,
         "moov": [
             {
@@ -23,7 +54,7 @@
                 "accuracy": 70
             }
         ],
-        "current_health": 200,
+        "current_health": 260,
         "evolve_data": {
             "level": 20,
             "name": "Charmeleon",
@@ -31,16 +62,16 @@
         }
     },
     {
-        "name": "Diglett",
+        "name": "Bulbasaur",
         "sprite": {
-            "front": "media/Pokemons-assets/front/Diglett_front.png",
-            "back": "media/Pokemons-assets/back/Diglett_back.png"
+            "front": "media/Pokemons-assets/front/Bulbasaur_front.png",
+            "back": "media/Pokemons-assets/back/Bulbasaur_back.png"
         },
-        "type": "ground",
+        "type": "grass",
         "level": 5,
-        "life": 50,
-        "attack": 10,
-        "defence": 90,
+        "life": 180,
+        "attack": 40,
+        "defence": 50,
         "ingame": true,
         "moov": [
             {
@@ -49,16 +80,16 @@
                 "accuracy": 95
             },
             {
-                "name": "Dig",
-                "type": "ground",
-                "accuracy": 100
+                "name": "Leaf",
+                "type": "grass",
+                "accuracy": 80
             }
         ],
-        "current_health": 50,
+        "current_health": 180,
         "evolve_data": {
-            "level": 25,
-            "name": "Dugtrio",
-            "type": "ground"
+            "level": 20,
+            "name": "Ivysaur",
+            "type": "grass"
         }
     }
 ]

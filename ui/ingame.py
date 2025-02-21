@@ -115,6 +115,8 @@ def display_attack_choice(game):
     game.text_button_moov.draw(game.screen, "Pokemons", hitbox=game.button_change_pkmn)  
     
 def display_attacking_text(game):
+    game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_stand.png")
+
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
     game.text_battle_message.draw(game.screen, f"{game.battle.turn}'s {game.battle.turn_pkmn.name} uses {game.battle.chosen_moov.name}!!" ,hitbox=game.button_battle_message)
@@ -225,18 +227,24 @@ def custom_wait(game, state, wait_time = 1000):
 
 def display_battle_end(game):    
     if game.battle.won:
+        game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
+        game.hitbox_trainer_pkmn.draw(game.screen)
+        game.trainer_pokemon.draw(game.screen, image_path=f"media/Pokemons-assets/back/{game.battle.trainer_pokemon.name}_back.png", hitbox=game.hitbox_trainer_pkmn)
+
+        game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.name}", (70,50)) 
+        game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.level}", (350,55)) 
+        game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.current_health}/{game.trainer.pokedex[0].life}", (50,85)) 
+        game.health_bar.draw(game.screen, (227, 92), (1.87* game.battle.trainer_pokemon.current_health * 100 / game.trainer.pokedex[0].life, 15))
+
         if game.battle.gave_pokemon:
-            game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
             game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_sad.png")
             
-
             game.button_battle_message.draw(game.screen)
             game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
             game.text_battle_message.draw(game.screen, f"{game.battle.enemy_name} gave you a {game.battle.enemy_pokemon.name}!! So cool!" ,hitbox=game.button_battle_message)
            
    
         else:
-            game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
             game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_sad.png")
             
             game.button_battle_message.draw(game.screen)
