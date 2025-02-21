@@ -45,7 +45,7 @@ def display_pokemon_sprites(game, pokedex_data):
         
         x += spacing
         if x > game.screen.get_width() - spacing:
-            x = 50
+            x = 580
             y += spacing
             
     return sprite_positions
