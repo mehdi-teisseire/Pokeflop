@@ -24,10 +24,4 @@ need to return to intro when dying
 
 Need to apply level up and do evolution
 
-indicator on pokelist blink too fast (need cooldown?)
-
-When too low on attack, you heal (maybe set it to 0 when <0)
-
-Pokelist overflows (modulo?)
-
 error handling
