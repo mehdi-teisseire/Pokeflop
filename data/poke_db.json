@@ -830,7 +830,7 @@
       "front": "media/Pokemons-assets/front/Registeel_front.png",
       "back": "media/Pokemons-assets/back/Registeel_back.png"
     },
-    "type": "normal",
+    "type": "steel",
     "level": 40,
     "life": 550,
     "attack": 150,

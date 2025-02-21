@@ -15,8 +15,16 @@ replace evolution by another pokemon in db + previous stats?(maybe not)
 life regen at max when switch (have to keep current hp somehow (in json maybe))
 send next pokemon in battle after main die
 any pokemon evolve to charizard
-Need to apply level up and do evolution
+Need evolution
 
 ### Required
+
+rival always here
+
+redo algorythme
+
+evolution in json
+
+nb seen in json
 
 error handling
