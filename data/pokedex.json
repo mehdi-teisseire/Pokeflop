@@ -1,57 +1,5 @@
 [
     {
-        "name": "Rattata",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Rattata_front.png",
-            "back": "media/Pokemons-assets/back/Rattata_back.png"
-        },
-        "type": "normal",
-        "level": 7,
-        "life": 70,
-        "attack": 58,
-        "defence": 53,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Quick Attack",
-                "type": "normal",
-                "accuracy": 100
-            }
-        ],
-        "current_health": 70
-    },
-    {
-        "name": "Charmander",
-        "sprite": {
-            "front": "media/Pokemons-assets/front/Charmander_front.png",
-            "back": "media/Pokemons-assets/back/Charmander_back.png"
-        },
-        "type": "fire",
-        "level": 9,
-        "life": 190,
-        "attack": 90,
-        "defence": 50,
-        "ingame": true,
-        "moov": [
-            {
-                "name": "Tackle",
-                "type": "normal",
-                "accuracy": 95
-            },
-            {
-                "name": "Flamethrower",
-                "type": "fire",
-                "accuracy": 70
-            }
-        ],
-        "current_health": 190
-    },
-    {
         "name": "Pidgey",
         "sprite": {
             "front": "media/Pokemons-assets/front/Pidgey_front.png",
@@ -76,5 +24,31 @@
             }
         ],
         "current_health": 80
+    },
+    {
+        "name": "Ekans",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Ekans_front.png",
+            "back": "media/Pokemons-assets/back/Ekans_back.png"
+        },
+        "type": "poison",
+        "level": 6,
+        "life": 70,
+        "attack": 65,
+        "defence": 30,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Acid",
+                "type": "poison",
+                "accuracy": 85
+            }
+        ],
+        "current_health": 70
     }
 ]
