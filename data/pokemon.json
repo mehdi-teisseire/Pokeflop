@@ -1,10 +1,18 @@
 [
     {
         "name": "Squirtle",
+        "name": "Squirtle",
         "sprite": {
             "front": "media/Pokemons-assets/front/Squirtle_front.png",
             "back": "media/Pokemons-assets/back/Squirtle_back.png"
+            "front": "media/Pokemons-assets/front/Squirtle_front.png",
+            "back": "media/Pokemons-assets/back/Squirtle_back.png"
         },
+        "type": "water",
+        "level": 5,
+        "life": 120,
+        "attack": 50,
+        "defence": 50,
         "type": "water",
         "level": 5,
         "life": 120,
@@ -16,13 +24,24 @@
                 "name": "Tackle",
                 "type": "normal",
                 "accuracy": 95
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
             },
             {
                 "name": "Water Gun",
                 "type": "water",
                 "accuracy": 90
+                "name": "Water Gun",
+                "type": "water",
+                "accuracy": 90
             }
         ],
+        "evolve_data": {
+            "level": 20,
+            "name": "Wartortle",
+            "type": "water"
+        }
         "evolve_data": {
             "level": 20,
             "name": "Wartortle",
@@ -282,8 +301,13 @@
                 "name": "Tackle",
                 "type": "normal",
                 "accuracy": 95
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
             },
             {
+                "name": "Thunder",
+                "type": "electric",
                 "name": "Thunder",
                 "type": "electric",
                 "accuracy": 90
@@ -320,5 +344,35 @@
             }
         ],
         "evolve_data": {}
+    },
+    {
+        "name": "Vulpix",
+        "sprite": {
+            "front": "media/Pokemons-assets/front/Vulpix_front.png",
+            "back": "media/Pokemons-assets/back/Vulpix_back.png"
+        },
+        "type": "fire",
+        "level": 7,
+        "life": 110,
+        "attack": 55,
+        "defence": 50,
+        "ingame": true,
+        "moov": [
+            {
+                "name": "Tackle",
+                "type": "normal",
+                "accuracy": 95
+            },
+            {
+                "name": "Flame Wheel",
+                "type": "fire",
+                "accuracy": 100
+            }
+        ],
+        "evolve_data": {
+            "level": 25,
+            "name": "Ninetales",
+            "type": "fire"
+        }
     }
 ]
