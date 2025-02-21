@@ -68,7 +68,12 @@ def display_pokelist(game):
     current_pokemon = pokedex_data[0] 
     
     mouse_pos = pygame.mouse.get_pos()
-    if pygame.mouse.get_pressed()[0]:  
+    
+    if not hasattr(display_pokelist, 'last_click_time'):
+        display_pokelist.last_click_time = 0
+    
+    current_time = pygame.time.get_ticks()
+    if pygame.mouse.get_pressed()[0] and current_time - display_pokelist.last_click_time > 300:  # 300ms delay
         for sprite_rect, pokemon in sprite_positions:
             if sprite_rect.collidepoint(mouse_pos):
                 existing_pokemon = game.open_json('pokemon')
@@ -80,6 +85,7 @@ def display_pokelist(game):
                     existing_pokemon.append(pokemon)
                 
                 game.save_json(existing_pokemon, 'pokemon')
+                display_pokelist.last_click_time = current_time  # Update last click time
                 break
 
     existing_pokemon = game.open_json('pokemon')
