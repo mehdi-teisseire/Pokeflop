@@ -1,0 +1,30 @@
+# Write anything you want to not forget here
+
+## "TODO" word is on some files; search it for more TODO
+
+### Optional
+
+put trainer obj in turn instead and rename turn to player turn or something (optional)
+add sounds (optional)
+on new game -> confirmation message (display on saveslot.py)
+On load game -> multiple saves (display on saveslot.py) -> pokedex{trainer_name}.json
+"effective" message (with multiplier value)
+
+replace evolution by another pokemon in db + previous stats?(maybe not)
+
+life regen at max when switch (have to keep current hp somehow (in json maybe))
+send next pokemon in battle after main die
+any pokemon evolve to charizard
+Need evolution
+
+### Required
+
+rival always here
+
+redo algorythme
+
+evolution in json
+
+nb seen in json
+
+error handling
