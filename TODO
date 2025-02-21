@@ -12,15 +12,14 @@ On load game -> multiple saves (display on saveslot.py) -> pokedex{trainer_name}
 
 replace evolution by another pokemon in db + previous stats?(maybe not)
 
+life regen at max when switch (have to keep current hp somehow (in json maybe))
+send next pokemon in battle after main die
+any pokemon evolve to charizard
+Need to apply level up and do evolution
 ### Required
 
-life regen at max when switch (have to keep current hp somehow (in json maybe))
-
-any pokemon evolve to charizard
-
-send next pokemon in battle after main die
-need to return to intro when dying
-
-Need to apply level up and do evolution
-
 error handling
+
+
+
+
