@@ -39,6 +39,8 @@ def display_ingame(game):
             print("Error selecting an ingame state")
 
 def choose_pokemon_battle(game):
+    game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_stand.png")
+
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
     game.text_battle_message.draw(game.screen, f"Choose a pokemon to send in battle!" ,hitbox=game.button_battle_message)
@@ -78,6 +80,7 @@ def display_battle_interface(game):
     game.hitbox_enemy_pkmn.draw(game.screen)
     game.trainer_pokemon.draw(game.screen, image_path=f"media/Pokemons-assets/back/{game.battle.trainer_pokemon.name}_back.png", hitbox=game.hitbox_trainer_pkmn)
     game.enemy_pokemon.draw(game.screen, image_path=f"media/Pokemons-assets/front/{game.battle.enemy_pokemon.name}_front.png", hitbox=game.hitbox_enemy_pkmn)
+    
 
     game.ingame_text.draw(game.screen, f"{game.battle.trainer_pokemon.name}", (70,50)) 
     game.ingame_text.draw(game.screen, f"{game.battle.enemy_pokemon.name}", (740,50)) 
@@ -96,6 +99,8 @@ def display_attack_choice(game):
     """Show the moov buttons and allow to choose an attack"""
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
+
+    game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_stand.png")
 
     game.button_moov1.draw(game.screen, game.battle.turn_pkmn.moov[0].name) 
     game.button_moov2.draw(game.screen, game.battle.turn_pkmn.moov[1].name)
@@ -118,8 +123,10 @@ def display_attacking_text(game):
 
 def display_moov_animation(game):
     if game.battle.turn == game.battle.trainer_name:
+        game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_stand.png")
         game.hitbox_trainer_pkmn.coord = (game.hitbox_trainer_pkmn.coord[0]+3, game.hitbox_trainer_pkmn.coord[1])
     else:
+        game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_mooving.png")
         game.hitbox_enemy_pkmn.coord = (game.hitbox_enemy_pkmn.coord[0]-3, game.hitbox_enemy_pkmn.coord[1])
 
     game.button_battle_message.draw(game.screen)
@@ -136,6 +143,8 @@ def reset_animation(game):
     game.hitbox_enemy_pkmn.coord = (750,170)
 
 def display_damage_text(game, damage):
+    game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_stand.png")
+
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
     game.text_battle_message.draw(game.screen, f"{game.battle.turn}'s {game.battle.turn_pkmn.name} has inflicted {damage} damage to {game.battle.opponent_pkmn.name}!" ,hitbox=game.button_battle_message)
@@ -143,6 +152,8 @@ def display_damage_text(game, damage):
     custom_wait(game, "turn_finish", 0)
 
 def display_moov_missed_text(game):
+    game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_stand.png")
+
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
     game.text_battle_message.draw(game.screen, f"{game.battle.chosen_moov.name} has missed!!" ,hitbox=game.button_battle_message)
@@ -151,6 +162,7 @@ def display_moov_missed_text(game):
 
 def display_enemy_choosing_move(game):
     """Display a message to let AI play without interferences"""
+    game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_stand.png")
 
     game.button_battle_message.draw(game.screen)
     game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
@@ -163,12 +175,16 @@ def display_enemy_choosing_move(game):
 
 def display_end_results(game):
     if not game.battle.won:
+        game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_stand.png")
+
         game.button_battle_message.draw(game.screen)
         game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
         game.text_battle_message.draw(game.screen, f"Too bad, {game.battle.trainer_name}'s {game.battle.trainer_pokemon.name} had been defeated by {game.battle.enemy_name}'s {game.battle.enemy_pokemon.name}!!" ,hitbox=game.button_battle_message)
         game.hitbox_trainer_pkmn.coord = (game.hitbox_trainer_pkmn.coord[0], game.hitbox_trainer_pkmn.coord[1]+50)
         
     else:
+        game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_stand.png")
+
         game.button_battle_message.draw(game.screen)
         game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
         game.text_battle_message.draw(game.screen, f"Good job, {game.battle.trainer_name}'s {game.battle.trainer_pokemon.name} had defeated {game.battle.enemy_name}'s {game.battle.enemy_pokemon.name}!!" ,hitbox=game.button_battle_message)
@@ -211,7 +227,7 @@ def display_battle_end(game):
     if game.battle.won:
         if game.battle.gave_pokemon:
             game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
-            game.rival.draw(game.screen, (850,180), (100,200), "media/ui-elements/Rival_sad.png")
+            game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_sad.png")
             
 
             game.button_battle_message.draw(game.screen)
@@ -221,7 +237,7 @@ def display_battle_end(game):
    
         else:
             game.background.draw(game.screen, size=game.screen_size, image_path="media/ui-elements/MDPokemonBattle_Notextbox.png")
-            game.rival.draw(game.screen, (850,180), (100,200), "media/ui-elements/Rival_sad.png")
+            game.rival.draw(game.screen, (1050,150), (85,150), "media/ui-elements/Rival_sad.png")
             
             game.button_battle_message.draw(game.screen)
             game.background_battle_message.draw(game.screen, hitbox=game.button_battle_message)
@@ -235,7 +251,7 @@ def display_battle_end(game):
    
     if time.get_ticks() >= game.delay:
        # game.battle.turn_pkmn.level_up()
-       # display_evolve(game)
+        display_evolve(game)
         game.delay = time.get_ticks() + 50000
         game.save_json(game.trainer.pokedex, 'pokedex')
         game.mixer.music.stop()
@@ -250,7 +266,7 @@ def display_battle_end(game):
 
 
 def display_evolve(game):
-    if game.trainer.pokedex[0].level == 6 and not game.trainer.pokedex[0].name == "Charizard":
-            game.trainer.pokedex[0].evolve("Charmeleon", "fire")
-    elif game.trainer.pokedex[0].level == 7:
-            game.trainer.pokedex[0].evolve("Charizard", "fire")
+    if game.trainer.pokedex[0].evolve_data:
+        if game.trainer.pokedex[0].level == game.trainer.pokedex[0].evolve_data["level"]:
+                game.trainer.pokedex[0].evolve(game.trainer.pokedex[0].evolve_data["name"], game.trainer.pokedex[0].evolve_data["type"])
+   
