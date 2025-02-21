@@ -49,6 +49,8 @@ class Pokemon():
         '''Calculate the damage of an attack'''
         multi = type_multiplier[(moov_type, opponent.type)]
         damage = round((self.attack * self.level * 0.2 - opponent.defence * opponent.level * 0.05) * multi * uniform(0.8, 1.2))
+        if damage < 0: #Sorry Healer Chansey
+            damage = 0
         return damage
         # return f"{self.name} has inflicted {damage} damage to {opponent.name}!"
 
